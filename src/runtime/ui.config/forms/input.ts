@@ -1,6 +1,6 @@
 export default {
   wrapper: 'relative',
-  base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0 sm:text-sm sm:leading-6',
+  base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
   font: 'font-medium',
   form: 'form-input',
   rounded: 'rounded-md',
