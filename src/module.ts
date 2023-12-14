@@ -169,12 +169,12 @@ export default defineNuxtModule<ModuleOptions>({
             resolve(runtimeDir, 'ui.config/**/*.{mjs,js,ts}')
           ],
           transform: {
-            vue: (content) => {
+            vue: (content: string) => {
               return content.replaceAll(/(?:\r\n|\r|\n)/g, ' ')
             }
           },
           extract: {
-            vue: (content) => {
+            vue: (content: string) => {
               return [
                 ...defaultExtractor(content),
                 // @ts-ignore
@@ -193,43 +193,23 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Components
+    // Define a function to add components directory
+    function addComponentsDirectory (path: string, type: string, options: ModuleOptions, runtimeDir: string) {
+      addComponentsDir({
+        path: resolve(runtimeDir, 'components', type),
+        prefix: options.prefix,
+        global: options.global,
+        watch: false
+        //pattern: '**/[A-Z]*.' // Matches any .vue (inside comp dir) file starting with an uppercase letter
+      })
+    }
 
-    addComponentsDir({
-      path: resolve(runtimeDir, 'components', 'elements'),
-      prefix: options.prefix,
-      global: options.global,
-      watch: false
+    // Loop through component types and add components directory
+    const componentTypes = ['elements', 'forms', 'data', 'layout', 'navigation', 'overlays']
+    componentTypes.forEach(type => {
+      addComponentsDirectory(resolve(runtimeDir, 'components', type), type, options, runtimeDir)
     })
-    addComponentsDir({
-      path: resolve(runtimeDir, 'components', 'forms'),
-      prefix: options.prefix,
-      global: options.global,
-      watch: false
-    })
-    addComponentsDir({
-      path: resolve(runtimeDir, 'components', 'data'),
-      prefix: options.prefix,
-      global: options.global,
-      watch: false
-    })
-    addComponentsDir({
-      path: resolve(runtimeDir, 'components', 'layout'),
-      prefix: options.prefix,
-      global: options.global,
-      watch: false
-    })
-    addComponentsDir({
-      path: resolve(runtimeDir, 'components', 'navigation'),
-      prefix: options.prefix,
-      global: options.global,
-      watch: false
-    })
-    addComponentsDir({
-      path: resolve(runtimeDir, 'components', 'overlays'),
-      prefix: options.prefix,
-      global: options.global,
-      watch: false
-    })
+
 
     // Composables
 

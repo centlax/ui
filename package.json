@@ -1,14 +1,15 @@
 {
   "name": "@centlax/ui",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "Shimmy Rukundo",
   "description": "Centlax UI",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/centlax/venus.git"
+    "url": "git+https://github.com/centlax/ui.git"
   },
-  "homepage": "https://github.com/centlax/venus",
+  "homepage": "https://github.com/centlax/ui",
   "license": "MIT",
+  "private": false,
   "type": "module",
   "exports": {
     ".": {
