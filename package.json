@@ -1,6 +1,6 @@
 {
   "name": "@centlax/ui",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Shimmy Rukundo",
   "description": "Centlax UI",
   "repository": {
@@ -65,6 +65,7 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/module-builder": "^0.5.4",
     "@release-it/conventional-changelog": "^8.0.1",
+    "changelogen": "^0.5.5",
     "eslint": "^8.55.0",
     "happy-dom": "^12.10.3",
     "joi": "^17.11.0",
