@@ -80,7 +80,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     nuxt.options.alias['#ui'] = runtimeDir
 
-    nuxt.options.css.push(resolve(runtimeDir, 'ui.css'))
+    nuxt.options.css.push(resolve(runtimeDir, 'assets/ui.css'))
 
     // @ts-ignore
     nuxt.hook('tailwindcss:config', function (tailwindConfig) {
@@ -166,6 +166,7 @@ export default defineNuxtModule<ModuleOptions>({
         content: {
           files: [
             resolve(runtimeDir, 'components/**/*.{vue,mjs,ts}'),
+            resolve(runtimeDir, 'customs/**/*.{vue,mjs,ts,svg}'),
             resolve(runtimeDir, 'ui.config/**/*.{mjs,js,ts}')
           ],
           transform: {

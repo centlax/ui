@@ -28,7 +28,7 @@
   "scripts": {
     "build": "nuxt-module-build build",
     "prepack": "pnpm build",
-    "play": "nuxi dev playground --host",
+    "play": "nuxi dev playground",
     "dev:play": "nuxi build playground",
     "dev:build": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",

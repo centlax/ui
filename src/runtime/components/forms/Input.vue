@@ -235,7 +235,7 @@ export default defineComponent({
         ui.value.base,
         ui.value.form,
         ui.value.font,
-        rounded.value,
+        rounded.value[size.value],
         ui.value.placeholder,
         ui.value.size[size.value],
         props.padded ? ui.value.padding[size.value] : 'p-0',

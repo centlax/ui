@@ -3,7 +3,13 @@ export default {
   base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
   font: 'font-medium',
   form: 'form-input',
-  rounded: 'rounded-md',
+  rounded: {
+    xs: 'rounded',
+    sm: 'rounded',
+    md: 'rounded-md',
+    lg: 'rounded-md',
+    xl: 'rounded-md'
+  },
   placeholder: 'placeholder-gray-500 dark:placeholder-gray-600',
   size: {
     xs: 'text-xs',

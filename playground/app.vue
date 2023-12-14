@@ -4,9 +4,12 @@
       <template #header>
         Welcome to the playground!
       </template>
+      <div class="w-full mb-4 flex justify-center" size="xl">
+        <ULogo size="lg" class="dark:fill-white" />
+      </div>
 
       <UInput />
-      <UButton label="Log in" block class="mt-4" />
+      <UButton label="LOG IN" block class="mt-4" />
     </UCard>
   </UContainer>
 </template>
@@ -15,8 +18,3 @@
 
 </script>
 
-<style>
-body {
-  @apply antialiased font-sans text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900;
-}
-</style>
