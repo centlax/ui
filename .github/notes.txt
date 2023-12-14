@@ -1,3 +1,0 @@
-if
-publishing is not working try
-== npm publish --access=public ==

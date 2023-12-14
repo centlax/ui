@@ -1,1 +1,1 @@
-git add . && git commit -m "GOING BACK" && git push -u origin centlax
+git add . && git commit -m "`date`" && git push -u origin centlax
