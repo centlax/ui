@@ -9,6 +9,9 @@
       </div>
 
       <UInput />
+      <UFormGroup label="Email">
+        <UInput placeholder="you@example.com" icon="i-heroicons-envelope" />
+      </UFormGroup>
       <UButton label="LOG IN" block class="mt-4" />
     </UCard>
   </UContainer>
