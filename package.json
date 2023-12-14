@@ -28,7 +28,7 @@
   "scripts": {
     "build": "nuxt-module-build build",
     "prepack": "pnpm build",
-    "play": "nuxi dev playground",
+    "play": "nuxi dev playground --host",
     "dev:play": "nuxi build playground",
     "dev:build": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "release": "npm run lint && npm run test && npm run prepack && changelogen --release && npm publish && git push --follow-tags",
@@ -42,6 +42,7 @@
     "@headlessui/tailwindcss": "^0.2.0",
     "@headlessui/vue": "^1.7.16",
     "@iconify-json/heroicons": "^1.1.15",
+    "@iconify-json/fluent": "^1.1.43",
     "@nuxt/kit": "^3.8.2",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/tailwindcss": "^6.10.1",

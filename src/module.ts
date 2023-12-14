@@ -67,7 +67,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     prefix: 'U',
-    icons: ['heroicons'],
+    icons: ['heroicons', 'fluent'],
     safelistColors: ['primary']
   },
   async setup (options, nuxt) {
@@ -133,7 +133,7 @@ export default defineNuxtModule<ModuleOptions>({
 
       // @ts-ignore
       nuxt.options.appConfig.ui = {
-        primary: 'green',
+        primary: 'blue',
         gray: 'cool',
         colors,
         strategy: 'merge'
@@ -192,27 +192,35 @@ export default defineNuxtModule<ModuleOptions>({
       src: resolve(runtimeDir, 'plugins', 'colors')
     })
 
-    // Components
-    // Define a function to add components directory
-    function addComponentsDirectory (path: string, type: string, options: ModuleOptions, runtimeDir: string) {
+    // Define a generic function to add components directory
+    function addDirectory (path: string, type: string, options: ModuleOptions, runtimeDir: string, baseDir: string) {
       addComponentsDir({
-        path: resolve(runtimeDir, 'components', type),
+        path: resolve(runtimeDir, baseDir, type),
         prefix: options.prefix,
         global: options.global,
-        watch: false
-        //pattern: '**/[A-Z]*.' // Matches any .vue (inside comp dir) file starting with an uppercase letter
+        watch: false,
+        pattern: '**/[A-Z]*.{vue,ts}' // Matches any .vue (inside comp dir) file starting with an uppercase letter
       })
     }
 
-    // Loop through component types and add components directory
-    const componentTypes = ['elements', 'forms', 'data', 'layout', 'navigation', 'overlays']
-    componentTypes.forEach(type => {
-      addComponentsDirectory(resolve(runtimeDir, 'components', type), type, options, runtimeDir)
-    })
+    // Function to add components and customs directories
+    function addComponentsAndCustoms (options: ModuleOptions, runtimeDir: string) {
 
+      // ============================================= NUXT UI ============================================================ //
+      const componentTypes = ['elements', 'forms', 'data', 'layout', 'navigation', 'overlays']
+      componentTypes.forEach(type => {
+          addDirectory(resolve(runtimeDir, 'components', type), type, options, runtimeDir, 'components')
+      })
 
-    // Composables
-
+      // ============================================= MY OWN CUSTOMS ============================================================ //
+      const customsTypes = ['elements', 'forms']
+      customsTypes.forEach(type => {
+        addDirectory(resolve(runtimeDir, 'customs', type), type, options, runtimeDir, 'customs')
+      })
+    }
+    // Call the function to add components and customs directories
+    addComponentsAndCustoms(options, runtimeDir)
+      // Composables
     addImportsDir(resolve(runtimeDir, 'composables'))
   }
 })

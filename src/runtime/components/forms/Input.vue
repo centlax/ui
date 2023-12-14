@@ -234,6 +234,7 @@ export default defineComponent({
       return twMerge(twJoin(
         ui.value.base,
         ui.value.form,
+        ui.value.font,
         rounded.value,
         ui.value.placeholder,
         ui.value.size[size.value],

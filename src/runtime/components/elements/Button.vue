@@ -149,7 +149,7 @@ export default defineComponent({
       return twMerge(twJoin(
         ui.value.base,
         ui.value.font,
-        rounded.value,
+        rounded.value[size.value],
         ui.value.size[size.value],
         ui.value.gap[size.value],
         props.padded && ui.value[isSquare.value ? 'square' : 'padding'][size.value],

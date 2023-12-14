@@ -19,7 +19,7 @@
 - Features or functionalities that have been removed in this release
 
 ### Fixed
-- Bug fixes or error corrections
+- change the color for inputs and buttons now light is 600 and dark is 500 respcetively 
 
 ## [1.0.0] - YYYY-MM-DD
 
