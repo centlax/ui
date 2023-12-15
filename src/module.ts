@@ -133,7 +133,7 @@ export default defineNuxtModule<ModuleOptions>({
 
       // @ts-ignore
       nuxt.options.appConfig.ui = {
-        primary: 'blue',
+        primary: 'indigo',
         gray: 'cool',
         colors,
         strategy: 'merge'

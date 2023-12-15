@@ -65,13 +65,13 @@ const safelistByComponent = {
     pattern: new RegExp(`bg-(${colorsAsRegex})-100`),
     variants: ['hover']
   }, {
-    pattern: new RegExp(`bg-(${colorsAsRegex})-400`),
+    pattern: new RegExp(`bg-(${colorsAsRegex})-500`),
     variants: ['dark', 'dark:disabled']
   }, {
-    pattern: new RegExp(`bg-(${colorsAsRegex})-500`),
+    pattern: new RegExp(`bg-(${colorsAsRegex})-600`),
     variants: ['disabled', 'dark:hover']
   }, {
-    pattern: new RegExp(`bg-(${colorsAsRegex})-600`),
+    pattern: new RegExp(`bg-(${colorsAsRegex})-700`),
     variants: ['hover']
   }, {
     pattern: new RegExp(`bg-(${colorsAsRegex})-900`),
@@ -80,37 +80,37 @@ const safelistByComponent = {
     pattern: new RegExp(`bg-(${colorsAsRegex})-950`),
     variants: ['dark', 'dark:hover', 'dark:disabled']
   }, {
-    pattern: new RegExp(`text-(${colorsAsRegex})-400`),
+    pattern: new RegExp(`text-(${colorsAsRegex})-500`),
     variants: ['dark', 'dark:disabled']
   }, {
-    pattern: new RegExp(`text-(${colorsAsRegex})-500`),
+    pattern: new RegExp(`text-(${colorsAsRegex})-600`),
     variants: ['dark:hover', 'disabled']
   }, {
-    pattern: new RegExp(`text-(${colorsAsRegex})-600`),
+    pattern: new RegExp(`text-(${colorsAsRegex})-700`),
     variants: ['hover']
   }, {
-    pattern: new RegExp(`outline-(${colorsAsRegex})-400`),
+    pattern: new RegExp(`outline-(${colorsAsRegex})-500`),
     variants: ['dark:focus-visible']
   }, {
-    pattern: new RegExp(`outline-(${colorsAsRegex})-500`),
+    pattern: new RegExp(`outline-(${colorsAsRegex})-600`),
     variants: ['focus-visible']
   }, {
-    pattern: new RegExp(`ring-(${colorsAsRegex})-400`),
+    pattern: new RegExp(`ring-(${colorsAsRegex})-500`),
     variants: ['dark:focus-visible']
   }, {
-    pattern: new RegExp(`ring-(${colorsAsRegex})-500`),
+    pattern: new RegExp(`ring-(${colorsAsRegex})-600`),
     variants: ['focus-visible']
   }],
   input: (colorsAsRegex) => [{
-    pattern: new RegExp(`text-(${colorsAsRegex})-400`),
+    pattern: new RegExp(`text-(${colorsAsRegex})-500`),
     variants: ['dark']
   }, {
-    pattern: new RegExp(`text-(${colorsAsRegex})-500`)
-  }, {
-    pattern: new RegExp(`ring-(${colorsAsRegex})-400`),
-    variants: ['dark', 'dark:focus']
+    pattern: new RegExp(`text-(${colorsAsRegex})-600`)
   }, {
     pattern: new RegExp(`ring-(${colorsAsRegex})-500`),
+    variants: ['dark', 'dark:focus']
+  }, {
+    pattern: new RegExp(`ring-(${colorsAsRegex})-600`),
     variants: ['focus']
   }],
   radio: (colorsAsRegex) => [{
