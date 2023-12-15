@@ -1,6 +1,6 @@
 <template>
-  <UContainer class="min-h-screen dark:bg-gray-950">
-    <UHeader />
+  <UContainer class="h-screen dark:bg-pink-600">
+    <div class="h-4 w-full bg-white">wfwret</div>
   </UContainer>
 </template>
 

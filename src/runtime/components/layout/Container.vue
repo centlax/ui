@@ -1,6 +1,8 @@
 <template>
-  <component :is="as" :class="containerClass" v-bind="attrs">
-    <slot />
+  <component :is="as" :class="outerUI" v-bind="attrs">
+    <div :class="innerUI">
+      <slot />
+    </div>
   </component>
 </template>
 
@@ -28,6 +30,10 @@ export default defineComponent({
       type: [String, Object, Array] as PropType<any>,
       default: () => ''
     },
+    padding: {
+      type: String as PropType<keyof typeof container.padding>,
+      default: () => container.default.padding
+    },
     ui: {
       type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
       default: () => ({})
@@ -36,11 +42,16 @@ export default defineComponent({
   setup (props) {
     const { ui, attrs } = useUI('container', toRef(props, 'ui'), config)
 
-    const containerClass = computed(() => {
-      return twMerge(twJoin(
+    const innerUI = computed(() => {
+      return twJoin(
         ui.value.base,
-        ui.value.padding,
-        ui.value.constrained
+        ui.value.padding[props.padding]
+      )
+    })
+
+    const outerUI = computed(() => {
+      return twMerge(twJoin(
+        ui.value.wrapper
       ), props.class)
     })
 
@@ -48,7 +59,8 @@ export default defineComponent({
       // eslint-disable-next-line vue/no-dupe-keys
       ui,
       attrs,
-      containerClass
+      innerUI,
+      outerUI
     }
   }
 })
