@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.0.3
+
+[compare changes](https://github.com/centlax/ui/compare/v0.0.1...v0.0.3)
+
+### 🏡 Chore
+
+- **release:** V0.0.1 ([3ddca8e](https://github.com/centlax/ui/commit/3ddca8e))
+
+### ❤️ Contributors
+
+- Shimmy Rukundo <centlax.main@gmail.com>
+
 ## v0.0.1
 
 [compare changes](https://github.com/centlax/ui/compare/v0.0.1...v0.0.1)
