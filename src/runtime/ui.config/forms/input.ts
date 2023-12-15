@@ -63,7 +63,7 @@ export default {
     none: 'bg-transparent focus:ring-0 focus:shadow-none'
   },
   icon: {
-    base: 'flex-shrink-0 text-gray-500 dark:text-gray-600',
+    base: 'flex-shrink-0 text-gray-600 dark:text-gray-500',
     color: 'text-{color}-600 dark:text-{color}-500',
     loading: 'animate-spin',
     size: {

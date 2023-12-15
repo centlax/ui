@@ -2,6 +2,9 @@
   <UContainer class="min-h-screen flex items-center">
     <UCard class="flex-1 m-4 w-[40rem]" :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-1 ring-gray-300 dark:ring-gray-700', divide: 'divide-y divide-gray-300 dark:divide-gray-700', header: { base: 'font-bold' } }">
       <template #header>
+        <div class="flex justify-center items-center">
+          <UTheme variant="solid" />
+        </div>
         Welcome to the playground!
       </template>
       <UInput icon="i-fluent-person-24-regular" />
