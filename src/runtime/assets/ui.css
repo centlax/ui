@@ -28,6 +28,9 @@
   .ven-text-strong{
     @apply text-black dark:text-white;
   }
+  .ven-border{
+    @apply border-gray-200 dark:border-gray-800;
+  }
 }
 
 .dark {
@@ -43,3 +46,4 @@ a:focus-visible {
 select {
   background-image: none;
 }
+

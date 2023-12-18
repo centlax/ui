@@ -36,7 +36,7 @@ describe('nuxt', () => {
       })
       // default values in appConfig
       expect(nuxt.options.appConfig.ui).toContain({
-        primary: 'blue',
+        primary: 'indigo',
         gray: 'cool'
       })
       // TODO: this should be done inside getTailwindCSSConfig

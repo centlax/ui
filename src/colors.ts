@@ -237,8 +237,8 @@ export const generateSafelist = (colors: string[], globalColors) => {
     // Gray safelist for Avatar & Notification
     'bg-gray-500',
     'dark:bg-gray-400',
-    'text-gray-500',
-    'dark:text-gray-400'
+    'text-gray-600',
+    'dark:text-gray-500'
   ]
 }
 

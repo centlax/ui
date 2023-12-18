@@ -1,28 +1,74 @@
 <template>
-  <UContainer class="min-h-screen flex items-center">
-    <UCard class="flex-1 m-4 w-[40rem]" :ui="{ background: 'bg-transparent dark:bg-transparent', ring: 'ring-1 ring-gray-300 dark:ring-gray-700', divide: 'divide-y divide-gray-300 dark:divide-gray-700', header: { base: 'font-bold' } }">
-      <template #header>
-        <div class="flex justify-center items-center">
-          <UTheme variant="solid" />
-        </div>
-        Welcome to the playground!
-      </template>
-      <UInput icon="i-fluent-person-24-regular" />
-      <UInput class="mt-5" />
-      <UButton block class="mt-5" label="Log in" />
-
-      <!-- <div class="space-x-10">
-        <UButton size="xs" label="Button text" />
-        <UButton size="sm" label="Button text" />
-        <UButton color="yellow" size="md" label="Button text" />
-        <UButton size="lg" label="Button text" />
-        <UButton disabled size="xl" label="Button text" />
-      </div> -->
-    </UCard>
-  </UContainer>
+  <UBody>
+    <template #header>
+      <UHeader
+        :links="links"
+        :class="{
+          'border-primary-200/75 dark:border-primary-900/50': $route.path === '/',
+          'border-gray-200 dark:border-gray-800': $route.path !== '/'
+        }"
+      />
+    </template>
+    <ULink
+      to="/elements/link"
+      active-class="text-primary"
+      inactive-class="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+    >
+      Link
+    </ULink>
+  </UBody>
 </template>
 
-<script setup>
-
+<script setup lang="ts">
+const links = computed(() => {
+  return [{
+    label: 'Documentation',
+    icon: 'i-heroicons-book-open',
+    to: '/getting-started'
+  }, {
+    label: 'Playground',
+    icon: 'i-simple-icons-stackblitz',
+    to: '/playground'
+  }, {
+    label: 'Roadmap',
+    icon: 'i-heroicons-academic-cap',
+    to: '/roadmap'
+  }, {
+    label: 'Pro',
+    icon: 'i-heroicons-square-3-stack-3d',
+    to: '/pro',
+    children: [{
+      label: 'Features',
+      to: '/pro#features',
+      exactHash: true,
+      icon: 'i-heroicons-beaker',
+      description: 'Discover all the features of Nuxt UI Pro.'
+    }, {
+      label: 'Pricing',
+      to: '/pro#pricing',
+      exactHash: true,
+      icon: 'i-heroicons-credit-card',
+      description: 'A simple pricing, for solo developers or teams.'
+    }, {
+      label: 'Guide',
+      to: '/pro/guide',
+      icon: 'i-heroicons-book-open',
+      description: 'Learn how to use Nuxt UI Pro in your app.'
+    }, {
+      label: 'Components',
+      to: '/pro/components',
+      icon: 'i-heroicons-cube-transparent',
+      description: 'Discover all the components available in Nuxt UI Pro.'
+    }]
+  }, {
+    label: 'Releases',
+    icon: 'i-heroicons-rocket-launch',
+    to: 'https://github.com/nuxt/ui/releases',
+    target: '_blank'
+  }].filter(Boolean)
+})
 </script>
+
+
+
 
