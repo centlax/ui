@@ -1,6 +1,6 @@
 {
   "extends": "./.nuxt/tsconfig.json",
-  "exclude": ["docs", "dist"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "noImplicitAny": false,
     "strictNullChecks": false

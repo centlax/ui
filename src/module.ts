@@ -214,7 +214,7 @@ export default defineNuxtModule<ModuleOptions>({
       })
 
       // ============================================= MY OWN CUSTOMS ============================================================ //
-      const customsTypes = ['elements', 'forms', 'blocks', 'layout']
+      const customsTypes = ['elements', 'blocks']
       customsTypes.forEach(type => {
         addDirectory(resolve(runtimeDir, 'customs', type), type, options, runtimeDir, 'customs')
       })

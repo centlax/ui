@@ -1,5 +1,6 @@
+
 <template>
-  <ClientOnly v-if="!colorMode?.forced">
+  <ClientOnly v-if="!colorMode">
     <UButton
       :icon="isDark ? 'i-fluent-weather-moon-24-filled' : 'i-fluent-weather-sunny-24-filled'"
       v-bind="$attrs"
@@ -15,7 +16,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useColorMode } from '#imports'
+import { useColorMode } from '@vueuse/core'
 
 defineOptions({
   inheritAttrs: false
