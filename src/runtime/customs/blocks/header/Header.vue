@@ -1,7 +1,8 @@
 <template>
   <UContainer :class="ui.wrapper">
-    <header :class="ui.header" v-bind="attrs">
+    <header :class="ui.header" v-bind="attrs" aria-label="Global">
       <NuxtLink id="left" :to="to" :aria-label="ariaLabel" :class="[ui.left, ui.logo]">
+        <span class="sr-only">Centlax</span>
         <ULogo />
         <slot name="left">
           {{ title }}
@@ -13,9 +14,10 @@
         </slot>
       </nav>
       <nav id="right" :class="ui.right">
-        <slot name="right" />
-        <slot name="panel-buttons">
+        <slot name="right">
           <UColorButton color="gray" />
+        </slot>
+        <slot name="panel-buttons">
           <div :class="showUI">
             <UButton color="gray" :icon="ui.button.icon.open" square @click="isOpen = true" />
           </div>
@@ -25,6 +27,7 @@
   </UContainer>
   <USlideover
     v-model="isOpen"
+    :class="showUI"
     :transition="false"
     :ui="{
       overlay: {
@@ -49,16 +52,23 @@
           </slot>
         </nav>
         <nav id="right" :class="ui.right">
-          <slot name="right" />
-          <slot name="panel-buttons">
+          <slot name="right">
             <UColorButton color="gray" />
+          </slot>
+          <slot name="panel-buttons">
             <div :class="showUI">
               <UButton color="gray" :icon="ui.button.icon.close" square @click="isOpen = false" />
             </div>
           </slot>
         </nav>
       </header>
-      <div class="h-full" />
+    </UContainer>
+    <UContainer>
+      <div :class="ui.panel.body">
+        <slot name="panel">
+          <UAsideLinks :links="links" />
+        </slot>
+      </div>
     </UContainer>
   </USlideover>
 </template>
@@ -66,11 +76,13 @@
 <script setup lang="ts">
 import config from './header.css'
 import { ref, toRef, computed } from 'vue'
-const isOpen = ref(false)
 import { useUI } from '../../../composables/useUI'
 import { getSlotChildrenText } from '../../../lib/slots'
 import type { Link } from '../../../types'
 import HeaderLinks from './HeaderLinks.vue'
+import { useSlots } from '#imports'
+
+const isOpen = ref(false)
 
 defineOptions({
   inheritAttrs: false
@@ -91,7 +103,6 @@ const props = withDefaults(defineProps<{
   class: undefined,
   size: 'md'
 })
-// @ts-ignore
 const slots = useSlots()
 const ariaLabel = computed(() => (props.title || (slots.title && getSlotChildrenText(slots.title())) || 'Logo').trim())
 const { ui, attrs } = useUI('header', toRef(props, 'ui'), config, toRef(props, 'class'), true)

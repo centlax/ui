@@ -1,5 +1,5 @@
 export default {
-  wrapper: 'bg-background/75  border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50',
+  wrapper: 'bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50',
   header: 'flex items-center justify-between gap-3 h-[4rem]',
   left: 'flex justify-start items-center gap-1.5',
   hide: {
@@ -20,8 +20,8 @@ export default {
   logo: 'flex-shrink-0 font-bold text-xl text-gray-900 dark:text-white flex items-end gap-1.5',
   panel: {
     wrapper: 'fixed inset-0 z-50 overflow-y-auto bg-background lg:hidden',
-    header: 'px-4 sm:px-6',
-    body: 'px-4 sm:px-6 pt-3 pb-6'
+    header: 'px-0',
+    body: 'px-0 py-6'
   },
   button: {
     base: 'hidden',
@@ -29,6 +29,5 @@ export default {
       open: 'i-fluent-navigation-24-regular',
       close: 'i-fluent-dismiss-24-regular'
     }
-
   }
 }

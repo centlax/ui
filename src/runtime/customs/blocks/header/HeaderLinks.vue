@@ -20,7 +20,30 @@
         </template>
 
         <template #panel="{ close }">
-          <PopoverLinks :links="link.children" @click="close" />
+          <div v-if="link.children.length" :class="ui.pop.wrapper" @click="close">
+            <ULink
+              v-for="(kid, kid_index) of link.children"
+              :key="kid_index"
+              v-bind="omit(kid, ['label', 'icon'])"
+              :class="ui.pop.base"
+              :active-class="ui.pop.active"
+              :inactive-class="ui.pop.inactive"
+              @click="kid.click"
+            >
+              <UIcon v-if="kid.icon" :name="kid.icon" :class="ui.pop.icon.base" />
+
+              <p :class="[kid.target === '_blank' && 'pr-3']">
+                <span :class="ui.pop.label">
+                  {{ kid.label }}
+
+                  <UIcon v-if="kid.target === '_blank'" :name="ui.pop.externalIcon.name" :class="ui.pop.externalIcon.base" />
+                </span>
+                <span v-if="kid.description" :class="ui.pop.description">
+                  {{ kid.description }}
+                </span>
+              </p>
+            </ULink>
+          </div>
         </template>
       </UPopover>
       <ULink
@@ -42,35 +65,10 @@
 <script setup lang="ts">
 import type { Link } from '../../../types'
 import { omit } from '../../../lib/lodash'
-import { computed, toRef } from 'vue'
+import { toRef } from 'vue'
 import { useUI } from '../../../composables/useUI'
-import PopoverLinks from './PopoverLinks.vue'
-// @ts-ignore
-const appConfig = useAppConfig()
+import config from './header-links.css'
 
-const config = computed(() => ({
-  wrapper: 'flex items-center gap-x-8',
-  base: 'text-base font-semibold flex items-center gap-1',
-  active: 'text-primary',
-  inactive: 'hover:text-primary',
-  trailingIcon: {
-    name: appConfig.ui.icons.chevron,
-    base: 'w-5 h-5 transform transition-transform duration-200 flex-shrink-0',
-    active: 'rotate-180',
-    inactive: ''
-  },
-  externalIcon: {
-    name: appConfig.ui.icons.external,
-    base: 'w-3 h-3 absolute top-0.5 -right-3.5 text-gray-400 dark:text-gray-500'
-  },
-  popover: {
-    mode: 'hover' as const,
-    openDelay: 0,
-    ui: {
-      width: 'max-w-[16rem]'
-    }
-  }
-}))
 
 defineOptions({
   inheritAttrs: false
@@ -78,7 +76,7 @@ defineOptions({
 
 const props = defineProps<{
   links?: Link[]
-  ui?: Partial<typeof config.value>
+  ui?: Partial<typeof config>
   class?: any
 }>()
 

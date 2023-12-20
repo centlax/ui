@@ -1,7 +1,9 @@
 <template>
   <UHeader
     :links="links"
-  />
+  >
+    <UColorButton />
+  </UHeader>
 
   <ULink
     to="/elements/link"
