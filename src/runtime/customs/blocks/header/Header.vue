@@ -9,9 +9,7 @@
         </slot>
       </NuxtLink>
       <nav id="center" :class="hideUI">
-        <slot name="center">
-          <HeaderLinks :links="links" />
-        </slot>
+        <slot name="center" />
       </nav>
       <nav id="right" :class="ui.right">
         <slot name="right">
@@ -78,9 +76,10 @@ import config from './header.css'
 import { ref, toRef, computed } from 'vue'
 import { useUI } from '../../../composables/useUI'
 import { getSlotChildrenText } from '../../../lib/slots'
-import type { Link } from '../../../types'
 import HeaderLinks from './HeaderLinks.vue'
 import { useSlots } from '#imports'
+import type { PropType } from 'vue'
+import type { Strategy } from '../../../types'
 
 const isOpen = ref(false)
 
@@ -88,21 +87,30 @@ defineOptions({
   inheritAttrs: false
 })
 
-const props = withDefaults(defineProps<{
-  to?: string
-  title?: string
-  links?: Link[]
-  ui?: Partial<typeof config>
-  class?: any,
-  size?: string
-}>(), {
-  to: '/',
-  title: undefined,
-  links: () => [],
-  ui: () => ({}),
-  class: undefined,
-  size: 'md'
+const props = defineProps({
+  to: {
+    type: String,
+    default: '/'
+  },
+  ui: {
+    type: Object as PropType<Partial<typeof config> & { strategy?: Strategy }>,
+    default: () => ({})
+  },
+  size: {
+    type: String,
+    default: 'md'
+  },
+  class: {
+    type: [String, Object, Array] as PropType<any>,
+    default: () => ''
+  },
+  title: {
+    type: String,
+    default: ''
+  }
 })
+
+
 const slots = useSlots()
 const ariaLabel = computed(() => (props.title || (slots.title && getSlotChildrenText(slots.title())) || 'Logo').trim())
 const { ui, attrs } = useUI('header', toRef(props, 'ui'), config, toRef(props, 'class'), true)
