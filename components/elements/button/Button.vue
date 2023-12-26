@@ -123,6 +123,20 @@ const isTrailing = computed(() => {
 })
 
 const isSquare = computed(() => props.square || (!slots.default && !props.label))
+const variant = computed(() => {
+  if (props.color === 'white' || props.color === 'gray') {
+    return ui.color[props.color]
+  } else {
+    const variantString = ui.variant[props.variant]
+    if (variantString) {
+      return variantString.replaceAll('{color}', props.color)
+    } else {
+      // Handle the case when ui.variant[props.variant] is undefined
+      console.error(`Variant '${props.variant}' not found.`)
+      return '' // or some default value
+    }
+  }
+})
 
 const buttonClass = computed(() => {
   return twMerge(twJoin(
@@ -132,7 +146,7 @@ const buttonClass = computed(() => {
     ui.text[props.size],
     ui.gap[props.size],
     props.padded && ui[isSquare.value ? 'square' : 'padding'][props.size],
-    ui.variant[props.variant].replaceAll('{color}', props.color),
+    variant.value,
     props.block ? ui.block : ui.inline
   ), props.class)
 })

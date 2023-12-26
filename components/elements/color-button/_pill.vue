@@ -1,11 +1,11 @@
 <template>
-  <UTooltip class="capitalize" :open-delay="100">
+  <UTooltip class="capitalize" :open-delay="100" :popper="{ placement: 'top' }">
     <template #text>
       <span class="font-bold">{{ color.value }}</span>
     </template>
     <UButton
       square
-      :variant="color.value === selected.value ? 'gray' : 'ghost'"
+      :variant="color.value === selected.value ? 'outline' : 'ghost'"
       @click.stop.prevent="$emit('select')"
     >
       <span class="inline-block w-3 h-3 rounded-full" :style="{ backgroundColor: color.hex }" />

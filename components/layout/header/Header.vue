@@ -1,5 +1,5 @@
 <template>
-  <UContainer :class="ui.wrapper">
+  <UContainer :class="[ui.wrapper]">
     <header :class="ui.header" v-bind="$attrs" aria-label="Global">
       <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]">
         <span class="sr-only">Centlax</span>
@@ -17,7 +17,7 @@
         </slot>
         <slot name="panel-buttons">
           <div :class="showUI">
-            <UButton variant="gray" :icon="ui.button.icon.open" square @click="isOpen = true" />
+            <UButton color="gray" :icon="ui.button.icon.open" square @click="isOpen = true" />
           </div>
         </slot>
       </nav>
@@ -25,16 +25,10 @@
   </UContainer>
   <USlideover
     v-model="isOpen"
-    :class="showUI"
     :transition="false"
-    :ui="{
-      overlay: {
-        transition: {
-          enter: 'duration-0',
-          leave: 'duration-0'
-        }
-      }, width: 'max-w-full'
-    }"
+    :overlay="false"
+    width="full"
+    :wrapper-class="showUI"
   >
     <UContainer :class="ui.wrapper">
       <header :class="ui.header">
@@ -53,7 +47,7 @@
           </slot>
           <slot name="panel-buttons">
             <div :class="showUI">
-              <UButton variant="gray" :icon="ui.button.icon.close" square @click="isOpen = false" />
+              <UButton color="gray" :icon="ui.button.icon.close" square @click="isOpen = false" />
             </div>
           </slot>
         </nav>
@@ -68,9 +62,9 @@
 </template>
 
 <script setup lang="ts">
-import ui from './header.css'
+import config from './header.css'
 import { ref, computed } from 'vue'
-import type { PropType } from 'vue'
+import ui from './header.css'
 
 const isOpen = ref(false)
 
@@ -78,30 +72,24 @@ defineOptions({
   inheritAttrs: false
 })
 
-const props = defineProps({
-  to: {
-    type: String,
-    default: '/'
-  },
-  size: {
-    type: String,
-    default: 'md'
-  },
-  class: {
-    type: [String, Object, Array] as PropType<any>,
-    default: () => ''
-  },
-  title: {
-    type: String,
-    default: ''
-  }
+const props = withDefaults(defineProps<{
+  to?: string
+  title?: string
+  class?: any,
+  size?: string
+}>(), {
+  to: '/',
+  title: undefined,
+  class: undefined,
+  size: 'md'
 })
 
 const showUI = computed(() => {
-  return ui.show[props.size]
+  return config.show[props.size]
 })
 const hideUI = computed(() => {
-  return ui.hide[props.size]
+  return config.hide[props.size]
 })
+
 
 </script>

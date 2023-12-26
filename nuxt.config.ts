@@ -6,7 +6,7 @@ const { resolve } = createResolver(import.meta.url)
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  alias: { '#venus': resolve('./') },
+  alias: { '#ui': resolve('./') },
   components: [
     {
       path: '#venus/components',
@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     '#venus/assets/css/scrollbars.css'
   ],
   modules: [
-   '@centlax/ui-color'
+    '@centlax/ui-color'
   ],
   colorMode: {
     classSuffix: ''

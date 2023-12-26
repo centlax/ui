@@ -19,7 +19,10 @@ export default {
   rounded: '',
   padding: '',
   shadow: 'shadow-xl',
-  width: 'w-screen max-w-md',
+  width: {
+    half: 'w-screen max-w-md',
+    full: 'max-w-full'
+  },
   translate: {
     base: 'translate-x-0',
     left: '-translate-x-full',

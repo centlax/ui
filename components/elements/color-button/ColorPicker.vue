@@ -2,7 +2,7 @@
   <UPopover mode="hover">
     <template #default="{ open }">
       <UButton
-        variant="gray"
+        color="gray"
         square
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
         aria-label="Color picker"
