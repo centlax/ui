@@ -1,0 +1,12 @@
+{
+  "extends": "./.playground/.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "lib": [
+      "ES2021.String",
+      "es2018",
+      "dom"
+    ]
+  }
+}
