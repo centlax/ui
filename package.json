@@ -1,0 +1,43 @@
+{
+  "name": "@centlax/ui",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "play": "nuxi dev .playground",
+    "dev:play": "nuxt build .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "git": "bash scripts/git.sh",
+    "lint": "eslint .",
+    "postinstall": "nuxt prepare .playground"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.0.6",
+    "@nuxt/eslint-config": "^0.1.1",
+    "eslint": "^8.28.0",
+    "nuxt": "^3.6.2",
+    "typescript": "^4.9.3",
+    "@egoist/tailwindcss-icons": "^1.4.0",
+    "@headlessui/tailwindcss": "^0.2.0",
+    "@headlessui/vue": "^1.7.16",
+    "@iconify-json/fluent": "^1.1.43",
+    "@iconify-json/heroicons": "^1.1.19",
+    "@nuxt/kit": "^3.8.2",
+    "@nuxtjs/color-mode": "^3.3.2",
+    "@nuxtjs/tailwindcss": "^6.10.1",
+    "@popperjs/core": "^2.11.8",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@vueuse/core": "^10.7.0",
+    "nuxt-icon": "^0.6.7",
+    "scule": "^1.1.1",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "@centlax/ui-color": "^0.0.20"
+  }
+}
