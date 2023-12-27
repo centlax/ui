@@ -1,5 +1,5 @@
 <template>
-  <UContainer :class="[ui.wrapper]">
+  <UContainer :class="[ui.wrapper, props.wrapperClass]">
     <header :class="ui.header" v-bind="$attrs" aria-label="Global">
       <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]" @click="isOpen = false">
         <span class="sr-only">Centlax</span>
@@ -30,7 +30,7 @@
     width="full"
     :wrapper-class="showUI"
   >
-    <UContainer :class="ui.wrapper">
+    <UContainer :class="[ui.wrapper, props.wrapperClass]">
       <header :class="ui.header">
         <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]" @click="isOpen = false">
           <ULogo />
@@ -79,12 +79,14 @@ const props = withDefaults(defineProps<{
   links?: Link[]
   size?: Size
   class?: any
+  wrapperClass?: string
 }>(), {
   to: '/',
   title: undefined,
   links: () => [],
   size: 'md',
-  class: undefined
+  class: undefined,
+  wrapperClass: undefined
 })
 
 

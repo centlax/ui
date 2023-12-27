@@ -83,6 +83,7 @@ defineOptions({
 const props = defineProps<{
   links?: Link[]
   class?: any
+  sticky: Boolean
 }>()
 
 </script>

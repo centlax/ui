@@ -1,5 +1,8 @@
 <template>
-   <section class="flex flex-wrap gap-2 bg-pink-300 mt-2">
-      <div class="bg-primary-600 h-[10rem] w-[10rem] flex-grow" v-for="(n,i) in 10" :key="i"/>
-    </section>
+  <UPage sticky>
+    <template #header>
+      lwket
+    </template>
+    <div class="bg-green-600 h-[20rem]" v-for="(i,n) in 10" :key="i" />
+  </UPage>
 </template>
