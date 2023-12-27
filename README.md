@@ -1,5 +1,7 @@
 # Centlax UI
 
+## inspiration = Soft Fabric
+
 Create Nuxt extendable layer with this GitHub template.
 
 ## Setup
