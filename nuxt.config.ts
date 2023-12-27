@@ -20,11 +20,5 @@ export default defineNuxtConfig({
   css: [
     '#ui/assets/main.css',
     '#ui/assets/scrollbars.css'
-  ],
-  modules: [
-    '@centlax/ui-color'
-  ],
-  colorMode: {
-    classSuffix: ''
-  }
+  ]
 })

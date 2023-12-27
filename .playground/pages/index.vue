@@ -1,8 +1,11 @@
 <template>
   <UPage sticky>
+
     <template #header>
-      lwket
+     <div class="flex">
+      <UColorPicker />
+     </div>
     </template>
-    <div class="bg-green-600 h-[20rem]" v-for="(i,n) in 10" :key="i" />
+    <div class="bg-primary-600 h-[20rem]" v-for="(i,n) in 10" :key="i" />
   </UPage>
 </template>
