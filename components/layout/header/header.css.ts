@@ -7,7 +7,7 @@ export default {
     md: 'md',
     lg: 'lg',
     xl: 'xl'
-  },
+  } as const,
   hide: {
     sm: 'hidden sm:flex',
     md: 'hidden md:flex',
@@ -20,10 +20,10 @@ export default {
     lg: 'flex lg:hidden',
     xl: 'flex xl:hidden'
   },
-  right: 'flex justify-end items-center gap-1.5',
+  right: 'flex justify-end items-center gap-x-2 sm:gap-x-3 md:gap-x-4',
   center: 'flex gap-x-2',
   logo: 'flex-shrink-0 font-bold text-xl text-gray-900 dark:text-white flex items-end gap-1.5',
-  panel: 'flex flex-col gap-y-2',
+  panel: 'flex gap-y-2 py-4',
   button: {
     base: 'hidden',
     icon: {

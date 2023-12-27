@@ -30,7 +30,6 @@ export default defineNuxtPlugin({
 
       appConfig.ui.primary = window.localStorage.getItem('centlax-ui-primary') || appConfig.ui.primary
       appConfig.ui.gray = window.localStorage.getItem('centlax-ui-gray') || appConfig.ui.gray
-      console.log(appConfig.ui.primary)
     }
     if (process.server) {
       useHead({

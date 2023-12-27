@@ -7,7 +7,7 @@
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
         aria-label="Color picker"
       >
-        <UIcon name="heroicons:swatch-20-solid" class="w-6 h-6 text-primary-600 dark:text-primary-500" />
+        <UIcon name="heroicons:swatch-20-solid" class="w-5 h-5 text-primary-600 dark:text-primary-500" />
       </UButton>
     </template>
 

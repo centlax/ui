@@ -32,7 +32,7 @@
     <div
       v-if="(open !== undefined) ? open : headlessOpen"
       ref="container"
-      :class="[ui.container, ui.width]"
+      :class="[ui.container, props.width]"
       :style="containerStyle"
       @mouseover="onMouseOver"
     >
@@ -99,6 +99,10 @@ const props = defineProps({
   class: {
     type: [String, Object, Array] as PropType<any>,
     default: () => ''
+  },
+  width: {
+    type: String,
+    default: ''
   }
 })
 

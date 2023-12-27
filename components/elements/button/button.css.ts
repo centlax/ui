@@ -1,8 +1,14 @@
 
 export default {
   base: 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0',
-  font: 'font-medium',
-  rounded: 'rounded-md',
+  font: 'font-semibold',
+  rounded: {
+    xs: 'rounded',
+    sm: 'rounded',
+    md: 'rounded-md',
+    lg: 'rounded-md',
+    xl: 'rounded-md'
+  },
   truncate: 'text-left break-all line-clamp-1',
   block: 'w-full flex justify-center items-center',
   inline: 'inline-flex items-center',
@@ -14,11 +20,11 @@ export default {
     xl: 'xl'
   },
   text: {
-    xs: 'text-xs',
-    sm: 'text-sm',
-    md: 'text-sm',
-    lg: 'text-sm',
-    xl: 'text-base'
+    xs: 'sm:text-xs',
+    sm: 'sm:text-sm',
+    md: 'text-base sm:text-sm',
+    lg: 'text-base sm:text-sm',
+    xl: 'text-base sm:text-sm'
   },
   gap: {
     xs: 'gap-x-1.5',

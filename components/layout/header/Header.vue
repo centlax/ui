@@ -1,7 +1,7 @@
 <template>
   <UContainer :class="[ui.wrapper]">
     <header :class="ui.header" v-bind="$attrs" aria-label="Global">
-      <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]">
+      <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]" @click="isOpen = false">
         <span class="sr-only">Centlax</span>
         <ULogo />
         <slot name="left">
@@ -9,7 +9,9 @@
         </slot>
       </NuxtLink>
       <nav id="center" :class="[hideUI, ui.center]">
-        <slot />
+        <slot>
+          <UHeaderLinks :links="props.links" />
+        </slot>
       </nav>
       <nav id="right" :class="ui.right">
         <slot name="right" />
@@ -30,28 +32,30 @@
   >
     <UContainer :class="ui.wrapper">
       <header :class="ui.header">
-        <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]">
+        <NuxtLink id="left" :to="to" aria-label="ariaLabel" :class="[ui.left, ui.logo]" @click="isOpen = false">
           <ULogo />
           <slot name="left">
             {{ title }}
           </slot>
         </NuxtLink>
-        <nav id="center" :class="hideUI">
-          <slot name="center" />
-        </nav>
         <nav id="right" :class="ui.right">
           <slot name="right" />
           <slot name="action-button">
             <div :class="showUI">
-              <UButton color="gray" :icon="ui.button.icon.close" square @click="(isOpen = false)" />
+              <UButton color="gray" :icon="ui.button.icon.close" square @click="isOpen = false" />
             </div>
           </slot>
         </nav>
       </header>
     </UContainer>
     <UContainer>
-      <div :class="[ui.panel, 'bg-red-800']" @click="isOpen = false">
-        <slot />
+      <div :class="[ui.panel]">
+        <slot name="panel">
+          <UAsideLinks
+            :links="links"
+            @kill="isOpen = false"
+          />
+        </slot>
       </div>
     </UContainer>
   </USlideover>
@@ -60,7 +64,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import ui from './header.css'
-import type { PropType } from 'vue'
+import type { Link } from '#ui/types/link'
 
 const isOpen = ref(false)
 
@@ -68,23 +72,19 @@ defineOptions({
   inheritAttrs: false
 })
 
-const props = defineProps({
-  to: {
-    type: String,
-    default: '/'
-  },
-  title: {
-    type: String,
-    default: undefined
-  },
-  class: {
-    type: String,
-    default: ''
-  },
-  size: {
-    type: String as PropType<keyof typeof ui.size>,
-    default: 'md'
-  }
+type Size = keyof typeof ui.size;
+const props = withDefaults(defineProps<{
+  to?: string
+  title?: string
+  links?: Link[]
+  size?: Size
+  class?: any
+}>(), {
+  to: '/',
+  title: undefined,
+  links: () => [],
+  size: 'md',
+  class: undefined
 })
 
 

@@ -142,7 +142,7 @@ const buttonClass = computed(() => {
   return twMerge(twJoin(
     ui.base,
     ui.font,
-    ui.rounded,
+    ui.rounded[props.size],
     ui.text[props.size],
     ui.gap[props.size],
     props.padded && ui[isSquare.value ? 'square' : 'padding'][props.size],
