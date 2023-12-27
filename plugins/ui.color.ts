@@ -1,4 +1,4 @@
-import { hexToRgb } from '../node_modules/@centlax/ui-color/dist/runtime/utils'
+import { hexToRgb } from '#ui/utils'
 import colors from '#tailwind-config/theme/colors'
 
 export default defineNuxtPlugin({
