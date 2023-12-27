@@ -31,9 +31,9 @@ const props = defineProps({
 
 const ui = {
   wrapper: 'flex flex-col min-h-screen',
-  header: 'min-h-4 bg-blue-600',
-  main: 'flex-grow bg-red-600',
-  footer: 'min-h-4 bg-orange-600'
+  header: 'min-h-4',
+  main: 'flex-grow',
+  footer: 'min-h-4'
 }
 
 const headerUI = computed(() => {
