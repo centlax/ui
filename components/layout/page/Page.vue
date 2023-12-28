@@ -32,7 +32,7 @@ const props = defineProps({
 const ui = {
   wrapper: 'flex flex-col min-h-screen',
   header: 'min-h-4',
-  main: 'flex-grow',
+  main: 'flex flex-grow',
   footer: 'min-h-4'
 }
 
