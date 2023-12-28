@@ -14,7 +14,7 @@
     "git": "bash scripts/git.sh",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "pnpm git release-it",
+    "release": "pnpm git && release-it",
     "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {
