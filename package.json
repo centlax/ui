@@ -1,7 +1,7 @@
 {
   "name": "@centlax/ui",
   "type": "module",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "main": "./nuxt.config.ts",
   "scripts": {
     "play": "nuxi dev .playground",
