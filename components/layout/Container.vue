@@ -47,8 +47,7 @@ const outerUI = computed(() => {
 const innerUI = computed(() => {
   return twMerge(twJoin(
     ui.constrained,
-    'mx-auto',
-    'min-h-full'
+    'mx-auto'
   ), props.innerClass)
 })
 
