@@ -18,15 +18,14 @@
 }
 
 @layer components {
-  .ven-bg{
-    @apply bg-white dark:bg-gray-900;
+  .bg-primary{
+    @apply bg-primary-600 dark:bg-primary-500
   }
-  .ven-text{
-    @apply text-gray-900 dark:text-gray-100;
+  .text-primary{
+    @apply bg-primary-600 dark:bg-primary-500
   }
-
-  .ven-text-strong{
-    @apply text-black dark:text-white;
+  .text-gray{
+    @apply text-gray-800 dark:text-gray-800
   }
 }
 
