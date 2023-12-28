@@ -11,10 +11,10 @@
     "clean:play": "nuxt cleanup .playground",
     "generate": "nuxt generate .playground",
     "preview": "nuxt preview .playground",
-    "git": "rm *.tgz && bash scripts/git.sh",
+    "git": "rm *.tgz || bash scripts/git.sh",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "rm *.tgz && pnpm git && release-it && bash scripts/release.sh",
+    "release": "rm *.tgz || pnpm git && release-it && bash scripts/release.sh",
     "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {
