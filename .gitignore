@@ -13,7 +13,7 @@ dist
 # Yarn
 .yarn/cache
 .yarn/*state*
-
+*.tgz
 # Local History
 .history
 
