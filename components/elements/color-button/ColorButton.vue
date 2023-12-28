@@ -1,6 +1,7 @@
 <template>
   <ClientOnly v-if="!colorMode?.forced">
     <UButton
+      v-bind="$attrs"
       :icon="isDark ? 'fluent:weather-moon-24-filled' : 'fluent:weather-sunny-24-filled'"
       :aria-label="`Switch to ${isDark ? 'light' : 'dark'} mode`"
       @click=" isDark = !isDark"
