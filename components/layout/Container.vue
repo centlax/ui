@@ -55,6 +55,6 @@ const ui = {
     md: 'sm:px-[1.20rem] md:px-[1.40rem] lg:px-[1.60rem] xl:px-[1.80rem] 2xl:px-[2.00rem]',
     lg: 'sm:px-[1.30rem] md:px-[1.60rem] lg:px-[1.90rem] xl:px-[2.20rem] 2xl:px-[2.50rem'
   },
-  constrained: 'max-w-screen-2xl'
+  constrained: 'max-w-screen-2xl h-fit'
 }
 </script>

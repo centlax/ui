@@ -6,9 +6,8 @@
       @click=" isDark = !isDark"
     />
     <template #fallback>
-      <div class="w-8 h-8" />
+      <div class="w-8 h-8 bg-red-400" />
     </template>
-    {{ isDark }} {{ colorMode.preference }} {{ colorMode.value }} {{ colorMode.forced }}
   </ClientOnly>
 </template>
 
