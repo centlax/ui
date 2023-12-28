@@ -1,7 +1,7 @@
 {
   "name": "@centlax/ui",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "./nuxt.config.ts",
   "scripts": {
     "play": "nuxi dev .playground",
@@ -14,7 +14,7 @@
     "git": "bash scripts/git.sh",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "release-it",
+    "release": "pnpm git release-it",
     "postinstall": "nuxt prepare .playground"
   },
   "devDependencies": {
