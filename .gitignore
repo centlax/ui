@@ -18,5 +18,5 @@ dist
 .history
 
 # VSCode
-.vscode/
-.playground/
+.vscode
+.playground

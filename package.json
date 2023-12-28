@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "release": "rm *.tgz || pnpm git && release-it && bash scripts/release.sh",
-    "postinstall": "nuxt prepare .playground"
+    "prepare": "nuxt prepare .playground"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.7.1",
