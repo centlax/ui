@@ -1,8 +1,6 @@
 <template>
-  <component :is="as" id="container" :class="outerUI" v-bind="$attrs">
-    <div id="content" :class="innerUI">
-      <slot />
-    </div>
+  <component :is="as" id="UContainer" :class="outerUI" v-bind="$attrs">
+    <slot />
   </component>
 </template>
 
@@ -39,12 +37,6 @@ const outerUI = computed(() => {
   ), props.class)
 })
 
-const innerUI = computed(() => {
-  return twJoin(
-    ui.constrained,
-    'mx-auto relative overflow-x-hidden h-full'
-  )
-})
 
 const ui = {
   base: 'px-[1rem]',
@@ -59,7 +51,7 @@ const ui = {
 </script>
 
 <style>
-#content div, #content section {
-  height: 100%;
+#UContainer div, #UContainer section {
+  @apply max-w-screen-2xl
 }
 </style>
