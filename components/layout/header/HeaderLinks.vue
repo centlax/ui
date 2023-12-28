@@ -73,7 +73,7 @@
 
 <script setup lang="ts">
 import type { Link } from '#ui/types/link'
-import { omit } from '#ui/libs/lodash'
+import { omit } from '#ui/utils/lodash'
 import ui from './header-links.css'
 
 defineOptions({
