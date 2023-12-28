@@ -1,11 +1,7 @@
 <template>
-  <UPage sticky>
-
-    <template #header>
-     <div class="flex">
-      <UColorPicker />
-     </div>
-    </template>
-    <div class="bg-primary-600 h-[20rem]" v-for="(i,n) in 10" :key="i" />
-  </UPage>
+  <section class="flex gap-2 flex-wrap  bg-white dark:bg-black">
+    <UColorButton/>
+    <div class="bg-white dark:bg-gray-900 h-5 w-5" />
+  </section>
 </template>
+

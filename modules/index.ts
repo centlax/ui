@@ -1,6 +1,6 @@
 // `nuxt/kit` is a helper subpath import you can use when defining local modules
 // that means you do not need to add `@nuxt/kit` to your project's dependencies
-import { defineNuxtModule } from 'nuxt/kit'
+import { defineNuxtModule, installModule } from 'nuxt/kit'
 import defaultColors from 'tailwindcss/colors.js'
 import createTemplates from '../utils/templates'
 import { excludeColors } from '../utils/colors'
@@ -73,7 +73,6 @@ export default defineNuxtModule<ModuleOptions>({
         DEFAULT: 'rgb(var(--color-primary-DEFAULT) / <alpha-value>)'
       }
 
-
       if (globalColors.gray) {
         // @ts-ignore
         globalColors.cool = tailwindConfig.theme.extend.colors.cool = defaultColors.gray
@@ -102,5 +101,21 @@ export default defineNuxtModule<ModuleOptions>({
       }
     })
     createTemplates(nuxt)
+    await installModule('nuxt-icon')
+    await installModule('@nuxtjs/color-mode', { classSuffix: '' })
+    await installModule('@nuxtjs/tailwindcss', {
+      exposeConfig: true,
+      config: {
+        darkMode: 'class',
+        plugins: [
+          require('@tailwindcss/forms'),
+          require('@tailwindcss/aspect-ratio'),
+          require('@tailwindcss/typography'),
+          require('@tailwindcss/container-queries'),
+          require('@headlessui/tailwindcss')
+        ]
+
+      }
+    })
   }
 })

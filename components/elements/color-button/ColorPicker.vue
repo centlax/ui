@@ -3,12 +3,12 @@
     <template #default="{ open }">
       <UButton
         color="gray"
+        icon="heroicons:swatch-20-solid"
+        icon-color
         square
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
         aria-label="Color picker"
-      >
-        <UIcon name="heroicons:swatch-20-solid" class="w-5 h-5 text-primary-600 dark:text-primary-500" />
-      </UButton>
+      />
     </template>
 
     <template #panel>
@@ -47,7 +47,7 @@ import Pill from './_pill.vue'
 
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
-
+// @ts-ignore
 const primaryColors = computed(() => appConfig.ui.colors.filter(color => color !== 'primary').map(color => ({ value: color, text: color, hex: colors[color][colorMode.value === 'dark' ? 500 : 600] })))
 
 const primary = computed({
@@ -55,11 +55,12 @@ const primary = computed({
     return primaryColors.value.find(option => option.value === appConfig.ui.primary)
   },
   set (option) {
+    // @ts-ignore
     appConfig.ui.primary = option.value
     window.localStorage.setItem('centlax-ui-primary', appConfig.ui.primary)
   }
 })
-
+// @ts-ignore
 const grayColors = computed(() => ['slate', 'cool', 'zinc', 'neutral', 'stone'].map(color => ({ value: color, text: color, hex: colors[color][colorMode.value === 'dark' ? 500 : 600] })))
 
 const gray = computed({
@@ -67,6 +68,7 @@ const gray = computed({
     return grayColors.value.find(option => option.value === appConfig.ui.gray)
   },
   set (option) {
+    // @ts-ignore
     appConfig.ui.gray = option.value
     window.localStorage.setItem('centlax-ui-gray', appConfig.ui.gray)
   }

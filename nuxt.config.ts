@@ -6,12 +6,6 @@ const { resolve } = createResolver(import.meta.url)
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  tailwindcss: {
-    viewer: false,
-    exposeConfig: true,
-    configPath: './tailwind.config.ts'
-    // viewer: { endpoint: '/_tailwind', exportViewer: true }
-  },
   alias: {
     '#ui': resolve('./')
   },
@@ -26,13 +20,5 @@ export default defineNuxtConfig({
   css: [
     '#ui/assets/main.css',
     '#ui/assets/scrollbars.css'
-  ],
-  modules: [
-    'nuxt-icon',
-    '@nuxtjs/color-mode',
-    '@nuxtjs/tailwindcss'
-  ],
-  colorMode: {
-    classSuffix: ''
-  }
+  ]
 })

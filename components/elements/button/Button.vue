@@ -78,6 +78,10 @@ const props = defineProps({
     type: String,
     default: null
   },
+  iconColor: {
+    type: Boolean,
+    default: false
+  },
   loadingIcon: {
     type: String,
     default: () => ui.default.loadingIcon
@@ -171,6 +175,7 @@ const leadingIconClass = computed(() => {
   return twJoin(
     ui.icon.base,
     ui.icon.size[props.size],
+    props.iconColor && ( props.color === 'gray' || props.color === 'white' ) && ui.icon.color,
     props.loading && ui.icon.loading
   )
 })

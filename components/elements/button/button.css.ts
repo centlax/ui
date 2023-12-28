@@ -64,6 +64,7 @@ export default {
   icon: {
     base: 'flex-shrink-0',
     loading: 'animate-spin',
+    color: 'text-primary-600 dark:text-primary-500',
     size: {
       xs: 'h-4 w-4',
       sm: 'h-5 w-5',

@@ -1,4 +1,4 @@
-import { arrow } from '../../../shared/popper.css'
+import { arrow } from '../../../ui.config/popper.css'
 
 export default {
   wrapper: 'relative inline-flex',

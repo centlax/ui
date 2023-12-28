@@ -8,7 +8,7 @@
       :class="ui.base"
       :active-class="ui.active"
       :inactive-class="ui.inactive"
-      @click="link.click || $emit('kill') "
+      @click="link.click || $emit('kill')"
     >
       <div v-if="link.icon" :class="[ui.icon.wrapper, link.active || isActive ? ui.icon.active : ui.icon.inactive]">
         <UIcon v-if="link.icon" :name="link.icon" :class="[ui.icon.base, link.iconClass]" />
@@ -25,8 +25,8 @@
 
 <script setup lang="ts">
 import type { Link } from '../../../types/link'
-import { omit } from '../../../libs/lodash'
-import share from '../../../shared/share.css'
+import { omit } from '../../../utils/lodash'
+import share from '../../../ui.config/share.css'
 import { computed } from 'vue'
 
 defineEmits(['kill'])
@@ -59,3 +59,4 @@ const props = defineProps<{
 }>()
 
 </script>
+../../../ui.config/share.css
