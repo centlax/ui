@@ -29,6 +29,10 @@ const props = defineProps({
   padding: {
     type: String as PropType<keyof typeof ui.padding>,
     default: 'md'
+  },
+  innerClass: {
+    type: [String, Object, Array] as PropType<any>,
+    default: () => ''
   }
 
 })
@@ -44,7 +48,7 @@ const innerUI = computed(() => {
   return twMerge(twJoin(
     ui.constrained,
     'mx-auto'
-  ))
+  ), props.innerClass)
 })
 
 const ui = {
