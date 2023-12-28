@@ -1,6 +1,6 @@
 <template>
-  <component :is="as" :class="outerUI" v-bind="$attrs">
-    <div :class="innerUI">
+  <component :is="as" id="container" :class="outerUI" v-bind="$attrs">
+    <div id="content" :class="innerUI">
       <slot />
     </div>
   </component>
@@ -57,3 +57,9 @@ const ui = {
   constrained: 'max-w-screen-2xl'
 }
 </script>
+
+<style>
+#content div, #content section {
+  height: 100%;
+}
+</style>
