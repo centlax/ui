@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  h1 {
+    @apply tracking-tight font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+  h2 {
+    @apply tracking-tight font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply tracking-tight font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+  h4 {
+    @apply tracking-tight font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+  h5 {
+    @apply tracking-tight font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
+  }
+  h6 {
+    @apply tracking-tight font-extrabold text-6xl sm:text-7xl md:text-8xl lg:text-9xl;
+  }
+  p {
+    @apply font-medium text-base
+  }
+}
+
+

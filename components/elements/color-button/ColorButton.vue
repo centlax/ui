@@ -7,15 +7,12 @@
       @click=" isDark = !isDark"
     />
     <template #fallback>
-      <div class="w-8 h-8 bg-red-400" />
+      <UButton v-bind="$attrs" :icon="isDark ? 'fluent:weather-moon-24-filled' : 'fluent:weather-sunny-24-filled'" />
     </template>
   </ClientOnly>
 </template>
 
 <script setup lang="ts">
-defineOptions({
-  inheritAttrs: false
-})
 const colorMode = useColorMode()
 const isDark = computed({
   get () {

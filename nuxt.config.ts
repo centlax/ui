@@ -18,7 +18,8 @@ export default defineNuxtConfig({
     }
   ],
   css: [
-    '#ui/assets/main.css',
-    '#ui/assets/scrollbars.css'
+    '#ui/assets/tailwind.css',
+    '#ui/assets/scrollbars.css',
+    '#ui/assets/type.css'
   ]
 })
