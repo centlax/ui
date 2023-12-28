@@ -38,7 +38,7 @@ const containerUI = computed(() => {
 
 
 const ui = {
-  base: 'px-[1rem] mx-auto',
+  base: 'px-[1rem] mx-auto  w-full',
   padding: {
     xs: 'sm:px-[1.05rem] md:px-[1.10rem] lg:px-[1.15rem] xl:px-[1.20rem] 2xl:px-[1.25rem]',
     sm: 'sm:px-[1.10rem] md:px-[1.20rem] lg:px-[1.30rem] xl:px-[1.40rem] 2xl:px-[1.50rem]',
