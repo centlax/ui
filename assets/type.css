@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   h1 {
     @apply tracking-tight font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl;
@@ -22,6 +23,9 @@
   }
   p {
     @apply font-medium text-base
+  }
+  input{
+    @apply caret-primary-600 dark:caret-primary-500
   }
 }
 

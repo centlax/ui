@@ -30,6 +30,7 @@ const props = defineProps({
 
 const containerUI = computed(() => {
   return twMerge(twJoin(
+    ui.color,
     ui.base,
     ui.padding[props.padding],
     ui.constrained
@@ -38,6 +39,7 @@ const containerUI = computed(() => {
 
 
 const ui = {
+  color: 'bg-white dark:bg-gray-900',
   base: 'px-[1rem] mx-auto  w-full',
   padding: {
     xs: 'sm:px-[1.05rem] md:px-[1.10rem] lg:px-[1.15rem] xl:px-[1.20rem] 2xl:px-[1.25rem]',

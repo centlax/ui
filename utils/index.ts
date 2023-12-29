@@ -19,3 +19,17 @@ export function hexToRgb (hex: string) {
     ? `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(result[3], 16)}`
     : null
 }
+
+export const variantUI = computed(() => (color: string, uiColor: string, variant: string) => {
+  if (color === 'white' || color === 'gray') {
+    return uiColor
+  } else {
+    if (variant) {
+      return variant.replaceAll('{color}', color)
+    } else {
+      // Handle the case when ui.variant[variant] is undefined
+      console.error(`Variant '${variant}' not found.`)
+      return '' // or some default value
+    }
+  }
+})

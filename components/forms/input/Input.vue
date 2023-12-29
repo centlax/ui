@@ -17,15 +17,15 @@
     >
     <slot />
 
-    <span v-if="(isLeading && leadingIconName) || $slots.leading" :class="leadingWrapperIconClass">
+    <span v-if="props.icon || $slots.leading" :class="leadingWrapperIconClass">
       <slot name="leading" :disabled="disabled" :loading="loading">
-        <UIcon :name="leadingIconName" :class="leadingIconClass" />
+        <UIcon :name="props.icon" :class="leadingIconClass" />
       </slot>
     </span>
 
-    <span v-if="(isTrailing && trailingIconName) || $slots.trailing" :class="trailingWrapperIconClass">
+    <span v-if="props.trailingIcon || $slots.trailing" :class="trailingWrapperIconClass">
       <slot name="trailing" :disabled="disabled" :loading="loading">
-        <UIcon :name="trailingIconName" :class="trailingIconClass" />
+        <UIcon :name="props.trailingIcon" :class="trailingIconClass" />
       </slot>
     </span>
   </div>
@@ -37,8 +37,9 @@ import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../../elements/Icon.vue'
 import { defu } from 'defu'
-import { looseToNumber } from '../../../utils'
+import { looseToNumber, variantUI } from '../../../utils'
 import ui from './input.css'
+import config from '../../../ui.config/input-button.css'
 
 const slots = useSlots()
 
@@ -95,21 +96,9 @@ const props = defineProps({
     type: String,
     default: () => ui.default.loadingIcon
   },
-  leadingIcon: {
-    type: String,
-    default: null
-  },
   trailingIcon: {
     type: String,
     default: null
-  },
-  trailing: {
-    type: Boolean,
-    default: false
-  },
-  leading: {
-    type: Boolean,
-    default: false
   },
   loading: {
     type: Boolean,
@@ -120,13 +109,10 @@ const props = defineProps({
     default: true
   },
   size: {
-    type: String as PropType<keyof typeof ui.size>,
-    default: () => ui.default.size,
-    validator (value: string) {
-      return Object.keys(ui.size).includes(value)
-    }
-
+    type: String as PropType<keyof typeof config.size>,
+    default: () => ui.default.size
   },
+
   color: {
     type: String as PropType<keyof typeof ui.color>,
     default: () => ui.default.color
@@ -163,7 +149,6 @@ const autoFocus = () => {
 
 // Custom function to handle the v-model properties
 const updateInput = (value: string) => {
-
   if (modelModifiers.value.trim) {
     value = value.trim()
   }
@@ -203,45 +188,20 @@ onMounted(() => {
   }, props.autofocusDelay)
 })
 
+const variantValue = variantUI.value(props.color, ui.color[props.color], ui.variant[props.variant])
 const inputClass = computed(() => {
-  const variant = ui.color?.[props.color as string]?.[props.variant as string] || ui.variant[props.variant]
-
   return twMerge(twJoin(
     ui.base,
     ui.form,
     ui.font,
-    ui.rounded[props.size],
+    config.rounded[props.size],
     ui.placeholder,
-    ui.size[props.size],
-    props.padded ? ui.padding[props.size] : 'p-0',
-    variant?.replaceAll('{color}', props.color),
-    (isLeading.value || slots.leading) && ui.leading.padding[props.size],
-    (isTrailing.value || slots.trailing) && ui.trailing.padding[props.size]
+    config.text[props.size],
+    props.padded ? config.padding[props.size] : 'p-0',
+    variantValue,
+    ( slots.leading || props.icon ) && ui.leading.padding[props.size],
+    ( slots.trailing || props.icon ) && ui.trailing.padding[props.size]
   ), props.inputClass)
-})
-
-const isLeading = computed(() => {
-  return (props.icon && props.leading) || (props.icon && !props.trailing) || (props.loading && !props.trailing) || props.leadingIcon
-})
-
-const isTrailing = computed(() => {
-  return (props.icon && props.trailing) || (props.loading && props.trailing) || props.trailingIcon
-})
-
-const leadingIconName = computed(() => {
-  if (props.loading) {
-    return props.loadingIcon
-  }
-
-  return props.leadingIcon || props.icon
-})
-
-const trailingIconName = computed(() => {
-  if (props.loading && !isLeading.value) {
-    return props.loadingIcon
-  }
-
-  return props.trailingIcon || props.icon
 })
 
 const leadingWrapperIconClass = computed(() => {
@@ -256,7 +216,7 @@ const leadingIconClass = computed(() => {
   return twJoin(
     ui.icon.base,
     props.color && ui.icon.color.replaceAll('{color}', props.color),
-    ui.icon.size[props.size],
+    config.icon.size[props.size],
     props.loading && ui.icon.loading
   )
 })
@@ -273,10 +233,8 @@ const trailingIconClass = computed(() => {
   return twJoin(
     ui.icon.base,
     props.color && ui.icon.color.replaceAll('{color}', props.color),
-    ui.icon.size[props.size],
-    props.loading && !isLeading.value && ui.icon.loading
+    config.icon.size[props.size],
+    props.loading && ui.icon.loading
   )
 })
-
-
 </script>
