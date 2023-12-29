@@ -24,8 +24,9 @@
   p {
     @apply font-medium text-base
   }
-  input{
-    @apply caret-primary-600 dark:caret-primary-500
+  input, select{
+    @apply caret-primary-600 dark:caret-primary-500;
+    @apply focus:ring-primary-600 dark:focus:ring-primary-500;
   }
 }
 

@@ -1,14 +1,13 @@
 <template>
   <div class="bg-purple-600 h-[10rem]" />
 
-  <UButton label="Submit" class="bg-red-600" />
-  <div class="bg-primary-600 dark:bg-primary-500 h-10 w-10" />
+  <UButton label="Submit" />
   <UColorPicker />
   <UColorButton />
 
   <UContainer>
-    <div class="max-w-md h-[10rem] flex justify-center items-center">
-      <UInput icon="fluent:app-store-24-regular" />
+    <div class="h-[10rem] max-w-xl mx-auto py-10 gap-3">
+
     </div>
 
   </UContainer>

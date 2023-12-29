@@ -39,7 +39,6 @@ import UIcon from '../../elements/Icon.vue'
 import { defu } from 'defu'
 import { looseToNumber, variantUI } from '../../../utils'
 import ui from './input.css'
-import config from '../../../ui.config/input-button.css'
 
 const slots = useSlots()
 
@@ -109,7 +108,7 @@ const props = defineProps({
     default: true
   },
   size: {
-    type: String as PropType<keyof typeof config.size>,
+    type: String as PropType<keyof typeof ui.size>,
     default: () => ui.default.size
   },
 
@@ -194,10 +193,10 @@ const inputClass = computed(() => {
     ui.base,
     ui.form,
     ui.font,
-    config.rounded[props.size],
+    ui.rounded[props.size],
     ui.placeholder,
-    config.text[props.size],
-    props.padded ? config.padding[props.size] : 'p-0',
+    ui.text[props.size],
+    props.padded ? ui.padding[props.size] : 'p-0',
     variantValue,
     ( slots.leading || props.icon ) && ui.leading.padding[props.size],
     ( slots.trailing || props.icon ) && ui.trailing.padding[props.size]
@@ -207,7 +206,7 @@ const inputClass = computed(() => {
 const leadingWrapperIconClass = computed(() => {
   return twJoin(
     ui.icon.leading.wrapper,
-    ui.icon.leading.pointer,
+    ui.icon.trailing.pointer,
     ui.icon.leading.padding[props.size]
   )
 })
@@ -216,7 +215,7 @@ const leadingIconClass = computed(() => {
   return twJoin(
     ui.icon.base,
     props.color && ui.icon.color.replaceAll('{color}', props.color),
-    config.icon.size[props.size],
+    ui.icon.size[props.size],
     props.loading && ui.icon.loading
   )
 })
@@ -233,7 +232,7 @@ const trailingIconClass = computed(() => {
   return twJoin(
     ui.icon.base,
     props.color && ui.icon.color.replaceAll('{color}', props.color),
-    config.icon.size[props.size],
+    ui.icon.size[props.size],
     props.loading && ui.icon.loading
   )
 })

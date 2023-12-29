@@ -1,4 +1,3 @@
-
 export default {
   base: 'focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0',
   font: 'font-semibold',
@@ -22,29 +21,29 @@ export default {
   text: {
     xs: 'sm:text-xs',
     sm: 'sm:text-sm',
-    md: 'text-base sm:text-sm',
-    lg: 'text-base sm:text-sm',
-    xl: 'text-base sm:text-sm'
+    md: 'sm:text-sm',
+    lg: 'sm:text-sm',
+    xl: 'sm:text-sm'
   },
   gap: {
-    xs: 'gap-x-1.5',
-    sm: 'gap-x-1.5',
-    md: 'gap-x-2',
-    lg: 'gap-x-2.5',
+    xs: 'gap-x-1',
+    sm: 'gap-x-1',
+    md: 'gap-x-1.5',
+    lg: 'gap-x-2',
     xl: 'gap-x-2.5'
   },
   padding: {
-    xs: 'px-2.5 py-1.5',
-    sm: 'px-2.5 py-1.5',
-    md: 'px-3 py-2',
-    lg: 'px-3.5 py-2.5',
+    xs: 'px-2 py-1',
+    sm: 'px-2 py-1',
+    md: 'px-2.5 py-1.5',
+    lg: 'px-3 py-2',
     xl: 'px-3.5 py-2.5'
   },
   square: {
-    xs: 'p-1.5',
-    sm: 'p-1.5',
-    md: 'p-2',
-    lg: 'p-2.5',
+    xs: 'p-1',
+    sm: 'p-1',
+    md: 'p-1.5',
+    lg: 'p-2',
     xl: 'p-2.5'
   },
   color: {

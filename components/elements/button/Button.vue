@@ -28,6 +28,7 @@ import { twMerge, twJoin } from 'tailwind-merge'
 import ULink from '../Link.vue'
 import UIcon from '../Icon.vue'
 import ui from './button.css'
+
 const slots = useSlots()
 
 defineOptions({
@@ -127,21 +128,7 @@ const isTrailing = computed(() => {
 })
 
 const isSquare = computed(() => props.square || (!slots.default && !props.label))
-const variant = computed(() => {
-  if (props.color === 'white' || props.color === 'gray') {
-    return ui.color[props.color]
-  } else {
-    const variantString = ui.variant[props.variant]
-    if (variantString) {
-      return variantString.replaceAll('{color}', props.color)
-    } else {
-      // Handle the case when ui.variant[props.variant] is undefined
-      console.error(`Variant '${props.variant}' not found.`)
-      return '' // or some default value
-    }
-  }
-})
-
+const variantValue = variantUI.value(props.color, ui.color[props.color], ui.variant[props.variant])
 const buttonClass = computed(() => {
   return twMerge(twJoin(
     ui.base,
@@ -150,7 +137,8 @@ const buttonClass = computed(() => {
     ui.text[props.size],
     ui.gap[props.size],
     props.padded && ui[isSquare.value ? 'square' : 'padding'][props.size],
-    variant.value,
+    variantValue,
+    ui.padding[props.size],
     props.block ? ui.block : ui.inline
   ), props.class)
 })
