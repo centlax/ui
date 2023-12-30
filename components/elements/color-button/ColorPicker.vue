@@ -5,6 +5,7 @@
         color="gray"
         icon="heroicons:swatch-20-solid"
         icon-color
+        v-bind="$attrs"
         square
         :class="[open && 'bg-gray-50 dark:bg-gray-800']"
         aria-label="Color picker"

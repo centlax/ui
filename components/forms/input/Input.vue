@@ -1,9 +1,9 @@
 <template>
   <div :class="ui.wrapper">
     <input
-      :id="props.id"
+      :id="inputId"
       ref="input"
-      :name="props.name"
+      :name="name"
       :value="props.modelValue"
       :type="props.type"
       :required="props.required"
@@ -39,7 +39,7 @@ import UIcon from '../../elements/Icon.vue'
 import { defu } from 'defu'
 import { looseToNumber, variantUI } from '../../../utils'
 import ui from './input.css'
-
+import { useFormGroup } from '../../../composables/useFormGroup'
 const slots = useSlots()
 
 defineOptions({
@@ -48,7 +48,6 @@ defineOptions({
   },
   inheritAttrs: false
 })
-
 
 const props = defineProps({
   modelValue: {
@@ -136,8 +135,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'blur'])
 
+const { emitFormBlur, emitFormInput, color, inputId, name } = useFormGroup(props, ui)
 const modelModifiers = ref(defu({}, props.modelModifiers, { trim: false, lazy: false, number: false }))
-
 const input = ref<HTMLInputElement | null>(null)
 
 const autoFocus = () => {
@@ -156,6 +155,7 @@ const updateInput = (value: string) => {
     value = looseToNumber(value)
   }
   emit('update:modelValue', value)
+  emitFormInput()
 }
 
 const onInput = (event: Event) => {
@@ -178,6 +178,7 @@ const onChange = (event: Event) => {
 }
 
 const onBlur = (event: FocusEvent) => {
+  emitFormBlur()
   emit('blur', event)
 }
 
@@ -187,7 +188,7 @@ onMounted(() => {
   }, props.autofocusDelay)
 })
 
-const variantValue = variantUI.value(props.color, ui.color[props.color], ui.variant[props.variant])
+const variantValue = variantUI.value(color.value, ui.color[props.color], ui.variant[props.variant])
 const inputClass = computed(() => {
   return twMerge(twJoin(
     ui.base,

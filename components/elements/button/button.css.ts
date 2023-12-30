@@ -19,11 +19,11 @@ export default {
     xl: 'xl'
   },
   text: {
-    xs: 'sm:text-xs',
-    sm: 'sm:text-sm',
-    md: 'sm:text-sm',
-    lg: 'sm:text-sm',
-    xl: 'sm:text-sm'
+    xs: 'sm:text-xs sm:leading-6',
+    sm: 'sm:text-sm sm:leading-6',
+    md: 'sm:text-sm sm:leading-6',
+    lg: 'sm:text-sm sm:leading-6',
+    xl: 'sm:text-sm sm:leading-6'
   },
   gap: {
     xs: 'gap-x-1',

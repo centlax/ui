@@ -138,7 +138,6 @@ const buttonClass = computed(() => {
     ui.gap[props.size],
     props.padded && ui[isSquare.value ? 'square' : 'padding'][props.size],
     variantValue,
-    ui.padding[props.size],
     props.block ? ui.block : ui.inline
   ), props.class)
 })

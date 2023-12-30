@@ -21,12 +21,15 @@
   h6 {
     @apply tracking-tight font-extrabold text-6xl sm:text-7xl md:text-8xl lg:text-9xl;
   }
-  p {
-    @apply font-medium text-base
-  }
   input, select{
     @apply caret-primary-600 dark:caret-primary-500;
     @apply focus:ring-primary-600 dark:focus:ring-primary-500;
+  }
+}
+
+@layer components {
+  .p {
+    @apply font-medium text-base
   }
 }
 
