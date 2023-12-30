@@ -61,12 +61,12 @@ export default {
     primary: 'primary',
     success: 'success',
     warning: 'warning',
-    danger: 'danger',
-    white: 'shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-500',
-    gray: 'shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-500'
+    danger: 'danger'
   },
   variant: {
     outline: 'shadow-sm bg-transparent text-gray-900 dark:text-white caret-{color}-600 dark:caret-{color} ring-1 ring-inset ring-{color}-600 dark:ring-{color}-500 focus:ring-2 focus:ring-inset focus:ring-{color}-600 dark:focus:ring-{color}-500',
+    white: 'shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-500',
+    gray: 'shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-600 dark:focus:ring-primary-500',
     none: 'bg-transparent focus:ring-0 focus:shadow-none'
   },
   icon: {
@@ -105,8 +105,8 @@ export default {
   },
   default: {
     size: 'md',
-    color: 'gray',
-    variant: 'outline',
+    color: 'primary',
+    variant: 'white',
     loadingIcon: 'heroicons:arrow-path-20-solid'
   }
 }

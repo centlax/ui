@@ -20,6 +20,7 @@ export const useFormGroup = (inputProps?: InputProps, config?: any) => {
   const inputId = ref(inputProps?.id)
 
   onMounted(() => {
+    // @ts-ignore
     // Remove FormGroup label bindings for RadioGroup elements to avoid label conflicts
     inputId.value = inputProps?.legend === null || inputProps.legend ? undefined : inputProps?.id ?? uid()
 

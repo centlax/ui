@@ -1,7 +1,7 @@
 <template>
   <div :class="ui.wrapper">
     <input
-      :id="inputId"
+      :id="props.id"
       ref="input"
       :name="name"
       :value="props.modelValue"
@@ -37,9 +37,8 @@ import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../../elements/Icon.vue'
 import { defu } from 'defu'
-import { looseToNumber, variantUI } from '../../../utils'
+import { looseToNumber } from '../../../utils'
 import ui from './input.css'
-import { useFormGroup } from '../../../composables/useFormGroup'
 const slots = useSlots()
 
 defineOptions({
@@ -135,7 +134,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'blur'])
 
-const { emitFormBlur, emitFormInput, color, inputId, name } = useFormGroup(props, ui)
 const modelModifiers = ref(defu({}, props.modelModifiers, { trim: false, lazy: false, number: false }))
 const input = ref<HTMLInputElement | null>(null)
 
@@ -155,7 +153,6 @@ const updateInput = (value: string) => {
     value = looseToNumber(value)
   }
   emit('update:modelValue', value)
-  emitFormInput()
 }
 
 const onInput = (event: Event) => {
@@ -178,7 +175,6 @@ const onChange = (event: Event) => {
 }
 
 const onBlur = (event: FocusEvent) => {
-  emitFormBlur()
   emit('blur', event)
 }
 
@@ -188,7 +184,6 @@ onMounted(() => {
   }, props.autofocusDelay)
 })
 
-const variantValue = variantUI.value(color.value, ui.color[props.color], ui.variant[props.variant])
 const inputClass = computed(() => {
   return twMerge(twJoin(
     ui.base,
@@ -198,9 +193,9 @@ const inputClass = computed(() => {
     ui.placeholder,
     ui.text[props.size],
     props.padded ? ui.padding[props.size] : 'p-0',
-    variantValue,
-    ( slots.leading || props.icon ) && ui.leading.padding[props.size],
-    ( slots.trailing || props.icon ) && ui.trailing.padding[props.size]
+    ui.variant[props.variant].replaceAll('{color}', props.color),
+    (slots.leading || props.icon) && ui.leading.padding[props.size],
+    (slots.trailing || props.icon) && ui.trailing.padding[props.size]
   ), props.inputClass)
 })
 
@@ -232,7 +227,7 @@ const trailingWrapperIconClass = computed(() => {
 const trailingIconClass = computed(() => {
   return twJoin(
     ui.icon.base,
-    props.color && ui.icon.color.replaceAll('{color}', props.color),
+    props.color && (props.color !== 'primary') && ui.icon.color.replaceAll('{color}', props.color),
     ui.icon.size[props.size],
     props.loading && ui.icon.loading
   )
