@@ -31,6 +31,12 @@
   .p {
     @apply font-medium text-base
   }
+  .text-primary{
+    @apply text-primary-600 dark:text-primary-500
+  }
+  .text-gray{
+    @apply text-gray-800 dark:text-gray-200
+  }
 }
 
 
