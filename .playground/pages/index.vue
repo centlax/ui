@@ -23,22 +23,24 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <UContainer class="p-10">
-    <UColorButton/>
+  <UContainer class="min-h-full">
+    <div class="mx-auto max-w-md">
+      <UColorButton />
       <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
-    <UFormGroup label="Email" name="email">
-      <UInput color="gray" v-model="state.email" />
-    </UFormGroup>
+        <UFormGroup label="Email" name="email">
+          <UInput color="gray" v-model="state.email" />
+        </UFormGroup>
 
-    <UFormGroup label="Password" name="password">
-      <UInput v-model="state.password" type="password" />
-    </UFormGroup>
+        <UFormGroup label="Password" name="password">
+          <UInput v-model="state.password" type="password" />
+        </UFormGroup>
 
-    <UButton color="danger" type="submit">
-      Submit
-    </UButton>
-  </UForm>
-  <UColorPicker />
+        <UButton block type="submit">
+          Submit
+        </UButton>
+      </UForm>
+      <UColorPicker />
+    </div>
   </UContainer>
 </template>
 

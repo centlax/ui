@@ -4,7 +4,6 @@ import { defineNuxtModule, installModule } from 'nuxt/kit'
 import defaultColors from 'tailwindcss/colors.js'
 import createTemplates from '../utils/templates'
 import { excludeColors } from '../utils/colors'
-import pkg from '../package.json'
 
 // @ts-ignore
 delete defaultColors.lightBlue
@@ -30,22 +29,9 @@ declare module '@nuxt/schema' {
   }
 }
 
-export interface ModuleOptions {
-  /**
-   * @default 'u'
-   */
-  prefix?: string
 
-  /**
-   * @default false
-   */
-  global?: boolean
-}
 
-export default defineNuxtModule<ModuleOptions>({
-  meta: {
-    name: pkg.name
-  },
+export default defineNuxtModule({
   async setup (options, nuxt) {
     // @ts-ignore
     nuxt.hook('tailwindcss:config', function (tailwindConfig) {
@@ -114,7 +100,6 @@ export default defineNuxtModule<ModuleOptions>({
           require('@tailwindcss/container-queries'),
           require('@headlessui/tailwindcss')
         ]
-
       }
     })
   }

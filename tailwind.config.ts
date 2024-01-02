@@ -10,9 +10,7 @@ export default <Partial<Config>>{
     './templates/**/*.vue',
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
-    './node_modules/flowbite/**/*.{js,ts}',
-    './.playground/**/*.{js,vue}',
-    'nuxt.config.ts'
+    './node_modules/flowbite/**/*.{js,ts}'
   ],
   theme: {
     extend: {
