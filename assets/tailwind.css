@@ -12,6 +12,7 @@
   .bg-primary{
     @apply bg-primary-600 dark:bg-primary-500
   }
+
 }
 
 .dark {

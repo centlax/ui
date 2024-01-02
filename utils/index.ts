@@ -7,6 +7,10 @@ export function looseToNumber (val: any): any {
   return isNaN(n) ? val : n
 }
 
+export function isWhiteGray (color: string): boolean {
+  return color === 'white' || color === 'gray'
+}
+
 export function hexToRgb (hex: string) {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i

@@ -49,7 +49,7 @@ const ui = {
   wrapper: '',
   label: {
     wrapper: 'flex content-center items-center justify-between',
-    base: 'block font-medium text-gray-700 dark:text-gray-200',
+    base: 'block text-sm font-medium text-gray-900 dark:text-white',
     // eslint-disable-next-line quotes
     required: `after:content-['*'] after:ms-0.5 after:text-danger-600 dark:after:text-danger-500`
   },

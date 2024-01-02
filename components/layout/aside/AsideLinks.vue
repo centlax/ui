@@ -57,6 +57,4 @@ const props = defineProps<{
   links?: Link[]
   class?: any
 }>()
-
 </script>
-../../../ui.config/share.css

@@ -128,7 +128,6 @@ const isTrailing = computed(() => {
 })
 
 const isSquare = computed(() => props.square || (!slots.default && !props.label))
-const variantValue = variantUI.value(props.color, ui.color[props.color], ui.variant[props.variant])
 const buttonClass = computed(() => {
   return twMerge(twJoin(
     ui.base,
@@ -137,7 +136,8 @@ const buttonClass = computed(() => {
     ui.text[props.size],
     ui.gap[props.size],
     props.padded && ui[isSquare.value ? 'square' : 'padding'][props.size],
-    variantValue,
+    isWhiteGray(props.color) && ui.color[props.color],
+    !isWhiteGray(props.color) && ui.variant[props.variant].replaceAll('{color}', props.color),
     props.block ? ui.block : ui.inline
   ), props.class)
 })

@@ -32,14 +32,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, useSlots } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../../elements/Icon.vue'
 import { defu } from 'defu'
 import { looseToNumber } from '../../../utils'
 import ui from './input.css'
-const slots = useSlots()
 
 defineOptions({
   components: {
@@ -118,6 +117,10 @@ const props = defineProps({
     type: String as PropType<keyof typeof ui.variant>,
     default: () => ui.default.variant
   },
+  outlineAuto: {
+    type: Boolean,
+    default: false
+  },
   inputClass: {
     type: String,
     default: null
@@ -133,7 +136,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue', 'blur'])
-
+const { emitFormBlur, emitFormInput, color } = useFormGroup(props, ui)
 const modelModifiers = ref(defu({}, props.modelModifiers, { trim: false, lazy: false, number: false }))
 const input = ref<HTMLInputElement | null>(null)
 
@@ -153,6 +156,7 @@ const updateInput = (value: string) => {
     value = looseToNumber(value)
   }
   emit('update:modelValue', value)
+  emitFormInput()
 }
 
 const onInput = (event: Event) => {
@@ -175,6 +179,7 @@ const onChange = (event: Event) => {
 }
 
 const onBlur = (event: FocusEvent) => {
+  emitFormBlur()
   emit('blur', event)
 }
 
@@ -184,7 +189,12 @@ onMounted(() => {
   }, props.autofocusDelay)
 })
 
+
 const inputClass = computed(() => {
+  let variantKey = props.color === 'white' ? 'white' : 'gray'
+  if (props.outlineAuto) {
+    variantKey = 'auto'
+  }
   return twMerge(twJoin(
     ui.base,
     ui.form,
@@ -193,9 +203,10 @@ const inputClass = computed(() => {
     ui.placeholder,
     ui.text[props.size],
     props.padded ? ui.padding[props.size] : 'p-0',
-    ui.variant[props.variant].replaceAll('{color}', props.color),
-    (slots.leading || props.icon) && ui.leading.padding[props.size],
-    (slots.trailing || props.icon) && ui.trailing.padding[props.size]
+    // @ts-ignore
+    isWhiteGray(color.value) && ui.color[color.value],
+    // @ts-ignore
+    !isWhiteGray(color.value) && ui.variant.outline[variantKey].replaceAll('{color}', color.value)
   ), props.inputClass)
 })
 

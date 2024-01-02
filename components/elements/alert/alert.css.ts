@@ -32,11 +32,21 @@ export default {
     solid: 'bg-{color}-600 dark:bg-{color}-600 text-white dark:text-gray-900',
     outline: 'text-{color}-600 dark:text-{color}-600 ring-1 ring-inset ring-{color}-600 dark:ring-{color}-600',
     soft: 'bg-{color}-50 dark:bg-{color}-400 dark:bg-opacity-10 text-{color}-600 dark:text-{color}-500',
-    subtle: 'bg-{color}-50 dark:bg-{color}-400 dark:bg-opacity-10 text-{color}-600 dark:text-{color}-500 ring-1 ring-inset ring-{color}-600 dark:ring-{color}-500 ring-opacity-25 dark:ring-opacity-25'
+    subtle: 'bg-{color}-50 dark:bg-{color}-400 dark:bg-opacity-10 text-{color}-600 dark:text-{color}-500 ring-1 ring-inset ring-{color}-600 dark:ring-{color}-500 ring-opacity-25 dark:ring-opacity-25',
+    ghost: 'bg-tansparent dark:bg-opacity-10 text-{color}-600 dark:text-{color}-500 ring-1 ring-inset ring-{color}-600 dark:ring-{color}-500 ring-opacity-25 dark:ring-opacity-25'
+
+  },
+  button: {
+    base: 'hidden'
+  },
+  icon: {
+    info: 'fluent:info-24-regular',
+    close: 'fluent:dismiss-24-regular'
   },
   default: {
     size: 'md',
     color: 'white',
-    variant: 'solid'
+    variant: 'solid',
+    position: 'center'
   }
 }

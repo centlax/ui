@@ -1,37 +1,31 @@
 <template>
   <component :is="props.as" :class="wrapperUI">
     <div :class="leftUI">
-      <svg
-        class="h-16 w-16 border border-gray-300 bg-white text-gray-300"
-        preserveAspectRatio="none"
-        stroke="currentColor"
-        fill="none"
-        viewBox="0 0 200 200"
-        aria-hidden="true"
-      >
-        <path vector-effect="non-scaling-stroke" stroke-width="1" d="M0 0l200 200M0 200L200 0" />
-      </svg>
+      <slot name="left">
+        <slot name="right">
+          <UButton :padded="false" size="xl" variant="ghost" :color="props.color" :icon="ui.icon.info" />
+        </slot>
+      </slot>
     </div>
     <div>
-      <h4 class="text-lg font-bold">
-        Lorem ipsum
+      <h4 class="text-sm font-bold">
+        {{ props.title }}
       </h4>
-      <p class="mt-1">
-        Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem.
-        Minus quidem ipsam quia iusto.
+      <p class="mt-1 text-sm">
+        {{ props.description }}
       </p>
     </div>
     <div :class="leftUI">
-      <svg
-        class="h-16 w-16 border border-gray-300 bg-white text-gray-300"
-        preserveAspectRatio="none"
-        stroke="currentColor"
-        fill="none"
-        viewBox="0 0 200 200"
-        aria-hidden="true"
-      >
-        <path vector-effect="non-scaling-stroke" stroke-width="1" d="M0 0l200 200M0 200L200 0" />
-      </svg>
+      <slot name="right">
+        <UButton
+          square
+          size="xs"
+          variant="outline"
+          :color="props.color"
+          :icon="ui.icon.close"
+          @click="isOpen = true"
+        />
+      </slot>
     </div>
   </component>
 </template>
@@ -39,11 +33,20 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
-import ui from './media.css'
+import ui from './alert.css'
+const isOpen = ref(false)
 const props = defineProps({
   as: {
     type: String,
     default: 'div'
+  },
+  title: {
+    type: String,
+    default: 'Lorem ipsum'
+  },
+  description: {
+    type: String,
+    default: 'Repudiandae sint consequuntur vel. Amet ut nobis explicabo numquam expedita quia omnis voluptatem'
   },
   size: {
     type: String as PropType<keyof typeof ui.size>,
@@ -60,11 +63,20 @@ const props = defineProps({
   class: {
     type: String,
     default: ''
+  },
+  position: {
+    type: String as PropType<keyof typeof ui.position>,
+    default: () => ui.default.position
+  },
+  close: {
+    type: Boolean,
+    default: false
   }
 })
 defineEmits(['close'])
 const wrapperUI = computed(() => {
   return twMerge(twJoin(
+    (props.close || isOpen ) && 'hidden',
     ui.wrapper,
     ui.rounded[props.size],
     ui.shadow,
@@ -76,7 +88,7 @@ const wrapperUI = computed(() => {
 
 const leftUI = computed(() => {
   return twMerge(twJoin(
-    ui.position.start
+    ui.position[props.position]
   ))
 })
 </script>
