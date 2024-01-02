@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.0.41](https://github.com/centlax/ui/compare/v0.0.40...v0.0.41) (2024-01-02)
+
 ## [0.0.40](https://github.com/centlax/ui/compare/v0.0.39...v0.0.40) (2023-12-30)
 
 ## [0.0.39](https://github.com/centlax/ui/compare/v0.0.38...v0.0.39) (2023-12-29)
