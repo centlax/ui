@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*::-webkit-scrollbar {
+  width: 1em;
+  height: 0.6em;
+  @apply bg-transparent;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-gray-200 dark:bg-gray-800;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 0.8em;
+  @apply bg-primary-600/60 hover:bg-primary-800 dark:bg-primary-500/60 dark:hover:bg-primary-300;
+  @apply border-[3px] border-solid border-gray-200 dark:border-gray-800;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+*:focus-visible {
+  @apply focus-visible:ring-primary-600 dark:focus-visible:ring-primary-500;
+  @apply focus-visible:outline-primary-600 dark:focus-visible:outline-primary-500;
+}
+*:focus {
+  @apply focus:ring-primary-600 dark:focus:ring-primary-500;
+  @apply focus:outline-primary-600 dark:focus:outline-primary-500;
+}
+
+*:focus-within {
+  @apply focus-within:ring-primary-600 dark:focus-within:ring-primary-500;
+  @apply focus-within:outline-primary-600 dark:focus-within:outline-primary-500;
+}
+
+*::selection { @apply bg-primary-600/50 dark:bg-primary-500/50; }
+
+select {
+  background-image: none;
+}
+
+
+@layer base {
+  body {
+    @apply bg-gray-100 dark:bg-gray-950;
+  }
+  h1 {
+    @apply tracking-tight font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+  h2 {
+    @apply tracking-tight font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply tracking-tight font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+  h4 {
+    @apply tracking-tight font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+  h5 {
+    @apply tracking-tight font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
+  }
+  h6 {
+    @apply tracking-tight font-extrabold text-6xl sm:text-7xl md:text-8xl lg:text-9xl;
+  }
+   input, select{
+    @apply caret-primary-600 dark:caret-primary-500;
+    @apply focus:ring-primary-600 dark:focus:ring-primary-500;
+  }
+}
+
+@layer components {
+  .bg-primary{
+    @apply bg-primary-600 dark:bg-primary-500
+  }
+  .p {
+    @apply font-medium text-base
+  }
+  .text-primary{
+    @apply text-primary-600 dark:text-primary-500
+  }
+  .text-gray{
+    @apply text-gray-800 dark:text-gray-200
+  }
+
+}

@@ -1,0 +1,8 @@
+/.playground
+/.eslintrc.cjs
+/.editorconfig
+/CHANGELOG.md
+/scripts
+/.release-it.json
+/.nuxtrc
+/*.tgz
