@@ -54,7 +54,7 @@
         </UContainer>
       </div>
       <UContainer :class="[ui.panel]">
-        <UAsideLinks :links="links" />
+        <UAsideLinks :links="links" @close="close()" />
         <slot name="panel" />
       </UContainer>
     </USlideover>

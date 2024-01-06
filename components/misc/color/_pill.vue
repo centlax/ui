@@ -14,6 +14,8 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{ color: { value: string, hex: string }, selected: { value: string } }>()
+defineProps<{
+  color: { value: string, hex: string },
+  selected: { value: string } }>()
 defineEmits(['select'])
 </script>

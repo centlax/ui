@@ -22,7 +22,6 @@
             @select="primary = color"
           />
         </div>
-
         <hr class="border-primary-300 font-medium dark:border-primary-900 my-2">
 
         <div class="grid grid-cols-5 gap-px">
