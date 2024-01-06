@@ -1,7 +1,7 @@
 {
   "name": "@centlax/ui",
   "type": "module",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "main": "./nuxt.config.ts",
   "scripts": {
     "dev": "nuxi dev .playground node --max-old-space-size=4096",
