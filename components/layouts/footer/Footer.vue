@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<{
 })
 
 const ui = {
-  wrapper: 'py-2 bg-white/80 dark:bg-gray-900/80',
+  wrapper: 'py-2 bg-white/90 dark:bg-gray-900/90',
   font: 'text-sm',
   notice: {
     font: 'text-sm',
