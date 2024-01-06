@@ -31,7 +31,7 @@ import { computed } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import { UIcon, ULink } from '#components'
 import ui from './button.css'
-import type { Button } from '#ui/types/button'
+import type { Button } from '#ui/types'
 const slots = useSlots()
 
 defineOptions({
