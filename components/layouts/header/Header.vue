@@ -78,13 +78,14 @@ const props = withDefaults(defineProps<{
   to?: string
   title?: string
   links?: NavLink[]
-  buttons: Button
+  buttons?: Button
   size?: HeaderSize
   class?: any
 }>(), {
   to: '/',
   title: undefined,
   links: () => [],
+  buttons: undefined,
   size: 'md',
   class: undefined
 })
