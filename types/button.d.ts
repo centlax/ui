@@ -1,4 +1,4 @@
-import ui from '#ui/components/elements/button/button.css'
+import ui from '../components/elements/button/button.css'
 
 export type ButtonSize = keyof typeof ui.size
 export type ButtonColor = keyof typeof ui.color

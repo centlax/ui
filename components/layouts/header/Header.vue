@@ -65,8 +65,7 @@
 import { computed } from 'vue'
 import { UButton } from '#components'
 import ui from './header.css'
-import type { Button } from '#ui/types/button'
-import type { NavLink } from '#ui/types/link'
+import type { NavLink, Button } from '#ui/types'
 
 defineOptions({
   components: { UButton },
