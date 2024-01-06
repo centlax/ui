@@ -1,4 +1,3 @@
-// @ts-ignore
 import { createResolver } from '@nuxt/kit'
 const { resolve } = createResolver(import.meta.url)
 
@@ -24,7 +23,9 @@ export default defineNuxtConfig({
   css: [ '#ui/assets/tailwind.css'],
 
   modules: [
-    'nuxt-icon', '@nuxtjs/color-mode', '@nuxtjs/tailwindcss'
+    'nuxt-icon',
+    '@nuxtjs/color-mode',
+    '@nuxtjs/tailwindcss'
   ],
   colorMode: {
     classSuffix: ''
