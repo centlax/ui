@@ -4,6 +4,11 @@ const { resolve } = createResolver(import.meta.url)
 // @ts-ignore
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  extensions: ['.js',
+    '.jsx',
+    '.mjs',
+    '.ts',
+    '.tsx'],
   devtools: { enabled: true },
   sourcemap: false,
   tailwindcss: {

@@ -23,18 +23,8 @@
   color-scheme: dark;
 }
 
-*:focus-visible {
-  @apply focus-visible:ring-primary-600 dark:focus-visible:ring-primary-500;
-  @apply focus-visible:outline-primary-600 dark:focus-visible:outline-primary-500;
-}
-*:focus {
-  @apply focus:ring-primary-600 dark:focus:ring-primary-500;
-  @apply focus:outline-primary-600 dark:focus:outline-primary-500;
-}
-
-*:focus-within {
-  @apply focus-within:ring-primary-600 dark:focus-within:ring-primary-500;
-  @apply focus-within:outline-primary-600 dark:focus-within:outline-primary-500;
+:focus, :focus-visible, :focus-within{
+  color: rebeccapurple;
 }
 
 *::selection { @apply bg-primary-600/50 dark:bg-primary-500/50; }

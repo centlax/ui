@@ -3,6 +3,7 @@
 import { defineNuxtModule } from 'nuxt/kit'
 import defaultColors from 'tailwindcss/colors.js'
 import { excludeColors } from '../utils/safelist'
+
 // @ts-ignore
 delete defaultColors.lightBlue
 // @ts-ignore
