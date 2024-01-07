@@ -2,17 +2,11 @@ import { inject, ref, computed, onMounted } from 'vue'
 import { type UseEventBusReturn, useDebounceFn } from '@vueuse/core'
 import type { FormEvent, FormEventType, InjectedFormGroupValue } from '../types/form'
 import { uid } from '../utils/uid'
+import type { Input } from '#ui/types'
 
-type InputProps = {
-  id?: string
-  size?: string | number | symbol
-  color?: string
-  name?: string
-  eagerValidation?: boolean
-  legend?: string | null
-}
 
-export const useFormGroup = (inputProps?: InputProps, config?: any) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const useFormGroup = (inputProps: Input, config?: any) => {
   const formBus = inject<UseEventBusReturn<FormEvent, string> | undefined>('form-events', undefined)
   const formGroup = inject<InjectedFormGroupValue | undefined>('form-group', undefined)
   const formInputs = inject<any>('form-inputs', undefined)
@@ -60,11 +54,7 @@ export const useFormGroup = (inputProps?: InputProps, config?: any) => {
   return {
     inputId,
     name: computed(() => inputProps?.name ?? formGroup?.name.value),
-    size: computed(() => {
-      const formGroupSize = config.size[formGroup?.size.value as string] ? formGroup?.size.value : null
-      return inputProps?.size ?? formGroupSize ?? config?.default?.size
-    }),
-    color: computed(() => formGroup?.error?.value ? 'danger' : inputProps?.color),
+    color: computed(() => formGroup?.error?.value ? 'danger' : inputProps.color),
     emitFormBlur,
     emitFormInput,
     emitFormChange

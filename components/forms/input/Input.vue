@@ -8,8 +8,8 @@
       :type="props.type"
       :required="props.required"
       :placeholder="props.placeholder"
-      :disabled="props.disabled || props.loading"
-      :class="inputClass"
+      :disabled="props.disabled"
+      :class="inputUI"
       v-bind="$attrs"
       @input="onInput"
       @blur="onBlur"
@@ -18,30 +18,29 @@
     <slot />
 
     <span v-if="props.icon || $slots.leading" :class="leadingWrapperIconUI">
-      <slot name="leading" :disabled="disabled" :loading="loading">
-        <UIcon :name="props.icon" :class="leadingIconUI" />
+      <slot name="leading" :disabled="disabled">
+        <UIcon v-if="props.icon" :name="props.icon" :class="leadingIconUI" />
       </slot>
     </span>
 
     <span v-if="props.trailingIcon || $slots.trailing" :class="trailingWrapperIconUI">
-      <slot name="trailing" :disabled="disabled" :loading="loading">
-        <UIcon :name="props.trailingIcon" :class="trailingIconUI" />
+      <slot name="trailing" :disabled="disabled">
+        <UIcon v-if="props.trailingIcon" :name="props.trailingIcon" :class="trailingIconUI" />
       </slot>
     </span>
   </div>
-  {{ inputId }}
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import type { PropType } from 'vue'
 import { twMerge, twJoin } from 'tailwind-merge'
 import UIcon from '../../elements/Icon.vue'
 import { defu } from 'defu'
 import { looseToNumber } from '../../../utils'
 import ui from './input.css'
+import type { Input } from '#ui/types'
 
-
+const slots = useSlots()
 
 defineOptions({
   components: {
@@ -50,47 +49,26 @@ defineOptions({
   inheritAttrs: false
 })
 
-const props = defineProps({
-  modelValue: { type: [String, Number], default: '' },
-  type: { type: String, default: 'text' },
-  id: { type: String, default: null },
-  name: { type: String, default: null },
-  placeholder: { type: String, default: null },
-  required: { type: Boolean, default: false },
-  disabled: { type: Boolean, default: false },
-  autofocus: { type: Boolean, default: false },
-  autofocusDelay: { type: Number, default: 100 },
-  icon: { type: String, default: null },
-  loadingIcon: {
-    type: String,
-    default: () => ui.default.loadingIcon
-  },
-  trailingIcon: { type: String, default: null },
-  loading: { type: Boolean, default: false },
-  padded: { type: Boolean, default: true },
-  size: {
-    type: String as PropType<keyof typeof ui.size>,
-    default: () => ui.default.size
-  },
-
-  color: {
-    type: String as PropType<keyof typeof ui.color>,
-    default: () => ui.default.color
-  },
-  variant: {
-    type: String as PropType<keyof typeof ui.variant>,
-    default: () => ui.default.variant
-  },
-  outlineAuto: { type: Boolean, default: false },
-  inputClass: { type: String, default: null },
-  class: {
-    type: [String, Object, Array] as PropType<any>,
-    default: () => ''
-  },
-  modelModifiers: {
-    type: Object as PropType<{ trim?: boolean, lazy?: boolean, number?: boolean }>,
-    default: () => ({})
-  }
+const props = withDefaults(defineProps<Input>(), {
+  modelValue: '',
+  type: 'text',
+  id: undefined,
+  name: undefined,
+  placeholder: undefined,
+  required: false,
+  disabled: false,
+  autofocus: false,
+  autofocusDelay: 100,
+  icon: null,
+  trailingIcon: null,
+  padded: true,
+  size: 'md',
+  color: 'white',
+  variant: 'outline',
+  outlineAuto: false,
+  inputClass: '',
+  class: '',
+  modelModifiers: () => ({})
 })
 
 const emit = defineEmits(['update:modelValue', 'blur'])
@@ -147,8 +125,7 @@ onMounted(() => {
   }, props.autofocusDelay)
 })
 
-
-const inputClass = computed(() => {
+const inputUI = computed(() => {
   let variantKey = props.color === 'white' ? 'white' : 'gray'
   if (props.outlineAuto) {
     variantKey = 'auto'
@@ -164,9 +141,12 @@ const inputClass = computed(() => {
     // @ts-ignore
     isWhiteGray(color.value) && ui.color[color.value],
     // @ts-ignore
-    !isWhiteGray(color.value) && ui.variant.outline[variantKey].replaceAll('{color}', color.value)
+    !isWhiteGray(color.value) && ui.variant.outline[variantKey].replaceAll('{color}', color.value),
+    (props.icon || slots.leading ) && ui.leading.padding[props.size],
+    (props.trailingIcon || slots.trailing ) && ui.trailing.padding[props.size]
   ), props.inputClass)
 })
+
 
 const leadingWrapperIconUI = computed(() => {
   return twJoin(
@@ -180,8 +160,7 @@ const leadingIconUI = computed(() => {
   return twJoin(
     ui.icon.base,
     props.color && ui.icon.color.replaceAll('{color}', props.color),
-    ui.icon.size[props.size],
-    props.loading && ui.icon.loading
+    ui.icon.size[props.size]
   )
 })
 
@@ -197,8 +176,7 @@ const trailingIconUI = computed(() => {
   return twJoin(
     ui.icon.base,
     props.color && (props.color !== 'primary') && ui.icon.color.replaceAll('{color}', props.color),
-    ui.icon.size[props.size],
-    props.loading && ui.icon.loading
+    ui.icon.size[props.size]
   )
 })
 </script>

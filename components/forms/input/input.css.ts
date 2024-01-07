@@ -47,7 +47,6 @@ export default {
   icon: {
     base: 'flex-shrink-0 text-gray-600 dark:text-gray-500',
     color: 'text-{color}-600 dark:text-{color}-500',
-    loading: 'animate-spin',
     size: commonUI.icon.size,
     leading: {
       wrapper: 'absolute inset-y-0 left-0 flex items-center',
@@ -75,7 +74,6 @@ export default {
   default: {
     size: 'md',
     color: 'white',
-    variant: 'outline',
-    loadingIcon: 'heroicons:arrow-path-20-solid'
+    variant: 'outline'
   }
 }
