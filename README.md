@@ -6,13 +6,13 @@
 If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-# create a new project in the current directory
+# install from npm packages add to the project in the current directory
 pnpm install @centlax/ui
 ```
 
 Then in svelte component
 ```bash
-# create a new project in the current directory
+# +page.svelte
 <scrip lang="ts">
 import { UButton } from '@centlax/ui'
 </script>
