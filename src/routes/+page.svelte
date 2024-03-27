@@ -1,10 +1,19 @@
+
 <script lang="ts">
-	import { UButton, UIcon } from '$lib/index.js';
-	let ui = 'bg-red-600';
+	import {colors} from '$lib/theme/colors.js';
+	import { UIcon } from '$lib/index.js';
+	let isDark: boolean = false;
+	let color = isDark ? colors.green[600]: colors.pink[500];
+	let _text_color = isDark ? colors.red[600]: colors.red[500];
 </script>
 
-<div class="bg-gray-500">
-	<UIcon name="i-fluent-add-20-filled" />
-	<UButton color='white' label="button text" />
+<div style='--bg-color:{color};--text-color:{_text_color}'
+	class="font-bold">TEXT
 </div>
-1
+
+<style lang="postcss">
+	div {
+		background-color: var(--bg-color);
+		color: var(--text-color);
+	}
+</style>

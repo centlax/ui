@@ -4,11 +4,13 @@ import colors from 'tailwindcss/colors';
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		colors: {
-			primary: colors.indigo,
-			success: colors.green,
-			warning: colors.yellow,
-			danger: colors.red
+		extends: {
+			colors: {
+				primary: colors.indigo,
+				success: colors.green,
+				warning: colors.yellow,
+				danger: colors.red
+			}
 		}
 	},
 	plugins: [

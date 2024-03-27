@@ -14,6 +14,11 @@ export { default as UToggle } from './forms/toggle/toggle.svelte';
 export { default as UContainer } from './layouts/container/container.svelte';
 export { default as UFooter } from './layouts/footer/footer.svelte';
 export { default as UHeader } from './layouts/header/header.svelte';
+// misc
+export { default as UColorMode } from './misc/color/mode.svelte';
+export { default as UColorTheme } from './misc/color/theme.svelte';
+export { default as ULogo } from './misc/logo/logo.svelte';
+export { default as UPlaceholder } from './misc/placeholder/placeholder.svelte';
 // navagations
 export { default as UPagination } from './navagations/pagination/pagination.svelte';
 export { default as UTab } from './navagations/tab/tab.svelte';
