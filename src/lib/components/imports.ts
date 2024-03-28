@@ -11,9 +11,12 @@ export { default as UInput } from './forms/input/input.svelte';
 export { default as UInputPin } from './forms/input/pin.svelte';
 export { default as UToggle } from './forms/toggle/toggle.svelte';
 // layouts
+export { default as UCard } from './layouts/card/card.svelte';
 export { default as UContainer } from './layouts/container/container.svelte';
 export { default as UFooter } from './layouts/footer/footer.svelte';
 export { default as UHeader } from './layouts/header/header.svelte';
+export { default as UPageCard } from './layouts/page/card.svelte';
+export { default as UPage } from './layouts/page/page.svelte';
 // misc
 export { default as UColorMode } from './misc/color/mode.svelte';
 export { default as UColorTheme } from './misc/color/theme.svelte';

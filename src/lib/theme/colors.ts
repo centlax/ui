@@ -5,7 +5,6 @@ export const colors = {
 	black: '#000',
 	white: '#fff',
 	rose: {
-		0: '#fff',
 		50: '#fff1f2',
 		100: '#ffe4e6',
 		200: '#fecdd3',
@@ -19,7 +18,6 @@ export const colors = {
 		950: '#4c0519'
 	},
 	pink: {
-		0: '#fff',
 		50: '#fdf2f8',
 		100: '#fce7f3',
 		200: '#fbcfe8',
@@ -33,7 +31,6 @@ export const colors = {
 		950: '#500724'
 	},
 	fuchsia: {
-		0: '#fff',
 		50: '#fdf4ff',
 		100: '#fae8ff',
 		200: '#f5d0fe',
@@ -47,7 +44,6 @@ export const colors = {
 		950: '#4a044e'
 	},
 	purple: {
-		0: '#fff',
 		50: '#faf5ff',
 		100: '#f3e8ff',
 		200: '#e9d5ff',
@@ -61,7 +57,6 @@ export const colors = {
 		950: '#3b0764'
 	},
 	violet: {
-		0: '#fff',
 		50: '#f5f3ff',
 		100: '#ede9fe',
 		200: '#ddd6fe',
@@ -75,7 +70,7 @@ export const colors = {
 		950: '#2e1065'
 	},
 	indigo: {
-		0: '#fff',
+		0: 'transparent',
 		50: '#eef2ff',
 		100: '#e0e7ff',
 		200: '#c7d2fe',
@@ -89,7 +84,6 @@ export const colors = {
 		950: '#1e1b4b'
 	},
 	blue: {
-		0: '#fff',
 		50: '#eff6ff',
 		100: '#dbeafe',
 		200: '#bfdbfe',
@@ -103,7 +97,6 @@ export const colors = {
 		950: '#172554'
 	},
 	sky: {
-		0: '#fff',
 		50: '#f0f9ff',
 		100: '#e0f2fe',
 		200: '#bae6fd',
@@ -117,7 +110,6 @@ export const colors = {
 		950: '#082f49'
 	},
 	cyan: {
-		0: '#fff',
 		50: '#ecfeff',
 		100: '#cffafe',
 		200: '#a5f3fc',
@@ -131,7 +123,6 @@ export const colors = {
 		950: '#083344'
 	},
 	teal: {
-		0: '#fff',
 		50: '#f0fdfa',
 		100: '#ccfbf1',
 		200: '#99f6e4',
@@ -145,7 +136,7 @@ export const colors = {
 		950: '#042f2e'
 	},
 	emerald: {
-		0: '#fff',
+		0: 'transparent',
 		50: '#ecfdf5',
 		100: '#d1fae5',
 		200: '#a7f3d0',
@@ -159,7 +150,6 @@ export const colors = {
 		950: '#022c22'
 	},
 	green: {
-		0: '#fff',
 		50: '#f0fdf4',
 		100: '#dcfce7',
 		200: '#bbf7d0',
@@ -173,7 +163,7 @@ export const colors = {
 		950: '#052e16'
 	},
 	lime: {
-		0: '#fff',
+		0: 'transparent',
 		50: '#f7fee7',
 		100: '#ecfccb',
 		200: '#d9f99d',
@@ -187,7 +177,6 @@ export const colors = {
 		950: '#1a2e05'
 	},
 	yellow: {
-		0: '#fff',
 		50: '#fefce8',
 		100: '#fef9c3',
 		200: '#fef08a',
@@ -201,7 +190,7 @@ export const colors = {
 		950: '#422006'
 	},
 	amber: {
-		0: '#fff',
+		0: 'transparent',
 		50: '#fffbeb',
 		100: '#fef3c7',
 		200: '#fde68a',
@@ -215,7 +204,6 @@ export const colors = {
 		950: '#451a03'
 	},
 	orange: {
-		0: '#fff',
 		50: '#fff7ed',
 		100: '#ffedd5',
 		200: '#fed7aa',
@@ -229,7 +217,7 @@ export const colors = {
 		950: '#431407'
 	},
 	red: {
-		0: '#fff',
+		0: 'transparent',
 		50: '#fef2f2',
 		100: '#fee2e2',
 		200: '#fecaca',
@@ -243,7 +231,6 @@ export const colors = {
 		950: '#450a0a'
 	},
 	slate: {
-		0: '#fff',
 		50: '#f8fafc',
 		100: '#f1f5f9',
 		200: '#e2e8f0',
@@ -257,7 +244,6 @@ export const colors = {
 		950: '#020617'
 	},
 	zinc: {
-		0: '#fff',
 		50: '#fafafa',
 		100: '#f4f4f5',
 		200: '#e4e4e7',
@@ -271,7 +257,6 @@ export const colors = {
 		950: '#09090b'
 	},
 	neutral: {
-		0: '#fff',
 		50: '#fafafa',
 		100: '#f5f5f5',
 		200: '#e5e5e5',
@@ -285,7 +270,6 @@ export const colors = {
 		950: '#0a0a0a'
 	},
 	stone: {
-		0: '#fff',
 		50: '#fafaf9',
 		100: '#f5f5f4',
 		200: '#e7e5e4',
@@ -299,7 +283,6 @@ export const colors = {
 		950: '#0c0a09'
 	},
 	light: {
-		0: '#fdfdfd',
 		50: '#fdfdfd',
 		100: '#fcfcfc',
 		200: '#fafafa',
@@ -314,7 +297,6 @@ export const colors = {
 	},
 
 	dark: {
-		0: '#4a4a4a',
 		50: '#4a4a4a',
 		100: '#3c3c3c',
 		200: '#323232',
@@ -330,7 +312,6 @@ export const colors = {
 
 	// ADDED - COLORS ! cool is same as gray, we use gray as dyanamic for all gray shades
 	cool: {
-		0: '#fff',
 		50: '#f9fafb',
 		100: '#f3f4f6',
 		200: '#e5e7eb',
@@ -345,7 +326,6 @@ export const colors = {
 	},
 
 	ashed: {
-		0: '#fff',
 		50: '#f9f9f8',
 		100: '#f1f0ee',
 		200: '#dad7d3',
@@ -357,5 +337,31 @@ export const colors = {
 		800: '#45403a',
 		900: '#2c2823',
 		950: '#161511'
+	},
+	primary: {
+		50: '#eef2ff',
+		100: '#e0e7ff',
+		200: '#c7d2fe',
+		300: '#a5b4fc',
+		400: '#818cf8',
+		500: '#6366f1',
+		600: '#4f46e5',
+		700: '#4338ca',
+		800: '#3730a3',
+		900: '#312e81',
+		950: '#1e1b4b'
+	},
+	gray: {
+		50: '#f9fafb',
+		100: '#f3f4f6',
+		200: '#e5e7eb',
+		300: '#d1d5db',
+		400: '#9ca3af',
+		500: '#6b7280',
+		600: '#4b5563',
+		700: '#374151',
+		800: '#1f2937',
+		900: '#111827',
+		950: '#030712'
 	}
 };

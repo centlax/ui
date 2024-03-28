@@ -13,6 +13,11 @@ export interface ColorShade {
 	950: string;
 }
 
+export interface ColorMode {
+	light: string;
+	dark: string;
+}
+
 export interface ColorPallet {
 	inherit: 'inherit';
 	current: 'currentColor';

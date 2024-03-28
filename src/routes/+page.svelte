@@ -3,6 +3,5 @@
 </script>
 
 <div class="p-4">
-	<UButton icon="i-fluent-person-24-regular" color="pink" label="Click me" />
-	<UIcon name="i-fluent-person-24-regular" />
+	<UButton icon="i-fluent-person-24-regular" variant="ghost" color="pink" label="Click me" />
 </div>

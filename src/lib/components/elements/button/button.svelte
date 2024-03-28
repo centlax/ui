@@ -2,14 +2,15 @@
 	/* imports ==== === === === === === */
 	import type { ColorPallet, ColorShade, Size, XDir } from '$lib/types/index.js';
 	import { colors } from '$lib/theme/colors.js';
-	import { ui, type Variant } from './styles.js';
+	import { css, type BaseVariant } from './styles.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import { shareUI } from '$lib/theme/share.js';
-	import { UIcon } from '$lib/index.js';
+	import Icon from '../icon/icon.svelte';
+	import { ui } from '$lib/theme/ui.config.js';
 
 	/* props ==== === === === === === */
 	export let label: string = '';
-	export let size: Size = 'md';
+	export let size: Size = ui.size;
 	export let href: string = '';
 	export let square: boolean = false;
 	export let truncate: boolean = false;
@@ -26,21 +27,21 @@
 	/* config ==== === === === === === */
 	let as: 'button' | 'a' = href ? 'a' : 'button';
 	let button = true;
-	//@ts-ignore
-	let _variant: Variant = ui.variant[variant];
+	let _variant = css.variant[variant](color);
+	let _color = _variant.color;
 
 	/* styles ==== === === === === === */
-	$: buttonUI = twMerge(
-		ui.base,
+	$: buttonClass = twMerge(
+		css.base,
 		_variant.base,
 		shareUI.gap[size],
 		shareUI.text[size],
 		square ? shareUI.padding.square[size] : shareUI.padding.rectangle[size],
 		shareUI.rounded[size],
-		block ? ui.block : ui.inline
+		block ? css.block : css.inline
 		/* if no default slot, also make it square */
 	);
-	$: iconUI = twJoin('');
+	$: iconClass = twJoin('');
 </script>
 
 <svelte:element
@@ -48,54 +49,63 @@
 	{href}
 	disabled={disabled || loading}
 	style="
-		--light-color:{colors[color][_variant.light.initial]}; 
-		--dark-color:{colors[color][_variant.dark.initial]};
-		--hover-light-color:{colors[color][_variant.light.hover]}; 
-		--hover-dark-color:{colors[color][_variant.dark.hover]};
+		--fore:{_color.fore.light}; 
+		--back:{_color.back.light};
+		--hover-fore:{_color.hover.fore.light}; 
+		--hover-back:{_color.hover.back.light};
+		<!-- !dark! -->
+		--dark-fore:{_color.fore.dark}; 
+		--dark-back:{_color.back.dark};
+		--dark-hover-fore:{_color.hover.fore.dark}; 
+		--dark-hover-back:{_color.hover.back.dark};
 	"
 	class:button
-	class={buttonUI}
+	class={buttonClass}
 	{...$$restProps}
 >
 	<!--begin-->
 	<slot name="east" {disabled} {loading}>
-		<UIcon name={icon || eastIcon} class={iconUI} aria-hidden="true" />
+		<Icon name={icon || eastIcon} class='{iconClass} icon'/>
 	</slot>
 	<slot>
-		<span class={truncate ? ui.truncate : ''}>
+		<span class='{truncate ? css.truncate : ''} span'>
 			{label}
 		</span>
 	</slot>
 	<slot name="west" {disabled} {loading}>
-		<UIcon name={westIcon} class={iconUI} aria-hidden="true" />
+		<Icon name={westIcon} class=' icon' />
 	</slot>
 	<!--end-->
 </svelte:element>
 
 <style lang="postcss">
-	@media (prefers-color-scheme: light) {
-		.button,
-		.button:hover:disabled {
-			background-color: var(--light-color);
-		}
-		.button:hover {
-			background-color: var(--hover-light-color);
-		}
-		.button:focus-visible {
-			outline-color: var(--dark-color);
-		}
+	.button,
+	.button:hover:disabled {
+		color: var(--fore);
+		background-color: var(--back);
+	}
+	.button:hover {
+		color: var(--hover-fore);
+		background-color: var(--hover-back);
+	}
+	.button:focus-visible {
+		outline-color: var(--back);
 	}
 
 	@media (prefers-color-scheme: dark) {
-		.button,
+		.button, 
 		.button:hover:disabled {
-			background-color: var(--dark-color);
+			color: var(--dark-fore);
+			background-color: var(--dark-back);
 		}
+		
 		.button:hover {
-			background-color: var(--hover-dark-color);
+			color: var(--hover-fore);
+			background-color: var(--dark-hover-back);
 		}
 		.button:focus-visible {
-			outline-color: var(--dark-color);
+			outline-color: var(--dark-back);
 		}
+
 	}
 </style>

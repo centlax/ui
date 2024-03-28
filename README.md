@@ -1,6 +1,6 @@
 # Centlax UI
 
-## By @shimmy-rukundo
+## By Shimmy Rukundo
 
 A UI Library for Modern Apps, powered by Svelte, Melt UI & Tailwind CSS.
 

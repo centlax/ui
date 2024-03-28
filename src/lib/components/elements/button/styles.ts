@@ -1,11 +1,83 @@
 import { shareUI } from '$lib/theme/share.js';
-import type { ColorShade } from '$lib/types/index.js';
+import type { ColorMode, ColorPallet } from '$lib/types/theme.js';
+import { colors } from '$lib/theme/colors.js';
+export type BaseVariant = {
+	base?: string;
+	color: {
+		fore: /* foreground-color */ ColorMode;
+		back: /* backround-color */ ColorMode;
+		hover: {
+			fore: ColorMode;
+			back: ColorMode;
+		};
+	};
+};
 export interface Variant {
-	base: string; // Assuming this could be any string value (e.g., Tailwind CSS classes).
-	light: { initial: keyof ColorShade; hover: keyof ColorShade };
-	dark: { initial: keyof ColorShade; hover: keyof ColorShade };
+	solid: (color: keyof ColorPallet) => BaseVariant;
+	ghost: (color: keyof ColorPallet) => BaseVariant;
+	outline: (color: keyof ColorPallet) => BaseVariant;
+	soft: (color: keyof ColorPallet) => BaseVariant;
 }
-export const ui = {
+const variant: Variant = {
+	/* inital means the default color schema */
+	solid: (color: keyof ColorPallet): BaseVariant => {
+		// Assuming `colors[color]` returns an object with `light` and `dark` properties
+		return {
+			base: 'shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+			color: {
+				fore: { light: colors['gray'][950], dark: colors['white'] },
+				back: { light: colors[color][600], dark: colors[color][500] }, // Example, adjust as needed
+				hover: {
+					fore: { light: colors['gray'][950], dark: colors['white'] },
+					back: { light: colors[color][700], dark: colors[color][600] } // Adjust as needed
+				}
+			}
+		};
+	},
+	ghost: (color: keyof ColorPallet): BaseVariant => {
+		// Assuming `colors[color]` returns an object with `light` and `dark` properties
+		return {
+			base: 'focus-visible:ring-2 focus-visible:ring-inset',
+			color: {
+				fore: { light: colors[color][600], dark: colors[color][500] },
+				back: { light: colors['transparent'], dark: colors['transparent'] }, // Example, adjust as needed
+				hover: {
+					fore: { light: colors[color][600], dark: colors[color][500] },
+					back: { light: colors[color][50], dark: colors[color][950] } // Adjust as needed
+				}
+			}
+		};
+	},
+	outline: (color: keyof ColorPallet): BaseVariant => {
+		// Assuming `colors[color]` returns an object with `light` and `dark` properties
+		return {
+			base: 'shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+			color: {
+				fore: { light: colors['gray'][950], dark: colors['white'] },
+				back: { light: colors[color][600], dark: colors[color][500] }, // Example, adjust as needed
+				hover: {
+					fore: { light: colors['gray'][950], dark: colors['white'] },
+					back: { light: colors[color][700], dark: colors[color][600] } // Adjust as needed
+				}
+			}
+		};
+	},
+	soft: (color: keyof ColorPallet): BaseVariant => {
+		// Assuming `colors[color]` returns an object with `light` and `dark` properties
+		return {
+			base: 'shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+			color: {
+				fore: { light: colors['gray'][950], dark: colors['white'] },
+				back: { light: colors[color][600], dark: colors[color][500] }, // Example, adjust as needed
+				hover: {
+					fore: { light: colors['gray'][950], dark: colors['white'] },
+					back: { light: colors[color][700], dark: colors[color][600] } // Adjust as needed
+				}
+			}
+		};
+	}
+};
+export const css = {
 	base: 'font-semibold focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0',
 	truncate: 'text-left break-all line-clamp-1',
 	block: 'w-full flex justify-center items-center',
@@ -16,29 +88,7 @@ export const ui = {
 		ellipse: '',
 		Circle: ''
 	},
-	variant: {
-		/* inital means the default color schema */
-		solid: {
-			base: 'shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
-			light: { initial: 500, hover: 700 },
-			dark: { initial: 500, hover: 600 }
-		},
-		ghost: {
-			base: '',
-			light: { initial: 600, hover: 700 },
-			dark: { initial: 500, hover: 600 }
-		},
-		outline: {
-			base: '',
-			light: { initial: 600, hover: 700 },
-			dark: { initial: 500, hover: 600 }
-		},
-		soft: {
-			base: '',
-			light: { initial: 600, hover: 700 },
-			dark: { initial: 500, hover: 600 }
-		}
-	},
+	variant: variant,
 	icon: {
 		base: 'flex-shrink-0',
 		loading: 'animate-spin',
