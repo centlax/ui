@@ -53,7 +53,7 @@
 		--back:{_color.back.light};
 		--hover-fore:{_color.hover.fore.light}; 
 		--hover-back:{_color.hover.back.light};
-		<!-- !dark! -->
+
 		--dark-fore:{_color.fore.dark}; 
 		--dark-back:{_color.back.dark};
 		--dark-hover-fore:{_color.hover.fore.dark}; 
@@ -65,15 +65,15 @@
 >
 	<!--begin-->
 	<slot name="east" {disabled} {loading}>
-		<Icon name={icon || eastIcon} class='{iconClass} icon'/>
+		<Icon name={icon || eastIcon} class="{iconClass} icon" />
 	</slot>
 	<slot>
-		<span class='{truncate ? css.truncate : ''} span'>
+		<span class="{truncate ? css.truncate : ''} span">
 			{label}
 		</span>
 	</slot>
 	<slot name="west" {disabled} {loading}>
-		<Icon name={westIcon} class=' icon' />
+		<Icon name={westIcon} class=" icon" />
 	</slot>
 	<!--end-->
 </svelte:element>
@@ -93,19 +93,18 @@
 	}
 
 	@media (prefers-color-scheme: dark) {
-		.button, 
+		.button,
 		.button:hover:disabled {
 			color: var(--dark-fore);
 			background-color: var(--dark-back);
 		}
-		
+
 		.button:hover {
-			color: var(--hover-fore);
+			color: var(--dark-hover-fore);
 			background-color: var(--dark-hover-back);
 		}
 		.button:focus-visible {
 			outline-color: var(--dark-back);
 		}
-
 	}
 </style>

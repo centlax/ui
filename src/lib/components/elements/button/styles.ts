@@ -35,9 +35,8 @@ const variant: Variant = {
 		};
 	},
 	ghost: (color: keyof ColorPallet): BaseVariant => {
-		// Assuming `colors[color]` returns an object with `light` and `dark` properties
 		return {
-			base: 'focus-visible:ring-2 focus-visible:ring-inset',
+			base: 'focus-visible:ring-2 focus-visible:ring-inset ring-current',
 			color: {
 				fore: { light: colors[color][600], dark: colors[color][500] },
 				back: { light: colors['transparent'], dark: colors['transparent'] }, // Example, adjust as needed
@@ -49,15 +48,14 @@ const variant: Variant = {
 		};
 	},
 	outline: (color: keyof ColorPallet): BaseVariant => {
-		// Assuming `colors[color]` returns an object with `light` and `dark` properties
 		return {
-			base: 'shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+			base: 'ring-1 ring-inset ring-current disabled:bg-transparent dark:disabled:bg-transparent focus-visible:ring-2',
 			color: {
-				fore: { light: colors['gray'][950], dark: colors['white'] },
-				back: { light: colors[color][600], dark: colors[color][500] }, // Example, adjust as needed
+				fore: { light: colors[color][600], dark: colors[color][500] },
+				back: { light: colors['transparent'], dark: colors['transparent'] }, // Example, adjust as needed
 				hover: {
-					fore: { light: colors['gray'][950], dark: colors['white'] },
-					back: { light: colors[color][700], dark: colors[color][600] } // Adjust as needed
+					fore: { light: colors[color][600], dark: colors[color][500] },
+					back: { light: colors[color][50], dark: colors[color][950] } // Adjust as needed
 				}
 			}
 		};
@@ -65,13 +63,13 @@ const variant: Variant = {
 	soft: (color: keyof ColorPallet): BaseVariant => {
 		// Assuming `colors[color]` returns an object with `light` and `dark` properties
 		return {
-			base: 'shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
+			base: 'focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current',
 			color: {
-				fore: { light: colors['gray'][950], dark: colors['white'] },
-				back: { light: colors[color][600], dark: colors[color][500] }, // Example, adjust as needed
+				fore: { light: colors[color][600], dark: colors[color][500] },
+				back: { light: colors[color][50], dark: colors[color][950] }, // Example, adjust as needed
 				hover: {
-					fore: { light: colors['gray'][950], dark: colors['white'] },
-					back: { light: colors[color][700], dark: colors[color][600] } // Adjust as needed
+					fore: { light: colors[color][700], dark: colors[color][400] },
+					back: { light: colors[color][100], dark: colors[color][900] } // Adjust as needed
 				}
 			}
 		};
