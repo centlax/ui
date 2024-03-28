@@ -1,12 +1,6 @@
-// share.ts
+// shareUI.ts
 // @unocss-include
-export const share = {
-	color: {
-		primary: 'primary',
-		success: 'success',
-		warning: 'warning',
-		danger: 'danger'
-	},
+export const shareUI = {
 	rounded: {
 		xs: 'rounded',
 		sm: 'rounded',
@@ -22,25 +16,34 @@ export const share = {
 		xl: 'xl'
 	},
 	text: {
-		xs: 'text-xs sm:leading-6',
-		sm: 'text-sm sm:leading-6',
-		md: 'text-sm sm:leading-6',
-		lg: 'text-sm sm:leading-6',
-		xl: 'text-sm sm:leading-6'
+		xs: 'text-xs',
+		sm: 'text-sm',
+		md: 'text-sm',
+		lg: 'text-sm',
+		xl: 'text-base'
 	},
 	gap: {
-		xs: 'gap-x-1',
-		sm: 'gap-x-1',
-		md: 'gap-x-1.5',
-		lg: 'gap-x-2',
+		xs: 'gap-x-1.5',
+		sm: 'gap-x-1.5',
+		md: 'gap-x-2',
+		lg: 'gap-x-2.5',
 		xl: 'gap-x-2.5'
 	},
 	padding: {
-		xs: 'px-2 py-1',
-		sm: 'px-2 py-1',
-		md: 'px-2.5 py-1.5',
-		lg: 'px-3 py-2',
-		xl: 'px-3.5 py-2.5'
+		rectangle: {
+			xs: 'px-2.5 py-1.5',
+			sm: 'px-2.5 py-1.5',
+			md: 'px-3 py-2',
+			lg: 'px-3.5 py-2.5',
+			xl: 'px-3.5 py-2.5'
+		},
+		square: {
+			xs: 'p-1.5',
+			sm: 'p-1.5',
+			md: 'p-2',
+			lg: 'p-2.5',
+			xl: 'p-2.5'
+		}
 	},
 	square: {
 		xs: 'p-1',

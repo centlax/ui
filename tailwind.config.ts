@@ -15,13 +15,8 @@ export default {
 	},
 	plugins: [
 		iconsPlugin({
-			collections: getIconCollections(['fluent'])
+			collections: getIconCollections(['fluent']),
+			scale: 1.5
 		})
-	],
-	safelist: [
-		{
-			pattern: /bg|-(primary|success|warning)-(500|600|700)/,
-			variants: ['hover', 'focus-visible']
-		}
 	]
 };

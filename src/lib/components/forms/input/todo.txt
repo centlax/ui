@@ -11,9 +11,9 @@
 [ ] Input with inline leading dropdown
 [ ] Input with inline leading add-on and trailing dropdown
 [ ] Input with leading icon and trailing button
-[ ] Inputs with shared borders
+[ ] Inputs with shareUId borders
 [ ] Input with inset label
-[ ] Inputs with inset labels and shared borders
+[ ] Inputs with inset labels and shareUId borders
 [ ] Input with overlapping label
 [ ] Input with pill shape
 [ ] Input with keyboard shortcut

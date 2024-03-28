@@ -1,9 +1,10 @@
 # Centlax UI
+
 ## By @shimmy-rukundo
 
 A UI Library for Modern Apps, powered by Svelte, Melt UI & Tailwind CSS.
 
-## add to the  project
+## add to the project
 
 If you're seeing this, you've probably already done this step. Congrats!
 
@@ -13,6 +14,7 @@ pnpm install @centlax/ui
 ```
 
 Then in svelte component
+
 ```bash
 # +page.svelte
 <scrip lang="ts">
