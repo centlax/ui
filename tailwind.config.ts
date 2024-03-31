@@ -1,18 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 import { iconsPlugin, getIconCollections } from '@egoist/tailwindcss-icons';
-import colors from 'tailwindcss/colors';
+import { colors } from './src/lib/theme/colors';
 export default {
 	darkMode: 'class',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extends: {
-			colors: {
-				primary: colors.indigo,
-				success: colors.green,
-				warning: colors.yellow,
-				danger: colors.red
-			}
-		}
+		colors: colors
 	},
 	plugins: [
 		iconsPlugin({

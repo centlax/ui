@@ -19,11 +19,6 @@ export interface ColorMode {
 }
 
 export interface ColorPallet {
-	inherit: 'inherit';
-	current: 'currentColor';
-	transparent: 'transparent';
-	black: string;
-	white: string;
 	rose: ColorShades;
 	pink: ColorShades;
 	fuchsia: ColorShades;
@@ -49,4 +44,9 @@ export interface ColorPallet {
 	dark: ColorShades;
 	cool: ColorShades;
 	ashed: ColorShades;
+	magnum: ColorShade;
+	primary: ColorShade;
+	success: ColorShade;
+	warning: ColorShade;
+	danger: ColorShade;
 }

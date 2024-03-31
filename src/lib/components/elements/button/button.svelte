@@ -2,9 +2,9 @@
 	/* imports ==== === === === === === */
 	import type { ColorPallet, ColorShade, Size, XDir } from '$lib/types/index.js';
 	import { colors } from '$lib/theme/colors.js';
-	import { css, type BaseVariant } from './styles.js';
+	import { css } from './styles.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
-	import { shareUI } from '$lib/theme/share.js';
+	import { shareUI, type BaseVariant } from '$lib/theme/share.js';
 	import Icon from '../icon/icon.svelte';
 	import { ui } from '$lib/theme/ui.config.js';
 

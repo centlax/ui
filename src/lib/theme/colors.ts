@@ -325,6 +325,20 @@ export const colors = {
 		950: '#030712'
 	},
 
+	magnum: {
+		'50': '#fff9ed',
+		'100': '#fef2d6',
+		'200': '#fce0ac',
+		'300': '#f9c978',
+		'400': '#f7b155',
+		'500': '#f38d1c',
+		'600': '#e47312',
+		'700': '#bd5711',
+		'800': '#964516',
+		'900': '#793a15',
+		'950': '#411c09'
+	},
+
 	ashed: {
 		50: '#f9f9f8',
 		100: '#f1f0ee',
@@ -338,30 +352,19 @@ export const colors = {
 		900: '#2c2823',
 		950: '#161511'
 	},
-	primary: {
-		50: '#eef2ff',
-		100: '#e0e7ff',
-		200: '#c7d2fe',
-		300: '#a5b4fc',
-		400: '#818cf8',
-		500: '#6366f1',
-		600: '#4f46e5',
-		700: '#4338ca',
-		800: '#3730a3',
-		900: '#312e81',
-		950: '#1e1b4b'
+	get primary() {
+		return this.indigo;
 	},
-	gray: {
-		50: '#f9fafb',
-		100: '#f3f4f6',
-		200: '#e5e7eb',
-		300: '#d1d5db',
-		400: '#9ca3af',
-		500: '#6b7280',
-		600: '#4b5563',
-		700: '#374151',
-		800: '#1f2937',
-		900: '#111827',
-		950: '#030712'
+	get success() {
+		return this.indigo;
+	},
+	get warning() {
+		return this.indigo;
+	},
+	get danger() {
+		return this.indigo;
+	},
+	get gray() {
+		return this.cool;
 	}
 };

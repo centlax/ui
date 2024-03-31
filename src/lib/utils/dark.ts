@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 
 type CMode = 'dark' | 'light';
 
-class UseDark {
+export class UseDark {
 	private colorMode: CMode;
 
 	constructor() {
@@ -44,5 +44,3 @@ class UseDark {
 		document.documentElement.classList.toggle('dark', this.colorMode === 'dark');
 	}
 }
-
-export const useDark = new UseDark();

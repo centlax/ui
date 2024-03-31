@@ -9,12 +9,13 @@ export { default as UFieldSet } from './forms/field-set/field-set.svelte';
 export { default as UForm } from './forms/form/form.svelte';
 export { default as UInput } from './forms/input/input.svelte';
 export { default as UInputPin } from './forms/input/pin.svelte';
-export { default as UToggle } from './forms/toggle/toggle.svelte';
+export { default as USwitch } from './forms/switch/switch.svelte';
 // layouts
 export { default as UCard } from './layouts/card/card.svelte';
 export { default as UContainer } from './layouts/container/container.svelte';
 export { default as UFooter } from './layouts/footer/footer.svelte';
 export { default as UHeader } from './layouts/header/header.svelte';
+export { default as ULayout } from './layouts/layout/layout.svelte';
 export { default as UPageCard } from './layouts/page/card.svelte';
 export { default as UPage } from './layouts/page/page.svelte';
 // misc

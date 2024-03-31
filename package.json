@@ -74,6 +74,8 @@
 		"@unocss/extractor-svelte": "^0.58.6",
 		"@unocss/reset": "^0.58.6",
 		"@unocss/vite": "^0.58.6",
+		"bits-ui": "^0.21.1",
+		"mode-watcher": "^0.3.0",
 		"tailwind-merge": "^2.2.2"
 	}
 }

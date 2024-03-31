@@ -1,5 +1,19 @@
 // shareUI.ts
+import type { ColorMode } from "$lib/types/theme.js";
+
 // @unocss-include
+export type BaseVariant = {
+	base?: string;
+	color: {
+		fore: /* foreground-color */ ColorMode;
+		back: /* backround-color */ ColorMode;
+		hover: {
+			fore: ColorMode;
+			back: ColorMode;
+		};
+	};
+};
+
 export const shareUI = {
 	rounded: {
 		xs: 'rounded',
@@ -44,13 +58,6 @@ export const shareUI = {
 			lg: 'p-2.5',
 			xl: 'p-2.5'
 		}
-	},
-	square: {
-		xs: 'p-1',
-		sm: 'p-1',
-		md: 'p-1.5',
-		lg: 'p-2',
-		xl: 'p-2.5'
 	},
 	icon: {
 		size: {
