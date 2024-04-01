@@ -100,6 +100,9 @@ devDependencies:
   publint:
     specifier: ^0.1.9
     version: 0.1.16
+  release-it:
+    specifier: ^17.0.1
+    version: 17.1.1(typescript@5.4.3)
   sass:
     specifier: ^1.72.0
     version: 1.72.0

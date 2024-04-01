@@ -67,7 +67,9 @@
 		"vite": "^5.0.11",
 		"vitest": "^1.2.0",
 		"@release-it/conventional-changelog": "^8.0.1",
-		"changelogen": "^0.5.5"
+		"changelogen": "^0.5.5",
+		"release-it": "^17.0.1"
+
 
 	},
 	"svelte": "./dist/index.js",
