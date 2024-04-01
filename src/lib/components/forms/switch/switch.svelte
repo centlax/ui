@@ -1,14 +1,10 @@
 <script lang="ts">
-	import type { ColorPallet, Size } from '$lib/types/index.js';
+	import type { ColorPallet } from '$lib/types/index.js';
 	/* imports ==== === === === === === */
 	import { Switch, type SwitchProps, Checkbox } from 'bits-ui';
-	import { twMerge } from 'tailwind-merge';
-	import { css } from './styles.js';
 	import { colors } from '$lib/theme/colors.js';
 	/* props ==== === === === === === */
-	interface $$Props extends SwitchProps {
-		color: keyof ColorPallet;
-	}
+
 	export let color: keyof ColorPallet = 'primary';
 	/* configs ==== === === === === === */
 </script>
