@@ -2,7 +2,6 @@ import { shareUI, type BaseVariant } from '$lib/theme/share.js';
 import type { ColorPallet } from '$lib/types/theme.js';
 import { colors } from '$lib/theme/colors.js';
 
-
 export interface Variant {
 	solid: (color: keyof ColorPallet) => BaseVariant;
 	ghost: (color: keyof ColorPallet) => BaseVariant;

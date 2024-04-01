@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.dark {
-	color-scheme: dark;
+* {
+	@apply caret-primary-600 dark:caret-primary-500;
+}
+
+::selection {
+	@apply bg-primary-600/50;
 }

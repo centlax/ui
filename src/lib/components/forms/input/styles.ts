@@ -1,15 +1,14 @@
 import { shareUI } from '$lib/theme/share.js';
 const quick = {
-	variant: {
-		outline:{
-			base: 'shadow-sm',
-			white_gray: 'text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400',
+	va: {
+		ou: {
+			wg: 'ring-1 ring-inset ring-gray-300 dark:ring-gray-600 focus:ring-2'
 		}
 	}
-}
+};
 
 export const css = {
-	base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
+	base: 'shadow-sm text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
 	form: 'form-input',
 	rounded: 'rounded-md',
 	placeholder: 'placeholder-gray-400 dark:placeholder-gray-500',
@@ -25,51 +24,50 @@ export const css = {
 	},
 	text: shareUI.text,
 	gap: shareUI.gap,
-	padding: shareUI.padding.rectangle,
-	leading: {
-		padding: {
-			xs: 'ps-8',
-			sm: 'ps-9',
-			md: 'ps-10',
-			lg: 'ps-11',
-			xl: 'ps-12'
-		}
-	},
-	trailing: {
-		padding: {
-			xs: 'pe-8',
-			sm: 'pe-9',
-			md: 'pe-10',
-			lg: 'pe-11',
-			xl: 'pe-12'
+	padding: {
+		base: shareUI.padding.rectangle,
+		dir: {
+			east: {
+				xs: 'ps-8',
+				sm: 'ps-9',
+				md: 'ps-10',
+				lg: 'ps-11',
+				xl: 'ps-12'
+			},
+			west: {
+				xs: 'pe-8',
+				sm: 'pe-9',
+				md: 'pe-10',
+				lg: 'pe-11',
+				xl: 'pe-12'
+			}
 		}
 	},
 	variant: {
-		base: 'shadow-sm',
-		outline: (color: string) => {
-			if (color === 'white') {
-				return `${quick.variant.outline.base} ${quick.variant.outline.white_gray} bg-white dark:bg-gray-900`;
-			} else if (color === 'gray') {
-				return `${quick.variant.outline.base} ${quick.variant.outline.base} bg-gray-50 dark:bg-gray-800`;
-			} else {
-				return `${quick.variant.outline.base} bg-transparent text-gray-900 dark:text-white ring-1 ring-inset ring-{color}-500 dark:ring-{color}-400 focus:ring-2 focus:ring-{color}-500 dark:focus:ring-{color}-400`;
-			}
+		outline: {
+			white: `bg-white dark:bg-gray-900 ${quick.va.ou.wg}`,
+			gray: `bg-gray-50 dark:bg-gray-800 ${quick.va.ou.wg}`,
+			mask: 'bg-transparent ring-1 caret-current ring-inset ring-current focus:ring-2 '
 		}
 	},
 	icon: {
-		base: 'flex-shrink-0 text-gray-400 dark:text-gray-500',
-		color: 'text-{color}-500 dark:text-{color}-400',
-		loading: 'animate-spin',
-		size: {
-			xs: 'h-4 w-4',
-			sm: 'h-5 w-5',
-			md: 'h-5 w-5',
-			lg: 'h-5 w-5',
-			xl: 'h-6 w-6'
+		base: 'flex-shrink-0',
+		load: 'animate-spin',
+		color: {
+			white: 'text-gray-400 dark:text-gray-600',
+			get gray(){ return this.white },
+			mask: 'text-inheret',
 		},
-		leading: {
+		size: {
+			xs: 'size-4',
+			sm: 'size-5',
+			md: 'size-5',
+			lg: 'size-5',
+			xl: 'size-6'
+		},
+		pointer: 'pointer-events-none',
+		east: {
 			wrapper: 'absolute inset-y-0 start-0 flex items-center',
-			pointer: 'pointer-events-none',
 			padding: {
 				xs: 'px-2.5',
 				sm: 'px-2.5',
@@ -78,11 +76,9 @@ export const css = {
 				xl: 'px-3.5'
 			}
 		},
-		trailing: {
+		west: {
 			wrapper: 'absolute inset-y-0 end-0 flex items-center',
-			pointer: 'pointer-events-none',
 			padding: {
-				'2xs': 'px-2',
 				xs: 'px-2.5',
 				sm: 'px-2.5',
 				md: 'px-3',
@@ -90,11 +86,5 @@ export const css = {
 				xl: 'px-3.5'
 			}
 		}
-	},
-	default: {
-		size: 'sm',
-		color: 'white',
-		variant: 'outline',
-		loadingIcon: 'i-heroicons-arrow-path-20-solid'
 	}
 };

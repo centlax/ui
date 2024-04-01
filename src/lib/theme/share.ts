@@ -1,5 +1,5 @@
 // shareUI.ts
-import type { ColorMode } from "$lib/types/theme.js";
+import type { ColorMode } from '$lib/types/theme.js';
 
 // @unocss-include
 export type BaseVariant = {

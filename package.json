@@ -71,6 +71,7 @@
 	"type": "module",
 	"dependencies": {
 		"@egoist/tailwindcss-icons": "^1.7.4",
+		"@tailwindcss/forms": "^0.5.7",
 		"@unocss/extractor-svelte": "^0.58.6",
 		"@unocss/reset": "^0.58.6",
 		"@unocss/vite": "^0.58.6",

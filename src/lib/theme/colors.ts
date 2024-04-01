@@ -356,13 +356,13 @@ export const colors = {
 		return this.indigo;
 	},
 	get success() {
-		return this.indigo;
+		return this.green;
 	},
 	get warning() {
-		return this.indigo;
+		return this.yellow;
 	},
 	get danger() {
-		return this.indigo;
+		return this.red;
 	},
 	get gray() {
 		return this.cool;

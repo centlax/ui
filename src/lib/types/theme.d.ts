@@ -46,6 +46,7 @@ export interface ColorPallet {
 	ashed: ColorShades;
 	magnum: ColorShade;
 	primary: ColorShade;
+	gray: ColorShade;
 	success: ColorShade;
 	warning: ColorShade;
 	danger: ColorShade;
