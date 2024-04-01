@@ -1,7 +1,7 @@
 <script lang="ts">
 	/* imports ==== === === === === === */
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import type { ColorPallet, Size, State, XDir } from '$lib/types/index.js';
+	import type { ColorPallet, Size, XDir } from '$lib/types/index.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import { css } from './styles.js';
 	import { UIcon } from '$lib/index.js';
@@ -9,17 +9,17 @@
 	import { colors } from '$lib/theme/colors.js';
 
 	/* props ==== === === === === === */
-	export let size: Size = 'md';
+	export let size: Size = ui.size;
 	export let dir: XDir = 'east';
 	export let load: boolean = false;
 	export let icon: string = '';
 	export let eastIcon: string = icon;
 	export let westIcon = '';
-	export let outline: 'white'|'gray'|'mask' = 'white';
+	export let outline: 'light' | 'dark' = 'light';
 	export let color: keyof ColorPallet = 'primary';
+	export let mask: boolean = false;
 
 	/* config ==== === === === === === */
-	let mask: boolean = outline === 'mask' ? true: false;
 	$: _icon = (): string => {
 		if (load) {
 			icon = ui.icon?.load || eastIcon;
@@ -29,25 +29,31 @@
 
 	$: inputCSS = twMerge(
 		css.base,
+		css.ring,
 		css.rounded,
 		css.placeholder,
 		css.text[size],
 		css.placeholder,
 		css.form,
 		css.variant.outline[outline],
+		mask ? css.variant.quick.ma : css.variant.quick.ld,
 		css.padding.base[size],
-		(dir === 'east' || $$slots.east) && css.padding.dir.east[size],
-		(dir === 'west' || $$slots.west) && css.padding.dir.west[size],
+		($$slots.east || load ) && css.padding.dir.east[size],
+		($$slots.west) && css.padding.dir.west[size],
 		$$props.class
 	);
 	$: eastCSS = twJoin(css.icon.pointer, css.icon.east.wrapper, css.icon.east.padding[size]);
 	$: westCSS = twJoin(css.icon.pointer, css.icon.west.wrapper, css.icon.west.padding[size]);
 	$: loadCSS = twJoin(load && css.icon.load);
-	$: iconCSS = twJoin(css.icon.base, css.icon.color[outline], css.icon.size[size]);
+	$: iconCSS = twJoin(css.icon.base, css.icon.color[mask ? 'mask' : outline], css.icon.size[size]);
 </script>
 
-<div class:mask class="relative ring-red-600" style="--fore:{colors[color][600]};--dark-fore:{colors[color][500]};">
-	<input {...$$restProps} class={inputCSS} />
+<div
+	class:mask
+	class="relative ring-red-600"
+	style="--fore:{colors[color][600]};--dark-fore:{colors[color][500]};"
+>
+	<input {...$$restProps} class:input-mask={mask} class={inputCSS} />
 	<slot />
 	{#if (dir === 'east' && eastIcon) || $$slots.east || load}
 		<span id="east" class={eastCSS}>
@@ -66,18 +72,18 @@
 </div>
 
 <style lang="postcss">
-
-	input:focus{
-		--tw-ring-color: var(--fore)
+	.input-mask,
+	input:focus {
+		--tw-ring-color: var(--fore);
 	}
 	.mask {
 		color: var(--fore);
-
 	}
 	@media (prefers-color-scheme: dark) {
-		input:focus{
-		--tw-ring-color: var(--dark-fore)
-	}
+		.input-mask,
+		input:focus {
+			--tw-ring-color: var(--dark-fore);
+		}
 		.mask {
 			color: var(--dark-fore);
 		}

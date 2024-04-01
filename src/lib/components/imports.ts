@@ -8,7 +8,6 @@ export { default as ULink } from './elements/link/link.svelte';
 export { default as UFieldSet } from './forms/field-set/field-set.svelte';
 export { default as UForm } from './forms/form/form.svelte';
 export { default as UInput } from './forms/input/input.svelte';
-export { default as UInputPin } from './forms/input/pin.svelte';
 export { default as USwitch } from './forms/switch/switch.svelte';
 // layouts
 export { default as UCard } from './layouts/card/card.svelte';

@@ -1,14 +1,16 @@
 import { shareUI } from '$lib/theme/share.js';
 const quick = {
-	va: {
-		ou: {
-			wg: 'ring-1 ring-inset ring-gray-300 dark:ring-gray-600 focus:ring-2'
+	va: /* variant */ {
+		ou: /* outline */ {
+			ld: /* light and dark */ 'ring-gray-300 dark:ring-gray-600',
+			ma: /* mask */ 'bg-transparent caret-current ring-current'
 		}
 	}
 };
 
 export const css = {
-	base: 'shadow-sm text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
+	base: 'shadow-sm text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed disabled:opacity-85 focus:outline-none border-0',
+	ring: 'ring-1 ring-inset focus:ring-2',
 	form: 'form-input',
 	rounded: 'rounded-md',
 	placeholder: 'placeholder-gray-400 dark:placeholder-gray-500',
@@ -44,19 +46,19 @@ export const css = {
 		}
 	},
 	variant: {
+		quick: quick.va.ou,
 		outline: {
-			white: `bg-white dark:bg-gray-900 ${quick.va.ou.wg}`,
-			gray: `bg-gray-50 dark:bg-gray-800 ${quick.va.ou.wg}`,
-			mask: 'bg-transparent ring-1 caret-current ring-inset ring-current focus:ring-2 '
+			light: 'bg-white dark:bg-gray-900',
+			dark: 'bg-gray-50 dark:bg-gray-800'
 		}
 	},
 	icon: {
 		base: 'flex-shrink-0',
 		load: 'animate-spin',
 		color: {
-			white: 'text-gray-400 dark:text-gray-600',
-			get gray(){ return this.white },
-			mask: 'text-inheret',
+			light: 'text-gray-400 dark:text-gray-600',
+			dark: 'text-gray-400 dark:text-gray-600',
+			mask: 'text-inheret'
 		},
 		size: {
 			xs: 'size-4',
