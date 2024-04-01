@@ -13,7 +13,7 @@
   },
   "hooks": {
     "before:init": [
-      "pnpm lint"
+      "pnpm lint "
     ]
   },
   "plugins": {
