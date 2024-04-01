@@ -38,8 +38,8 @@
 		css.variant.outline[outline],
 		mask ? css.variant.quick.ma : css.variant.quick.ld,
 		css.padding.base[size],
-		($$slots.east || load ) && css.padding.dir.east[size],
-		($$slots.west) && css.padding.dir.west[size],
+		($$slots.east || load) && css.padding.dir.east[size],
+		$$slots.west && css.padding.dir.west[size],
 		$$props.class
 	);
 	$: eastCSS = twJoin(css.icon.pointer, css.icon.east.wrapper, css.icon.east.padding[size]);

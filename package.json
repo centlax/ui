@@ -15,7 +15,7 @@
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --write . && prettier --check && eslint . --fix",
+		"lint": "prettier --write . && eslint . --fix",
 		"fmt": "prettier --write . && node scripts/import.js",
 		"test:integration": "playwright test",
 		"test:unit": "vitest"
@@ -69,8 +69,6 @@
 		"@release-it/conventional-changelog": "^8.0.1",
 		"changelogen": "^0.5.5",
 		"release-it": "^17.0.1"
-
-
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
