@@ -19,7 +19,7 @@
 	export let label: string = '';
 	export let size: Size = ui.size;
 	export let href: string = '';
-	export let square: boolean = false || !($$slots.east && $$slots.west);
+	export let square: boolean = false;
 	export let truncate: boolean = false;
 	export let icon: string = '';
 	export let eastIcon: string = '';
@@ -31,24 +31,17 @@
 	export let variant: ButtonVariant = 'solid';
 
 	/* config ==== === === === === === */
-	let as: 'button' | 'a' = href ? 'a' : 'button';
-	let button = true;
-
 	$: mask = handeMask(variant, color);
-
 	let isBase = ['white', 'black', 'gray'].includes(color) && ['solid', 'ghost'].includes(variant);
 	//@ts-ignore
 	$: base = variant === 'solid' ? css.variant.base.solid[color] : css.variant.base.ghost[color];
-
-
 	/* styles ==== === === === === === */
-	$: buttonClass = twMerge(
+	$: buttonCSS = twMerge(
 		twJoin(
 			css.base,
-			square ? undefined : shareUI.gap[size],
 			isBase ? base : `${css.variant.mask[variant]} mask`,
 			shareUI.text[size],
-			square ? shareUI.padding.square[size] : shareUI.padding.rectangle[size],
+			shareUI.padding[square ? 'square': 'rectangle'][size],
 			css.rounded,
 			block ? css.block : css.inline
 		),
@@ -59,10 +52,10 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <svelte:element
-	this={as}
+	this={href ? 'a' : 'button'}
 	{href}
 	disabled={disabled || loading}
-	class={buttonClass}
+	class={buttonCSS}
 	on:click
 	on:change
 	on:keydown
