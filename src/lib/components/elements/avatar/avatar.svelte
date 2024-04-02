@@ -1,10 +1,13 @@
 <script lang="ts">
+	import type { Size } from '$lib/types/index.js';
+	import { ui } from '$lib/ui.config.js';
 	import { createAvatar, melt } from '@melt-ui/svelte';
 
 	// props
 	export let src: string = '';
 	export let delay: number = 0;
 	export let text: string = '';
+	export let size: Size = ui.size;
 	// props
 	/*
         icon
@@ -24,7 +27,7 @@
 	});
 </script>
 
-<div class="avatar">
+<div {...$$restProps} class="avatar {size}">
 	<img use:melt={$image} alt="Avatar" />
 	<span use:melt={$fallback}>{text}</span>
 </div>

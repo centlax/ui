@@ -1,110 +1,121 @@
 <script lang="ts">
 	/* imports ==== === === === === === */
-	import type { ColorPallet, ColorShade, Size, XDir } from '$lib/types/index.js';
-	import { colors } from '$lib/theme/colors.js';
-	import { css } from './styles.js';
+	import type { Size } from '$lib/types/index.js';
+	import {
+		css,
+		type ButtonMask,
+		handeMask,
+		type ButtonColor,
+		type ButtonVariant
+	} from './styles.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import { shareUI, type BaseVariant } from '$lib/theme/share.js';
-	import Icon from '../icon/icon.svelte';
-	import { ui } from '$lib/theme/ui.config.js';
+	import Icon from '../-more/icon.svelte';
+	import { ui } from '$lib/ui.config.js';
 
+	/* types ==== === === === === === */
+	type Variant = 'solid' | 'ghost' | 'outline' | 'soft';
 	/* props ==== === === === === === */
 	export let label: string = '';
 	export let size: Size = ui.size;
 	export let href: string = '';
-	export let square: boolean = false;
+	export let square: boolean = false || !($$slots.east && $$slots.west);
 	export let truncate: boolean = false;
 	export let icon: string = '';
 	export let eastIcon: string = '';
 	export let westIcon: string = '';
 	export let loading: boolean = false;
 	export let disabled: boolean = false;
-	//export let dir: XDir = 'east';
 	export let block: boolean = false;
-	export let color: keyof ColorPallet = 'amber';
-	export let variant: 'solid' | 'ghost' | 'outline' | 'soft' = 'solid';
+	export let color: ButtonColor = 'amber';
+	export let variant: ButtonVariant = 'solid';
 
 	/* config ==== === === === === === */
 	let as: 'button' | 'a' = href ? 'a' : 'button';
 	let button = true;
-	let _variant = css.variant[variant](color);
-	let _color = _variant.color;
+
+	$: mask = handeMask(variant, color);
+
+	let isBase = ['white', 'black', 'gray'].includes(color) && ['solid', 'ghost'].includes(variant);
+	//@ts-ignore
+	$: base = variant === 'solid' ? css.variant.base.solid[color] : css.variant.base.ghost[color];
+
 
 	/* styles ==== === === === === === */
 	$: buttonClass = twMerge(
-		css.base,
-		_variant.base,
-		shareUI.gap[size],
-		shareUI.text[size],
-		square ? shareUI.padding.square[size] : shareUI.padding.rectangle[size],
-		shareUI.rounded[size],
-		block ? css.block : css.inline
-		/* if no default slot, also make it square */
+		twJoin(
+			css.base,
+			square ? undefined : shareUI.gap[size],
+			isBase ? base : `${css.variant.mask[variant]} mask`,
+			shareUI.text[size],
+			square ? shareUI.padding.square[size] : shareUI.padding.rectangle[size],
+			css.rounded,
+			block ? css.block : css.inline
+		),
+		$$props.class
 	);
-	$: iconClass = twJoin('');
+	$: iconCSS = twJoin('');
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
 <svelte:element
 	this={as}
 	{href}
 	disabled={disabled || loading}
-	style="
-		--fore:{_color.fore.light}; 
-		--back:{_color.back.light};
-		--hover-fore:{_color.hover.fore.light}; 
-		--hover-back:{_color.hover.back.light};
-
-		--dark-fore:{_color.fore.dark}; 
-		--dark-back:{_color.back.dark};
-		--dark-hover-fore:{_color.hover.fore.dark}; 
-		--dark-hover-back:{_color.hover.back.dark};
-	"
-	class:button
 	class={buttonClass}
+	on:click
+	on:change
+	on:keydown
+	on:keyup
+	on:mouseenter
+	on:mouseleave
 	{...$$restProps}
+	style="
+		--fore:{mask.fore.light}; --back:{mask.back.light};
+		--hover-fore:{mask.hover.fore.light}; --hover-back:{mask.hover.back.light};
+		--dark-fore:{mask.fore.dark}; --dark-back:{mask.back.dark};
+		--dark-hover-fore:{mask.hover.fore.dark}; --dark-hover-back:{mask.hover.back.dark};
+	"
 >
 	<!--begin-->
 	<slot name="east" {disabled} {loading}>
-		<Icon name={icon || eastIcon} class="{iconClass} icon" />
+		<Icon name={icon || eastIcon} class={iconCSS} />
 	</slot>
 	<slot>
-		<span class="{truncate ? css.truncate : ''} span">
+		<span class={truncate ? css.truncate : undefined}>
 			{label}
 		</span>
 	</slot>
 	<slot name="west" {disabled} {loading}>
-		<Icon name={westIcon} class=" icon" />
+		<Icon name={westIcon} class={iconCSS} />
 	</slot>
 	<!--end-->
 </svelte:element>
 
 <style lang="postcss">
-	.button,
-	.button:hover:disabled {
-		color: var(--fore);
-		background-color: var(--back);
+	.mask {
+		--color: var(--fore);
+		--bg-color: var(--back);
+		--hover-color: var(--hover-fore);
+		--hover-bg-color: var(--hover-back);
 	}
-	.button:hover {
-		color: var(--hover-fore);
-		background-color: var(--hover-back);
-	}
-	.button:focus-visible {
-		outline-color: var(--back);
+	:global(.dark) .mask {
+		--color: var(--dark-fore);
+		--bg-color: var(--dark-back);
+		--hover-color: var(--dark-hover-fore);
+		--hover-bg-color: var(--dark-hover-back);
 	}
 
-	@media (prefers-color-scheme: dark) {
-		.button,
-		.button:hover:disabled {
-			color: var(--dark-fore);
-			background-color: var(--dark-back);
-		}
-
-		.button:hover {
-			color: var(--dark-hover-fore);
-			background-color: var(--dark-hover-back);
-		}
-		.button:focus-visible {
-			outline-color: var(--dark-back);
-		}
+	.mask,
+	.mask:disabled:hover {
+		color: var(--color);
+		background-color: var(--bg-color);
+	}
+	.mask:hover {
+		color: var(--hover-color);
+		background-color: var(--hover-bg-color);
+	}
+	.mask:focus-visible {
+		outline-color: var(--bg-color);
 	}
 </style>

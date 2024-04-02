@@ -3,7 +3,7 @@ import { iconsPlugin, getIconCollections } from '@egoist/tailwindcss-icons';
 import { colors } from './src/lib/theme/colors';
 import forms from '@tailwindcss/forms';
 export default {
-	darkMode: 'class',
+	darkMode: 'selector',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		colors: colors

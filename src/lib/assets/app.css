@@ -9,3 +9,5 @@
 ::selection {
 	@apply bg-primary-500/50;
 }
+
+/* make the page unmovable */

@@ -5,11 +5,8 @@ const componentsDir = 'src/lib/components';
 const importsFile = path.join(componentsDir, 'imports.ts');
 
 const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
-
 const clearAndUpper = (text) => text.replace(/-/, '').toUpperCase();
 
-// Updated generateImports to only comment for the first subdirectory
-// and treat same-name-as-folder files as index.svelte.
 const generateImports = (dirPath, imports = [], depth = 0) => {
 	const files = fs.readdirSync(dirPath);
 
@@ -18,7 +15,6 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 		const stats = fs.statSync(filePath);
 
 		if (stats.isDirectory() && depth === 0) {
-			// Only add comment for the first subdirectory
 			imports.push(`// ${file}`);
 			imports = generateImports(filePath, imports, depth + 1);
 		} else if (stats.isDirectory()) {
@@ -27,12 +23,21 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 			const componentDir = path.basename(path.dirname(filePath));
 			const fileNameWithoutExtension = path.basename(file, '.svelte');
 			const pascalCaseDirName = toPascalCase(componentDir);
-			let importName = pascalCaseDirName;
+			let importName;
 
-			// Check if the filename matches the directory name or it's not an index file
-			if (fileNameWithoutExtension !== 'index' && fileNameWithoutExtension !== componentDir) {
-				const pascalCaseFileName = toPascalCase(fileNameWithoutExtension);
-				importName = `${pascalCaseDirName}${pascalCaseFileName}`;
+			// Check if the directory is named 'other'
+			if (componentDir === '-more') {
+				// If it's the 'other' directory, use the file name as the import name
+				importName = toPascalCase(fileNameWithoutExtension);
+			} else {
+				// Otherwise, use the directory name as a prefix
+				importName = pascalCaseDirName;
+
+				// Check if the filename matches the directory name or it's not an index file
+				if (fileNameWithoutExtension !== 'index' && fileNameWithoutExtension !== componentDir) {
+					const pascalCaseFileName = toPascalCase(fileNameWithoutExtension);
+					importName = `${pascalCaseDirName}${pascalCaseFileName}`;
+				}
 			}
 
 			const importPath = `./${path.relative(componentsDir, filePath).replace(/\\/g, '/')}`;
@@ -45,6 +50,5 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 
 const imports = generateImports(componentsDir);
 const importsContent = imports.join('\n');
-
 fs.writeFileSync(importsFile, importsContent);
 console.log(`Imports generated and written to ${importsFile}`);

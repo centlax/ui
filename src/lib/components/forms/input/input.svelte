@@ -5,7 +5,7 @@
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import { css } from './styles.js';
 	import { UIcon } from '$lib/index.js';
-	import { ui } from '$lib/theme/ui.config.js';
+	import { ui } from '$lib/ui.config.js';
 	import { colors } from '$lib/theme/colors.js';
 
 	/* props ==== === === === === === */
