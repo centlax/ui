@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { twMerge, twJoin } from 'tailwind-merge';
+	let className: string | string[] = '';
+	export { className as class };
 
 	const css = {
 		base: 'animate-pulse',
@@ -7,7 +9,7 @@
 		rounded: 'rounded-md'
 	};
 
-	$: skeletonClass = twMerge(twJoin(css.base, css.background, css.rounded), $$props.class);
+	$: skeletonCSS = twMerge(twJoin(css.base, css.background, css.rounded), className);
 </script>
 
-<div class={skeletonClass} {...$$restProps} />
+<div class={skeletonCSS} />

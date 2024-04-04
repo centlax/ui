@@ -16,6 +16,6 @@ export const ui: UI = {
 		load: 'i-fluent-arrow-sync-24-regular'
 	},
 	layout: {
-		constrained: 'max-w-7xl'
+		constrained: 'max-w-screen-2xl'
 	}
 };

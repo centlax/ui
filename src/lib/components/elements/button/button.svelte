@@ -1,15 +1,9 @@
 <script lang="ts">
 	/* imports ==== === === === === === */
-	import type { Size } from '$lib/types/index.js';
-	import {
-		css,
-		type ButtonMask,
-		handeMask,
-		type ButtonColor,
-		type ButtonVariant
-	} from './styles.js';
+	import type { Size, XDir } from '$lib/types/index.js';
+	import { css, handeMask, type ButtonColor, type ButtonVariant } from './styles.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
-	import { shareUI, type BaseVariant } from '$lib/theme/share.js';
+	import { shareUI } from '$lib/theme/share.js';
 	import Icon from '../-more/icon.svelte';
 	import { ui } from '$lib/ui.config.js';
 
@@ -21,9 +15,10 @@
 	export let href: string = '';
 	export let square: boolean = false;
 	export let truncate: boolean = false;
+	export let dir: XDir = 'east';
 	export let icon: string = '';
-	export let eastIcon: string = '';
-	export let westIcon: string = '';
+	export let eastIcon: string = dir === 'east' ? icon : '';
+	export let westIcon: string = dir === 'west' ? icon : '';
 	export let loading: boolean = false;
 	export let disabled: boolean = false;
 	export let block: boolean = false;
@@ -41,8 +36,9 @@
 			css.base,
 			isBase ? base : `${css.variant.mask[variant]} mask`,
 			shareUI.text[size],
-			shareUI.padding[square ? 'square': 'rectangle'][size],
+			shareUI.padding[square ? 'square' : 'rectangle'][size],
 			css.rounded,
+			shareUI.gap[size],
 			block ? css.block : css.inline
 		),
 		$$props.class
@@ -71,17 +67,21 @@
 	"
 >
 	<!--begin-->
-	<slot name="east" {disabled} {loading}>
-		<Icon name={icon || eastIcon} class={iconCSS} />
-	</slot>
+	{#if $$slots.east || eastIcon}
+		<slot name="east" {disabled} {loading}>
+			<Icon name={eastIcon} class={iconCSS} />
+		</slot>
+	{/if}
 	<slot>
 		<span class={truncate ? css.truncate : undefined}>
 			{label}
 		</span>
 	</slot>
-	<slot name="west" {disabled} {loading}>
-		<Icon name={westIcon} class={iconCSS} />
-	</slot>
+	{#if $$slots.west || westIcon}
+		<slot name="west" {disabled} {loading}>
+			<Icon name={westIcon} class={iconCSS} />
+		</slot>
+	{/if}
 	<!--end-->
 </svelte:element>
 

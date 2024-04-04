@@ -37,7 +37,7 @@ export const css = {
 			solid: `shadow-sm text-white dark:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`,
 			ghost: `focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current`,
 			outline: `ring-1 ring-inset ring-current focus-visible:ring-2 focus-visible:ring-current`,
-			soft: `focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current`,
+			soft: `focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-current`
 		}
 	},
 	icon: {
