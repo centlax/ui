@@ -7,16 +7,18 @@
 	import { UIcon } from '$lib/index.js';
 	import { ui } from '$lib/ui.config.js';
 	import { colors } from '$lib/theme/colors.js';
-
+	import { getContext } from 'svelte';
+	import type { FieldSetContext } from '../field-set/index.js';
+	const fieldSet: FieldSetContext = getContext('FieldSet');
 	/* props ==== === === === === === */
-	export let size: Size = ui.size;
+	export let size: Size = fieldSet.size || ui.size;
 	export let dir: XDir = 'east';
 	export let load: boolean = false;
 	export let icon: string = '';
 	export let eastIcon: string = icon;
 	export let westIcon = '';
 	export let outline: 'light' | 'dark' = 'light';
-	export let color: keyof ColorPallet = 'primary';
+	export let color: keyof ColorPallet = fieldSet.color || 'primary';
 	export let mask: boolean = false;
 
 	/* config ==== === === === === === */
@@ -26,6 +28,8 @@
 		}
 		return icon || eastIcon;
 	};
+
+	$: wrapperCSS = twMerge(twJoin(css.wrapper));
 
 	$: inputCSS = twMerge(
 		css.base,
@@ -50,7 +54,7 @@
 
 <div
 	class:mask
-	class="relative ring-red-600"
+	class={wrapperCSS}
 	style="--fore:{colors[color][600]};--dark-fore:{colors[color][500]};"
 >
 	<input {...$$restProps} class:input-mask={mask} class={inputCSS} />

@@ -22,7 +22,7 @@
 	export let loading: boolean = false;
 	export let disabled: boolean = false;
 	export let block: boolean = false;
-	export let color: ButtonColor = 'amber';
+	export let color: ButtonColor = 'primary';
 	export let variant: ButtonVariant = 'solid';
 
 	/* config ==== === === === === === */

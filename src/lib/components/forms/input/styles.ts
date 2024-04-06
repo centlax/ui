@@ -9,7 +9,8 @@ const quick = {
 };
 
 export const css = {
-	base: 'shadow-sm text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed disabled:opacity-85 focus:outline-none border-0',
+	wrapper: 'relative has-[:disabled]:opacity-75',
+	base: 'shadow-sm text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed focus:outline-none border-0',
 	ring: 'ring-1 ring-inset focus:ring-2',
 	form: 'form-input',
 	rounded: 'rounded-md',

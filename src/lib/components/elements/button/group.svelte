@@ -1,14 +1,20 @@
 <script lang="ts">
-	import { Button, type ButtonProps } from 'bits-ui';
-	type $$Props = ButtonProps;
 </script>
 
-<Button.Root
-	{...$$restProps}
-	id="h"
-	class="inline-flex h-12 items-center justify-center rounded-input bg-dark
-    px-[21px] text-[15px] font-semibold text-background shadow-mini
-    hover:bg-dark/95 active:scale-98 active:transition-all"
->
-	Unlimited
-</Button.Root>
+<span class="isolate inline-flex rounded-md shadow-sm">
+	<button
+		type="button"
+		class="relative inline-flex items-center rounded-l-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+		>Years</button
+	>
+	<button
+		type="button"
+		class="relative -ml-px inline-flex items-center bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+		>Months</button
+	>
+	<button
+		type="button"
+		class="relative -ml-px inline-flex items-center rounded-r-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-10"
+		>Days</button
+	>
+</span>

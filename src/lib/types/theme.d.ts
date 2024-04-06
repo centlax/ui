@@ -1,3 +1,28 @@
+type Fore =
+	| 'rose'
+	| 'pink'
+	| 'red'
+	| 'fuchsia'
+	| 'purple'
+	| 'violet'
+	| 'indigo'
+	| 'blue'
+	| 'sky'
+	| 'cyan'
+	| 'teal'
+	| 'emerald'
+	| 'green'
+	| 'lime'
+	| 'yellow'
+	| 'amber'
+	| 'orange'
+	| 'magnum';
+type Back = 'cool' | 'slate' | 'zinc' | 'neutral' | 'stone' | 'ashed';
+
+export interface Colors {
+	fore: Fore;
+	back: Back;
+}
 export interface ColorShade {
 	0: string;
 	50: string;
@@ -40,8 +65,6 @@ export interface ColorPallet {
 	zinc: ColorShades;
 	neutral: ColorShades;
 	stone: ColorShades;
-	light: ColorShades;
-	dark: ColorShades;
 	cool: ColorShades;
 	ashed: ColorShades;
 	magnum: ColorShade;

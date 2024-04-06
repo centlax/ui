@@ -1,6 +1,9 @@
 // data
 export { default as UList } from './data/-more/list.svelte';
 export { default as UStat } from './data/-more/stat.svelte';
+export { default as UTableFoot } from './data/table/foot.svelte';
+export { default as UTableHead } from './data/table/head.svelte';
+export { default as UTableRow } from './data/table/row.svelte';
 export { default as UTable } from './data/table/table.svelte';
 // elements
 export { default as UBadge } from './elements/-more/badge.svelte';
@@ -31,6 +34,7 @@ export { default as UContainer } from './layouts/container/container.svelte';
 export { default as UDivider } from './layouts/divider/divider.svelte';
 export { default as UFooter } from './layouts/footer/footer.svelte';
 export { default as UHeader } from './layouts/header/header.svelte';
+export { default as UHeaderLinks } from './layouts/header/links.svelte';
 export { default as UPageCard } from './layouts/page/card.svelte';
 export { default as UPage } from './layouts/page/page.svelte';
 export { default as UPanelAside } from './layouts/panel/aside.svelte';
@@ -44,10 +48,12 @@ export { default as UColorTheme } from './misc/color/theme.svelte';
 export { default as ULogo } from './misc/logo/logo.svelte';
 export { default as UPlaceholder } from './misc/placeholder/placeholder.svelte';
 // navigations
-export { default as UNavX } from './navigations/nav/x.svelte';
-export { default as UNavY } from './navigations/nav/y.svelte';
+export { default as UCommandPallet } from './navigations/command/pallet.svelte';
+export { default as UCommandPreview } from './navigations/command/preview.svelte';
+export { default as UHorizontalNavigation } from './navigations/horizontal/navigation.svelte';
 export { default as UPagination } from './navigations/pagination/pagination.svelte';
 export { default as UTab } from './navigations/tab/tab.svelte';
+export { default as UVerticalNavigation } from './navigations/vertical/navigation.svelte';
 // notifications
 export { default as UAlert } from './notifications/alert/alert.svelte';
 export { default as UToast } from './notifications/toast/toast.svelte';

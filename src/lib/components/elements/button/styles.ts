@@ -55,7 +55,7 @@ export function handeMask(variant: ButtonVariant, color: ButtonColor): ButtonMas
 				back: { light: colors[color][600], dark: colors[color][500] },
 				hover: {
 					fore: { light: colors['white'], dark: colors['gray'][900] },
-					back: { light: colors[color][700], dark: colors[color][600] }
+					back: { light: colors[color][700], dark: colors[color][400] }
 				}
 			};
 		case 'ghost':

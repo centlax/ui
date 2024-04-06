@@ -1,4 +1,5 @@
-export const colors = {
+import { ui } from '../ui.config.js';
+const tailwind = {
 	inherit: 'inherit',
 	current: 'currentColor',
 	transparent: 'transparent',
@@ -29,6 +30,19 @@ export const colors = {
 		800: '#9d174d',
 		900: '#831843',
 		950: '#500724'
+	},
+	red: {
+		50: '#fef2f2',
+		100: '#fee2e2',
+		200: '#fecaca',
+		300: '#fca5a5',
+		400: '#f87171',
+		500: '#ef4444',
+		600: '#dc2626',
+		700: '#b91c1c',
+		800: '#991b1b',
+		900: '#7f1d1d',
+		950: '#450a0a'
 	},
 	fuchsia: {
 		50: '#fdf4ff',
@@ -70,7 +84,6 @@ export const colors = {
 		950: '#2e1065'
 	},
 	indigo: {
-		0: 'transparent',
 		50: '#eef2ff',
 		100: '#e0e7ff',
 		200: '#c7d2fe',
@@ -136,7 +149,6 @@ export const colors = {
 		950: '#042f2e'
 	},
 	emerald: {
-		0: 'transparent',
 		50: '#ecfdf5',
 		100: '#d1fae5',
 		200: '#a7f3d0',
@@ -163,7 +175,6 @@ export const colors = {
 		950: '#052e16'
 	},
 	lime: {
-		0: 'transparent',
 		50: '#f7fee7',
 		100: '#ecfccb',
 		200: '#d9f99d',
@@ -190,7 +201,6 @@ export const colors = {
 		950: '#422006'
 	},
 	amber: {
-		0: 'transparent',
 		50: '#fffbeb',
 		100: '#fef3c7',
 		200: '#fde68a',
@@ -216,19 +226,31 @@ export const colors = {
 		900: '#7c2d12',
 		950: '#431407'
 	},
-	red: {
-		0: 'transparent',
-		50: '#fef2f2',
-		100: '#fee2e2',
-		200: '#fecaca',
-		300: '#fca5a5',
-		400: '#f87171',
-		500: '#ef4444',
-		600: '#dc2626',
-		700: '#b91c1c',
-		800: '#991b1b',
-		900: '#7f1d1d',
-		950: '#450a0a'
+	magnum: {
+		50: '#fff9ed',
+		100: '#fef2d6',
+		200: '#fce0ac',
+		300: '#f9c978',
+		400: '#f7b155',
+		500: '#f38d1c',
+		600: '#e47312',
+		700: '#bd5711',
+		800: '#964516',
+		900: '#793a15',
+		950: '#411c09'
+	},
+	cool: {
+		50: '#f9fafb',
+		100: '#f3f4f6',
+		200: '#e5e7eb',
+		300: '#d1d5db',
+		400: '#9ca3af',
+		500: '#6b7280',
+		600: '#4b5563',
+		700: '#374151',
+		800: '#1f2937',
+		900: '#111827',
+		950: '#030712'
 	},
 	slate: {
 		50: '#f8fafc',
@@ -282,63 +304,6 @@ export const colors = {
 		900: '#1c1917',
 		950: '#0c0a09'
 	},
-	light: {
-		50: '#fdfdfd',
-		100: '#fcfcfc',
-		200: '#fafafa',
-		300: '#f8f9fa',
-		400: '#f6f6f6',
-		500: '#f2f2f2',
-		600: '#f1f3f5',
-		700: '#e9ecef',
-		800: '#dee2e6',
-		900: '#dde1e3',
-		950: '#d8dcdf'
-	},
-
-	dark: {
-		50: '#4a4a4a',
-		100: '#3c3c3c',
-		200: '#323232',
-		300: '#2d2d2d',
-		400: '#222222',
-		500: '#1f1f1f',
-		600: '#1c1c1e',
-		700: '#1b1b1b',
-		800: '#181818',
-		900: '#0f0f0f',
-		950: '#080808'
-	},
-
-	// ADDED - COLORS ! cool is same as gray, we use gray as dyanamic for all gray shades
-	cool: {
-		50: '#f9fafb',
-		100: '#f3f4f6',
-		200: '#e5e7eb',
-		300: '#d1d5db',
-		400: '#9ca3af',
-		500: '#6b7280',
-		600: '#4b5563',
-		700: '#374151',
-		800: '#1f2937',
-		900: '#111827',
-		950: '#030712'
-	},
-
-	magnum: {
-		'50': '#fff9ed',
-		'100': '#fef2d6',
-		'200': '#fce0ac',
-		'300': '#f9c978',
-		'400': '#f7b155',
-		'500': '#f38d1c',
-		'600': '#e47312',
-		'700': '#bd5711',
-		'800': '#964516',
-		'900': '#793a15',
-		'950': '#411c09'
-	},
-
 	ashed: {
 		50: '#f9f9f8',
 		100: '#f1f0ee',
@@ -351,20 +316,13 @@ export const colors = {
 		800: '#45403a',
 		900: '#2c2823',
 		950: '#161511'
-	},
-	get primary() {
-		return this.indigo;
-	},
-	get success() {
-		return this.green;
-	},
-	get warning() {
-		return this.yellow;
-	},
-	get danger() {
-		return this.red;
-	},
-	get gray() {
-		return this.cool;
 	}
+};
+export const colors = {
+	...tailwind,
+	primary: tailwind[ui.colors?.primary || 'indigo'],
+	gray: tailwind[ui.colors?.gray || 'cool'],
+	success: tailwind['green'],
+	warning: tailwind['yellow'],
+	danger: tailwind['red']
 };
