@@ -30,7 +30,7 @@
 		container: 'mt-1 relative',
 		hint: 'text-primary-600 dark:text-primary-500 font-medium',
 		help: 'text-gray-600 dark:text-gray-500',
-		error: 'text-red-600 dark:text-red-500',
+		error: 'text-red-600 dark:text-red-500'
 	};
 	const labelCSS = twJoin(css.label.base, required ? css.label.required : '');
 </script>
@@ -42,7 +42,7 @@
 			<label class={labelCSS}>{label}</label>
 		</slot>
 		<slot name="hint">
-			<a href={href} class={css.hint}>{hint}</a>
+			<a {href} class={css.hint}>{hint}</a>
 		</slot>
 	</div>
 	<slot />
