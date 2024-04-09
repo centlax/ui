@@ -4,12 +4,13 @@
 	import { ui } from '$lib/ui.config.js';
 	export let mode: 'filled' | 'regular' = 'filled';
 	export let size: Size = ui.size;
+	export let move: boolean = false;
 	let classProp = '';
 	export { classProp as class };
-	let now = new Date();
 	const css = {
-		base: 'rotate-[45deg] transform-gpu',
+		base: 'transition duration-300 ease-in-out rotate-[45deg] transform-gpu',
 		color: 'text-primary-600 dark:text-primary-500',
+		hover: 'group-hover:rotate-[135deg] hover:rotate-[135deg]',
 		size: {
 			xs: 'size-8',
 			sm: 'size-10',
@@ -22,7 +23,7 @@
 			regular: 'i-fluent-target-arrow-16-regular'
 		}
 	};
-	$: logoCSS = twMerge(twJoin(css.base, css.size[size], css.color), classProp);
+	$: logoCSS = twMerge(twJoin(css.base, css.size[size], css.color, move ? css.hover: ''), classProp);
 </script>
 
 <span class="{css.mode[mode]} {logoCSS}" />

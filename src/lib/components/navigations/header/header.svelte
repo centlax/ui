@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { UButton, UColorMode, ULogo } from '$lib/index.js';
+	import { UButton, UColorMode, ULink, ULogo } from '$lib/index.js';
 	import { twJoin } from 'tailwind-merge';
 	export let title: string = 'Centlax';
 
@@ -13,13 +13,13 @@
 	<nav class="flex items-center justify-between gap-x-6 py-2" aria-label="Global">
 		<div class="flex lg:flex-1">
 			<slot name="east">
-				<a href="/" class="-ml-1 flex items-center gap-1">
+				<ULink href="/" class="group -ml-1 flex items-center gap-1">
 					<span class="sr-only">Centlax</span>
 					<slot name="logo">
-						<ULogo />
+						<ULogo move />
 					</slot>
 					<span class="font-medium text-xl">{title}</span>
-				</a>
+				</ULink>
 			</slot>
 		</div>
 		<div class="hidden lg:flex lg:gap-x-12">

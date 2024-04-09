@@ -22,8 +22,6 @@
 		<UHeaderLinks {links} />
 	</UHeader>
 	<ULink />
-
-
 </UContainer>
 
 
