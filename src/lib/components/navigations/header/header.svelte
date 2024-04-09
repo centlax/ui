@@ -5,10 +5,11 @@
 
 	const css = {
 		base: 'mx-auto text-gray-900 dark:text-white bg-white dark:bg-gray-900',
-		fixed: 'sticky top-0 z-100 backdrop-blur-md',
+		fixed: 'sticky top-0 z-100 backdrop-blur-md'
 	};
-	$:headerCSS = twJoin(css.base, css.fixed);
+	$: headerCSS = twJoin(css.base, css.fixed);
 </script>
+
 <header class={headerCSS}>
 	<nav class="flex items-center justify-between gap-x-6 py-2" aria-label="Global">
 		<div class="flex lg:flex-1">

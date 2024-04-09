@@ -20,10 +20,7 @@
 		}
 	};
 	export let links: Link[];
-	$: tooltipCSS = twJoin(
-		css.tooltip.base,
-		css.tooltip.hover
-	)
+	$: tooltipCSS = twJoin(css.tooltip.base, css.tooltip.hover);
 </script>
 
 {#each links as link}

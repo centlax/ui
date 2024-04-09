@@ -2,6 +2,7 @@
 	import { twMerge } from 'tailwind-merge';
 
 	export let as: string = 'div';
+	export let rounded: boolean = true;
 	let cardUI: string = '';
 	export { cardUI as class };
 	export let northUI: string = '';
@@ -32,7 +33,7 @@
 	};
 	$: cardCSS = twMerge(
 		css.base,
-		css.rounded,
+		rounded && css.rounded,
 		css.divide,
 		css.ring,
 		css.shadow,

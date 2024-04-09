@@ -7,9 +7,11 @@
 	import { shareUI } from '$lib/theme/share.js';
 	import Icon from '../-more/icon.svelte';
 	import { ui } from '$lib/ui.config.js';
-	import { Button } from 'bits-ui';
+	import { Button, type ButtonProps } from 'bits-ui';
+	import type { HTMLButtonAttributes } from 'svelte/elements';
 
 	/* props */
+	type $$restProps = ButtonProps;
 	export let label: string = '';
 	let classProp = '';
 	export { classProp as class };

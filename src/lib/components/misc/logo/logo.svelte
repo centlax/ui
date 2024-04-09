@@ -23,7 +23,10 @@
 			regular: 'i-fluent-target-arrow-16-regular'
 		}
 	};
-	$: logoCSS = twMerge(twJoin(css.base, css.size[size], css.color, move ? css.hover: ''), classProp);
+	$: logoCSS = twMerge(
+		twJoin(css.base, css.size[size], css.color, move ? css.hover : ''),
+		classProp
+	);
 </script>
 
 <span class="{css.mode[mode]} {logoCSS}" />
