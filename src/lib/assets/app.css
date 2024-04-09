@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	@apply text-gray-900 dark:text-white;
+}
+
 * {
 	@apply caret-primary-600 dark:caret-primary-500;
 }

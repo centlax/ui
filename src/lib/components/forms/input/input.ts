@@ -1,16 +1,11 @@
+import type { Colors } from '$lib/theme/colors.js';
 import { shareUI } from '$lib/theme/share.js';
-const quick = {
-	va: /* variant */ {
-		ou: /* outline */ {
-			ld: /* light and dark */ 'ring-gray-300 dark:ring-gray-600',
-			ma: /* mask */ 'bg-transparent caret-current ring-current'
-		}
-	}
-};
+export type InputVariant = 'outline' | 'none';
+export type InputColor = Colors['fore'] | Colors['root'] | 'white';
 
 export const css = {
 	wrapper: 'relative has-[:disabled]:opacity-75',
-	base: 'shadow-sm text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed focus:outline-none border-0',
+	base: 'shadow-sm ring-inset text-gray-900 dark:text-white font-medium relative block w-full disabled:cursor-not-allowed focus:outline-none border-0',
 	ring: 'ring-1 ring-inset focus:ring-2',
 	form: 'form-input',
 	rounded: 'rounded-md',
@@ -47,10 +42,15 @@ export const css = {
 		}
 	},
 	variant: {
-		quick: quick.va.ou,
 		outline: {
-			light: 'bg-white dark:bg-gray-900',
-			dark: 'bg-gray-50 dark:bg-gray-800'
+			white: `shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-600 dark:focus:ring-primary-500`,
+			gray: `shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-primary-500 dark:focus:ring-primary-400`,
+			transparent: `shadow-sm bg-transparent text-gray-900 dark:text-white ring-1 ring-inset  focus:ring-2`
+		},
+		none: {
+			white: `bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-0 focus:shadow-none`,
+			gray: `bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-0 focus:shadow-none`,
+			transparent: `bg-transparent focus:ring-0 focus:shadow-none`
 		}
 	},
 	icon: {

@@ -1,16 +1,18 @@
 <script lang="ts">
-	/* imports ==== === === === === === */
+	/* imports */
+	import './button.css';
 	import type { Size, XDir } from '$lib/types/index.js';
-	import { css, handeMask, type ButtonColor, type ButtonVariant } from './styles.js';
+	import { css, handleMask, type ButtonColor, type ButtonVariant } from './button.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import { shareUI } from '$lib/theme/share.js';
 	import Icon from '../-more/icon.svelte';
 	import { ui } from '$lib/ui.config.js';
+	import { Button } from 'bits-ui';
 
-	/* types ==== === === === === === */
-	type Variant = 'solid' | 'ghost' | 'outline' | 'soft';
-	/* props ==== === === === === === */
+	/* props */
 	export let label: string = '';
+	let classProp = '';
+	export { classProp as class };
 	export let size: Size = ui.size;
 	export let href: string = '';
 	export let square: boolean = false;
@@ -25,32 +27,32 @@
 	export let color: ButtonColor = 'primary';
 	export let variant: ButtonVariant = 'solid';
 
-	/* config ==== === === === === === */
-	$: mask = handeMask(variant, color);
+	/* config */
+	$: mask = handleMask(variant, color);
 	let isBase = ['white', 'black', 'gray'].includes(color) && ['solid', 'ghost'].includes(variant);
-	//@ts-ignore
+	// @ts-ignore bc type mistmatch, but will only run if isBase is true, which insures right index at runtime
 	$: base = variant === 'solid' ? css.variant.base.solid[color] : css.variant.base.ghost[color];
-	/* styles ==== === === === === === */
+
+	/* styles */
 	$: buttonCSS = twMerge(
 		twJoin(
 			css.base,
-			isBase ? base : `${css.variant.mask[variant]} mask`,
+			isBase
+				? base
+				: `${css.variant.mask[variant]} button` /** button implemeted inside styles.css */,
 			shareUI.text[size],
 			shareUI.padding[square ? 'square' : 'rectangle'][size],
 			css.rounded,
 			shareUI.gap[size],
 			block ? css.block : css.inline
 		),
-		$$props.class
+		classProp
 	);
 	$: iconCSS = twJoin('');
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<svelte:element
-	this={href ? 'a' : 'button'}
+<Button.Root
 	{href}
-	disabled={disabled || loading}
 	class={buttonCSS}
 	on:click
 	on:change
@@ -60,11 +62,14 @@
 	on:mouseleave
 	{...$$restProps}
 	style="
-		--fore:{mask.fore.light}; --back:{mask.back.light};
-		--hover-fore:{mask.hover.fore.light}; --hover-back:{mask.hover.back.light};
-		--dark-fore:{mask.fore.dark}; --dark-back:{mask.back.dark};
-		--dark-hover-fore:{mask.hover.fore.dark}; --dark-hover-back:{mask.hover.back.dark};
-	"
+	--fore:{mask.fore.light}; 
+	--back:{mask.back.light}; 
+	--hover-fore:{mask.hover.fore.light}; 
+	--hover-back:{mask.hover.back.light}; 
+	--dark-fore:{mask.fore.dark}; 
+	--dark-back:{mask.back.dark}; 
+	--dark-hover-fore:{mask.hover.fore.dark}; 
+	--dark-hover-back:{mask.hover.back.dark};"
 >
 	<!--begin-->
 	{#if $$slots.east || eastIcon}
@@ -83,32 +88,4 @@
 		</slot>
 	{/if}
 	<!--end-->
-</svelte:element>
-
-<style lang="postcss">
-	.mask {
-		--color: var(--fore);
-		--bg-color: var(--back);
-		--hover-color: var(--hover-fore);
-		--hover-bg-color: var(--hover-back);
-	}
-	:global(.dark) .mask {
-		--color: var(--dark-fore);
-		--bg-color: var(--dark-back);
-		--hover-color: var(--dark-hover-fore);
-		--hover-bg-color: var(--dark-hover-back);
-	}
-
-	.mask,
-	.mask:disabled:hover {
-		color: var(--color);
-		background-color: var(--bg-color);
-	}
-	.mask:hover {
-		color: var(--hover-color);
-		background-color: var(--hover-bg-color);
-	}
-	.mask:focus-visible {
-		outline-color: var(--bg-color);
-	}
-</style>
+</Button.Root>

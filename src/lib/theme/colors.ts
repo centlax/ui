@@ -1,10 +1,11 @@
-import { ui } from '../ui.config.js';
-const tailwind = {
+const lone = {
 	inherit: 'inherit',
 	current: 'currentColor',
 	transparent: 'transparent',
 	black: '#000',
-	white: '#fff',
+	white: '#fff'
+};
+const fore = {
 	rose: {
 		50: '#fff1f2',
 		100: '#ffe4e6',
@@ -200,6 +201,19 @@ const tailwind = {
 		900: '#713f12',
 		950: '#422006'
 	},
+	twine: {
+		50: '#f9f5ed',
+		100: '#f2e6cf',
+		200: '#e6cca2',
+		300: '#d8ab6c',
+		400: '#cd914b',
+		500: '#bc7836',
+		600: '#a15e2d',
+		700: '#814527',
+		800: '#6d3926',
+		900: '#5e3125',
+		950: '#361912'
+	},
 	amber: {
 		50: '#fffbeb',
 		100: '#fef3c7',
@@ -238,7 +252,10 @@ const tailwind = {
 		800: '#964516',
 		900: '#793a15',
 		950: '#411c09'
-	},
+	}
+};
+
+const back = {
 	cool: {
 		50: '#f9fafb',
 		100: '#f3f4f6',
@@ -316,13 +333,104 @@ const tailwind = {
 		800: '#45403a',
 		900: '#2c2823',
 		950: '#161511'
+	},
+	light: {
+		0: '#fdfdfd',
+		50: '#fdfdfd',
+		100: '#fcfcfc',
+		200: '#fafafa',
+		300: '#f8f9fa',
+		400: '#f6f6f6',
+		500: '#f2f2f2',
+		600: '#f1f3f5',
+		700: '#e9ecef',
+		800: '#dee2e6',
+		900: '#dde1e3',
+		950: '#d8dcdf'
+	},
+
+	dark: {
+		0: '#4a4a4a',
+		50: '#4a4a4a',
+		100: '#3c3c3c',
+		200: '#323232',
+		300: '#2d2d2d',
+		400: '#222222',
+		500: '#1f1f1f',
+		600: '#1c1c1e',
+		700: '#1b1b1b',
+		800: '#181818',
+		900: '#0f0f0f',
+		950: '#080808'
 	}
 };
-export const colors = {
-	...tailwind,
-	primary: tailwind[ui.colors?.primary || 'indigo'],
-	gray: tailwind[ui.colors?.gray || 'cool'],
-	success: tailwind['green'],
-	warning: tailwind['yellow'],
-	danger: tailwind['red']
+
+const mode = {
+	success: {
+		50: '#e7ffe4',
+		100: '#c8ffc4',
+		200: '#96ff90',
+		300: '#53ff50',
+		400: '#00ff04',
+		500: '#00e60a',
+		600: '#00b80c',
+		700: '#008b0a',
+		800: '#076d0f',
+		900: '#0b5c13',
+		950: '#003407'
+	},
+	warning: {
+		50: '#fbffe7',
+		100: '#f4ffc1',
+		200: '#eeff86',
+		300: '#ecff41',
+		400: '#f2ff0d',
+		500: '#ffff00',
+		600: '#d1bf00',
+		700: '#a68b02',
+		800: '#896c0a',
+		900: '#74580f',
+		950: '#443004'
+	},
+	danger: {
+		50: '#fff0f0',
+		100: '#ffdddd',
+		200: '#ffc0c0',
+		300: '#ff9494',
+		400: '#ff5757',
+		500: '#ff2323',
+		600: '#ff0000',
+		700: '#d70000',
+		800: '#b10303',
+		900: '#920a0a',
+		950: '#500000'
+	}
+};
+
+const root = {
+	primary: {
+		'50': '#f9f4ed',
+		'100': '#f1e4d0',
+		'200': '#e5c9a3',
+		'300': '#d6a66e',
+		'400': '#cd9155',
+		'500': '#b97439',
+		'600': '#9f592f',
+		'700': '#804228',
+		'800': '#6b3728',
+		'900': '#5d3026',
+		'950': '#351813'
+	},
+	gray: back.cool
+};
+
+export const colors = { ...lone, ...fore, ...back, ...mode, ...root };
+
+export type Colors = {
+	root: keyof typeof root;
+	mode: keyof typeof mode;
+	fore:
+		| keyof typeof fore
+		| keyof typeof mode
+		| 'primary' /** these colors can appear as foreground colors */;
 };

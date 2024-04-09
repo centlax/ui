@@ -1,18 +1,18 @@
 <!-- Link.svelte -->
 <script lang="ts">
-	export let href: string = '';
+	import type { HTMLAnchorAttributes } from 'svelte/elements';
+	import { twJoin, twMerge } from 'tailwind-merge';
+	type $$restProps = HTMLAnchorAttributes & {
+		label: string;
+	};
 	export let label: string = '';
-	export let as: string = 'a'; // Default to anchor tag for semantic correctness and accessibility
+	const css = {
+		base: 'cursor-pointer'
+	};
+	$: linkCSS = twMerge(twJoin(css.base), $$restProps.class);
 </script>
 
-{#if href}
-	<!-- Use an anchor tag when "as" is "a" and a "link" is provided -->
-	<a {href} {...$$restProps}>
-		<slot><span>{label}</span></slot>
-	</a>
-{:else}
-	<!-- Use svelte:element for other cases, handling button clicks explicitly -->
-	<svelte:element this={as} {...$$restProps}>
-		<slot />
-	</svelte:element>
-{/if}
+<!-- svelte-ignore a11y-missing-attribute -->
+<a {...$$restProps} class={linkCSS}>
+	<slot><span>{label}</span></slot>
+</a>

@@ -5,8 +5,9 @@
 	import type { FieldSetContext } from './index.js';
 	import { shareUI } from '$lib/theme/share.js';
 	import { twJoin } from 'tailwind-merge';
+	import type { InputColor } from '../input/input.js';
 	export let size: Size = ui.size;
-	export let color: keyof ColorPallet = 'primary';
+	export let color: InputColor = 'white';
 	export let label: string = '';
 	export let hint: string = '';
 	export let error: string = '';

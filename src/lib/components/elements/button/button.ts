@@ -1,7 +1,7 @@
-import { colors } from '$lib/theme/colors.js';
+import { colors, type Colors } from '$lib/theme/colors.js';
 import { shareUI, type BaseVariant } from '$lib/theme/share.js';
 import type { ColorMode, ColorPallet } from '$lib/types/theme.js';
-export type ButtonColor = keyof ColorPallet | 'white' | 'black' | 'gray';
+export type ButtonColor = Colors['fore'] | 'white' | 'black' | 'gray';
 export type ButtonVariant = 'solid' | 'ghost' | 'outline' | 'soft';
 export type ButtonMask = {
 	fore: ColorMode;
@@ -47,7 +47,7 @@ export const css = {
 	}
 };
 
-export function handeMask(variant: ButtonVariant, color: ButtonColor): ButtonMask {
+export function handleMask(variant: ButtonVariant, color: ButtonColor): ButtonMask {
 	switch (variant) {
 		case 'solid':
 			return {

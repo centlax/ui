@@ -1,0 +1,12 @@
+.input {
+	--color: var(--fore);
+}
+
+.dark .input {
+	--color: var(--dark-fore);
+}
+
+/** the actual implementation */
+.input:focus {
+	--tw-ring-color: var(--color);
+}
