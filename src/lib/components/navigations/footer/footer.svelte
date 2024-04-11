@@ -3,18 +3,18 @@
 	let year = new Date().getFullYear();
 </script>
 
-<footer class="bg-gray-900" aria-labelledby="footer-heading">
+<footer class="bg-white dark:bg-gray-900" aria-labelledby="footer-heading">
 	<h2 id="footer-heading" class="sr-only">Footer</h2>
 	<div class="mx-auto pb-8 pt-16 sm:pt-24 lg:pt-32">
 		<div class="xl:grid xl:grid-cols-3 xl:gap-8">
-			<div class="space-y-8">
+			<div class="space-y-8 text-gray-700 dark:text-gray-300">
 				<ULogo />
-				<p class="text-sm leading-6 text-gray-300">
+				<p class="text-sm leading-6">
 					Making the world a better place through constructing elegant hierarchies.
 				</p>
 				<div class="mt-10 xl:mt-0">
 					<h3 class="text-sm font-semibold leading-6 text-white">Subscribe to our newsletter</h3>
-					<p class="mt-2 text-sm leading-6 text-gray-300">
+					<p class="mt-2 text-sm leading-6">
 						The latest news, articles, and resources, sent to your inbox weekly.
 					</p>
 					<form class="mt-6 sm:flex sm:max-w-md">
@@ -25,7 +25,7 @@
 							id="email-address"
 							autocomplete="email"
 							required
-							class="w-full min-w-0 appearance-none rounded-md border-0 bg-white/5 px-2.5 py-1.5 leading-6 text-sm text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-64 sm:text-sm xl:w-full"
+							class="w-full min-w-0 appearance-none rounded-md border-0 bg-gray-900/5 dark:bg-white/5 px-2.5 py-1.5 leading-6 text-sm text-white shadow-sm ring-1 ring-inset ring-white/10 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:w-64 sm:text-sm xl:w-full"
 							placeholder="Enter your email"
 						/>
 						<div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
@@ -34,7 +34,7 @@
 					</form>
 				</div>
 				<div class="flex space-x-6">
-					<a href="/" class="text-gray-500 hover:text-gray-400">
+					<a href="/" class="text-gray-900 dark:text-gray-500 hover:text-gray-400">
 						<span class="sr-only">Facebook</span>
 						<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 							<path

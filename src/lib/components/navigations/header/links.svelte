@@ -3,7 +3,7 @@
 	import type { Link } from '$lib/types/link.d.js';
 	import { twJoin } from 'tailwind-merge';
 	const css = {
-		base: 'text-sm font-medium leading-6 text-gray-900 dark:text-white',
+		base: 'text-sm font-semibold leading-6 text-gray-900 dark:text-white',
 		tooltip: {
 			wrapper: 'p-2 space-y-1 bg-gray-100/80 dark:bg-gray-950/30 rounded-md',
 			base: 'block cusor-pointer px-2 py-1.5 rounded-md flex gap-2 ',

@@ -7,19 +7,16 @@
 	import { UIcon } from '$lib/index.js';
 	import { ui } from '$lib/ui.config.js';
 	import { colors, type Colors } from '$lib/theme/colors.js';
-	import { getContext } from 'svelte';
-	import type { FieldSetContext } from '../field-set/index.js';
-	const fieldSet: FieldSetContext = getContext('FieldSet');
+
 	/* props ==== === === === === === */
-	export let size: Size = fieldSet.size || ui.size;
+	export let size: Size = ui.size;
 	export let dir: XDir = 'east';
 	export let load: boolean = false;
 	export let icon: string = '';
 	export let eastIcon: string = icon;
 	export let westIcon = '';
 	export let variant: InputVariant = 'outline';
-	export let color: InputColor = fieldSet.color || 'white';
-
+	export let color: InputColor = 'white';
 	/* config ==== === === === === === */
 	$: _icon = (): string => {
 		if (load) {

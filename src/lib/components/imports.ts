@@ -25,7 +25,7 @@ export { default as UFieldSet } from './forms/field-set/field-set.svelte';
 export { default as UForm } from './forms/form/form.svelte';
 export { default as UInput } from './forms/input/input.svelte';
 export { default as USelect } from './forms/select/select.svelte';
-export { default as USwitch } from './forms/switch/switch.svelte';
+export { default as UToggle } from './forms/toggle/toggle.svelte';
 // layouts
 export { default as ULayout } from './layouts/-more/layout.svelte';
 export { default as UCard } from './layouts/card/card.svelte';
@@ -52,12 +52,13 @@ export { default as UHeader } from './navigations/header/header.svelte';
 export { default as UHeaderLinks } from './navigations/header/links.svelte';
 export { default as UHorizontalNavigation } from './navigations/horizontal/navigation.svelte';
 export { default as UPagination } from './navigations/pagination/pagination.svelte';
-export { default as UTab } from './navigations/tab/tab.svelte';
+export { default as UTabs } from './navigations/tabs/tabs.svelte';
 export { default as UVerticalNavigation } from './navigations/vertical/navigation.svelte';
 // notifications
 export { default as UAlert } from './notifications/alert/alert.svelte';
 export { default as UToast } from './notifications/toast/toast.svelte';
 // overlays
 export { default as UModal } from './overlays/modal/modal.svelte';
+export { default as UPopper } from './overlays/popper/popper.svelte';
 export { default as USheet } from './overlays/sheet/sheet.svelte';
 export { default as UTooltip } from './overlays/tooltip/tooltip.svelte';

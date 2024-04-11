@@ -22,11 +22,11 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		}
+		},
+		"./assets/*.css": "./dist/assets/*.css"
 	},
 	"files": [
 		"dist",
-		"tailwind.config.js",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
@@ -34,19 +34,17 @@
 		"svelte": "^4.0.0"
 	},
 	"dependencies": {
-		"tailwindcss": "^3.4.3",
-		"autoprefixer": "^10.4.19",
-		"@iconify-json/fluent": "^1.1.50",
 		"@egoist/tailwindcss-icons": "^1.7.4",
+		"@iconify-json/fluent": "^1.1.50",
 		"@tailwindcss/forms": "^0.5.7",
 		"bits-ui": "^0.21.1",
 		"mode-watcher": "^0.3.0",
-		"tailwind-merge": "^2.2.2",
 		"paneforge": "^0.0.2",
 		"svelte-headless-table": "^0.18.2",
-		"postcss": "^8.4.38"
+		"tailwind-merge": "^2.2.2"
 	},
 	"devDependencies": {
+		"@iconify/svelte": "^3.1.6",
 		"@melt-ui/pp": "^0.3.0",
 		"@melt-ui/svelte": "^0.76.1",
 		"@playwright/test": "^1.28.1",
@@ -58,16 +56,19 @@
 		"@types/eslint": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
+		"autoprefixer": "^10.4.19",
 		"changelogen": "^0.5.5",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
+		"postcss": "^8.4.38",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"publint": "^0.1.9",
 		"release-it": "^17.0.1",
 		"sass": "^1.72.0",
 		"svelte-check": "^3.6.0",
+		"tailwindcss": "^3.4.3",
 		"tslib": "^2.4.1",
 		"typescript": "^5.4.3",
 		"vite": "^5.0.11",

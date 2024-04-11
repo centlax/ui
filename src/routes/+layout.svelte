@@ -1,7 +1,8 @@
 <script lang="ts">
 	import '$lib/assets/app.css';
-	import { ModeWatcher } from 'mode-watcher';
+	import { ULayout } from '$lib/index.js';
 </script>
 
-<ModeWatcher />
-<slot />
+<ULayout>
+	<slot />
+</ULayout>
