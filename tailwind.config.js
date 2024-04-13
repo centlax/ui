@@ -10,7 +10,7 @@ export default {
 	plugins: [
 		require('@tailwindcss/forms'),
 		iconsPlugin({
-			collections: getIconCollections(['fluent']),
+			collections: getIconCollections(['fluent', 'heroicons']),
 			scale: 1.5
 		})
 	]

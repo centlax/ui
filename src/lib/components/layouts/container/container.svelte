@@ -4,6 +4,7 @@
 
 	export let as: string = 'div';
 	export let padding: boolean = true;
+	export let id: string = '';
 	let classProp: string | string[] = '';
 	export { classProp as class };
 	const css = {
@@ -17,6 +18,6 @@
 	);
 </script>
 
-<svelte:element this={as} class={containerCSS}>
+<svelte:element this={as} {...$$restProps} {id} class={containerCSS}>
 	<slot />
 </svelte:element>

@@ -9,11 +9,12 @@
 	export let preventScroll: boolean = true;
 	export let duration: number = 200;
 	export let delay: number = 50;
+	export let as: string = 'button';
 
 	export let outsideClose: boolean = true;
 
 	const {
-		elements: { overlay, content, portalled },
+		elements: { overlay, content, trigger, portalled },
 		states: { open }
 	} = createDialog({
 		forceVisible: true,
@@ -37,6 +38,10 @@
 
 	$: contentCSS = twJoin(css.content, css.dir[from].pos);
 </script>
+
+<svelte:element this={as} use:melt={$trigger}>
+	<slot name="open" />
+</svelte:element>
 
 <div use:melt={$portalled}>
 	{#if $open}

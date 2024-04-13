@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-const componentsDir = 'src/lib/components';
-const importsFile = path.join(componentsDir, 'imports.ts');
+const libDir = 'src/lib';
+const componentsDir = path.join(libDir, 'components');
+const blocksDir = path.join(libDir, 'blocks'); // Define your blocks directory
+const importsFile = path.join(libDir, 'imports.ts'); // Adjusted path
 
 const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
 const clearAndUpper = (text) => text.replace(/-/, '').toUpperCase();
@@ -17,7 +19,8 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 		if (stats.isDirectory() && depth === 0) {
 			imports.push(`// ${file}`);
 			imports = generateImports(filePath, imports, depth + 1);
-		} else if (stats.isDirectory()) {
+		} else if (stats.isDirectory() && depth === 1) {
+			// Limit to child directories
 			imports = generateImports(filePath, imports, depth + 1);
 		} else if (file.endsWith('.svelte')) {
 			const componentDir = path.basename(path.dirname(filePath));
@@ -40,7 +43,10 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 				}
 			}
 
-			const importPath = `./${path.relative(componentsDir, filePath).replace(/\\/g, '/')}`;
+			// Adjusted import path generation
+			const importPath = dirPath.includes(componentsDir)
+				? `./${path.relative(libDir, filePath).replace(/\\/g, '/')}`
+				: `./${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
 			imports.push(`export { default as U${importName} } from '${importPath}';`);
 		}
 	}
@@ -48,7 +54,12 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 	return imports;
 };
 
-const imports = generateImports(componentsDir);
+// Generate imports for components directory
+let imports = generateImports(componentsDir);
+
+// Generate imports for blocks directory (child directories only)
+imports = generateImports(blocksDir, imports);
+
 const importsContent = imports.join('\n');
 fs.writeFileSync(importsFile, importsContent);
 console.log(`Imports generated and written to ${importsFile}`);

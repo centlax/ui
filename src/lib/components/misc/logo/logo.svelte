@@ -10,7 +10,7 @@
 	const css = {
 		base: 'transition duration-300 ease-in-out rotate-[45deg] transform-gpu',
 		color: 'text-primary-600 dark:text-primary-500',
-		hover: 'group-hover:rotate-[135deg] hover:rotate-[135deg]',
+		hover: 'group-hover/logo:rotate-[135deg] hover:rotate-[135deg]',
 		size: {
 			xs: 'size-8',
 			sm: 'size-10',

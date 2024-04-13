@@ -9,8 +9,6 @@
 	} = createTabs({
 		defaultValue: 'tab-1',
 		loop: true
-		
-		
 	});
 
 	const triggers = [
@@ -90,21 +88,6 @@
 			@apply focus:relative;
 			background-color: white;
 			color: theme('colors.magnum.900');
-		}
-	}
-
-	input {
-		height: theme(spacing.8);
-		flex-shrink: 0;
-		flex-grow: 1;
-		border-radius: theme(borderRadius.md);
-		border: 1px solid theme(colors.neutral.200);
-		padding-inline: theme(spacing[2.5]);
-		line-height: 1;
-		color: theme(colors.neutral.900);
-
-		&:focus {
-			border-color: theme(colors.magnum.400);
 		}
 	}
 

@@ -3,9 +3,10 @@
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
 	export let state: boolean = false;
+	export let as: string = 'button';
 
 	const {
-		elements: { portalled, overlay, content },
+		elements: { portalled, overlay, content, trigger },
 		states: { open }
 	} = createDialog({
 		onOpenChange: ({ next }) => {
@@ -19,6 +20,10 @@
 		content: `fixed left-1/2 top-1/2 z-50 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-xl bg-white shadow-lg`
 	};
 </script>
+
+<svelte:element this={as} use:melt={$trigger}>
+	<slot name="open" />
+</svelte:element>
 
 {#if $open}
 	<div use:melt={$portalled}>
