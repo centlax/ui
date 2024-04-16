@@ -1,11 +1,22 @@
 <script lang="ts">
-	import { UAsideLinks, UButton, UColorMode, UContainer, UIcon, ULink, ULogo } from '$lib/index.js';
-	import type { HeaderLink } from '$lib/types/link.js';
+	import {
+		UAsideLinks,
+		UButton,
+		UColorMode,
+		UContainer,
+		UHeaderLinks,
+		ULink,
+		ULogo
+	} from '$lib/index.js';
+	import type { HeaderLink, Link } from '$lib/types/link.js';
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { twJoin } from 'tailwind-merge';
+	import { setContext } from 'svelte';
+
 	export let links: HeaderLink[] = [{}];
 	let children: HeaderLink['children'];
+
 
 	const {
 		elements: { trigger, overlay, content, close, portalled },
@@ -46,6 +57,11 @@
 	$: outerWidth = 0;
 	$: full = false;
 	$: half = false;
+	$: notify = function child(event: { detail: { link: Link[] | undefined } }) {
+		children = event.detail.link;
+		full = children ? true : false;
+	};
+	setContext('open', full);
 </script>
 
 <svelte:window bind:outerWidth />
@@ -66,22 +82,9 @@
 					</ULink>
 				</div>
 				<div class={css.nav.center}>
-					{#each links as link}
-						<ULink
-							on:mouseenter={() => (
-								(full = link.children ? true : false),
-								(children = link.children ? link.children : [{}])
-							)}
-							href={link.href}
-							class={css.nav.link}
-							label={link.label}
-						>
-							<slot name="label">
-								{link.label}
-							</slot>
-							<UIcon name={(link.children && full) ? css.icon.minus : css.icon.add} />
-						</ULink>
-					{/each}
+					<slot>
+						<UHeaderLinks on:children={notify} popper={false} {links} />
+					</slot>
 				</div>
 				<div class={css.nav.west}>
 					<UButton variant="ghost" label="Log in" />
