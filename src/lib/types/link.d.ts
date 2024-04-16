@@ -16,3 +16,4 @@ export interface AsideLink extends Link {
 }
 
 export type FooterLink = Link;
+export type HeaderLink = Link;

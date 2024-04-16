@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { UDash } from '$lib/index.js'
+	import { UDash } from '$lib/index.js';
 </script>
 
-<UDash/>
+<UDash />

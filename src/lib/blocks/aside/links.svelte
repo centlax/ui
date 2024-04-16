@@ -10,7 +10,7 @@
 
 	const css = {
 		wrapper: 'space-y-3 mb-3 lg:mb-6 -mx-1 lg:mx-0',
-		base: 'flex items-center gap-1.5 lg:gap-2 group',
+		base: 'flex justify-between items-center gap-1.5 lg:gap-2 group',
 		active: 'text-primary font-semibold',
 		inactive:
 			'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 font-medium',
@@ -27,29 +27,39 @@
 		},
 		label: 'text-sm/6 relative'
 	};
+	$: open = false;
 </script>
 
 {#if links?.length}
 	<div class={twJoin(css.wrapper, classProp)}>
 		{#each links as link}
 			<ULink class={css.base} active_class={css.active} inactive_class={css.inactive}>
-				{#if link.icon}
-					<div
-						class={twJoin(
-							css.icon.wrapper,
-							link.active || isActive ? css.icon.active : css.icon.inactive
-						)}
-					>
-						<UIcon name={link.icon} class={twJoin(css.icon.base, link.iconClass)} />
-					</div>
-				{/if}
-
-				<span class={css.label}>
-					{link.label}
-					{#if link.target}
-						<UIcon name={css.externalIcon.name} class={css.externalIcon.base} />
+				<div>
+					{#if link.icon}
+						<div
+							class={twJoin(
+								css.icon.wrapper,
+								link.active || isActive ? css.icon.active : css.icon.inactive
+							)}
+						>
+							<UIcon name={link.icon} class={twJoin(css.icon.base, link.iconClass)} />
+						</div>
 					{/if}
-				</span>
+
+					<span class={css.label}>
+						{link.label}
+						{#if link.target}
+							<UIcon name={css.externalIcon.name} class={css.externalIcon.base} />
+						{/if}
+					</span>
+				</div>
+				{#if link.children}
+					<UIcon
+						on:click={() => (open = !open)}
+						class="justify-end {css.label}"
+						name={open ? 'i-fluent-subtract-24-regular' : 'i-fluent-add-24-regular'}
+					/>
+				{/if}
 			</ULink>
 		{/each}
 	</div>

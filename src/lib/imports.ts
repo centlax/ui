@@ -63,6 +63,9 @@ export { default as UAside } from './blocks/aside/aside.svelte';
 export { default as UAsideLinks } from './blocks/aside/links.svelte';
 // dash
 export { default as UDash } from './blocks/dash/dash.svelte';
+export { default as UDashHead } from './blocks/dash/head.svelte';
+export { default as UDashMain } from './blocks/dash/main.svelte';
+export { default as UDashSide } from './blocks/dash/side.svelte';
 // footer
 export { default as UFooter } from './blocks/footer/footer.svelte';
 export { default as UFooterLinks } from './blocks/footer/links.svelte';

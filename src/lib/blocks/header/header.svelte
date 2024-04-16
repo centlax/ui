@@ -1,90 +1,116 @@
 <script lang="ts">
-	import { UButton, UIcon, UColorMode, ULink, ULogo, UContainer } from '$lib/index.js';
+	import { UAsideLinks, UButton, UColorMode, UContainer, UIcon, ULink, ULogo } from '$lib/index.js';
+	import type { HeaderLink } from '$lib/types/link.js';
 	import { createDialog, melt } from '@melt-ui/svelte';
-	import { quintOut } from 'svelte/easing';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { twJoin } from 'tailwind-merge';
-	export let title: string = 'Centlax';
+	export let links: HeaderLink[] = [{}];
+	let children: HeaderLink['children'];
 
-	$: open = false;
-	$: data = open ? 'open' : 'close';
 	const {
-		elements: { overlay }
+		elements: { trigger, overlay, content, close, portalled },
+		states: { open }
 	} = createDialog({
 		forceVisible: true
 	});
 
 	const css = {
-		overlay:
-			'fixed inset-0 z-50 bg-black/50 lg:bg-transparent backdrop-blur  lg:backdrop-blur-none',
-		base: 'absolute left-0 right-0 z-50 group/logo mx-auto text-gray-900 dark:text-white',
-		nav: 'flex items-center justify-between gap-x-6 py-2',
-		panel: {
-			height: 'h-[200px] lg:h-0'
+		overlay: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
+		content: `group/logo fixed left-0 right-0 top-0 z-50 h-fit w-full bg-white dark:bg-gray-900 shadow focus:outline-none`,
+		nav: {
+			base: 'mx-auto flex items-center justify-between py-1',
+			east: 'flex lg:flex-1',
+			center: 'hidden lg:flex lg:gap-x-12',
+			west: 'hidden lg:flex lg:flex-1 lg:justify-end gap-x-2',
+			panel: 'flex lg:hidden',
+			link: 'text-sm font-semibold leading-6 text-gray-900 dark:text-white'
 		},
-		background: 'bg-white dark:bg-gray-900',
-		hr: 'dark:border-gray-800 lg:hidden',
 		icon: {
-			open: 'i-fluent-dismiss-24-regular',
-			close: 'i-fluent-navigation-24-regular '
+			add: 'i-fluent-add-24-regular',
+			minus: 'i-fluent-subtract-24-regular'
+		},
+		section: {
+			base: '',
+			content: 'pb-0'
+		},
+		full: {
+			base: 'hidden lg:flex gap-x-4 pb-4 justify-center',
+			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
+		},
+		half: {
+			base: 'flex lg:hidden flex-col gap-y-2 pb-4',
+			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
 		}
 	};
-	$: headerCSS = twJoin(css.base, css.background);
-	$: panelCSS = twJoin(open && css.panel.height, 'shadow-sm');
+	$: children;
+	$: outerWidth = 0;
+	$: full = false;
+	$: half = false;
 </script>
 
-<div class="relative">
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
+<svelte:window bind:outerWidth />
+<header>
+	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 	<div
-		on:click={() => (open = false)}
+		on:click={() => (half = full = false)}
+		role="dialog"
 		use:melt={$overlay}
-		class={open ? css.overlay : ''}
-		transition:fade={{ duration: 500 }}
+		class={twJoin((full || half) && css.overlay, half && `lg:hidden`)}
 	/>
-	<header
-		data-state={data}
-		transition:slide={{ delay: 50, duration: 500, easing: quintOut, axis: 'y' }}
-		class="{headerCSS} "
-	>
+	<div use:melt={$content} class={css.content} aria-label="Global">
 		<UContainer>
-			<nav class={css.nav} aria-label="Global">
-				<div class="flex lg:flex-1">
-					<slot name="east">
-						<ULink href="/" class="group/logo -ml-1 flex items-center gap-1">
-							<span class="sr-only">Centlax</span>
-							<slot name="logo">
-								<ULogo move />
+			<nav class={css.nav.base}>
+				<div class={css.nav.east}>
+					<ULink href="/" class="-ml-1">
+						<ULogo move />
+					</ULink>
+				</div>
+				<div class={css.nav.center}>
+					{#each links as link}
+						<ULink
+							on:mouseenter={() => (
+								(full = link.children ? true : false),
+								(children = link.children ? link.children : [{}])
+							)}
+							href={link.href}
+							class={css.nav.link}
+							label={link.label}
+						>
+							<slot name="label">
+								{link.label}
 							</slot>
-							<slot name="title">
-								<span class="font-medium text-xl">{title}</span>
-							</slot>
+							<UIcon name={(link.children && full) ? css.icon.minus : css.icon.add} />
 						</ULink>
-					</slot>
+					{/each}
 				</div>
-				<div class="hidden lg:flex lg:gap-x-12">
-					<slot />
+				<div class={css.nav.west}>
+					<UButton variant="ghost" label="Log in" />
+					<UColorMode />
 				</div>
-				<div class="flex flex-1 items-center justify-end gap-x-6">
-					<slot name="west">
-						<UButton variant="ghost" color="white" label="Log in" href="/" />
-						<UButton label="Sign up" href="/" />
-						<UColorMode />
-					</slot>
-					<div class="block lg:hidden">
-						<slot name="action">
-							<UButton slot="open" square color="gray" on:click={() => (open = !open)}>
-								<UIcon name={open ? css.icon.open : css.icon.close} />
-							</UButton>
-						</slot>
-					</div>
+				<div class={css.nav.panel}>
+					<UButton
+						label={half ? 'Close' : 'Open'}
+						on:click={() => (half = !half) && (full = half ? false : true)}
+					/>
 				</div>
 			</nav>
+			{#if full}
+				<section class={css.section.base} transition:slide={{ duration: 300, axis: 'y' }}>
+					<nav class={css.full.base} transition:fade>
+						{#if children}
+							{#each children as child}
+								<a href="/">{child.label}</a>
+							{/each}
+						{/if}
+					</nav>
+				</section>
+			{:else if half}
+				<section class={css.section.base} transition:slide={{ duration: 300, axis: 'y' }}>
+					<nav class={css.half.base} transition:fade>
+						<UAsideLinks {links} />
+					</nav>
+				</section>
+			{/if}
 		</UContainer>
-
-		<hr class={twJoin(open ? css.hr : 'hidden')} />
-		<UContainer id="header-panel" class={panelCSS}>
-			<slot name="panel" />
-		</UContainer>
-		<hr class={twJoin(open ? css.hr : 'hidden')} />
-	</header>
-</div>
+	</div>
+</header>

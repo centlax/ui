@@ -5,4 +5,6 @@
 	$: spanUI = twJoin('text-current', $$props.class);
 </script>
 
-<span class="{name} {spanUI}" />
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<span class="{name} {spanUI}" on:click on:mouseenter on:mouseleave />
