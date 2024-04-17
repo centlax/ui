@@ -1,7 +1,10 @@
 <script lang="ts">
+	// imports
 	import type { FooterLink } from '$lib/types/link.js';
-	export let links: FooterLink[];
+	// props
+	export let links: FooterLink[] = [];
 	export let cols: number = 4;
+	// config
 	let wrapperCSS = 'mt-16 grid  gap-8 xl:col-span-2 xl:mt-0';
 	let columnCSS = 'md:grid md:grid-cols-2 md:gap-8';
 </script>

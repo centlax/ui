@@ -8,6 +8,5 @@
 
 <div id="ui-app" class={twJoin('relative flex flex-col justify-between min-h-lvh', classProp)}>
 	<ModeWatcher />
-
 	<slot />
 </div>

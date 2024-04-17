@@ -1,4 +1,5 @@
 <script lang="ts">
+	// imports
 	import {
 		UAsideLinks,
 		UButton,
@@ -8,16 +9,19 @@
 		ULink,
 		ULogo
 	} from '$lib/index.js';
+
 	import type { HeaderLink, Link } from '$lib/types/link.js';
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { twJoin } from 'tailwind-merge';
-	import { setContext } from 'svelte';
+	// props
 
-	export let links: HeaderLink[] = [{}];
+	export let links: HeaderLink[] = [];
+	export let title: string = '';
 	let children: HeaderLink['children'];
+	export let shadow: boolean = false;
 
-
+	// config
 	const {
 		elements: { trigger, overlay, content, close, portalled },
 		states: { open }
@@ -27,9 +31,10 @@
 
 	const css = {
 		overlay: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
-		content: `group/logo fixed left-0 right-0 top-0 z-50 h-fit w-full bg-white dark:bg-gray-900 shadow focus:outline-none`,
+		content: `group/logo fixed left-0 right-0 top-0 z-50 h-fit w-full bg-white dark:bg-gray-900 focus:outline-none`,
+		shadow: 'shadow-sm',
 		nav: {
-			base: 'mx-auto flex items-center justify-between py-1',
+			base: 'mx-auto flex items-center justify-between py-4',
 			east: 'flex lg:flex-1',
 			center: 'hidden lg:flex lg:gap-x-12',
 			west: 'hidden lg:flex lg:flex-1 lg:justify-end gap-x-2',
@@ -53,15 +58,11 @@
 			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
 		}
 	};
+	// reactive
 	$: children;
 	$: outerWidth = 0;
 	$: full = false;
 	$: half = false;
-	$: notify = function child(event: { detail: { link: Link[] | undefined } }) {
-		children = event.detail.link;
-		full = children ? true : false;
-	};
-	setContext('open', full);
 </script>
 
 <svelte:window bind:outerWidth />
@@ -73,22 +74,31 @@
 		use:melt={$overlay}
 		class={twJoin((full || half) && css.overlay, half && `lg:hidden`)}
 	/>
-	<div use:melt={$content} class={css.content} aria-label="Global">
+	<div use:melt={$content} class="{css.content} {shadow && css.shadow}" aria-label="Global">
 		<UContainer>
 			<nav class={css.nav.base}>
 				<div class={css.nav.east}>
-					<ULink href="/" class="-ml-1">
-						<ULogo move />
+					<ULink href="/" class="flex items-center gap-x-2 -ml-1">
+						<slot name="logo">
+							<ULogo move />
+						</slot>
+						<slot name="title">
+							<span class="text-lg font-semibold">
+								{title}
+							</span>
+						</slot>
 					</ULink>
 				</div>
 				<div class={css.nav.center}>
 					<slot>
-						<UHeaderLinks on:children={notify} popper={false} {links} />
+						<UHeaderLinks {links} />
 					</slot>
 				</div>
 				<div class={css.nav.west}>
-					<UButton variant="ghost" label="Log in" />
-					<UColorMode />
+					<slot name="west" />
+					<slot name="color">
+						<UColorMode />
+					</slot>
 				</div>
 				<div class={css.nav.panel}>
 					<UButton

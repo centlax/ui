@@ -1,64 +1,67 @@
 <script lang="ts">
-	import { UIcon, ULink, UTooltip } from '$lib/index.js';
-	import type { Link } from '$lib/types/link.d.js';
+	import { ui } from '$lib/ui.config.js';
+	import { UTipper, ULink, UIcon, UHeaderTipper, UCard } from '$lib/index.js';
+	import type { HeaderLink } from '$lib/types/link.js';
 	import { twJoin } from 'tailwind-merge';
-	import { createEventDispatcher } from 'svelte';
-	import { getContext } from 'svelte';
+	export let links: HeaderLink[];
 
-	export let links: Link[];
-	const dispatch = createEventDispatcher();
-
-	export let popper: boolean = true;
 	const css = {
-		base: 'text-sm font-semibold leading-6 text-gray-900 dark:text-white',
-		tooltip: {
-			wrapper: 'p-2 space-y-1 bg-gray-100/80 dark:bg-gray-950/30 rounded-md',
-			base: 'block cusor-pointer px-2 py-1.5 rounded-md flex gap-2 ',
-			hover: 'hover:bg-gray-100/80 dark:hover:bg-gray-800/80 hover:text-primary',
-			label: 'font-medium text-sm inline-block relative',
-			description: 'text-sm leading-snug text-gray-600 dark:text-gray-400 line-clamp-2',
-			icon: {
-				base: 'w-5 h-5 flex-shrink-0 mt-1 text-primary',
-				add: 'i-fluent-add-24-regular',
-				minus: 'i-fluent-subtract-24-regular'
-			},
-			externalIcon: {
-				name: 'heroicons:arrow-up-right-20-solid',
-				base: 'size-4 absolute top-0.5 -right-3.5 text-gray-400 dark:text-gray-500'
-			}
-		},
+		wrapper: 'flex items-center gap-x-8',
+		base: 'text-sm/6 font-semibold flex items-center gap-1',
+		active: 'text-primary',
+		inactive: 'hover:text-primary',
 		icon: {
-				add: 'i-fluent-add-24-regular',
-				minus: 'i-fluent-subtract-24-regular'
-		},
+			base: 'size-2 text-gray-500 dark:text-gray-400',
+			trailing: {
+				name: ui.icon.chevron,
+				base: 'w-5 h-5 transform transition-transform  duration-200 flex-shrink-0',
+				active: 'rotate-180',
+				inactive: ''
+			},
+			external: {
+				name: ui.icon.external,
+				base: 'size-3 absolute top-0.5 -right-3.5 text-gray-400 dark:text-gray-500'
+			}
+		}
 	};
-	$: tooltipCSS = twJoin(css.tooltip.base, css.tooltip.hover);
-	$: open = false;
 </script>
 
-{#each links as link}
-	{#if link.children && popper}
-		<UTooltip>
-			<ULink slot="trigger" href={link.href} class={css.base} label={link.label} />
-			<div class={css.tooltip.wrapper}>
-				{#each link.children as child}
-					<a href={child.href} class={tooltipCSS}>
-						{child.label}
-					</a>
-				{/each}
-			</div>
-		</UTooltip>
-	{:else if !popper}
-		<ULink
-			on:mouseenter={() => (open = true) && (dispatch('children', { link: link.children }))}
-			href="/"
-			class={css.base}>
-			{link.label} 
-		{#if link.children}
-		<UIcon name={open ? css.icon.add: css.icon.minus}/>
-		{/if}
-		</ULink>
-	{:else}
-		<ULink href={link.href} class={css.base} label={link.label} />
-	{/if}
-{/each}
+{#if links?.length}
+	<ul class={css.wrapper}>
+		{#each links as link}
+			<li class="relative">
+				{#if link.children?.length}
+					<UTipper let:state>
+						<ULink active href={link.href} class={css.base}>
+							<slot name="label" {link}>
+								{link.label}
+							</slot>
+
+							<UIcon
+								name={css.icon.trailing.name}
+								class={twJoin(
+									css.icon.base,
+									css.icon.trailing.base,
+									state === 'open' ? css.icon.trailing.active : css.icon.trailing.inactive
+								)}
+							/>
+						</ULink>
+
+						<UCard slot="content" padded={false} class="shadow-lg max-w-sm">
+							<UHeaderTipper links={link.children} on:click={close} />
+						</UCard>
+					</UTipper>
+				{:else}
+					<ULink active href={link.href} class={css.base}>
+						<slot name="label" {link}>
+							{link.label}
+						</slot>
+						{#if link.target === '__blank'}
+							<UIcon name={css.icon.external.name} class={css.icon.external.base} />
+						{/if}
+					</ULink>
+				{/if}
+			</li>
+		{/each}
+	</ul>
+{/if}

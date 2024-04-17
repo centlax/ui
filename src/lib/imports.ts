@@ -33,12 +33,10 @@ export { default as UCard } from './components/layouts/card/card.svelte';
 export { default as UCardGroup } from './components/layouts/card/group.svelte';
 export { default as UContainer } from './components/layouts/container/container.svelte';
 export { default as UDivider } from './components/layouts/divider/divider.svelte';
-export { default as UPanelAside } from './components/layouts/panel/aside.svelte';
-export { default as UPanelHeader } from './components/layouts/panel/header.svelte';
-export { default as UPanelMain } from './components/layouts/panel/main.svelte';
 export { default as UPanel } from './components/layouts/panel/panel.svelte';
 export { default as USkeleton } from './components/layouts/skeleton/skeleton.svelte';
 // misc
+export { default as UColorImage } from './components/misc/color/image.svelte';
 export { default as UColorMode } from './components/misc/color/mode.svelte';
 export { default as UColorTheme } from './components/misc/color/theme.svelte';
 export { default as ULogo } from './components/misc/logo/logo.svelte';
@@ -46,10 +44,10 @@ export { default as UPlaceholder } from './components/misc/placeholder/placehold
 // navigations
 export { default as UCommandPallet } from './components/navigations/command/pallet.svelte';
 export { default as UCommandPreview } from './components/navigations/command/preview.svelte';
-export { default as UHorizontalNavigation } from './components/navigations/horizontal/navigation.svelte';
+export { default as UHoriNav } from './components/navigations/hori-nav/hori-nav.svelte';
 export { default as UPagination } from './components/navigations/pagination/pagination.svelte';
-export { default as UTabs } from './components/navigations/tabs/tabs.svelte';
-export { default as UVerticalNavigation } from './components/navigations/vertical/navigation.svelte';
+export { default as UTab } from './components/navigations/tab/tab.svelte';
+export { default as UVertNav } from './components/navigations/vert-nav/vert-nav.svelte';
 // notifications
 export { default as UAlert } from './components/notifications/alert/alert.svelte';
 export { default as UToast } from './components/notifications/toast/toast.svelte';
@@ -57,10 +55,12 @@ export { default as UToast } from './components/notifications/toast/toast.svelte
 export { default as UModal } from './components/overlays/modal/modal.svelte';
 export { default as UPopper } from './components/overlays/popper/popper.svelte';
 export { default as USheet } from './components/overlays/sheet/sheet.svelte';
-export { default as UTooltip } from './components/overlays/tooltip/tooltip.svelte';
+export { default as UTipper } from './components/overlays/tipper/tipper.svelte';
 // aside
 export { default as UAside } from './blocks/aside/aside.svelte';
 export { default as UAsideLinks } from './blocks/aside/links.svelte';
+// body
+export { default as UBody } from './blocks/body/body.svelte';
 // dash
 export { default as UDash } from './blocks/dash/dash.svelte';
 export { default as UDashHead } from './blocks/dash/head.svelte';
@@ -69,13 +69,17 @@ export { default as UDashSide } from './blocks/dash/side.svelte';
 // footer
 export { default as UFooter } from './blocks/footer/footer.svelte';
 export { default as UFooterLinks } from './blocks/footer/links.svelte';
+export { default as UFooterNotes } from './blocks/footer/notes.svelte';
 // header
 export { default as UHeader } from './blocks/header/header.svelte';
 export { default as UHeaderLinks } from './blocks/header/links.svelte';
+export { default as UHeaderTipper } from './blocks/header/tipper.svelte';
 // land
+export { default as ULandBanner } from './blocks/land/banner.svelte';
+export { default as ULandDark } from './blocks/land/dark.svelte';
+export { default as ULandHero } from './blocks/land/hero.svelte';
 // layout
 export { default as ULayout } from './blocks/layout/layout.svelte';
 // page
-export { default as UPageLinks } from './blocks/page/links.svelte';
 // price
 export { default as UPrice } from './blocks/price/price.svelte';

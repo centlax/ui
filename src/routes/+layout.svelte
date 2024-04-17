@@ -1,40 +1,90 @@
 <script lang="ts">
 	import '$lib/assets/app.css';
-	import { ULayout, UDash, UContainer, UHeader, UInput } from '$lib/index.js';
+	import {
+		ULayout,
+		UDash,
+		UContainer,
+		UHeader,
+		UInput,
+		UPopper,
+		UButton,
+		UCard,
+		UFooter,
+		UBody
+	} from '$lib/index.js';
 	const links = [
 		{
-			label: 'Docs',
+			label: 'Depot',
 			icon: 'i-heroicons-book-open',
-			href: '/getting-started'
+			href: '/depot'
+		},
+
+		{
+			label: 'AI +',
+			icon: 'i-heroicons-rocket-launch',
+			href: '/ai'
 		},
 		{
-			label: 'Pro',
+			label: 'Careers',
 			icon: 'i-heroicons-square-3-stack-3d',
-			href: '/pro',
+			href: '/work/careers',
 			children: [
 				{
 					label: 'Pricing',
-					href: '/pro/pricing',
+					href: '/',
 					icon: 'i-heroicons-ticket',
 					description: 'A simple pricing, for solo developers or teams.'
 				},
 				{
 					label: 'Templates',
-					href: '/pro/templates',
+					href: '/',
 					icon: 'i-heroicons-computer-desktop',
 					description: 'Get started with one of our official templates.'
 				}
 			]
 		},
 		{
-			label: 'Releases',
+			label: 'News',
 			icon: 'i-heroicons-rocket-launch',
-			href: '/releases'
+			href: '/news'
+		},
+		{
+			label: 'Invest',
+			icon: 'i-heroicons-rocket-launch',
+			href: '/about/invest'
+		},
+		{
+			label: 'Centlax',
+			icon: 'i-heroicons-rocket-launch',
+			href: '/about',
+			children: [
+				{
+					label: 'History',
+					href: '/',
+					icon: 'i-heroicons-ticket',
+					description: 'A simple pricing, for solo developers or teams.'
+				},
+				{
+					label: 'Mission & vission',
+					href: '/',
+					icon: 'i-heroicons-computer-desktop',
+					description: 'Get started with one of our official templates.'
+				},
+				{
+					label: 'Our Team',
+					href: '/',
+					icon: 'i-heroicons-computer-desktop',
+					description: 'Get started with one of our official templates.'
+				}
+			]
 		}
 	];
 </script>
 
 <ULayout>
-	<UHeader {links} />
-	<slot />
+	<UBody>
+		<UHeader {links} slot="header" />
+		<slot />
+		<UFooter slot="footer" />
+	</UBody>
 </ULayout>

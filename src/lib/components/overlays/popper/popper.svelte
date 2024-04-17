@@ -1,71 +1,57 @@
 <script lang="ts">
 	import { createPopover, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
-	import type { FloatingConfig } from '@melt-ui/svelte/internal/actions/floating';
-	import { overUI } from '$lib/theme/overlay.js';
-	export let state: boolean = false;
-	export let preventScroll: boolean = true;
-	export let arrowSize: number = 8;
-	export let outerClose: boolean = true;
-	export let hover: boolean = false;
+	import { backUI, overUI } from '$lib/theme/overlay.js';
+	import { twJoin } from 'tailwind-merge';
+	import type { Floating } from '$lib/types/index.d.js';
+	// props
+	export let state: 'open' | 'close' = 'close';
+	export let value: boolean = false;
+	export let as: string = 'div';
+	export let placement = 'bottom' as keyof Floating['placement'];
+	export let arrow: boolean = false;
+	export let overlay: boolean = false;
+	export let prevent_scroll: boolean = true;
+	export let arrow_size: number = 8;
+	export let outer_close: boolean = true;
 	export let portal: string | HTMLElement | null = 'body';
-	//export let placement = 'top'
+	let classProp: string = '';
+	export { classProp as class };
+	// config
 
 	const {
-		elements: { trigger, content, overlay, arrow, close },
+		elements: { trigger, content, overlay: _overlay, arrow: _arrow, close },
 		states: { open }
 	} = createPopover({
 		forceVisible: true,
-		preventScroll: preventScroll,
-		arrowSize: arrowSize,
-		closeOnOutsideClick: outerClose,
+		preventScroll: prevent_scroll,
+		arrowSize: arrow_size,
+		closeOnOutsideClick: outer_close,
 		portal: portal,
-		//positioning: 'right',
 		onOpenChange: ({ next }) => {
-			return (state = next);
-		}
+			return (value = next);
+		},
+		positioning: placement
 	});
-	$: $open = state;
+	$: $open = value;
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div
-	on:mouseenter={() => {
-		$open = hover && true;
-	}}
-	class="trigger"
-	use:melt={$trigger}
->
-	<slot />
-</div>
+<svelte:element this={as} use:melt={$trigger}>
+	<slot {state} />
+</svelte:element>
 
 {#if $open}
-	<div use:melt={$overlay} transition:fade={{ duration: 150 }} class={overUI.base} />
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div
-		on:mouseleave={() => {
-			$open = hover && false;
-		}}
-		use:melt={$content}
-		transition:fade={{ duration: 100 }}
-		class="content"
-	>
-		<div class="arrow" use:melt={$arrow} />
-		<slot name="popper" />
+	{#if overlay}
+		<div use:melt={$_overlay} transition:fade={{ duration: 150 }} class={overUI.base} />
+	{/if}
+
+	<div use:melt={$content} transition:fade={{ duration: 100 }} class={twJoin('z-50', classProp)}>
+		{#if arrow}
+			<div class="arrow" use:melt={$_arrow} />
+		{/if}
+		<slot name="content" />
 		<div use:melt={$close}>
 			<slot name="close" />
 		</div>
 	</div>
 {/if}
-
-<style lang="postcss">
-	.trigger {
-		@apply inline-flex  items-center justify-center rounded-full bg-white p-0;
-		@apply text-sm font-medium text-primary-900 transition-colors hover:bg-white/90;
-		@apply focus-visible:ring focus-visible:ring-primary-400 focus-visible:ring-offset-2;
-	}
-
-	.content {
-		@apply outline-none shadow-sm z-[99]   bg-white dark:bg-gray-900;
-	}
-</style>

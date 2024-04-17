@@ -3,32 +3,31 @@
 
 	export let as: string = 'div';
 	export let rounded: boolean = true;
-	let cardUI: string = '';
-	export { cardUI as class };
+	let classProp: string = '';
+	export { classProp as class };
 	export let northUI: string = '';
 	export let centerUI: string = '';
 	export let southUI: string = '';
+	export let padded: boolean = true;
 	const css = {
 		base: '',
 		background: 'bg-white dark:bg-gray-900',
 		divide: 'divide-y divide-gray-200 dark:divide-gray-800',
 		ring: 'ring-1 ring-gray-200 dark:ring-gray-800',
-		rounded: 'rounded-lg',
+		rounded: 'rounded-md lg:rounded-lg',
 		shadow: 'shadow',
+		padding: 'px-4 py-5 sm:p-6',
 		center: {
 			base: '',
-			background: '',
-			padding: 'px-4 py-5 sm:p-6'
+			background: ''
 		},
 		north: {
 			base: '',
-			background: '',
-			padding: 'px-4 py-5 sm:px-6'
+			background: ''
 		},
 		south: {
 			base: '',
-			background: '',
-			padding: 'px-4 py-4 sm:px-6'
+			background: ''
 		}
 	};
 	$: cardCSS = twMerge(
@@ -38,12 +37,13 @@
 		css.ring,
 		css.shadow,
 		css.background,
-		cardUI
+		padded && css.padding,
+		classProp
 	);
 
-	$: northCSS = twMerge(css.north.base, css.north.padding, css.north.background, northUI);
-	$: centerCSS = twMerge(css.center.base, css.center.padding, css.center.background, centerUI);
-	$: southCSS = twMerge(css.south.base, css.south.padding, css.south.background, southUI);
+	$: northCSS = twMerge(css.north.base, css.north.background, northUI);
+	$: centerCSS = twMerge(css.center.base, css.center.background, centerUI);
+	$: southCSS = twMerge(css.south.base, css.south.background, southUI);
 </script>
 
 <svelte:element this={as} class={cardCSS}>
