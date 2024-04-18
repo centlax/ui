@@ -29,4 +29,6 @@
 	);
 </script>
 
-<span class="{css.mode[mode]} {logoCSS}" />
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<span class="{css.mode[mode]} {logoCSS}" on:click on:dblclick on:mouseenter on:mouseleave />

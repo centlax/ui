@@ -34,7 +34,7 @@
 		>
 			<div>
 				<div class="flex items-center gap-x-3">
-					<div class="flex-none rounded-full bg-green-400/10 p-1 text-green-400">
+					<div class="flex-none rounded-full bg-green-400/10 p-1 text-success-500">
 						<div class="h-2 w-2 rounded-full bg-current"></div>
 					</div>
 					<h1 class="flex gap-x-3 text-base leading-7">
