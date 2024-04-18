@@ -4,7 +4,7 @@ export const css = {
 	item: {
 		base: '',
 		size: 'text-sm',
-		color: 'text-gray-500 dark:text-gray-400',
+		color: 'text-gray-600 dark:text-gray-500',
 		padding: 'pt-1.5 pb-3',
 		icon: 'ms-auto transform transition-transform duration-200'
 	},

@@ -1,37 +1,20 @@
 <script lang="ts">
-	import { UDivider, UDashSide, UDashHead, UDashMain } from '$lib/index.js';
-	import { PaneGroup, Pane, PaneResizer } from 'paneforge';
-	export let aside = {
-		min: 10,
-		auto: 15,
-		max: 20
-	};
-	let main = {
-		auto: 80
-	};
-
-	const css = {
-		base: 'bg-white dark:bg-gray-900 w-full'
-	};
+	import { UDashHead, UDashSide, USheet } from '$lib/index.js';
+	let toggle:boolean;
 </script>
 
-<PaneGroup direction="horizontal" class={css.base}>
-	<Pane defaultSize={aside.auto} minSize={aside.min} maxSize={aside.max}>
-		<slot name="side">
-			<UDashSide />
-		</slot>
-	</Pane>
+<section>
+	<div class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-72 xl:flex-col">
+		<USheet bind:state={toggle} from='west'>
+			<UDashSide/>
+		</USheet>
+		<!-- Sidebar component, swap this element with another sidebar if you like -->
+		<UDashSide />
+	</div>
 
-	<PaneResizer class="w-[10px] ">
-		<UDivider class="h-full w-[2px] bg-gray-800 hover:bg-gray-700" />
-	</PaneResizer>
-
-	<Pane defaultSize={main.auto}>
-		<slot name="head">
-			<UDashHead />
-		</slot>
-		<slot name="main">
-			<UDashMain />
-		</slot>
-	</Pane>
-</PaneGroup>
+	<div class="xl:pl-72">
+		<!-- Sticky search header -->
+		<UDashHead bind:toggle />
+		<main><slot /></main>
+	</div>
+</section>

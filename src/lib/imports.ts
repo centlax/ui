@@ -39,6 +39,7 @@ export { default as USkeleton } from './components/layouts/skeleton/skeleton.sve
 export { default as UColorImage } from './components/misc/color/image.svelte';
 export { default as UColorMode } from './components/misc/color/mode.svelte';
 export { default as UColorTheme } from './components/misc/color/theme.svelte';
+export { default as UColorToggle } from './components/misc/color/toggle.svelte';
 export { default as ULogo } from './components/misc/logo/logo.svelte';
 export { default as UPlaceholder } from './components/misc/placeholder/placeholder.svelte';
 // navigations

@@ -1,50 +1,49 @@
 <script lang="ts">
-	import { UIcon } from '$lib/index.js';
-	import { Accordion } from 'bits-ui';
-	import { slide } from 'svelte/transition';
+	import type { AccordionLink } from '$lib/types/link.js';
 
-	const items = [
-		{
-			title: 'What is the meaning of life?',
-			content:
-				'To become a better person, to help others, and to leave the world a better place than you found it.'
+	// imports
+	import { createAccordion, melt } from '@melt-ui/svelte';
+	import { slide } from 'svelte/transition';
+	import { twJoin } from 'tailwind-merge';
+	// props
+	export let items: AccordionLink[];
+
+	// config
+	const css = {
+		wrapper: `mx-auto w-[18rem] max-w-full rounded-xl bg-white dark:bg-gray-900 shadow-lg sm:w-[25rem]`,
+		container: 'overflow-hidden transition-colors first:rounded-t-xl last:rounded-b-xl',
+		mark: 'border-t border-t-neutral-300',
+		trigger: {
+			base: 'flex flex-1 cursor-pointer items-center justify-between focus:!ring-0',
+			text: 'px-5 py-5 text-base font-medium leading-none',
+			color: `bg-white dark:bg-gray-900 focus-visible:text-primary-800 text-black transition-colors hover:bg-neutral-100 `
 		},
-		{
-			title: 'How do I become a better person?',
-			content: 'Read books, listen to podcasts, and surround yourself with people who inspire you.'
-		},
-		{
-			title: 'What is the best way to help others?',
-			content: 'Give them your time, attention, and love.'
-		}
-	];
+		content: 'overflow-hidden bg-neutral-100 text-sm text-neutral-600'
+	};
+
+	const {
+		elements: { content, item, trigger, root },
+		helpers: { isSelected }
+	} = createAccordion({
+		defaultValue: 'item-1'
+	});
+	// reactive
+	$: triggerCSS = twJoin(css.trigger.base, css.trigger.text, css.trigger.color);
 </script>
 
-<Accordion.Root class="w-full sm:max-w-[70%]" multiple>
-	{#each items as item, i}
-		<Accordion.Item value="${i}" class="group border-b border-dark-10 px-1.5">
-			<Accordion.Header>
-				<Accordion.Trigger
-					class="flex w-full flex-1 items-center justify-between py-5 text-[15px] font-medium transition-all [&[data-state=open]>span>svg]:rotate-180 "
-				>
-					{item.title}
-					<span
-						class="inline-flex size-8 items-center justify-center rounded-[7px] bg-transparent transition-all hover:bg-dark-10"
-					>
-						<UIcon
-							name="i-fluent-chevron-down-24-regular"
-							class="size-[18px] transition-all duration-200"
-						/>
-					</span>
-				</Accordion.Trigger>
-			</Accordion.Header>
-			<Accordion.Content
-				transition={slide}
-				transitionConfig={{ duration: 200 }}
-				class="pb-[25px] text-sm tracking-[-0.01em]"
-			>
-				{item.content}
-			</Accordion.Content>
-		</Accordion.Item>
+<div class={css.wrapper} {...$root}>
+	{#each items as { id, title, description }, i}
+		<div use:melt={$item(id)} class={css.container}>
+			<div use:melt={$trigger(id)} class="{triggerCSS} {i !== 0 && css.mark}">
+				<slot name="title">{title}</slot>
+			</div>
+			{#if $isSelected(id)}
+				<div class={css.content} use:melt={$content(id)} transition:slide>
+					<slot name="description">
+						<div class="px-5 py-4">{description}</div>
+					</slot>
+				</div>
+			{/if}
+		</div>
 	{/each}
-</Accordion.Root>
+</div>

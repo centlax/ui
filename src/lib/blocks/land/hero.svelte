@@ -10,7 +10,7 @@
 	export let banner: ComponentProps<ULandBanner> = {};
 	// config
 	const css = {
-		wrapper: 'relative isolate pt-6 py-20 lg:pt-[16rem] ',
+		wrapper: 'relative isolate',
 		title: 'text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl',
 		description: 'mt-6  text-lg leading-8 text-gray-600 dark:text-gray-300',
 		actions: 'mt-10 flex gap-x-6',

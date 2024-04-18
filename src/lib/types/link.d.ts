@@ -8,6 +8,9 @@ export interface Link extends HTMLAnchorAttributes {
 	children?: Link[];
 }
 
+export interface AccordionLink extends Link {
+	id: string;
+}
 export interface AsideLink extends Link {
 	icon?: string;
 	iconClass?: string;
