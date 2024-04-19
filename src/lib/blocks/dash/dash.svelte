@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { UDashHead, UDashSide, USheet } from '$lib/index.js';
+	// imports
+	import { UDashFoot, UDashHead, UDashSide, UFlow, USheet } from '$lib/index.js';
+	// props
 	let toggle: boolean;
+
 	// width xl:72
 </script>
 
-<section class="flex min-h-lvh">
-	<div class="hidden xl:inset-y-0 xl:z-50 xl:flex xl:w-wull xl:flex-col">
+<section class="flex h-lvh max-h-[1200px] overflow-hidden">
+	<div class="hidden sticky top-0 xl:flex xl:z-50 xl:flex-col xl:w-wull">
 		<USheet bind:state={toggle} from="west">
 			<UDashSide />
 		</USheet>
@@ -13,9 +16,17 @@
 		<UDashSide />
 	</div>
 
-	<div class="flex-grow">
+	<div class="relative overflow-auto flex-grow h-[100%]">
 		<!-- Sticky search header -->
 		<UDashHead bind:toggle />
-		<main><slot /></main>
+		<main class="overflow-hidden px-4 sm:px-6 lg:px-8">
+			<slot />
+		</main>
+		<div class="absolute bottom-0 right-0 left-0 {$$slots.foot ? '' : 'hidden'}">
+			<slot name="foot" />
+		</div>
 	</div>
 </section>
+
+<style>
+</style>

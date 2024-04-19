@@ -29,6 +29,7 @@ export { default as UInput } from './components/forms/input/input.svelte';
 export { default as USelect } from './components/forms/select/select.svelte';
 export { default as UToggle } from './components/forms/toggle/toggle.svelte';
 // layouts
+export { default as UFlow } from './components/layouts/-more/flow.svelte';
 export { default as UCard } from './components/layouts/card/card.svelte';
 export { default as UCardGroup } from './components/layouts/card/group.svelte';
 export { default as UContainer } from './components/layouts/container/container.svelte';
@@ -64,6 +65,7 @@ export { default as UAsideLinks } from './blocks/aside/links.svelte';
 export { default as UBody } from './blocks/body/body.svelte';
 // dash
 export { default as UDash } from './blocks/dash/dash.svelte';
+export { default as UDashFoot } from './blocks/dash/foot.svelte';
 export { default as UDashHead } from './blocks/dash/head.svelte';
 export { default as UDashMain } from './blocks/dash/main.svelte';
 export { default as UDashSide } from './blocks/dash/side.svelte';
