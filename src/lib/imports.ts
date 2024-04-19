@@ -81,6 +81,7 @@ export { default as UHeaderLinks } from './blocks/header/links.svelte';
 export { default as UHeaderTipper } from './blocks/header/tipper.svelte';
 // land
 export { default as ULandBanner } from './blocks/land/banner.svelte';
+export { default as ULandCard } from './blocks/land/card.svelte';
 export { default as ULandDark } from './blocks/land/dark.svelte';
 export { default as ULandHero } from './blocks/land/hero.svelte';
 // layout

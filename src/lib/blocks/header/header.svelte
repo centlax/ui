@@ -14,12 +14,14 @@
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade, fly, slide } from 'svelte/transition';
 	import { twJoin } from 'tailwind-merge';
+	import { ui } from '$lib/ui.config.js';
 	// props
 
 	export let links: HeaderLink[] = [];
 	export let title: string = '';
 	let children: HeaderLink['children'];
 	export let shadow: boolean = false;
+	export let height: string = ui.header.height;
 
 	// config
 	const {
@@ -31,10 +33,10 @@
 
 	const css = {
 		overlay: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
-		content: `group/logo fixed left-0 right-0 top-0 z-50 h-fit w-full bg-white dark:bg-gray-900 focus:outline-none`,
+		content: `group/logo fixed left-0 right-0 top-0 z-50 w-full bg-white dark:bg-gray-900 focus:outline-none`,
 		shadow: 'shadow-sm',
 		nav: {
-			base: 'mx-auto flex items-center justify-between py-4',
+			base: 'mx-auto flex items-center justify-between ',
 			east: 'flex lg:flex-1',
 			center: 'hidden lg:flex lg:gap-x-12',
 			west: 'hidden lg:flex lg:flex-1 lg:justify-end gap-x-2',
@@ -54,7 +56,7 @@
 			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
 		},
 		half: {
-			base: 'flex lg:hidden flex-col gap-y-2 pb-4',
+			base: 'flex lg:hidden flex-col gap-y-2 py-4',
 			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
 		}
 	};
@@ -76,9 +78,9 @@
 	/>
 	<div use:melt={$content} class="{css.content} {shadow && css.shadow}" aria-label="Global">
 		<UContainer>
-			<nav class={css.nav.base}>
+			<nav style="height: {height};" class={css.nav.base}>
 				<div class={css.nav.east}>
-					<ULink href="/" class="flex items-center gap-x-2 -ml-1">
+					<ULink href="/" class="flex items-center gap-x-2 -ml-[0.35rem]">
 						<slot name="logo">
 							<ULogo move />
 						</slot>
@@ -118,8 +120,8 @@
 					</nav>
 				</section>
 			{:else if half}
-				<section class={css.section.base} transition:slide={{ duration: 300, axis: 'y' }}>
-					<nav class={css.half.base} transition:fade>
+				<section class={css.section.base} transition:slide={{ duration: 200, axis: 'y' }}>
+					<nav class={css.half.base} transition:fade={{ delay: 200 }}>
 						<UAsideLinks {links} />
 					</nav>
 				</section>

@@ -15,11 +15,11 @@
 		inactive:
 			'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 font-medium',
 		icon: {
-			wrapper: 'rounded-md p-1 inline-flex ring-inset ring-1',
-			base: 'w-4 h-4 flex-shrink-0',
+			wrapper: 'rounded-md p-1 inline-flex ring-inset ring-1 group-hover:ring-0',
+			backround: 'group-hover:bg-primary-600 dark:group-hover:bg-primary-500',
+			base: 'size-4 flex-shrink-0 group-hover:text-white',
 			active: 'bg-primary ring-primary text-background',
-			inactive:
-				'bg-gray-100/50 dark:bg-gray-800/50 ring-gray-300 dark:ring-gray-700 group-hover:bg-primary group-hover:ring-primary group-hover:text-background'
+			inactive: 'bg-gray-100/50 dark:bg-gray-800/50 ring-gray-300 dark:ring-gray-700'
 		},
 		externalIcon: {
 			name: ui.icon.external,
@@ -33,11 +33,12 @@
 {#if links?.length}
 	<div class={twJoin(css.wrapper, classProp)}>
 		{#each links as link}
-			<ULink class={css.base} active_class={css.active} inactive_class={css.inactive}>
-				<div>
+			<ULink href={link.href} class={css.base}>
+				<div class="group">
 					{#if link.icon}
 						<div
 							class={twJoin(
+								css.icon.backround,
 								css.icon.wrapper,
 								link.active || isActive ? css.icon.active : css.icon.inactive
 							)}
@@ -53,13 +54,6 @@
 						{/if}
 					</span>
 				</div>
-				{#if link.children}
-					<UIcon
-						on:click={() => (open = !open)}
-						class="justify-end {css.label}"
-						name={open ? 'i-fluent-subtract-24-regular' : 'i-fluent-add-24-regular'}
-					/>
-				{/if}
 			</ULink>
 		{/each}
 	</div>

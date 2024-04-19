@@ -2,7 +2,7 @@
 	import { UButton, UIcon } from '$lib/index.js';
 	import type { ComponentProps } from 'svelte';
 	import { toggleMode } from 'mode-watcher';
-	export let props: ComponentProps<UButton>;
+	export let props: ComponentProps<UButton> = [];
 </script>
 
 <UButton {...props} square color="gray" on:click={toggleMode}>

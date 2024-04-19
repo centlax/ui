@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { UDash, UDashFoot, UInputPin } from '$lib/index.js';
+	import { UContainer, UDash, UDashFoot, UInputPin } from '$lib/index.js';
 </script>
 
-<UDash>
-	<UDashFoot slot="foot" />
-</UDash>
+<UContainer>
+	<div class="h-[100px] w-full bg-red-600">PEACE</div>
+</UContainer>

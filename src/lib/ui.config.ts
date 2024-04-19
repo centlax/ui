@@ -20,6 +20,9 @@ export const ui = {
 		primary: 'indigo',
 		gray: 'cool'
 	},
+	header: {
+		height: '3.5rem'
+	},
 	icon: {
 		load: 'i-fluent-arrow-sync-24-regular',
 		dark: 'i-heroicons-moon-20-solid',
