@@ -19,10 +19,10 @@
 	<div class="relative overflow-auto flex-grow h-[100%]">
 		<!-- Sticky search header -->
 		<UDashHead bind:toggle />
-		<main class="overflow-hidden px-4 sm:px-6 lg:px-8">
+		<main class="overflow-hidden px-4 h-full sm:px-6 lg:px-8">
 			<slot />
 		</main>
-		<div class="absolute bottom-0 right-0 left-0 {$$slots.foot ? '' : 'hidden'}">
+		<div class="sticky bottom-0 right-0 left-0 {$$slots.foot ? '' : 'hidden'}">
 			<slot name="foot" />
 		</div>
 	</div>

@@ -26,6 +26,7 @@ export { default as UCheckbox } from './components/forms/-more/checkbox.svelte';
 export { default as UFieldSet } from './components/forms/field-set/field-set.svelte';
 export { default as UForm } from './components/forms/form/form.svelte';
 export { default as UInput } from './components/forms/input/input.svelte';
+export { default as UInputPin } from './components/forms/input/pin.svelte';
 export { default as USelect } from './components/forms/select/select.svelte';
 export { default as UToggle } from './components/forms/toggle/toggle.svelte';
 // layouts
@@ -46,10 +47,11 @@ export { default as UPlaceholder } from './components/misc/placeholder/placehold
 // navigations
 export { default as UCommandPallet } from './components/navigations/command/pallet.svelte';
 export { default as UCommandPreview } from './components/navigations/command/preview.svelte';
-export { default as UHoriNav } from './components/navigations/hori-nav/hori-nav.svelte';
+export { default as UContextMenu } from './components/navigations/context/menu.svelte';
+export { default as UHorizontalNav } from './components/navigations/horizontal/nav.svelte';
 export { default as UPagination } from './components/navigations/pagination/pagination.svelte';
 export { default as UTab } from './components/navigations/tab/tab.svelte';
-export { default as UVertNav } from './components/navigations/vert-nav/vert-nav.svelte';
+export { default as UVerticalNav } from './components/navigations/vertical/nav.svelte';
 // notifications
 export { default as UAlert } from './components/notifications/alert/alert.svelte';
 export { default as UToast } from './components/notifications/toast/toast.svelte';
@@ -84,5 +86,7 @@ export { default as ULandHero } from './blocks/land/hero.svelte';
 // layout
 export { default as ULayout } from './blocks/layout/layout.svelte';
 // page
+export { default as UPage404 } from './blocks/page/404.svelte';
+export { default as UPage500 } from './blocks/page/500.svelte';
 // price
 export { default as UPrice } from './blocks/price/price.svelte';

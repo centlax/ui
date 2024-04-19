@@ -15,7 +15,7 @@ export type UI = {
 };
 
 export const ui = {
-	size: 'sm', // TypeScript will ensure this is a valid Size,
+	size: 'sm' as Size, // TypeScript will ensure this is a valid Size,
 	colors: {
 		primary: 'indigo',
 		gray: 'cool'

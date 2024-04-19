@@ -1,6 +1,6 @@
 <script lang="ts">
 	/* imports ==== === === === === === */
-	import type { ColorPallet, Size, XDir } from '$lib/types/index.js';
+	import type { Size, XDir } from '$lib/types/index.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import './input.css';
 	import { css, type InputColor, type InputVariant } from './input.js';
@@ -17,6 +17,7 @@
 	export let westIcon = '';
 	export let variant: InputVariant = 'outline';
 	export let color: InputColor = 'white';
+	export let hide:boolean = false;
 	/* config ==== === === === === === */
 	$: _icon = (): string => {
 		if (load) {
@@ -26,7 +27,7 @@
 	};
 	$: wrapperCSS = twMerge(twJoin(css.wrapper));
 
-	$: inputCSS = twMerge(
+	$: inputUI = twMerge(
 		css.base,
 		css.ring,
 		css.rounded,
@@ -54,8 +55,10 @@
 	--fore:{colors[color][600]};
 	--dark-fore:{colors[color][500]};"
 >
-	<input {...$$restProps} class={inputCSS} />
-	<slot />
+	{#if hide}
+		<input {...$$restProps} class={inputUI} />
+	{/if}
+	<slot {inputUI} />
 	{#if (dir === 'east' && eastIcon) || $$slots.east || load}
 		<span id="east" class={eastCSS}>
 			<slot name="east">

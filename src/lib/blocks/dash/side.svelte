@@ -43,7 +43,7 @@
 		second: {
 			title: 'text-xs font-semibold leading-6 text-gray-400',
 			li: '',
-			ancor: `text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`,
+			ancor: `text-gray-400 hover:text-white  group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold`,
 			icon: `flex shrink-0 items-center justify-center rounded-md border border-gray-700 bg-gray-200 dark:bg-gray-800 text-sm font-medium text-gray-400 group-hover:text-white`,
 			label: 'truncate'
 		}
@@ -75,7 +75,7 @@
 				<ul role="list" class="-mx-2 space-y-1">
 					{#each second_items as item}
 						<li>
-							<a href={item.href} class={css.second.ancor}>
+							<a href={item.href} class="{css.second.ancor} {min ? '' : 'hover:bg-gray-800'}">
 								<span class="{css.second.icon} {min ? 'size-7 mx-auto' : 'size-6'}">
 									{item.icon}
 								</span>
@@ -88,7 +88,7 @@
 		</div>
 
 		<div class=" -mx-2">
-			<ul role="list" class="space-y-3">
+			<ul role="list" class="space-y-1">
 				<li class="{css.nav.li.base} {min ? css.nav.li.min : css.nav.li.max}">
 					<a href="/" class={css.nav.link}>
 						<UIcon name="i-fluent-settings-24-regular {min ? css.icon.min : css.icon.max}" />

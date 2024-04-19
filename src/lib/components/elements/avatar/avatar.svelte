@@ -1,4 +1,5 @@
 <script lang="ts">
+	// imports
 	import type { Size } from '$lib/types/index.js';
 	import { ui } from '$lib/ui.config.js';
 	import { createAvatar, melt } from '@melt-ui/svelte';
