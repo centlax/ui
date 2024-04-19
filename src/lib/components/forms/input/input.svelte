@@ -17,7 +17,7 @@
 	export let westIcon = '';
 	export let variant: InputVariant = 'outline';
 	export let color: InputColor = 'white';
-	export let hide:boolean = false;
+	export let hide: boolean = false;
 	/* config ==== === === === === === */
 	$: _icon = (): string => {
 		if (load) {
@@ -55,7 +55,7 @@
 	--fore:{colors[color][600]};
 	--dark-fore:{colors[color][500]};"
 >
-	{#if hide}
+	{#if !hide}
 		<input {...$$restProps} class={inputUI} />
 	{/if}
 	<slot {inputUI} />

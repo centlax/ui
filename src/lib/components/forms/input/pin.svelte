@@ -1,28 +1,27 @@
 <script lang="ts">
-    // imports
+	// imports
 	import { createPinInput, melt } from '@melt-ui/svelte';
 	import { UInput } from '$lib/index.js';
-    // props
-    export let length:number = 5;
-    export let placeholder:string = '0'; // we want array to have lenght size;
-    export let default_value:string[] = []; 
-    export let name:string = '';
-    
-    
+	// props
+	export let length: number = 5;
+	export let placeholder: string = ''; // we want array to have lenght size;
+	export let default_value: string[] = [];
+	export let name: string = '';
+	export let disabled: boolean = false;
 
-    // config
-    const css = {
-        wrapper: 'flex items-center gap-2',
-        base: 'size-12 rounded-md text-center text-lg"'
-    }
+	// config
+	const css = {
+		wrapper: 'flex items-center gap-2',
+		base: 'size-12 rounded-md text-center text-lg"'
+	};
 
 	const {
 		elements: { root, input }
 	} = createPinInput({
 		defaultValue: default_value,
-        placeholder: placeholder,
-        name: name
-
+		placeholder: placeholder,
+		name: name,
+		disabled: disabled
 	});
 </script>
 
