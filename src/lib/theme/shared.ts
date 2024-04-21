@@ -14,14 +14,9 @@ export type BaseVariant = {
 	};
 };
 
-export const shareUI = {
-	rounded: {
-		xs: 'rounded',
-		sm: 'rounded',
-		md: 'rounded-md',
-		lg: 'rounded-md',
-		xl: 'rounded-md'
-	},
+export const sharedUI = {
+	font: 'font-medium',
+	rounded: 'rounded-md',
 	size: {
 		xs: 'xs',
 		sm: 'sm',

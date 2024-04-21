@@ -1,5 +1,5 @@
 import type { Colors } from '$lib/theme/colors.js';
-import { shareUI } from '$lib/theme/share.js';
+import { sharedUI } from '$lib/theme/shared.js';
 export type InputVariant = 'outline' | 'none';
 export type InputColor = Colors['fore'] | Colors['root'] | 'white';
 
@@ -20,10 +20,10 @@ export const css = {
 			xl: 'ps-[109px]'
 		}
 	},
-	text: shareUI.text,
-	gap: shareUI.gap,
+	text: sharedUI.text,
+	gap: sharedUI.gap,
 	padding: {
-		base: shareUI.padding.rectangle,
+		base: sharedUI.padding.rectangle,
 		dir: {
 			east: {
 				xs: 'ps-8',

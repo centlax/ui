@@ -1,93 +1,90 @@
 <script lang="ts">
-	/* imports */
-	import './button.css';
-	import type { Size, XDir } from '$lib/types/index.js';
-	import { css, handleMask, type ButtonColor, type ButtonVariant } from './button.js';
-	import { twJoin, twMerge } from 'tailwind-merge';
-	import { shareUI } from '$lib/theme/share.js';
-	import Icon from '../-more/icon.svelte';
+	// imports
+	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
+	import type { ButtonProps } from './button.props.js';
+	import { css } from './button.styles.js';
+	import { UIcon } from '$lib/index.js';
+	import { twJoin } from 'tailwind-merge';
 	import { ui } from '$lib/ui.config.js';
-	import { Button, type ButtonProps } from 'bits-ui';
-	import type { HTMLButtonAttributes } from 'svelte/elements';
 
-	/* props */
-	type $$restProps = ButtonProps;
-	export let label: string = '';
-	let classProp = '';
+
+	// types
+	type $$Props = (HTMLAnchorAttributes & ButtonProps) | (HTMLButtonAttributes & ButtonProps);
+
+
+	// props
+	let classProp: string | undefined | null = '';
 	export { classProp as class };
-	export let size: Size = ui.size;
-	export let href: string = '';
-	export let square: boolean = false;
-	export let truncate: boolean = false;
-	export let dir: XDir = 'east';
-	export let icon: string = '';
-	export let eastIcon: string = dir === 'east' ? icon : '';
-	export let westIcon: string = dir === 'west' ? icon : '';
-	export let loading: boolean = false;
-	export let disabled: boolean = false;
-	export let block: boolean = false;
-	export let color: ButtonColor = 'primary';
-	export let variant: ButtonVariant = 'solid';
+	export let href: ButtonProps['href'] = '';
+	export let icon: ButtonProps['icon'] = '';
+	export let label: ButtonProps['label'] = '';
+	export let truncate: ButtonProps['truncate'] = false;
+	export let square: ButtonProps['square'] = false;
+	export let block: ButtonProps['block'] = false;
+	export let size: ButtonProps['size'] = ui.size;
+	export let loading: ButtonProps['loading'] = false;
+	export let padded: ButtonProps['padded'] = false;
+	export let leading: ButtonProps['leading'] = false;
+	export let trailing: ButtonProps['trailing'] = false;
+	export let rounded: ButtonProps['rounded'] = false;
+	export let variant: ButtonProps['variant'] = 'solid';
+	export let color: ButtonProps['color'] = 'primary';
 
-	/* config */
-	$: mask = handleMask(variant, color);
-	let isBase = ['white', 'black', 'gray'].includes(color) && ['solid', 'ghost'].includes(variant);
-	// @ts-ignore bc type mistmatch, but will only run if isBase is true, which insures right index at runtime
-	$: base = variant === 'solid' ? css.variant.base.solid[color] : css.variant.base.ghost[color];
 
-	/* styles */
-	$: buttonCSS = twMerge(
-		twJoin(
-			css.base,
-			isBase
-				? base
-				: `${css.variant.mask[variant]} button` /** button implemeted inside styles.css */,
-			shareUI.text[size],
-			shareUI.padding[square ? 'square' : 'rectangle'][size],
-			css.rounded,
-			shareUI.gap[size],
-			block ? css.block : css.inline
-		),
+	// config
+	let isLeading = (!leading && !trailing) || leading;
+	let leadingIcon = typeof icon === 'object' ? icon.east : isLeading ? icon : '';
+	let trailingIcon = typeof icon === 'object' ? icon.west : trailing ? icon : '';
+
+	let _variant: string =
+		//@ts-ignore
+		css.variant.base[variant][color] ||
+		//@ts-ignore
+		css.variant.mask[variant].replaceAll('{color}', color);
+
+
+	// reactive
+	$: buttonCSS = twJoin(
+		css.base,
+		css.font,
+		_variant,
+		css.gap[size || 'sm'],
+		css.text[size || 'sm'],
+		block ? css.block : css.inline,
+		padded ? 'p-0' : css.padding[square ? 'square' : 'rectangle'][size || 'sm'],
+		rounded ? 'rounded-full' : css.rounded,
 		classProp
 	);
-	$: iconCSS = twJoin('');
+	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
+	$: leadingIconCSS = twJoin(loading ? loadingIcon && 'animate-spin' : leadingIcon);
+	$: trailingIconCSS = twJoin(trailingIcon);
 </script>
 
-<Button.Root
-	{href}
-	class={buttonCSS}
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<svelte:element
+	this={href ? 'a' : 'button'}
 	on:click
 	on:change
 	on:keydown
 	on:keyup
 	on:mouseenter
 	on:mouseleave
+	class={buttonCSS}
 	{...$$restProps}
-	style="
-	--fore:{mask.fore.light}; 
-	--back:{mask.back.light}; 
-	--hover-fore:{mask.hover.fore.light}; 
-	--hover-back:{mask.hover.back.light}; 
-	--dark-fore:{mask.fore.dark}; 
-	--dark-back:{mask.back.dark}; 
-	--dark-hover-fore:{mask.hover.fore.dark}; 
-	--dark-hover-back:{mask.hover.back.dark};"
 >
-	<!--begin-->
-	{#if $$slots.east || eastIcon}
-		<slot name="east" {disabled} {loading}>
-			<Icon name={eastIcon} class={iconCSS} />
+	{#if $$slots.leading || leadingIcon}
+		<slot name="leading">
+			<UIcon name={leadingIconCSS} aria-hidden="true" />
 		</slot>
 	{/if}
 	<slot>
-		<span class={truncate ? css.truncate : undefined}>
+		<span class={truncate ? css.truncate : ''}>
 			{label}
 		</span>
 	</slot>
-	{#if $$slots.west || westIcon}
-		<slot name="west" {disabled} {loading}>
-			<Icon name={westIcon} class={iconCSS} />
+	{#if $$slots.trailing || trailingIcon}
+		<slot name="trailing">
+			<UIcon name={trailingIconCSS} />
 		</slot>
 	{/if}
-	<!--end-->
-</Button.Root>
+</svelte:element>

@@ -3,7 +3,7 @@
 	import { ui } from '$lib/ui.config.js';
 	import { setContext } from 'svelte';
 	import type { FieldSetContext } from './index.js';
-	import { shareUI } from '$lib/theme/share.js';
+	import { sharedUI } from '$lib/theme/shared.js';
 	import { twJoin } from 'tailwind-merge';
 	import type { InputColor } from '../input/input.js';
 	export let size: Size = ui.size;
@@ -27,7 +27,7 @@
 			base: 'block font-medium text-gray-700 dark:text-gray-200',
 			required: `after:content-['*'] after:ms-0.5 after:text-red-500 dark:after:text-red-400`
 		},
-		text: shareUI.text,
+		text: sharedUI.text,
 		container: 'mt-1 relative',
 		hint: 'text-primary-600 dark:text-primary-500 font-medium',
 		help: 'text-gray-600 dark:text-gray-500',

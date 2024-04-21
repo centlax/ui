@@ -9,7 +9,7 @@
 	let isActive: boolean = false;
 
 	const css = {
-		wrapper: 'space-y-3 mb-3 lg:mb-6 -mx-1 lg:mx-0',
+		wrapper: 'space-y-3 mb-3 lg:mb-6 lg:mx-0',
 		base: 'flex justify-between items-center gap-1.5 lg:gap-2 group',
 		active: 'text-primary font-semibold',
 		inactive:

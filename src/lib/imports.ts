@@ -17,7 +17,6 @@ export { default as UAccordion } from './components/elements/accordion/accordion
 export { default as UAvatar } from './components/elements/avatar/avatar.svelte';
 export { default as UAvatarGroup } from './components/elements/avatar/group.svelte';
 export { default as UButton } from './components/elements/button/button.svelte';
-export { default as UButtonGroup } from './components/elements/button/group.svelte';
 export { default as UDropdown } from './components/elements/dropdown/dropdown.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
 export { default as UProgress } from './components/elements/progress/progress.svelte';

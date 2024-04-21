@@ -4,10 +4,12 @@
 	import type { HeaderLink } from '$lib/types/link.js';
 	import { twJoin } from 'tailwind-merge';
 	export let links: HeaderLink[];
+	export let children: HeaderLink[] | undefined = [];
+	export let tipper: boolean = true;
 
 	const css = {
 		wrapper: 'flex items-center gap-x-8',
-		base: 'text-sm/6 font-semibold flex items-center gap-1',
+		base: 'text-sm font-semibold flex items-center gap-1',
 		active: 'text-primary',
 		inactive: 'hover:text-primary',
 		icon: {
@@ -30,7 +32,7 @@
 	<ul class={css.wrapper}>
 		{#each links as link}
 			<li class="relative">
-				{#if link.children?.length}
+				{#if link.children?.length && tipper}
 					<UTipper let:state>
 						<ULink active href={link.href} class={css.base}>
 							<slot name="label" {link}>
@@ -52,7 +54,12 @@
 						</UCard>
 					</UTipper>
 				{:else}
-					<ULink active href={link.href} class={css.base}>
+					<ULink
+						on:mouseenter={() => (children = link?.children)}
+						active
+						href={link.href}
+						class={css.base}
+					>
 						<slot name="label" {link}>
 							{link.label}
 						</slot>

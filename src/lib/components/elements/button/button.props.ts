@@ -1,0 +1,21 @@
+import type { Size, XDir } from '$lib/types/index.js';
+import type { HTMLAnchorAttributes } from 'svelte/elements';
+import type { SafelistColors } from '$lib/theme/safelist.js';
+import { css } from './button.styles.js';
+export type ButtonProps = {
+	//ui?: { east?: string | undefined; west?: string | undefined };
+	href?: HTMLAnchorAttributes['href'];
+	icon?: string | { west?: string; east?: string; loading?: string };
+	label?: string;
+	truncate?: boolean;
+	loading?: boolean;
+	block?: boolean;
+	trailing?: boolean;
+	leading?: boolean;
+	square?: boolean;
+	padded?: boolean;
+	size?: Size;
+	rounded?: boolean;
+	variant?: keyof typeof css.variant.mask;
+	color?: SafelistColors | 'white' | 'gray' | 'black';
+};

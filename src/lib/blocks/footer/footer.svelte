@@ -1,11 +1,10 @@
 <script lang="ts">
 	// imports
-	import { UContainer, UFooterLinks } from '$lib/index.js';
+	import { UContainer, UFooterLinks, UFooterNotes } from '$lib/index.js';
 	import type { XDir } from '$lib/types/index.js';
 	import type { Link } from '$lib/types/link.js';
 	import { twJoin } from 'tailwind-merge';
 	// props
-	export let title: string = 'Centlax';
 	export let dir: XDir = 'east';
 	export let links: Link[] = [];
 	let classProp: string | string[] = '';
@@ -13,7 +12,7 @@
 	// config
 	let year = new Date().getFullYear();
 	const css = {
-		wrapper: 'bg-white/50 dark:bg-gray-900/50 ',
+		wrapper: 'bg-gray-50/80 dark:bg-gray-950/80 ',
 		border: 'border-t border-gray-900/10 dark:border-white/10',
 		base: 'mx-auto',
 		grid: 'py-8 lg:py-12 xl:grid xl:grid-cols-3 xl:gap-8',
@@ -51,12 +50,9 @@
 					{/if}
 				</div>
 			{/if}
-			<div class="{css.notes.base} {full && css.border}">
-				<p class={css.notes.year}>
-					{title} &copy; {year}
-				</p>
-				<slot name="notes" />
-			</div>
+			<slot name="notes">
+				<UFooterNotes />
+			</slot>
 		</div>
 	</UContainer>
 </footer>

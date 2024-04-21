@@ -6,7 +6,19 @@
 		{
 			label: 'Documentation',
 			icon: 'i-heroicons-book-open-solid',
-			to: '/getting-started'
+			to: '/getting-started',
+			children: [
+				{
+					label: 'Playground',
+					icon: 'i-simple-icons-stackblitz',
+					to: '/playground'
+				},
+				{
+					label: 'Roadmap',
+					icon: 'i-heroicons-beaker',
+					to: '/roadmap'
+				}
+			]
 		},
 		{
 			label: 'Playground',

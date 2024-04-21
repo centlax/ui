@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.css'
+	import '../app.css';
 	import { UBody, UFooter, UHeader, ULayout } from '@centlax/ui';
 	let height: string = '3.5rem';
 	const links = [
