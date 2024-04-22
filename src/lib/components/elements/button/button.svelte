@@ -21,19 +21,31 @@
 	export let block: ButtonProps['block'] = false;
 	export let size: ButtonProps['size'] = ui.size;
 	export let loading: ButtonProps['loading'] = false;
-	export let padded: ButtonProps['padded'] = false;
+	export let padded: ButtonProps['padded'] = true;
 	export let leading: ButtonProps['leading'] = false;
 	export let trailing: ButtonProps['trailing'] = false;
 	export let rounded: ButtonProps['rounded'] = false;
 	export let variant: ButtonProps['variant'] = 'solid';
 	export let color: ButtonProps['color'] = 'primary';
 
-	// config
-	let isLeading = (!leading && !trailing) || leading;
-	let leadingIcon = typeof icon === 'object' ? icon.leading : isLeading ? icon : '';
-	let trailingIcon = typeof icon === 'object' ? icon.trailing : trailing ? icon : '';
-	let loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
+	// reactive
+	$: isLeading =
+		(icon && leading) ||
+		(icon && !trailing) ||
+		(loading && !trailing) ||
+		(typeof icon === 'object' && icon.leading);
 
+	$: isTrailing =
+		(icon && trailing) || (loading && trailing) || (typeof icon === 'object' && icon.trailing);
+
+	$: isSquare = square || (!$$slots.default && !label);
+
+	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
+	$: leadingIcon = loading ? loadingIcon : typeof icon === 'object' ? icon.leading : icon;
+	$: trailingIcon =
+		loading && !isLeading ? loadingIcon : typeof icon === 'object' ? icon.trailing : icon;
+
+	// config
 	let _variant: string =
 		//@ts-ignore
 		css.variant?.base[variant]?.[color] ||
@@ -45,10 +57,10 @@
 		css.base,
 		css.font,
 		_variant,
-		!square && css.gap[size || 'sm'],
+		css.gap[size || 'sm'],
 		css.text[size || 'sm'],
 		block ? css.block : css.inline,
-		padded ? 'p-0' : css.padding[square ? 'square' : 'rectangle'][size || 'sm'],
+		padded && css.padding[isSquare ? 'square' : 'rectangle'][size || 'sm'],
 		rounded ? 'rounded-full' : css.rounded,
 		classProp
 	);
@@ -80,7 +92,9 @@
 	</slot>
 	{#if $$slots.trailing || trailingIcon}
 		<slot name="trailing">
+			{#if isTrailing}
 			<UIcon name={trailingIconCSS} aria-hidden="true" />
+			{/if}
 		</slot>
 	{/if}
 </svelte:element>

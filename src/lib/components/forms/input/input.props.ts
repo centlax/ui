@@ -15,5 +15,5 @@ export type InputProps = {
 	type?: HTMLInputAttributes['type'];
 	hide?: boolean;
 	mask?: boolean;
-	value?: HTMLInputAttributes['value']
+	value?: HTMLInputAttributes['value'];
 };

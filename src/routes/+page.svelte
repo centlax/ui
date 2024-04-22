@@ -9,7 +9,7 @@
 	<UButton
 		label="Set up template"
 		loading
-		variant='solid'
+		variant="solid"
 		trailing
 		icon={{
 			loading: 'i-fluent-add-circle-20-filled'
@@ -17,18 +17,15 @@
 		class="hover:backdrop-brightness-110"
 		on:dblclick={() => console.log('SHIMMY')}
 	/>
-	<UInput  trailing loading icon="i-fluent-add-circle-20-filled" bind:value={color} />
+	<UInput trailing loading icon="i-fluent-add-circle-20-filled" bind:value={color} />
 
 	<UButton
 		loading
 		trailing
-		icon='i-fluent-add-circle-20-filled'
+		icon="i-fluent-add-circle-20-filled"
 		class="hover:backdrop-brightness-110"
 		on:dblclick={() => console.log('SHIMMY')}
->
-
-</UButton>
-
+	></UButton>
 
 	{color}
 	<UButton

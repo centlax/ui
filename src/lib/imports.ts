@@ -24,6 +24,7 @@ export { default as UProgress } from './components/elements/progress/progress.sv
 export { default as UCheckbox } from './components/forms/-more/checkbox.svelte';
 export { default as UFieldSet } from './components/forms/field-set/field-set.svelte';
 export { default as UForm } from './components/forms/form/form.svelte';
+export { default as UInputGroup } from './components/forms/input/group.svelte';
 export { default as UInput } from './components/forms/input/input.svelte';
 export { default as UInputPin } from './components/forms/input/pin.svelte';
 export { default as USelect } from './components/forms/select/select.svelte';

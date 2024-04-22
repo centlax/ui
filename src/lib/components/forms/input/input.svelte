@@ -24,8 +24,7 @@
 	export let color: InputProps['color'] = 'white';
 	export let hide: InputProps['hide'] = false;
 	export let mask: InputProps['mask'] = false;
-	export let value: InputProps['value'] = ''
-
+	export let value: InputProps['value'] = '';
 
 	// reactive
 	$: isLeading =
@@ -36,7 +35,7 @@
 	$: isTrailing =
 		(icon && trailing) || (loading && trailing) || (typeof icon === 'object' && icon.trailing);
 
-	// config 
+	// config
 	let leadingIcon = typeof icon === 'object' ? icon.leading : icon;
 	let trailingIcon = typeof icon === 'object' ? icon.trailing : icon;
 	let _variant: string =
@@ -74,7 +73,7 @@
 	);
 
 	$: leadingIconCSS = twJoin(
-		loading && isLeading ? loadingIcon :leadingIcon,
+		loading && isLeading ? loadingIcon : leadingIcon,
 		css.icon.base,
 		mask && css.icon.color.replaceAll('{color}', color || ''),
 		css.icon.size[size || 'sm'],
@@ -92,7 +91,16 @@
 
 <div class={css.wrapper}>
 	{#if !hide}
-		<input bind:value on:abort on:blur on:change on:click on:toggle {...$$restProps} class={inputUI} />
+		<input
+			bind:value
+			on:abort
+			on:blur
+			on:change
+			on:click
+			on:toggle
+			{...$$restProps}
+			class={inputUI}
+		/>
 	{/if}
 	<slot {inputUI} />
 	{#if (isLeading && leadingIcon) || $$slots.leading}
