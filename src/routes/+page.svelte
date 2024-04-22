@@ -17,22 +17,18 @@
 		class="hover:backdrop-brightness-110"
 		on:dblclick={() => console.log('SHIMMY')}
 	/>
-	<UInput trailing loading icon="i-fluent-add-circle-20-filled" bind:value={color} />
-
+	
 	<UButton
-		loading
 		trailing
-		icon="i-fluent-add-circle-20-filled"
+		icon='i-fluent-add-circle-20-filled'
 		class="hover:backdrop-brightness-110"
 		on:dblclick={() => console.log('SHIMMY')}
-	></UButton>
+	/>
 
 	{color}
 	<UButton
 		class="bg-green-500 ring-1 ring-green-400 ring-inset"
-		leading
 		label="Click me"
-		icon="i-fluent-add-circle-20-filled"
 		on:dblclick={() => console.log('SHIMMY')}
 	/>
 </UContainer>

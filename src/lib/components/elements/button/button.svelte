@@ -29,21 +29,15 @@
 	export let color: ButtonProps['color'] = 'primary';
 
 	// reactive
-	$: isLeading =
-		(icon && leading) ||
-		(icon && !trailing) ||
-		(loading && !trailing) ||
-		(typeof icon === 'object' && icon.leading);
-
-	$: isTrailing =
-		(icon && trailing) || (loading && trailing) || (typeof icon === 'object' && icon.trailing);
-
-	$: isSquare = square || (!$$slots.default && !label);
-
+	$: mainIcon = typeof icon === 'string' ? icon : '';
 	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
-	$: leadingIcon = loading ? loadingIcon : typeof icon === 'object' ? icon.leading : icon;
-	$: trailingIcon =
-		loading && !isLeading ? loadingIcon : typeof icon === 'object' ? icon.trailing : icon;
+	$: leadingIcon = typeof icon === 'object' ? icon.leading : '';
+	$: trailingIcon = typeof icon === 'object' ? icon.trailing : '';
+
+	$: isLeading =
+		(mainIcon && leading) || (mainIcon && !trailing) || (loading && !trailing) || leadingIcon;
+	$: isTrailing = (mainIcon && trailing) || (loading && trailing) || trailingIcon;
+	$: isSquare = square || (!$$slots.default && !label && isLeading !== isTrailing);
 
 	// config
 	let _variant: string =
@@ -57,15 +51,27 @@
 		css.base,
 		css.font,
 		_variant,
-		css.gap[size || 'sm'],
+		!isSquare && css.gap[size || 'sm'],
 		css.text[size || 'sm'],
 		block ? css.block : css.inline,
 		padded && css.padding[isSquare ? 'square' : 'rectangle'][size || 'sm'],
 		rounded ? 'rounded-full' : css.rounded,
 		classProp
 	);
-	$: leadingIconCSS = twJoin(loading ? `${loadingIcon} animate-spin` : leadingIcon);
-	$: trailingIconCSS = twJoin(loading ? `${loadingIcon} animate-spin` : trailingIcon);
+	$: leadingIconName = loading ? loadingIcon : leadingIcon || mainIcon;
+	$: trailingIconName = loading && !isLeading ? loadingIcon : trailingIcon || mainIcon;
+
+	$: leadingIconCSS = twJoin(
+		css.icon.base,
+		css.icon.size[size || 'sm'],
+		loading && css.icon.loading
+	);
+
+	$: trailingIconCSS = twJoin(
+		css.icon.base,
+		css.icon.size[size || 'sm'],
+		loading && !isLeading && css.icon.loading
+	);
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -80,21 +86,19 @@
 	class={buttonCSS}
 	{...$$restProps}
 >
-	{#if $$slots.leading || leadingIcon}
-		<slot name="leading">
-			<UIcon name={leadingIconCSS} aria-hidden="true" />
-		</slot>
-	{/if}
+	<slot name="leading">
+		{#if isLeading || leadingIcon}
+			<UIcon name={leadingIconName} class={leadingIconCSS} aria-hidden="true" />
+		{/if}
+	</slot>
 	<slot>
 		<span class={truncate ? css.truncate : ''}>
 			{label}
 		</span>
 	</slot>
-	{#if $$slots.trailing || trailingIcon}
-		<slot name="trailing">
-			{#if isTrailing}
-			<UIcon name={trailingIconCSS} aria-hidden="true" />
-			{/if}
-		</slot>
-	{/if}
+	<slot name="trailing">
+		{#if isTrailing || trailingIcon}
+			<UIcon name={trailingIconName} class={trailingIconCSS} aria-hidden="true" />
+		{/if}
+	</slot>
 </svelte:element>

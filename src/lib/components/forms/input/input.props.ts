@@ -16,4 +16,8 @@ export type InputProps = {
 	hide?: boolean;
 	mask?: boolean;
 	value?: HTMLInputAttributes['value'];
+	el?: HTMLInputElement | null;
+	rounded?: boolean;
+	ui?: {wrapper?:string, leading?:string, trailing?:string}
+
 };

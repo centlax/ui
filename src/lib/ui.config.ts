@@ -26,7 +26,7 @@ export const ui = {
 		height: '3.5rem'
 	},
 	icon: {
-		loading: 'i-fluent-arrow-sync-24-regular',
+		loading: 'i-fluent-arrow-sync-20-regular',
 		dark: 'i-heroicons-moon-20-solid',
 		light: 'i-heroicons-sun-20-solid',
 		system: 'i-heroicons-computer-desktop-20-solid',
