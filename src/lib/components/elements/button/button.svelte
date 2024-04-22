@@ -7,10 +7,8 @@
 	import { twJoin } from 'tailwind-merge';
 	import { ui } from '$lib/ui.config.js';
 
-
 	// types
 	type $$Props = (HTMLAnchorAttributes & ButtonProps) | (HTMLButtonAttributes & ButtonProps);
-
 
 	// props
 	let classProp: string | undefined | null = '';
@@ -30,34 +28,32 @@
 	export let variant: ButtonProps['variant'] = 'solid';
 	export let color: ButtonProps['color'] = 'primary';
 
-
 	// config
 	let isLeading = (!leading && !trailing) || leading;
-	let leadingIcon = typeof icon === 'object' ? icon.east : isLeading ? icon : '';
-	let trailingIcon = typeof icon === 'object' ? icon.west : trailing ? icon : '';
+	let leadingIcon = typeof icon === 'object' ? icon.leading : isLeading ? icon : '';
+	let trailingIcon = typeof icon === 'object' ? icon.trailing : trailing ? icon : '';
+	let loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
 
 	let _variant: string =
 		//@ts-ignore
-		css.variant.base[variant][color] ||
+		css.variant?.base[variant]?.[color] ||
 		//@ts-ignore
-		css.variant.mask[variant].replaceAll('{color}', color);
-
+		css.variant?.mask[variant].replaceAll('{color}', color);
 
 	// reactive
 	$: buttonCSS = twJoin(
 		css.base,
 		css.font,
 		_variant,
-		css.gap[size || 'sm'],
+		!square && css.gap[size || 'sm'],
 		css.text[size || 'sm'],
 		block ? css.block : css.inline,
 		padded ? 'p-0' : css.padding[square ? 'square' : 'rectangle'][size || 'sm'],
 		rounded ? 'rounded-full' : css.rounded,
 		classProp
 	);
-	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
-	$: leadingIconCSS = twJoin(loading ? loadingIcon && 'animate-spin' : leadingIcon);
-	$: trailingIconCSS = twJoin(trailingIcon);
+	$: leadingIconCSS = twJoin(loading ? `${loadingIcon} animate-spin` : leadingIcon);
+	$: trailingIconCSS = twJoin(loading ? `${loadingIcon} animate-spin` : trailingIcon);
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -84,7 +80,7 @@
 	</slot>
 	{#if $$slots.trailing || trailingIcon}
 		<slot name="trailing">
-			<UIcon name={trailingIconCSS} />
+			<UIcon name={trailingIconCSS} aria-hidden="true" />
 		</slot>
 	{/if}
 </svelte:element>

@@ -1,11 +1,11 @@
-import type { Size, XDir } from '$lib/types/index.js';
+import type { Size } from '$lib/types/index.js';
 import type { HTMLAnchorAttributes } from 'svelte/elements';
 import type { SafelistColors } from '$lib/theme/safelist.js';
 import { css } from './button.styles.js';
 export type ButtonProps = {
 	//ui?: { east?: string | undefined; west?: string | undefined };
 	href?: HTMLAnchorAttributes['href'];
-	icon?: string | { west?: string; east?: string; loading?: string };
+	icon?: string | { leading?: string; trailing?: string; loading?: string };
 	label?: string;
 	truncate?: boolean;
 	loading?: boolean;

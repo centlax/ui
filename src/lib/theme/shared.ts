@@ -61,6 +61,15 @@ export const sharedUI = {
 			md: 'size-5',
 			lg: 'size-5',
 			xl: 'size-6'
+		},
+		padding: {
+			x: {
+				xs: 'px-2.5',
+				sm: 'px-2.5',
+				md: 'px-3',
+				lg: 'px-3.5',
+				xl: 'px-3.5'
+			}
 		}
 	}
 };

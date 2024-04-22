@@ -43,7 +43,7 @@ export const css = {
 			}
 		},
 		mask: {
-			solid: `shadow-sm text-white bg-{color}-500 hover:bg-{color}-600 disabled:bg-{color}-500 ring-1 ring-{color}-400 hover:ring-{color}-500 focus-visible:ring-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-{color}-500`,
+			solid: `shadow-sm text-white bg-{color}-500 hover:bg-{color}-600 disabled:bg-{color}-500 ring-1 ring-inset ring-{color}-400 hover:ring-{color}-500 focus-visible:ring-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-{color}-500`,
 			outline: `${quick.variant.mask.ringText} ring-1 ring-inset ring-current hover:bg-{color}-50 disabled:bg-transparent dark:hover:bg-{color}-950 dark:disabled:bg-transparent`,
 			soft: `${quick.variant.mask.ringText} bg-{color}-50 hover:bg-{color}-100 disabled:bg-{color}-50 dark:bg-{color}-950 dark:hover:bg-{color}-900 dark:disabled:bg-{color}-950 focus-visible:ring-inset`,
 			ghost: `${quick.variant.mask.ringText} hover:bg-{color}-50 disabled:bg-transparent dark:hover:bg-{color}-950 dark:disabled:bg-transparent focus-visible:ring-inset`,

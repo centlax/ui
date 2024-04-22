@@ -1,75 +1,111 @@
 <script lang="ts">
-	/* imports ==== === === === === === */
-	import type { Size, XDir } from '$lib/types/index.js';
-	import { twJoin, twMerge } from 'tailwind-merge';
-	import './input.css';
-	import { css, type InputColor, type InputVariant } from './input.js';
-	import { UIcon } from '$lib/index.js';
+	// imports
+	import type { HTMLInputAttributes } from 'svelte/elements';
+	import type { InputProps } from './input.props.js';
+	import { twJoin } from 'tailwind-merge';
+	import { css } from './input.styles.js';
 	import { ui } from '$lib/ui.config.js';
-	import { colors, type Colors } from '$lib/theme/colors.js';
+	import { UIcon } from '$lib/index.js';
 
-	/* props ==== === === === === === */
-	export let size: Size = ui.size;
-	export let dir: XDir = 'east';
-	export let load: boolean = false;
-	export let icon: string = '';
-	export let eastIcon: string = icon;
-	export let westIcon = '';
-	export let variant: InputVariant = 'outline';
-	export let color: InputColor = 'white';
-	export let hide: boolean = false;
-	/* config ==== === === === === === */
-	$: _icon = (): string => {
-		if (load) {
-			icon = ui.icon?.load || eastIcon;
-		}
-		return icon || eastIcon;
-	};
-	$: wrapperCSS = twMerge(twJoin(css.wrapper));
+	// types
+	type $$Props = HTMLInputAttributes & InputProps;
 
-	$: inputUI = twMerge(
+	// props
+	let classProp: string | undefined | null = '';
+	export { classProp as class };
+	export let icon: InputProps['icon'] = '';
+	export let loading: InputProps['loading'] = false;
+	export let leading: InputProps['leading'] = false;
+	export let trailing: InputProps['trailing'] = false;
+	export let type: InputProps['type'] = 'text';
+	export let size: InputProps['size'] = ui.size;
+	export let padded: InputProps['padded'] = true;
+	export let variant: InputProps['variant'] = 'outline';
+	export let color: InputProps['color'] = 'white';
+	export let hide: InputProps['hide'] = false;
+	export let mask: InputProps['mask'] = false;
+	export let value: InputProps['value'] = ''
+
+
+	// reactive
+	$: isLeading =
+		(icon && leading) ||
+		(icon && !trailing) ||
+		(loading && !trailing) ||
+		(typeof icon === 'object' && icon.leading);
+	$: isTrailing =
+		(icon && trailing) || (loading && trailing) || (typeof icon === 'object' && icon.trailing);
+
+	// config 
+	let leadingIcon = typeof icon === 'object' ? icon.leading : icon;
+	let trailingIcon = typeof icon === 'object' ? icon.trailing : icon;
+	let _variant: string =
+		//@ts-ignore
+		css.variant.base[variant][color] ||
+		//@ts-ignore
+		css.variant.mask[variant].replaceAll('{color}', color);
+
+	// reactive
+	$: inputUI = twJoin(
 		css.base,
-		css.ring,
+		css.form,
 		css.rounded,
 		css.placeholder,
-		css.text[size],
-		css.placeholder,
-		css.form,
-		['white', 'gray'].includes(color)
-			? css.variant[variant][color === 'white' ? 'white' : 'gray']
-			: `${css.variant[variant].transparent} input`,
-		css.padding.base[size],
-		($$slots.east || load) && css.padding.dir.east[size],
-		$$slots.west && css.padding.dir.west[size],
-		$$props.class
+		type === 'file' && [css.file.base, css.file.padding[size || 'sm']],
+		css.text[size || 'sm'],
+		padded ? css.padding[size || 'sm'] : 'p-0',
+		_variant,
+		(isLeading || $$slots.leading) && css.leading.padding[size || 'sm'],
+		(isTrailing || $$slots.trailing) && css.trailing.padding[size || 'sm'],
+		classProp
 	);
-	$: eastCSS = twJoin(css.icon.pointer, css.icon.east.wrapper, css.icon.east.padding[size]);
-	$: westCSS = twJoin(css.icon.pointer, css.icon.west.wrapper, css.icon.west.padding[size]);
-	$: loadCSS = twJoin(load && css.icon.load);
-	$: iconCSS = twJoin(css.icon.base, css.icon.size[size]);
+
+	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
+	$: leadingCSS = twJoin(
+		css.icon.leading.wrapper,
+		css.icon.leading.pointer,
+		css.icon.leading.padding[size || 'sm']
+	);
+
+	$: trailingCSS = twJoin(
+		css.icon.trailing.wrapper,
+		css.icon.trailing.pointer,
+		css.icon.trailing.padding[size || 'sm']
+	);
+
+	$: leadingIconCSS = twJoin(
+		loading && isLeading ? loadingIcon :leadingIcon,
+		css.icon.base,
+		mask && css.icon.color.replaceAll('{color}', color || ''),
+		css.icon.size[size || 'sm'],
+		loading && css.icon.loading
+	);
+
+	$: trailingIconCSS = twJoin(
+		loading && !isLeading ? loadingIcon : trailingIcon,
+		css.icon.base,
+		mask && css.icon.color.replaceAll('{color}', color || ''),
+		css.icon.size[size || 'sm'],
+		loading && !isLeading && css.icon.loading
+	);
 </script>
 
-<div
-	class={wrapperCSS}
-	style="
-	--fore:{colors[color][600]};
-	--dark-fore:{colors[color][500]};"
->
+<div class={css.wrapper}>
 	{#if !hide}
-		<input {...$$restProps} class={inputUI} />
+		<input bind:value on:abort on:blur on:change on:click on:toggle {...$$restProps} class={inputUI} />
 	{/if}
 	<slot {inputUI} />
-	{#if (dir === 'east' && eastIcon) || $$slots.east || load}
-		<span id="east" class={eastCSS}>
-			<slot name="east">
-				<UIcon name={_icon()} class="{iconCSS} {loadCSS}" />
+	{#if (isLeading && leadingIcon) || $$slots.leading}
+		<span class={leadingCSS}>
+			<slot name="leading">
+				<UIcon name={leadingIconCSS} />
 			</slot>
 		</span>
 	{/if}
-	{#if (dir === 'west' && westIcon) || $$slots.west}
-		<span id="west" class={westCSS}>
-			<slot name="west">
-				<UIcon name={westIcon} class={iconCSS} />
+	{#if (isTrailing && trailingIcon) || $$slots.trailing}
+		<span class={trailingCSS}>
+			<slot name="trailing">
+				<UIcon name={trailingIconCSS} />
 			</slot>
 		</span>
 	{/if}
