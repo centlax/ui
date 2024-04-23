@@ -11,8 +11,8 @@
 	const css = {
 		wrapper: 'space-y-3 mb-3 lg:mb-6 lg:mx-0',
 		base: 'group flex items-center gap-1.5 my-3  lg:gap-2 ',
-		label: 'text-sm/6 relative',
-		active: 'text-primary font-semibold',
+		label: 'text-sm/6 relative group-hover:font-medium',
+		active: 'text-primary-500 ',
 		inactive:
 			'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 font-medium',
 		icon: {

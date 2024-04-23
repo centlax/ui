@@ -62,11 +62,9 @@
 			east: 'flex',
 			center: 'justify-center flex-1 lg:gap-x-12',
 			west: 'flex gap-x-3 md:gap-x-4',
-			panel: 'flex lg:hidden',
-			link: 'text-sm font-semibold leading-6 text-gray-900 dark:text-white'
 		},
 		side: {
-			open: 'flex lg:hidden flex-col gap-y-2 py-4'
+			open: 'flex-col gap-y-2 py-4'
 		}
 	};
 
@@ -80,8 +78,7 @@
 		<div
 			role="dialog"
 			use:melt={$overlay}
-			class={css.overlay}
-			transition:fade={{ duration: 200 }}
+			class="{css.overlay} {css.flex.show[size]}"
 		/>
 	{/if}
 	<div use:melt={$content} class="{css.content} {shadow && css.shadow}" aria-label="Global">
@@ -127,7 +124,7 @@
 
 			{#if open}
 				<nav transition:slide={{ duration: 200, axis: 'y' }}>
-					<div class={css.side.open} transition:fade={{ delay: 50 }}>
+					<div class="{css.side.open} {css.flex.show[size]}"transition:fade={{ delay: 50 }}>
 						<UAsideLinks {links} />
 					</div>
 				</nav>

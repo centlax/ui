@@ -12,7 +12,7 @@
 	// config
 	let year = new Date().getFullYear();
 	const css = {
-		wrapper: 'bg-gray-50/80 dark:bg-gray-950/80 ',
+		wrapper: 'bg-white/80 dark:bg-gray-900/80 ',
 		border: 'border-t border-gray-900/10 dark:border-white/10',
 		base: 'mx-auto',
 		grid: 'py-8 lg:py-12 xl:grid xl:grid-cols-3 xl:gap-8',
