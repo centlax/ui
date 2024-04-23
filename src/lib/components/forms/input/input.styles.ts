@@ -42,10 +42,12 @@ export const css = {
 			outline: {
 				white: `shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:focus:ring-primary-500`,
 				gray: `shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:focus:ring-primary-500`
-			}
+			},
+			solid: ''
 		},
 		mask: {
 			outline: `shadow-sm bg-transparent text-gray-900 dark:text-white ring-1 ring-inset ring-{color}-500 focus:ring-2 focus:ring-inset focus:ring-{color}-500`,
+			solid: '',
 			none: 'bg-transparent focus:ring-0 focus:shadow-none'
 		}
 	},

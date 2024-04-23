@@ -1,5 +1,3 @@
-// content
-export { default as UContentSearchButton } from './components/content/search-button.svelte';
 // data
 export { default as UList } from './components/data/-more/list.svelte';
 export { default as UStat } from './components/data/-more/stat.svelte';
@@ -57,9 +55,9 @@ export { default as UAlert } from './components/notifications/alert/alert.svelte
 export { default as UToast } from './components/notifications/toast/toast.svelte';
 // overlays
 export { default as UModal } from './components/overlays/modal/modal.svelte';
-export { default as UPopper } from './components/overlays/popper/popper.svelte';
-export { default as USheet } from './components/overlays/sheet/sheet.svelte';
-export { default as UTipper } from './components/overlays/tipper/tipper.svelte';
+export { default as UPopover } from './components/overlays/popover/popover.svelte';
+export { default as USlideover } from './components/overlays/slideover/slideover.svelte';
+export { default as UTooltip } from './components/overlays/tooltip/tooltip.svelte';
 // aside
 export { default as UAside } from './blocks/aside/aside.svelte';
 export { default as UAsideLinks } from './blocks/aside/links.svelte';
@@ -76,9 +74,10 @@ export { default as UFooter } from './blocks/footer/footer.svelte';
 export { default as UFooterLinks } from './blocks/footer/links.svelte';
 export { default as UFooterNotes } from './blocks/footer/notes.svelte';
 // header
+export { default as UHeaderFullMenu } from './blocks/header/full-menu.svelte';
 export { default as UHeader } from './blocks/header/header.svelte';
 export { default as UHeaderLinks } from './blocks/header/links.svelte';
-export { default as UHeaderTipper } from './blocks/header/tipper.svelte';
+export { default as UHeaderMenu } from './blocks/header/menu.svelte';
 // land
 export { default as ULandBanner } from './blocks/land/banner.svelte';
 export { default as ULandCard } from './blocks/land/card.svelte';

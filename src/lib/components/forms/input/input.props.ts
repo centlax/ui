@@ -18,6 +18,5 @@ export type InputProps = {
 	value?: HTMLInputAttributes['value'];
 	el?: HTMLInputElement | null;
 	rounded?: boolean;
-	ui?: {wrapper?:string, leading?:string, trailing?:string}
-
+	ui?: { wrapper?: string; leading?: string; trailing?: string };
 };

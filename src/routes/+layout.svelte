@@ -9,14 +9,16 @@
 			to: '/getting-started',
 			children: [
 				{
-					label: 'Playground',
-					icon: 'i-simple-icons-stackblitz',
-					to: '/playground'
+					label: 'Pricing',
+					to: '/pro/pricing',
+					icon: 'i-heroicons-ticket',
+					description: 'A simple pricing, for solo developers or teams.'
 				},
 				{
-					label: 'Roadmap',
-					icon: 'i-heroicons-beaker',
-					to: '/roadmap'
+					label: 'Templates',
+					to: '/pro/templates',
+					icon: 'i-heroicons-computer-desktop',
+					description: 'Get started with one of our official templates.'
 				}
 			]
 		},

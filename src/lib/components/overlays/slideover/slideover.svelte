@@ -42,7 +42,7 @@
 <svelte:element this={as} use:melt={$trigger}>
 	<slot name="open" />
 </svelte:element>
-
+<slot {state} name="panel" />
 <div use:melt={$portalled}>
 	{#if $open}
 		<div use:melt={$overlay} class={css.overlay} transition:fade={{ duration: 200 }} />
@@ -56,7 +56,7 @@
 				axis: css.dir[from].axis
 			}}
 		>
-			<slot />
+			<slot {state} />
 		</div>
 	{/if}
 </div>

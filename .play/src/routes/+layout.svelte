@@ -4,30 +4,29 @@
 	let height: string = '3.5rem';
 	const links = [
 		{
-			label: 'Documentation',
+			label: 'Depot',
 			icon: 'i-heroicons-book-open-solid',
-			to: '/getting-started'
+			href: '/depot'
 		},
 		{
-			label: 'Playground',
+			label: 'AI+',
 			icon: 'i-simple-icons-stackblitz',
-			to: '/playground'
+			href: '/ai'
 		},
 		{
-			label: 'Roadmap',
+			label: 'Careers',
 			icon: 'i-heroicons-beaker',
-			to: '/roadmap'
+			href: '/careers'
 		},
 		{
-			label: 'Pro',
+			label: 'Invest',
 			icon: 'i-heroicons-square-3-stack-3d',
-			to: '/pro'
+			href: '/about/invest'
 		},
 		{
-			label: 'Releases',
+			label: 'Centlax',
 			icon: 'i-heroicons-rocket-launch',
-			to: 'https://github.com/nuxt/ui/releases',
-			target: '_blank'
+			href: '/about'
 		}
 	];
 </script>

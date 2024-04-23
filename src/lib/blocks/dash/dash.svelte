@@ -1,6 +1,6 @@
 <script lang="ts">
 	// imports
-	import { UDashFoot, UDashHead, UDashSide, UFlow, USheet } from '$lib/index.js';
+	import { UDashFoot, UDashHead, UDashSide, UFlow, USlideover } from '$lib/index.js';
 	// props
 	let toggle: boolean;
 
@@ -9,9 +9,9 @@
 
 <section class="flex h-lvh max-h-[1200px] overflow-hidden">
 	<div class="hidden sticky top-0 xl:flex xl:z-50 xl:flex-col xl:w-wull">
-		<USheet bind:state={toggle} from="west">
+		<USlideover bind:state={toggle} from="west">
 			<UDashSide />
-		</USheet>
+		</USlideover>
 		<!-- Sidebar component, swap this element with another sidebar if you like -->
 		<UDashSide />
 	</div>

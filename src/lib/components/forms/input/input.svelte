@@ -35,12 +35,13 @@
 	$: leadingIcon = typeof icon === 'object' ? icon.leading : '';
 	$: trailingIcon = typeof icon === 'object' ? icon.trailing : '';
 
-    $: isLeading = (mainIcon && leading) || (mainIcon && !trailing) || (loading && !trailing) || leadingIcon;
-    $: isTrailing = (mainIcon && trailing) || (loading && trailing) || trailingIcon;
-   
-    $: leadingIconName = loading ? loadingIcon : leadingIcon || mainIcon;
-    $: trailingIconName = loading && !isLeading ? loadingIcon : trailingIcon || mainIcon;
-  
+	$: isLeading =
+		(mainIcon && leading) || (mainIcon && !trailing) || (loading && !trailing) || leadingIcon;
+	$: isTrailing = (mainIcon && trailing) || (loading && trailing) || trailingIcon;
+
+	$: leadingIconName = loading ? loadingIcon : leadingIcon || mainIcon;
+	$: trailingIconName = loading && !isLeading ? loadingIcon : trailingIcon || mainIcon;
+
 	$: leadingCSS = twJoin(
 		css.icon.leading.wrapper,
 		css.icon.leading.pointer,
@@ -79,7 +80,7 @@
 	$: inputUI = twJoin(
 		css.base,
 		css.form,
-		rounded? 'rounded-full' : css.rounded,
+		rounded ? 'rounded-full' : css.rounded,
 		css.placeholder,
 		$$props.type === 'file' && [css.file.base, css.file.padding[size || 'sm']],
 		css.text[size || 'sm'],

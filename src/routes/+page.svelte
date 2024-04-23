@@ -1,5 +1,14 @@
 <script lang="ts">
-	import { UButton, UContainer, UDash, UDashFoot, UIcon, UInput } from '$lib/index.js';
+	import {
+		UButton,
+		UContainer,
+		UDash,
+		UDashFoot,
+		UIcon,
+		UInput,
+		USlideover,
+		UTooltip
+	} from '$lib/index.js';
 	import type { SafelistColors } from '$lib/theme/safelist.js';
 	let color = 'Shimmy';
 </script>
@@ -17,10 +26,10 @@
 		class="hover:backdrop-brightness-110"
 		on:dblclick={() => console.log('SHIMMY')}
 	/>
-	
+
 	<UButton
 		trailing
-		icon='i-fluent-add-circle-20-filled'
+		icon="i-fluent-add-circle-20-filled"
 		class="hover:backdrop-brightness-110"
 		on:dblclick={() => console.log('SHIMMY')}
 	/>

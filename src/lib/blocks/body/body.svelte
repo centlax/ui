@@ -5,7 +5,7 @@
 	export let height: string = ui.header.height;
 </script>
 
-<div class="flex flex-col min-h-screen overflow-x-hidden bg-green-50 dark:bg-gray-950">
+<div class="flex flex-col min-h-screen overflow-x-hidden bg-gray-50 dark:bg-gray-950">
 	<div class="">
 		<slot name="header" />
 	</div>

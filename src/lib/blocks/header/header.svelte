@@ -4,9 +4,9 @@
 		UAsideLinks,
 		UButton,
 		UColorMode,
+		UColorToggle,
 		UContainer,
 		UHeaderLinks,
-		UIcon,
 		ULink,
 		ULogo
 	} from '$lib/index.js';
@@ -15,85 +15,75 @@
 	import { fade, fly, slide } from 'svelte/transition';
 	import { twJoin } from 'tailwind-merge';
 	import { ui } from '$lib/ui.config.js';
-	import type { bounceIn } from 'svelte/easing';
-	// props
+	import Dark from '../land/dark.svelte';
+	import type { Size } from '$lib/types/index.js';
 
+	// props
 	export let links: HeaderLink[] = [];
 	export let title: string = '';
 	export let shadow: boolean = false;
 	export let height: string = ui.header.height;
+	export let open: boolean = false;
+	export let size: Size = 'md';
 
 	// config
 	const {
 		elements: { trigger, overlay, content, close, portalled },
-		states: { open }
+		states: { open: _open }
 	} = createDialog({
-		forceVisible: true
+		forceVisible: true,
+		onOpenChange: ({ next }) => {
+			return (open = next);
+		}
 	});
-	let children: HeaderLink[];
-	let tipper: boolean;
-
-	function sideToggle() {
-		sideOpen = !sideOpen;
-		isOverlay = sideOpen;
-		wideOpen = sideOpen ? false : true;
-	}
-	function wideToggle() {
-		wideOpen = !wideOpen;
-		isOverlay = wideOpen;
-		sideOpen = wideOpen ? false : true;
-	}
-
-	function overlayer() {
-		sideOpen ? sideToggle() : wideToggle();
-	}
 
 	const css = {
 		overlay: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
 		content: `group/logo fixed left-0 right-0 top-0 z-50 w-wideOpen bg-white dark:bg-gray-900 focus:outline-none`,
 		shadow: 'shadow-sm',
+		flex: {
+			hide: {
+				xs: 'hidden xs:flex',
+				sm: 'hidden sm:flex',
+				md: 'hidden md:flex',
+				lg: 'hidden lg:flex',
+				xl: 'hidden xl:flex'
+			},
+			show: {
+				xs: 'flex xs:hidden',
+				sm: 'flex sm:hidden',
+				md: 'flex md:hidden',
+				lg: 'flex lg:hidden',
+				xl: 'flex xl:hidden'
+			}
+		},
 		nav: {
-			base: 'mx-auto flex items-center justify-between ',
-			east: 'flex lg:flex-1',
-			center: 'hidden lg:flex lg:gap-x-12',
-			west: 'lg:flex lg:flex-1 lg:justify-end gap-x-2',
+			base: 'mx-auto flex items-center justify-between gap-x-4',
+			east: 'flex',
+			center: 'justify-center flex-1 lg:gap-x-12',
+			west: 'flex gap-x-3 md:gap-x-4',
 			panel: 'flex lg:hidden',
 			link: 'text-sm font-semibold leading-6 text-gray-900 dark:text-white'
 		},
-		icon: {
-			add: 'i-fluent-add-24-regular',
-			minus: 'i-fluent-subtract-24-regular'
-		},
-		section: {
-			base: '',
-			content: 'pb-0'
-		},
-		wideOpen: {
-			base: 'hidden lg:flex gap-x-4 pb-4 justify-center',
-			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
-		},
-		sideOpen: {
-			base: 'flex lg:hidden flex-col gap-y-2 py-4',
-			link: 'hover:font-medium dark:text-gray-200 dark:hover:text-white py-1  rounded'
+		side: {
+			open: 'flex lg:hidden flex-col gap-y-2 py-4'
 		}
 	};
+
 	// reactive
-	$: children;
-	$: outerWidth = 0;
-	$: wideOpen = false;
-	$: sideOpen = false;
-	$: isOverlay = sideOpen;
+	$: $_open = open;
 </script>
 
-<svelte:window bind:outerWidth />
-<header>
+<header use:melt={$portalled}>
 	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-	<div
-		on:click={overlayer}
-		role="dialog"
-		use:melt={$overlay}
-		class={twJoin(isOverlay && css.overlay)}
-	/>
+	{#if open}
+		<div
+			role="dialog"
+			use:melt={$overlay}
+			class={css.overlay}
+			transition:fade={{ duration: 200 }}
+		/>
+	{/if}
 	<div use:melt={$content} class="{css.content} {shadow && css.shadow}" aria-label="Global">
 		<UContainer>
 			<nav style="height: {height};" class={css.nav.base}>
@@ -109,41 +99,39 @@
 						</slot>
 					</ULink>
 				</div>
-				<div class={css.nav.center}>
+				<div class="{css.nav.center} {css.flex.hide[size]}">
 					<slot>
-						<UHeaderLinks tipper={false} bind:children {links} />
+						<UHeaderLinks {links} />
 					</slot>
 				</div>
 				<div class={css.nav.west}>
 					<slot name="west" />
-
-					<UColorMode />
-				</div>
-				<div class={css.nav.panel}>
-					<UButton square on:click={sideToggle}>
-						<UIcon name={sideOpen ? ui.icon.close : ui.icon.open} />
-					</UButton>
+					<UColorToggle let:toggleMode let:icon>
+						<UButton
+							color="gray"
+							rounded
+							on:click={() => toggleMode()}
+							icon={`${icon.light} ${icon.dark}`}
+						/>
+					</UColorToggle>
+					<UButton
+						color="gray"
+						rounded
+						class={css.flex.show[size]}
+						icon={open ? ui.icon.close : ui.icon.open}
+						square
+						on:click={() => (open = !open)}
+					/>
 				</div>
 			</nav>
-			<section class={css.section.base} transition:slide={{ duration: 200, axis: 'y' }}>
-				{#if wideOpen}
-					<section class={css.section.base} transition:slide={{ duration: 300, axis: 'y' }}>
-						<nav class={css.wideOpen.base} transition:fade>
-							{#if children}
-								{#each children as child}
-									<a href="/">{child.label}</a>
-								{/each}
-							{/if}
-						</nav>
-					</section>
-				{:else if sideOpen}
-					<section class={css.section.base} transition:slide={{ duration: 200, axis: 'y' }}>
-						<nav class={css.sideOpen.base} transition:fade={{ delay: 50 }}>
-							<UAsideLinks {links} />
-						</nav>
-					</section>
-				{/if}
-			</section>
+
+			{#if open}
+				<nav transition:slide={{ duration: 200, axis: 'y' }}>
+					<div class={css.side.open} transition:fade={{ delay: 50 }}>
+						<UAsideLinks {links} />
+					</div>
+				</nav>
+			{/if}
 		</UContainer>
 	</div>
 </header>

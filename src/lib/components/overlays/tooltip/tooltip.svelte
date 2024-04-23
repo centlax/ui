@@ -21,6 +21,7 @@
 		},
 		openDelay: 0,
 		closeDelay: 0,
+		portal: 'body',
 		closeOnPointerDown: false,
 		forceVisible: true,
 		onOpenChange: ({ next }) => {

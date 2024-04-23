@@ -1,8 +1,12 @@
 <script lang="ts">
-	import { UButton, UIcon } from '$lib/index.js';
-	import { toggleMode } from 'mode-watcher';
+	import { toggleMode, mode as _mode } from 'mode-watcher';
+	import { ui } from '$lib/ui.config.js';
+	let icon = {
+		dark: ui.icon.dark,
+		light: ui.icon.light
+	};
+	let mode: 'dark' | 'light';
+	$: mode = $_mode === 'dark' ? 'dark' : 'light';
 </script>
 
-<UButton square color="gray" on:click={toggleMode}>
-	<UIcon name="i-fluent-weather-sunny-24-filled dark:i-fluent-weather-moon-24-filled" />
-</UButton>
+<slot {toggleMode} {icon} {mode} />
