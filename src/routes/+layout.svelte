@@ -58,7 +58,7 @@
 			href: '/about/invest'
 		},
 		{
-			label: 'News',
+			label: 'Blog',
 			icon: 'i-heroicons-square-3-stack-3d',
 			href: '/news'
 		},
@@ -75,7 +75,7 @@
 				},
 				{
 					label: 'Vision & Mission',
-					href: '/about/mission',
+					href: '/about/vision-mission',
 					icon: 'i-fluent-star-emphasis-24-regular',
 					description: 'Discover our vision for the future and our mission.'
 				},

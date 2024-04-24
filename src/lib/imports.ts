@@ -16,6 +16,7 @@ export { default as UAvatar } from './components/elements/avatar/avatar.svelte';
 export { default as UAvatarGroup } from './components/elements/avatar/group.svelte';
 export { default as UButton } from './components/elements/button/button.svelte';
 export { default as UDropdown } from './components/elements/dropdown/dropdown.svelte';
+export { default as UImage } from './components/elements/image/image.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
 export { default as UProgress } from './components/elements/progress/progress.svelte';
 // forms
@@ -79,6 +80,7 @@ export { default as UHeader } from './blocks/header/header.svelte';
 export { default as UHeaderLinks } from './blocks/header/links.svelte';
 export { default as UHeaderMenu } from './blocks/header/menu.svelte';
 // land
+export { default as ULandBack } from './blocks/land/back.svelte';
 export { default as ULandBanner } from './blocks/land/banner.svelte';
 export { default as ULandCard } from './blocks/land/card.svelte';
 export { default as ULandHero } from './blocks/land/hero.svelte';

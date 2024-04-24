@@ -23,17 +23,18 @@
 	export let height: string = ui.header.height;
 	export let open: boolean = false;
 	export let size: Size = 'md';
-	export let border:boolean = false;
+	export let border: boolean = false;
 
 	// Config
 	const {
-		elements: { trigger, overlay, content, close, portalled },
+		elements: { overlay, content, portalled },
 		states: { open: _open }
 	} = createDialog({
 		forceVisible: true,
 		onOpenChange: ({ next }) => {
 			return (open = next);
-		}
+		},
+		preventScroll: !open
 	});
 
 	const css = {
@@ -72,12 +73,11 @@
 	$: contentCSS = twJoin(
 		css.content,
 		border && 'border-b border-gray-300/20 dark:border-gray-600/20',
-		shadow && css.shadow,
-
-	)
+		shadow && css.shadow
+	);
 </script>
 
-<header use:melt={$portalled}>
+<header >
 	{#if open}
 		<div
 			role="dialog"
@@ -86,7 +86,7 @@
 			class="{css.overlay} {css.flex.show[size]}"
 		/>
 	{/if}
-	<div use:melt={$content} class={contentCSS} aria-label="Global">
+	<div class={contentCSS} aria-label="Global">
 		<UContainer>
 			<nav style="height: {height};" class={css.nav.base}>
 				<div class={css.nav.east}>
@@ -128,7 +128,7 @@
 			</nav>
 
 			{#if open}
-				<nav transition:slide={{ duration: 200, axis: 'y' }}>
+				<nav use:melt={$content}  transition:slide={{ duration: 200, axis: 'y' }}>
 					<div class="{css.side.open} {css.flex.show[size]}" transition:fade={{ delay: 50 }}>
 						<UAsideLinks bind:clicked={open} {links} />
 					</div>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { ui } from '$lib/ui.config.js';
-	import { twJoin, twMerge } from 'tailwind-merge';
+	import { twJoin } from 'tailwind-merge';
 
 	export let as: string = 'div';
 	export let padding: boolean = true;
@@ -9,7 +9,7 @@
 	export { classProp as class };
 	const css = {
 		base: 'mx-auto max-w-7xl',
-		padding: 'px-4 sm:px-6 lg:px-8',
+		padding: 'px-6 sm:px-8 lg:px-10',
 		constrained: ui.layout?.constrained
 	};
 	$: containerCSS = twJoin(css.base, padding && css.padding, css.constrained, classProp);

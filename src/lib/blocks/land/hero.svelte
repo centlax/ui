@@ -7,7 +7,7 @@
 	// Props
 	export let title: string = '';
 	export let description: string = '';
-	export let vertical:boolean = false;
+	export let vertical: boolean = false;
 	let classProp: any = undefined;
 	export { classProp as class };
 	export let props: {
@@ -22,7 +22,7 @@
 		wrapper: 'py-24 sm:py-32 md:py-40 relative',
 		headline: 'mb-10',
 		title: 'text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 dark:text-white',
-		description: 'mt-6 text-lg tracking-tight text-gray-600 dark:text-gray-300'
+		description: 'mt-6 text-lg leading-8 tracking-tight text-gray-600 dark:text-gray-300'
 	};
 
 	$: isVertical = vertical || !$$slots.default;
@@ -33,10 +33,7 @@
 	);
 
 	$: baseCSS = twJoin(isVertical && 'text-center mx-auto max-w-4xl');
-	$: linksClass = twJoin(
-		'mt-10 flex flex-wrap gap-x-6 gap-y-3',
-		isVertical && 'justify-center'
-	);
+	$: buttonCSS = twJoin('mt-10 flex flex-wrap gap-x-6 gap-y-3', isVertical && 'justify-center');
 </script>
 
 <div class={twJoin(css.wrapper, classProp)}>
@@ -61,7 +58,7 @@
 			{/if}
 
 			{#if props['buttons']?.length || $$slots.buttons}
-				<div class={linksClass}>
+				<div class={buttonCSS}>
 					<slot name="buttons">
 						{#each props['buttons'] as button}
 							<UButton {...button} />

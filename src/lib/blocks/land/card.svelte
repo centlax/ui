@@ -10,7 +10,7 @@
 		base: 'flex-1 flex flex-col overflow-hidden',
 		container: '',
 		body: {
-			base
+			base: ''
 		},
 		background:
 			'bg-white dark:bg-gray-900 hover:bg-opacity-90 dark:hover:bg-opacity-90 transition-[background-opacity]',
