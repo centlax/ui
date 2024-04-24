@@ -1,25 +1,27 @@
 <script lang="ts">
+	// Imports
 	import { ui } from '$lib/ui.config.js';
 	import { UTooltip, ULink, UIcon, UHeaderMenu, UCard, UContainer } from '$lib/index.js';
 	import type { HeaderLink } from '$lib/types/link.js';
 	import { twJoin } from 'tailwind-merge';
+
+	// Props
 	export let links: HeaderLink[];
 	let classProp: string = '';
 	export { classProp as class };
-	export let state: 'open' | 'close' = 'close';
 
+	// Config
 	const css = {
 		wrapper: 'flex items-center gap-x-8',
-		base: 'text-sm font-medium flex items-center gap-1',
-		active: 'text-primary',
+		base: 'text-sm font-semibold flex items-center gap-1',
+		active: 'text-primary-500',
 		inactive: 'hover:text-primary-500',
 		icon: {
-			base: 'size-3 text-gray-600 dark:text-gray-300',
+			base: 'size-3 text-gray-500',
 			trailing: {
 				name: ui.icon.chevron,
-				base: 'w-5 h-5 transform transition-transform  duration-200 flex-shrink-0',
-				active: 'rotate-180',
-				inactive: ''
+				base: 'size-5 transform transition-transform  duration-200 flex-shrink-0',
+				active: 'rotate-180'
 			},
 			external: {
 				name: ui.icon.external,
@@ -34,8 +36,8 @@
 		{#each links as link}
 			<li class="relative">
 				{#if link.children?.length}
-					<UTooltip bind:state let:state>
-						<ULink active href={link.href} class={css.base}>
+					<UTooltip let:state>
+						<ULink let:exact active href={link.href} class={css.base}>
 							<slot name="label" {link}>
 								{link.label}
 							</slot>
@@ -45,7 +47,8 @@
 								class={twJoin(
 									css.icon.base,
 									css.icon.trailing.base,
-									state === 'open' ? css.icon.trailing.active : css.icon.trailing.inactive
+									exact && 'text-primary-500',
+									state === 'open' && css.icon.trailing.active
 								)}
 							/>
 						</ULink>

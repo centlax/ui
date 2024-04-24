@@ -1,32 +1,31 @@
 <script lang="ts">
-	// imports
+	// Imports
 	import {
 		UAsideLinks,
 		UButton,
-		UColorMode,
 		UColorToggle,
 		UContainer,
 		UHeaderLinks,
 		ULink,
 		ULogo
 	} from '$lib/index.js';
-	import type { HeaderLink, Link } from '$lib/types/link.js';
+	import type { Link } from '$lib/types/link.js';
 	import { createDialog, melt } from '@melt-ui/svelte';
-	import { fade, fly, slide } from 'svelte/transition';
-	import { twJoin } from 'tailwind-merge';
+	import { fade, slide } from 'svelte/transition';
 	import { ui } from '$lib/ui.config.js';
-	import Dark from '../land/dark.svelte';
 	import type { Size } from '$lib/types/index.js';
+	import { twJoin } from 'tailwind-merge';
 
-	// props
-	export let links: HeaderLink[] = [];
+	// Props
+	export let links: Link[] = [];
 	export let title: string = '';
 	export let shadow: boolean = false;
 	export let height: string = ui.header.height;
 	export let open: boolean = false;
 	export let size: Size = 'md';
+	export let border:boolean = false;
 
-	// config
+	// Config
 	const {
 		elements: { trigger, overlay, content, close, portalled },
 		states: { open: _open }
@@ -61,7 +60,7 @@
 			base: 'mx-auto flex items-center justify-between gap-x-4',
 			east: 'flex',
 			center: 'justify-center flex-1 lg:gap-x-12',
-			west: 'flex gap-x-3 md:gap-x-4',
+			west: 'flex gap-x-3 md:gap-x-4'
 		},
 		side: {
 			open: 'flex-col gap-y-2 py-4'
@@ -70,18 +69,24 @@
 
 	// reactive
 	$: $_open = open;
+	$: contentCSS = twJoin(
+		css.content,
+		border && 'border-b border-gray-300/20 dark:border-gray-600/20',
+		shadow && css.shadow,
+
+	)
 </script>
 
 <header use:melt={$portalled}>
-	<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 	{#if open}
 		<div
 			role="dialog"
+			transition:fade={{ delay: 200, duration: 200 }}
 			use:melt={$overlay}
 			class="{css.overlay} {css.flex.show[size]}"
 		/>
 	{/if}
-	<div use:melt={$content} class="{css.content} {shadow && css.shadow}" aria-label="Global">
+	<div use:melt={$content} class={contentCSS} aria-label="Global">
 		<UContainer>
 			<nav style="height: {height};" class={css.nav.base}>
 				<div class={css.nav.east}>
@@ -124,8 +129,8 @@
 
 			{#if open}
 				<nav transition:slide={{ duration: 200, axis: 'y' }}>
-					<div class="{css.side.open} {css.flex.show[size]}"transition:fade={{ delay: 50 }}>
-						<UAsideLinks {links} />
+					<div class="{css.side.open} {css.flex.show[size]}" transition:fade={{ delay: 50 }}>
+						<UAsideLinks bind:clicked={open} {links} />
 					</div>
 				</nav>
 			{/if}

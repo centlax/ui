@@ -10,14 +10,3 @@
 	<ModeWatcher />
 	<slot />
 </div>
-
-<style>
-	:global(html) {
-		overflow: hidden;
-		height: 100%;
-	}
-	:global(body) {
-		overflow: auto;
-		height: 100%;
-	}
-</style>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	// imports
+	// Imports
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 	import type { ButtonProps } from './button.props.js';
 	import { css } from './button.styles.js';
@@ -7,10 +7,10 @@
 	import { twJoin } from 'tailwind-merge';
 	import { ui } from '$lib/ui.config.js';
 
-	// types
-	type $$Props = (HTMLAnchorAttributes & ButtonProps) | (HTMLButtonAttributes & ButtonProps);
+	// Types
+	type $$Props = (HTMLAnchorAttributes | HTMLButtonAttributes) & ButtonProps;
 
-	// props
+	// Props
 	let classProp: string | undefined | null = '';
 	export { classProp as class };
 	export let href: ButtonProps['href'] = '';
@@ -28,55 +28,44 @@
 	export let variant: ButtonProps['variant'] = 'solid';
 	export let color: ButtonProps['color'] = 'primary';
 
-	// reactive
+	// Config
+	let configVariant: string =
+		// @ts-ignore
+		css.variant?.base[variant]?.[color] || css.variant?.mask[variant].replaceAll('{color}', color);
+
+	// Reactive
 	$: mainIcon = typeof icon === 'string' ? icon : '';
 	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
 	$: leadingIcon = typeof icon === 'object' ? icon.leading : '';
 	$: trailingIcon = typeof icon === 'object' ? icon.trailing : '';
-
 	$: isLeading =
 		(mainIcon && leading) || (mainIcon && !trailing) || (loading && !trailing) || leadingIcon;
 	$: isTrailing = (mainIcon && trailing) || (loading && trailing) || trailingIcon;
 	$: isSquare = square || (!$$slots.default && !label && isLeading !== isTrailing);
-
-	// config
-	let _variant: string =
-		//@ts-ignore
-		css.variant?.base[variant]?.[color] ||
-		//@ts-ignore
-		css.variant?.mask[variant].replaceAll('{color}', color);
-
-	// reactive
 	$: buttonCSS = twJoin(
 		css.base,
 		css.font,
-		_variant,
-		!isSquare && css.gap[size || 'sm'],
-		css.text[size || 'sm'],
+		configVariant,
+		!isSquare && css.gap[size || ui.size],
+		css.text[size || ui.size],
 		block ? css.block : css.inline,
 		padded && css.padding[isSquare ? 'square' : 'rectangle'][size || 'sm'],
 		rounded ? 'rounded-full' : css.rounded,
 		classProp
 	);
+
 	$: leadingIconName = loading ? loadingIcon : leadingIcon || mainIcon;
 	$: trailingIconName = loading && !isLeading ? loadingIcon : trailingIcon || mainIcon;
 
-	$: leadingIconCSS = twJoin(
-		css.icon.base,
-		css.icon.size[size || 'sm'],
-		loading && css.icon.loading
-	);
-
-	$: trailingIconCSS = twJoin(
-		css.icon.base,
-		css.icon.size[size || 'sm'],
-		loading && !isLeading && css.icon.loading
-	);
+	$: iconCSS = twJoin(css.icon.base, css.icon.size[size || ui.size]);
+	$: leadingIconCSS = twJoin(iconCSS, loading && css.icon.loading);
+	$: trailingIconCSS = twJoin(iconCSS, loading && !isLeading && css.icon.loading);
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <svelte:element
 	this={href ? 'a' : 'button'}
+	{href}
 	on:click
 	on:change
 	on:keydown

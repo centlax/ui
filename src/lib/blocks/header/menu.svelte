@@ -1,23 +1,18 @@
 <script lang="ts">
-	import { twJoin, twMerge } from 'tailwind-merge';
+	import { twJoin } from 'tailwind-merge';
 	import { ULink, UIcon } from '$lib/index.js';
-	import type { HeaderLink } from '$lib/types/link.js';
-	import { fade, fly, slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
+	import type { Link } from '$lib/types/link.js';
 
-	export let links: HeaderLink[];
-	let classProp: string | string[] = '';
-
+	export let links: Link[];
 	const css = {
 		wrapper: 'p-2 space-y-1',
 		base: 'outline-none block px-2 py-1.5 rounded-md flex items-start gap-1.5',
 		active: 'bg-gray-100/50 dark:bg-gray-800/50 text-primary',
 		background: 'hover:bg-gray-200/50 dark:hover:bg-gray-800/50',
-		inactive: 'hover:bg-gray-100/50 dark:hover:bg-gray-800/50',
-		label: 'font-semibold text-sm/6 inline-block relative',
+		label: 'font-medium text-sm/6 inline-block relative',
 		description: 'text-sm leading-snug text-gray-500 dark:text-gray-400 line-clamp-2',
 		icon: {
-			base: 'w-4 h-4 flex-shrink-0 mt-1'
+			base: 'size-5 flex-shrink-0 mt-1 text-gray-600 dark:text-gray-300'
 		},
 		externalIcon: {
 			name: 'i-heroicons-arrow-up-right-20-solid',
@@ -30,7 +25,7 @@
 {#if links?.length}
 	<div class={css.wrapper}>
 		{#each links as link}
-			<a href={link.href} class={linkCSS}>
+			<ULink href={link.href} class={linkCSS}>
 				{#if link.icon}
 					<UIcon name={link.icon} class={css.icon.base} />
 				{/if}
@@ -47,7 +42,7 @@
 						</span>
 					{/if}
 				</p>
-			</a>
+			</ULink>
 		{/each}
 	</div>
 {/if}

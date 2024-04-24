@@ -28,12 +28,14 @@
 		arrowSize: arrow_size,
 		closeOnOutsideClick: outer_close,
 		portal: portal,
+
 		onOpenChange: ({ next }) => {
 			return (value = next);
 		},
 		positioning: placement
 	});
 	$: $open = value;
+	$: state = $open ? 'open' : 'close';
 </script>
 
 <svelte:element this={as} use:melt={$trigger}>

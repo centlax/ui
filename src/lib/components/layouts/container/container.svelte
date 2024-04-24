@@ -12,10 +12,7 @@
 		padding: 'px-4 sm:px-6 lg:px-8',
 		constrained: ui.layout?.constrained
 	};
-	$: containerCSS = twMerge(
-		twJoin(css.base, padding ? css.padding : undefined, css.constrained, classProp),
-		classProp
-	);
+	$: containerCSS = twJoin(css.base, padding && css.padding, css.constrained, classProp);
 </script>
 
 <svelte:element this={as} {...$$restProps} {id} class={containerCSS}>

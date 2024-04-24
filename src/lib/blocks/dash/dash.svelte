@@ -8,6 +8,16 @@
 </script>
 
 <section class="flex h-lvh max-h-[1200px] overflow-hidden">
+	<style>
+		html {
+			overflow: hidden;
+			height: 100%;
+		}
+		body {
+			overflow: auto;
+			height: 100%;
+		}
+	</style>
 	<div class="hidden sticky top-0 xl:flex xl:z-50 xl:flex-col xl:w-wull">
 		<USlideover bind:state={toggle} from="west">
 			<UDashSide />
@@ -27,6 +37,3 @@
 		</div>
 	</div>
 </section>
-
-<style>
-</style>

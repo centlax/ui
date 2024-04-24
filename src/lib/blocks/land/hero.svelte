@@ -1,58 +1,77 @@
 <script lang="ts">
-	// imports
-	import type { ComponentProps } from 'svelte';
-	import { UButton, UColorImage, ULandBanner } from '$lib/index.js';
+	// Imports
 	import { twJoin } from 'tailwind-merge';
-	// props
-	export let orientation: 'vertical' | 'horizontal' = 'vertical';
+	import { UButton } from '$lib/index.js';
+	import type { ComponentProps } from 'svelte';
+
+	// Props
 	export let title: string = '';
 	export let description: string = '';
-	export let banner: ComponentProps<ULandBanner> = {};
-	// config
-	const css = {
-		wrapper: 'relative isolate',
-		title: 'text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl',
-		description: 'mt-6  text-lg leading-8 text-gray-600 dark:text-gray-300',
-		actions: 'mt-10 flex gap-x-6',
-		first: 'max-w-2xl',
-		second: 'max-w-2xl -mr-[5rem] -mt-[5rem]'
+	export let vertical:boolean = false;
+	let classProp: any = undefined;
+	export { classProp as class };
+	export let props: {
+		buttons: ComponentProps<UButton>[];
+	} = {
+		buttons: []
 	};
-	// reactive
+
+	// Config
+	let imgUI = 'rounded-md  shadow-2xl ring-1 ring-black/5 dark:ring-white/10';
+	const css = {
+		wrapper: 'py-24 sm:py-32 md:py-40 relative',
+		headline: 'mb-10',
+		title: 'text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 dark:text-white',
+		description: 'mt-6 text-lg tracking-tight text-gray-600 dark:text-gray-300'
+	};
+
+	$: isVertical = vertical || !$$slots.default;
 	$: wrapperCSS = twJoin(
-		css.wrapper,
-		orientation === 'vertical' && '',
-		orientation === 'horizontal' && 'flex gap-[5%]'
+		'gap-16 sm:gap-y-24',
+		isVertical && 'flex flex-col',
+		!isVertical && 'grid lg:grid-cols-2'
 	);
-	$: actionsCSS = twJoin(
-		css.actions,
-		orientation === 'vertical' ? 'items-center justify-center' : 'items-center'
+
+	$: baseCSS = twJoin(isVertical && 'text-center mx-auto max-w-4xl');
+	$: linksClass = twJoin(
+		'mt-10 flex flex-wrap gap-x-6 gap-y-3',
+		isVertical && 'justify-center'
 	);
-	$: fisrtCSS = twJoin(orientation === 'vertical' ? 'text-center' : 'text-left max-w-1xl');
 </script>
 
-<div class={wrapperCSS}>
-	<div class={css.first}>
-		<div class="hidden sm:mb-8 sm:flex {orientation === 'vertical' && 'sm:justify-center'}">
-			<ULandBanner {...banner} />
-		</div>
-		<div class={fisrtCSS}>
-			<slot name="title">
-				<h1 class={css.title}>{title}</h1>
-			</slot>
+<div class={twJoin(css.wrapper, classProp)}>
+	<slot name="north" />
 
-			<slot name="description">
-				<p class={css.description}>{description}</p>
-			</slot>
+	<div class={wrapperCSS}>
+		<div class={baseCSS}>
+			{#if $$slots.headline}
+				<div class={css.headline}>
+					<slot name="headline" />
+				</div>
+			{/if}
 
-			<div class={actionsCSS}>
-				<slot name="actions">
-					<UButton label="Get started" />
-					<UButton variant="soft" color="gray" label="Learn more" />
-				</slot>
-			</div>
+			<h1 class={css.title}>
+				<slot name="title">{title}</slot>
+			</h1>
+
+			{#if description || $$slots.description}
+				<p class={css.description}>
+					<slot name="description">{description}</slot>
+				</p>
+			{/if}
+
+			{#if props['buttons']?.length || $$slots.buttons}
+				<div class={linksClass}>
+					<slot name="buttons">
+						{#each props['buttons'] as button}
+							<UButton {...button} />
+						{/each}
+					</slot>
+				</div>
+			{/if}
 		</div>
+
+		<slot {imgUI} {vertical} />
 	</div>
-	<div class={css.second}>
-		<slot />
-	</div>
+	<slot name="south" />
 </div>

@@ -15,10 +15,10 @@
 		base: 'cursor-pointer'
 	};
 	// reactive
-	$: activate = href === $page.url.pathname;
-	$: linkCSS = twJoin(css.base, active && activate ? active_class : inactive_class, classProp);
+	$: exact = href === $page.url.pathname;
+	$: linkCSS = twJoin(css.base, active && exact ? active_class : inactive_class, classProp);
 </script>
 
 <a {href} class={linkCSS} on:click on:mouseenter on:mouseleave>
-	<slot {active}>{label}</slot>
+	<slot {exact} {active}>{label}</slot>
 </a>
