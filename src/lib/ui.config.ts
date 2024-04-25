@@ -23,7 +23,7 @@ export const ui = {
 	},
 	shared: sharedUI,
 	header: {
-		height: '4rem'
+		height: '5rem'
 	},
 	icon: {
 		loading: 'i-fluent-arrow-sync-20-regular',

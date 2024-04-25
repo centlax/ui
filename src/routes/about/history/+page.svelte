@@ -10,7 +10,7 @@
 
 <section class="bg-white dark:bg-gray-900">
 	<UContainer class="py-16 sm:py-20 text-gray-900 dark:text-white">
-		<p class="text-base font-semibold leading-7 text-indigo-500">Centlax origin</p>
+		<p class="text-base font-semibold leading-7 text-primary-500">Centlax origin</p>
 		<h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Get to know us better</h1>
 		<div
 			class="mt-10 grid grid-cols-1 gap-y-8 gap-x-20 text-base leading-7 text-gray-600 dark:text-gray-300 lg:max-w-none lg:grid-cols-2"
@@ -50,7 +50,7 @@
 					class="flex flex-col-reverse gap-y-3 border-l border-black/20 dark:border-white/20 pl-6"
 				>
 					<dt class="text-base leading-7 text-gray-600 dark:text-gray-300">{stat.label}</dt>
-					<dd class="text-3xl font-semibold tracking-tight">{stat.value}</dd>
+					<dd class="text-3xl font-semibold text-primary-500 tracking-tight">{stat.value}</dd>
 				</div>
 			{/each}
 		</dl>

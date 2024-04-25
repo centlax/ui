@@ -34,29 +34,16 @@
 		onOpenChange: ({ next }) => {
 			return (open = next);
 		},
-		preventScroll: !open
+		preventScroll: false
 	});
 
 	const css = {
 		overlay: 'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
-		content: `group/logo fixed left-0 right-0 top-0 z-50 w-wideOpen bg-white dark:bg-gray-900 focus:outline-none`,
+		content: `group/logo fixed left-0 right-0 top-0 z-50 bg-white dark:bg-gray-900 focus:outline-none`,
 		shadow: 'shadow-sm',
-		flex: {
-			hide: {
-				xs: 'hidden xs:flex',
-				sm: 'hidden sm:flex',
-				md: 'hidden md:flex',
-				lg: 'hidden lg:flex',
-				xl: 'hidden xl:flex'
-			},
-			show: {
-				xs: 'flex xs:hidden',
-				sm: 'flex sm:hidden',
-				md: 'flex md:hidden',
-				lg: 'flex lg:hidden',
-				xl: 'flex xl:hidden'
-			}
-		},
+		/** Force tailwind to generate these classes used in showCSS and hideCSS */
+		hide: 'xs:hidden sm:hidden md:hidden lg:hidden xl:hidden',
+		show: 'xs:flex sm:flex md:flex lg:flex xl:flex',
 		nav: {
 			base: 'mx-auto flex items-center justify-between gap-x-4',
 			east: 'flex',
@@ -68,6 +55,8 @@
 		}
 	};
 
+	let showCSS = `flex ${size}:hidden`;
+	let hideCSS = `hidden ${size}:flex`;
 	// reactive
 	$: $_open = open;
 	$: contentCSS = twJoin(
@@ -77,16 +66,16 @@
 	);
 </script>
 
-<header>
+<header style="margin-bottom: {height};">
 	{#if open}
 		<div
 			role="dialog"
 			transition:fade={{ delay: 200, duration: 200 }}
 			use:melt={$overlay}
-			class="{css.overlay} {css.flex.show[size]}"
+			class="{css.overlay} {showCSS}"
 		/>
 	{/if}
-	<div class={contentCSS} aria-label="Global">
+	<div class={contentCSS} use:melt={$content} aria-label="Global">
 		<UContainer>
 			<nav style="height: {height};" class={css.nav.base}>
 				<div class={css.nav.east}>
@@ -101,7 +90,7 @@
 						</slot>
 					</ULink>
 				</div>
-				<div class="{css.nav.center} {css.flex.hide[size]}">
+				<div class="{css.nav.center} {hideCSS}">
 					<slot>
 						<UHeaderLinks {links} />
 					</slot>
@@ -119,7 +108,7 @@
 					<UButton
 						color="gray"
 						rounded
-						class={css.flex.show[size]}
+						class={showCSS}
 						icon={open ? ui.icon.close : ui.icon.open}
 						square
 						on:click={() => (open = !open)}
@@ -128,8 +117,8 @@
 			</nav>
 
 			{#if open}
-				<nav use:melt={$content} transition:slide={{ duration: 200, axis: 'y' }}>
-					<div class="{css.side.open} {css.flex.show[size]}" transition:fade={{ delay: 50 }}>
+				<nav transition:slide={{ duration: 200, axis: 'y' }}>
+					<div class="{css.side.open} {showCSS}" transition:fade={{ delay: 50 }}>
 						<UAsideLinks bind:clicked={open} {links} />
 					</div>
 				</nav>

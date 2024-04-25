@@ -2,6 +2,10 @@
 	import { UContainer, ULandBanner, UButton } from '$lib/index.js';
 </script>
 
+<svelte:head>
+	<title>Investing - Centlax</title>
+</svelte:head>
+
 <UContainer class="bg-white dark:bg-gray-900">
 	<div class="mx-auto max-w-3xl py-10 sm:py-20 lg:py-30">
 		<div class="hidden sm:mb-8 sm:flex sm:justify-center">

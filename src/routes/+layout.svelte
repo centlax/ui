@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$lib/assets/app.css';
-	import { UBody, UFooter, UHeader, ULayout } from '$lib/index.js';
-	let height: string = '5rem';
+	import { UBody, ULayout } from '$lib/index.js';
+
 	const links = [
 		{
 			label: 'Depot',
@@ -91,9 +91,11 @@
 </script>
 
 <ULayout>
-	<UBody {height}>
-		<UHeader border bind:height {links} slot="header" />
-		<slot />
-		<UFooter slot="footer" />
+	<UBody let:UHeader let:UFooter>
+		<UHeader border {links} />
+		<main>
+			<slot />
+		</main>
+		<UFooter />
 	</UBody>
 </ULayout>
