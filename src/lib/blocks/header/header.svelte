@@ -77,7 +77,7 @@
 	);
 </script>
 
-<header >
+<header>
 	{#if open}
 		<div
 			role="dialog"
@@ -128,7 +128,7 @@
 			</nav>
 
 			{#if open}
-				<nav use:melt={$content}  transition:slide={{ duration: 200, axis: 'y' }}>
+				<nav use:melt={$content} transition:slide={{ duration: 200, axis: 'y' }}>
 					<div class="{css.side.open} {css.flex.show[size]}" transition:fade={{ delay: 50 }}>
 						<UAsideLinks bind:clicked={open} {links} />
 					</div>

@@ -6,7 +6,7 @@
 <section>
 	<UContainer class="py-10">
 		<div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-			<h2 class="text-3xl font-bold tracking-tight text-primary-600 sm:text-4xl">Our mission</h2>
+			<h2>Our mission</h2>
 			<div class="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
 				<div class="lg:w-full lg:max-w-2xl lg:flex-auto">
 					<p class="text-xl leading-8 text-gray-600">
@@ -32,16 +32,16 @@
 				<div class="lg:flex lg:flex-auto lg:justify-center">
 					<dl class="w-64 space-y-8 xl:w-80">
 						<div class="flex flex-col-reverse gap-y-4">
-							<dt class="text-base leading-7 text-gray-600">Transactions every 24 hours</dt>
-							<dd class="text-5xl font-semibold tracking-tight text-gray-900">44 million</dd>
+							<dt class="text-base leading-7">Transactions every 24 hours</dt>
+							<dd class="text-5xl font-semibold tracking-tight">44 million</dd>
 						</div>
 						<div class="flex flex-col-reverse gap-y-4">
-							<dt class="text-base leading-7 text-gray-600">Assets under holding</dt>
-							<dd class="text-5xl font-semibold tracking-tight text-gray-900">$119 trillion</dd>
+							<dt class="text-base leading-7">Assets under holding</dt>
+							<dd class="text-5xl font-semibold tracking-tight">$119 trillion</dd>
 						</div>
 						<div class="flex flex-col-reverse gap-y-4">
 							<dt class="text-base leading-7 text-gray-600">New users annually</dt>
-							<dd class="text-5xl font-semibold tracking-tight text-gray-900">46,000</dd>
+							<dd class="text-5xl font-semibold tracking-tight">46,000</dd>
 						</div>
 					</dl>
 				</div>
@@ -52,9 +52,9 @@
 
 <section>
 	<UContainer class="py-10">
-		<div class="mx-auto max-w-5xl space-y-5 lg:text-center">
-			<h2 class="text-3xl font-bold tracking-tight text-primary-600 sm:text-4xl">Our Vision</h2>
-			<p class="text-xl leading-8 text-gray-600">
+		<div class="mx-auto max-w-3xl space-y-5 lg:text-center">
+			<h2>Our Vision</h2>
+			<p class="text-xl leading-8">
 				Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh
 				dui, diam eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in
 				viverra scelerisque eget. Eleifend egestas fringilla sapien.
@@ -77,6 +77,13 @@
 
 <style lang="postcss">
 	section {
-		@apply bg-white dark:bg-gray-900;
+		@apply bg-white dark:bg-gray-900 text-gray-900 dark:text-white;
+	}
+	p,
+	dt {
+		@apply text-gray-600 dark:text-gray-300;
+	}
+	h2 {
+		@apply text-3xl font-bold tracking-tight  sm:text-4xl text-primary-500 dark:text-primary-400;
 	}
 </style>

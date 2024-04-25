@@ -35,7 +35,7 @@
 			children: [
 				{
 					label: 'AI and Machine Learning Solutions',
-					to: '/ai/solutions',
+					href: '/ai/solutions',
 					icon: 'i-fluent-bot-sparkle-24-regular',
 					description: 'Explore our AI and machine learning solutions at Centlax.'
 				},
@@ -60,7 +60,7 @@
 		{
 			label: 'Blog',
 			icon: 'i-heroicons-square-3-stack-3d',
-			href: '/news'
+			href: '/blog'
 		},
 		{
 			label: 'Centlax',

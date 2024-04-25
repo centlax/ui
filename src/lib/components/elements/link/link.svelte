@@ -10,6 +10,7 @@
 	export let active_class: string = 'text-primary-600 dark:text-primary-500';
 	export let inactive_class: string = 'text-gray-900 dark:text-white';
 	export let active: boolean = false;
+	export let exact: boolean = false;
 	// config
 	const css = {
 		base: 'cursor-pointer'
