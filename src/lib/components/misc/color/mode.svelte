@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { UButton, UIcon } from '$lib/index.js';
-	import type { ComponentProps } from 'svelte';
 	import { toggleMode } from 'mode-watcher';
 </script>
 

@@ -89,5 +89,7 @@ export { default as ULayout } from './blocks/layout/layout.svelte';
 // page
 export { default as UPage404 } from './blocks/page/404.svelte';
 export { default as UPage500 } from './blocks/page/500.svelte';
+// panel
+export { default as UPanelSidebar } from './blocks/panel/sidebar.svelte';
 // price
 export { default as UPrice } from './blocks/price/price.svelte';

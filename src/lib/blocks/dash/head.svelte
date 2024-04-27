@@ -11,7 +11,6 @@
 
 <div class={css.wrapper}>
 	<UButton
-		size="xs"
 		class=" xl:hidden"
 		on:click={() => (toggle = !toggle)}
 		label={toggle ? 'Close' : 'Open'}
@@ -23,7 +22,7 @@
 				<form action="/" method="GET">
 					<label for="search-field" class="sr-only">Search</label>
 					<div class="relative">
-						<UInput size="xs" />
+						<UInput />
 					</div>
 				</form>
 			</slot>
@@ -32,7 +31,7 @@
 		<div class="flex-1"><slot /></div>
 		<div class="flex flex-1 justify-end">
 			<slot name="west">
-				<UColorMode props={{ size: 'xs' }} />
+				<UColorMode />
 			</slot>
 		</div>
 	</div>

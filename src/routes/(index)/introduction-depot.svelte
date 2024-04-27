@@ -4,6 +4,7 @@
 
 <section class="relative isolate overflow-hidden bg-white dark:bg-gray-900">
 	<ULandBack />
+	<slot />
 	<UContainer class="overflow-hidden">
 		<ULandHero
 			let:imgUI
