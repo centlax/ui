@@ -5,8 +5,6 @@
 	import Slogan from './slogan.svelte';
 </script>
 
-<IntroductionDepot>
-	<Slogan />
-</IntroductionDepot>
+<IntroductionDepot />
 <Steps />
 <Faqs />

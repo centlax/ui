@@ -5,10 +5,10 @@
 <section class="bg-white/50 dark:bg-gray-900/50">
 	<UContainer>
 		<div class="max-w-5xl pt-24 lg:pt-32 pb-24">
-			<h1 class="font-bold  text-7xl">
+			<h1 class="font-bold text-7xl">
 				<span
-					>Re<span class="text-primary-500">lax</span> at the <span class="text-primary-500">cent</span>er of
-					the word</span
+					>Re<span class="text-primary-500">lax</span> at the
+					<span class="text-primary-500">cent</span>er of the word</span
 				>
 			</h1>
 			<div class="max-w-4xl">
@@ -21,4 +21,3 @@
 		</div>
 	</UContainer>
 </section>
-

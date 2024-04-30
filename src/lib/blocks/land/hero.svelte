@@ -22,7 +22,7 @@
 		wrapper: 'py-24 sm:py-32 md:py-40 relative',
 		headline: 'mb-10',
 		title: 'text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 dark:text-white',
-		description: 'mt-6 text-lg leading-8 tracking-tight text-gray-600 dark:text-gray-300'
+		description: 'mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300'
 	};
 
 	$: isVertical = vertical || !$$slots.default;
