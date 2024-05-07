@@ -8,7 +8,7 @@
 	let classProp: string | string[] = '';
 	export { classProp as class };
 	const css = {
-		base: 'mx-auto max-w-7xl',
+		base: 'mx-auto',
 		padding: 'px-6 sm:px-8 lg:px-10',
 		constrained: ui.layout?.constrained
 	};

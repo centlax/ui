@@ -1,27 +1,30 @@
 <script lang="ts">
-	// imports
-	import type { HTMLInputAttributes } from 'svelte/elements';
+	// Imports
 	import type { InputProps } from './input.props.js';
 	import { twJoin } from 'tailwind-merge';
 	import { css } from './input.styles.js';
 	import { ui as config } from '$lib/ui.config.js';
 	import { UIcon } from '$lib/index.js';
-	import Main from '$lib/blocks/dash/main.svelte';
+	import { getContext, hasContext } from 'svelte';
+	import type { FieldsetContext } from '../fieldset/fieldset.props.js';
+	// Types
+	type $$Props = InputProps;
 
-	// types
-	type $$Props = HTMLInputAttributes & InputProps;
+	// Config
+	const context: FieldsetContext = getContext('Fieldset');
+	const ctx: boolean = hasContext('Fieldset');
 
-	// props
+	// Props
 	let classProp: string | undefined | null = '';
 	export { classProp as class };
 	export let icon: InputProps['icon'] = '';
 	export let loading: InputProps['loading'] = false;
 	export let leading: InputProps['leading'] = false;
 	export let trailing: InputProps['trailing'] = false;
-	export let size: InputProps['size'] = config.size;
+	export let size: InputProps['size'] = context?.size || config.size;
 	export let padded: InputProps['padded'] = true;
 	export let variant: InputProps['variant'] = 'outline';
-	export let color: InputProps['color'] = 'white';
+	export let color: InputProps['color'] = context?.color || 'white';
 	export let hide: InputProps['hide'] = false;
 	export let mask: InputProps['mask'] = false;
 	export let value: InputProps['value'] = '';
@@ -104,6 +107,8 @@
 			on:click
 			on:toggle
 			{...$$restProps}
+			name={context?.name || $$props.name}
+			id={context?.id || $$props.id}
 			class={inputUI}
 		/>
 	{/if}

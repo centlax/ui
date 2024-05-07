@@ -16,6 +16,9 @@ export type UI = {
 };
 
 export const ui = {
+	layout: {
+		constrained: 'max-w-screen-2xl'
+	},
 	size: 'sm' as Size, // TypeScript will ensure this is a valid Size,
 	colors: {
 		primary: 'indigo',
@@ -38,8 +41,5 @@ export const ui = {
 		open: 'i-fluent-navigation-20-regular',
 		close: 'i-fluent-dismiss-20-regular',
 		check: 'i-heroicons-check-circle-20-solid'
-	},
-	layout: {
-		constrained: 'max-w-screen-2xl'
 	}
 };

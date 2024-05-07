@@ -9,7 +9,7 @@
 		off: string;
 	};
 	import { UIcon } from '$lib/index.js';
-	import Icon from '$lib/components/elements/-more/icon.svelte';
+	import Icon from '$lib/components/elements/+/icon.svelte';
 	export let disabled: boolean = false;
 	export let required: boolean = false;
 	export let name: string = '';

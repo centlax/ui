@@ -29,7 +29,7 @@ const generateImports = (dirPath, imports = [], depth = 0) => {
 			let importName;
 
 			// Check if the directory is named 'other'
-			if (componentDir === '-more') {
+			if (componentDir === '+') {
 				// If it's the 'other' directory, use the file name as the import name
 				importName = toPascalCase(fileNameWithoutExtension);
 			} else {

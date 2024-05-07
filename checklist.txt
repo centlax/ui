@@ -1,0 +1,4 @@
+1. the header should have menu button only if some contents needs to be shown, otherwise it should be hidden. === 2025 04 30
+2. make avatar component
+2. make badge componenet sizable as well
+3. plan for ancor, color, actions for internal, external, centlax links, vs non-centlax links

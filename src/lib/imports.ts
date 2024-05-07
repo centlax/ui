@@ -1,16 +1,16 @@
 // data
-export { default as UList } from './components/data/-more/list.svelte';
-export { default as UStat } from './components/data/-more/stat.svelte';
+export { default as UList } from './components/data/+/list.svelte';
+export { default as UStat } from './components/data/+/stat.svelte';
 export { default as UTableFoot } from './components/data/table/foot.svelte';
 export { default as UTableHead } from './components/data/table/head.svelte';
 export { default as UTableRow } from './components/data/table/row.svelte';
 export { default as UTable } from './components/data/table/table.svelte';
 // elements
-export { default as UBadge } from './components/elements/-more/badge.svelte';
-export { default as UChip } from './components/elements/-more/chip.svelte';
-export { default as UIcon } from './components/elements/-more/icon.svelte';
-export { default as UKbd } from './components/elements/-more/kbd.svelte';
-export { default as UMeter } from './components/elements/-more/meter.svelte';
+export { default as UBadge } from './components/elements/+/badge.svelte';
+export { default as UChip } from './components/elements/+/chip.svelte';
+export { default as UIcon } from './components/elements/+/icon.svelte';
+export { default as UKbd } from './components/elements/+/kbd.svelte';
+export { default as UMeter } from './components/elements/+/meter.svelte';
 export { default as UAccordion } from './components/elements/accordion/accordion.svelte';
 export { default as UAvatar } from './components/elements/avatar/avatar.svelte';
 export { default as UAvatarGroup } from './components/elements/avatar/group.svelte';
@@ -20,16 +20,15 @@ export { default as UImage } from './components/elements/image/image.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
 export { default as UProgress } from './components/elements/progress/progress.svelte';
 // forms
-export { default as UCheckbox } from './components/forms/-more/checkbox.svelte';
-export { default as UFieldSet } from './components/forms/field-set/field-set.svelte';
+export { default as UCheckbox } from './components/forms/+/checkbox.svelte';
+export { default as UFieldset } from './components/forms/fieldset/fieldset.svelte';
 export { default as UForm } from './components/forms/form/form.svelte';
-export { default as UInputGroup } from './components/forms/input/group.svelte';
 export { default as UInput } from './components/forms/input/input.svelte';
 export { default as UInputPin } from './components/forms/input/pin.svelte';
 export { default as USelect } from './components/forms/select/select.svelte';
 export { default as UToggle } from './components/forms/toggle/toggle.svelte';
 // layouts
-export { default as UFlow } from './components/layouts/-more/flow.svelte';
+export { default as UFlow } from './components/layouts/+/flow.svelte';
 export { default as UCard } from './components/layouts/card/card.svelte';
 export { default as UCardGroup } from './components/layouts/card/group.svelte';
 export { default as UContainer } from './components/layouts/container/container.svelte';

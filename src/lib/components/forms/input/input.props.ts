@@ -2,7 +2,7 @@ import type { SafelistColors } from '$lib/theme/safelist.js';
 import type { HTMLInputAttributes } from 'svelte/elements';
 import type { Size } from '$lib/types/index.js';
 
-export type InputProps = {
+export interface InputProps extends Omit<HTMLInputAttributes, 'size'> {
 	icon?: string | { leading?: string; trailing?: string; loading?: string };
 	loading?: boolean;
 	trailing?: boolean;
@@ -19,4 +19,4 @@ export type InputProps = {
 	el?: HTMLInputElement | null;
 	rounded?: boolean;
 	ui?: { wrapper?: string; leading?: string; trailing?: string };
-};
+}
