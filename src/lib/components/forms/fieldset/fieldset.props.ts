@@ -9,7 +9,7 @@ export interface FieldsetProps extends HTMLFieldsetAttributes {
 	size?: InputProps['size'];
 	label?: string;
 	hint?: string | { message?: string; href?: string };
-	error?: string;
+	errors?: string[];
 	help?: string;
 	required?: boolean;
 	name?: FormPathLeaves<T>;

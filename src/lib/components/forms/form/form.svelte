@@ -1,26 +1,18 @@
 <script lang="ts">
-	import { superForm } from 'sveltekit-superforms';
-	import { Field, Control, Label, Description, FieldErrors } from 'formsnap';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import SuperDebug from 'sveltekit-superforms';
-	import { UInput } from '$lib/index.js';
+	// Imports
+	import SuperDebug, { superForm } from 'sveltekit-superforms';
+	import type { FormProps } from './form.props.js';
 
+	// Props
+	type $$Props = FormProps;
+	export let use: Function = () => {};
 	export let data: any = null;
-	export let schema: any = null;
-	const form = superForm(data.form, {
-		validators: zodClient(schema)
-	});
-	const { form: formData, enhance } = form;
+	export let debug: boolean = false;
 </script>
 
-<SuperDebug data={$formData} />
-<form method="POST" use:enhance>
-	<Field {form} name="email">
-		<Control let:attrs>
-			<Label>Email</Label>
-			<UInput {...attrs} type="email" bind:value={$formData.email} />
-		</Control>
-		<Description>Use your company email if you have one.</Description>
-		<FieldErrors />
-	</Field>
+<form use:use {...$$restProps}>
+	{#if debug}
+		<SuperDebug {data} />
+	{/if}
+	<slot />
 </form>

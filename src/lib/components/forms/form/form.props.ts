@@ -1,11 +1,8 @@
 import type { HTMLFormAttributes } from 'svelte/elements';
-import type { SuperValidated } from 'sveltekit-superforms';
-
-type T = Record<string, unknown>;
+import type { SuperValidated, SuperForm } from 'sveltekit-superforms';
 
 export interface FormProps extends HTMLFormAttributes {
-	data: SuperValidated<T>;
-	type?: 'form' | 'json';
-	invalidate: boolean;
+	data?: any;
 	debug?: boolean;
+	use?: Function;
 }

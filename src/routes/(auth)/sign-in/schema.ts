@@ -6,6 +6,7 @@ export const allergies = ['peanuts', 'dairy', 'gluten', 'soy', 'shellfish'] as c
 
 export const schema = z.object({
 	email: z.string().email('Please enter a valid email.'),
+	password: z.string().min(4, 'Please enter a valid password.'),
 	bio: z.string().optional(),
 	theme: z.enum(themes).default('light'),
 	language: z.enum(languages).default('en'),
