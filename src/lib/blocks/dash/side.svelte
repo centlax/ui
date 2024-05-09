@@ -21,9 +21,7 @@
 			indicator: ''
 		}
 	};
-
 	let maxi: boolean = true;
-
 	$: pillCSS = twJoin(css.pill.base, css.pill.text, css.pill.size, maxi ? '' : 'w-fit');
 </script>
 
