@@ -17,7 +17,6 @@
 	export let color: FieldsetProps['color'] = 'white';
 	export let label: FieldsetProps['label'] = '';
 	export let hint: FieldsetProps['hint'] = '';
-	export let errors: FieldsetProps['errors'] = [];
 	export let help: FieldsetProps['help'] = '';
 	export let required: FieldsetProps['required'] = false;
 	export let id: FieldsetProps['id'] = '';
@@ -33,16 +32,14 @@
 	setContext('Fieldset', context);
 	const labelCSS = twJoin(css.label.base, required ? css.label.required : '');
 	// Reactive
-
-	$: isError = $$slots.error || errors?.length;
 </script>
 
-<Field  {form} let:constraints let:errors {name}>
+<Field {form} let:constraints let:errors {name}>
 	<Control let:attrs>
 		<fieldset class="space-y-1 {css.text[size || ui.size]}">
 			<div id="north" class={css.north}>
 				<slot name="label">
-					<Label class={labelCSS}>{label}</Label>
+					<Label class={labelCSS}>{label || name}</Label>
 				</slot>
 				{#if $$slots.hint || hint}
 					<slot name="hint">

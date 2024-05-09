@@ -5,4 +5,5 @@ export interface FormProps extends HTMLFormAttributes {
 	data?: any;
 	debug?: boolean;
 	use?: Function;
+	form?: any;
 }
