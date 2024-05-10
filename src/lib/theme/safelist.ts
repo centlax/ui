@@ -72,11 +72,11 @@ const safelistByComponent: SafelistByComponent = {
 			variants: ['hover']
 		},
 		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-400`),
+			pattern: new RegExp(`bg-(${colorsAsRegex})-500`),
 			variants: ['dark', 'dark:disabled']
 		},
 		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-500`),
+			pattern: new RegExp(`bg-(${colorsAsRegex})-600`),
 			variants: ['disabled', 'dark:hover']
 		},
 		{
@@ -124,64 +124,7 @@ const safelistByComponent: SafelistByComponent = {
 			variants: ['focus-visible']
 		}
 	],
-	group: (colorsAsRegex: string) => [
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-50`),
-			variants: ['hover', 'disabled']
-		},
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-100`),
-			variants: ['hover']
-		},
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-400`),
-			variants: ['dark', 'dark:disabled']
-		},
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-500`),
-			variants: ['disabled', 'dark:hover']
-		},
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-600`),
-			variants: ['hover']
-		},
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-900`),
-			variants: ['dark:hover']
-		},
-		{
-			pattern: new RegExp(`bg-(${colorsAsRegex})-950`),
-			variants: ['dark', 'dark:hover', 'dark:disabled']
-		},
-		{
-			pattern: new RegExp(`text-(${colorsAsRegex})-400`),
-			variants: ['dark', 'dark:disabled']
-		},
-		{
-			pattern: new RegExp(`text-(${colorsAsRegex})-500`),
-			variants: ['dark:hover', 'disabled']
-		},
-		{
-			pattern: new RegExp(`text-(${colorsAsRegex})-600`),
-			variants: ['hover']
-		},
-		{
-			pattern: new RegExp(`outline-(${colorsAsRegex})-400`),
-			variants: ['dark:focus-visible']
-		},
-		{
-			pattern: new RegExp(`outline-(${colorsAsRegex})-500`),
-			variants: ['focus-visible']
-		},
-		{
-			pattern: new RegExp(`ring-(${colorsAsRegex})-400`),
-			variants: ['dark:focus-visible']
-		},
-		{
-			pattern: new RegExp(`ring-(${colorsAsRegex})-500`),
-			variants: ['focus-visible']
-		}
-	]
+	
 };
 
 const safelistComponentAliasesMap: { [key: string]: string } = {

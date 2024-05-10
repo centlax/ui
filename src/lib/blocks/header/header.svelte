@@ -64,6 +64,7 @@
 		border && 'border-b border-gray-300/20 dark:border-gray-600/20',
 		shadow && css.shadow
 	);
+	$: isSider = links?.length;
 </script>
 
 <header style="margin-bottom: {height};">
@@ -105,18 +106,20 @@
 							icon={`${icon.light} ${icon.dark}`}
 						/>
 					</UColorToggle>
-					<UButton
-						color="gray"
-						rounded
-						class={showCSS}
-						icon={open ? ui.icon.close : ui.icon.open}
-						square
-						on:click={() => (open = !open)}
-					/>
+					{#if isSider}
+						<UButton
+							color="gray"
+							rounded
+							class={showCSS}
+							icon={open ? ui.icon.close : ui.icon.open}
+							square
+							on:click={() => (open = !open)}
+						/>
+					{/if}
 				</div>
 			</nav>
 
-			{#if open}
+			{#if open && isSider}
 				<nav transition:slide={{ duration: 200, axis: 'y' }}>
 					<div class="{css.side.open} {showCSS}" transition:fade={{ delay: 50 }}>
 						<UAsideLinks bind:clicked={open} {links} />

@@ -75,7 +75,7 @@
 					{#if remove}
 						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
-						<span class={removeIconCSS} on:click={() => (_remove = remove ?true:false)}>
+						<span class={removeIconCSS} on:click={() => (_remove = remove ? true : false)}>
 							<span class={trailingIconCSS}> </span>
 						</span>
 					{:else}
