@@ -3,6 +3,6 @@
 	import { toggleMode } from 'mode-watcher';
 </script>
 
-<UButton square color="gray" on:click={toggleMode}>
+<UButton {...$$restProps} square color="gray" on:click={toggleMode}>
 	<UIcon name="i-fluent-weather-sunny-24-filled dark:i-fluent-weather-moon-24-filled" />
 </UButton>

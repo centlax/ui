@@ -6,7 +6,6 @@ export { default as UTableHead } from './components/data/table/head.svelte';
 export { default as UTableRow } from './components/data/table/row.svelte';
 export { default as UTable } from './components/data/table/table.svelte';
 // elements
-export { default as UBadge } from './components/elements/+/badge.svelte';
 export { default as UChip } from './components/elements/+/chip.svelte';
 export { default as UIcon } from './components/elements/+/icon.svelte';
 export { default as UKbd } from './components/elements/+/kbd.svelte';
@@ -14,6 +13,7 @@ export { default as UMeter } from './components/elements/+/meter.svelte';
 export { default as UAccordion } from './components/elements/accordion/accordion.svelte';
 export { default as UAvatar } from './components/elements/avatar/avatar.svelte';
 export { default as UAvatarGroup } from './components/elements/avatar/group.svelte';
+export { default as UBadge } from './components/elements/badge/badge.svelte';
 export { default as UButton } from './components/elements/button/button.svelte';
 export { default as UDropdown } from './components/elements/dropdown/dropdown.svelte';
 export { default as UImage } from './components/elements/image/image.svelte';

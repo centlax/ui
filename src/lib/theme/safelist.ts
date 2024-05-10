@@ -44,6 +44,24 @@ type SafelistByComponent = {
 };
 
 const safelistByComponent: SafelistByComponent = {
+	badge: (colorsAsRegex) => [
+		{
+			pattern: new RegExp(`bg-(${colorsAsRegex})-50`)
+		},
+		{
+			pattern: new RegExp(`bg-(${colorsAsRegex})-500`),
+			variants: ['dark']
+		},
+		{
+			pattern: new RegExp(`bg-(${colorsAsRegex})-500`)
+		},
+		{
+			pattern: new RegExp(`text-(${colorsAsRegex})-500`)
+		},
+		{
+			pattern: new RegExp(`ring-(${colorsAsRegex})-500`)
+		}
+	],
 	button: (colorsAsRegex: string) => [
 		{
 			pattern: new RegExp(`bg-(${colorsAsRegex})-50`),
