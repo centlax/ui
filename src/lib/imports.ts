@@ -16,9 +16,9 @@ export { default as UAvatarGroup } from './components/elements/avatar/group.svel
 export { default as UBadge } from './components/elements/badge/badge.svelte';
 export { default as UButton } from './components/elements/button/button.svelte';
 export { default as UDropdown } from './components/elements/dropdown/dropdown.svelte';
+export { default as UDropdownMenu } from './components/elements/dropdown/menu.svelte';
 export { default as UImage } from './components/elements/image/image.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
-export { default as UProgress } from './components/elements/progress/progress.svelte';
 // forms
 export { default as UCheckbox } from './components/forms/+/checkbox.svelte';
 export { default as UFieldset } from './components/forms/fieldset/fieldset.svelte';
@@ -49,9 +49,11 @@ export { default as UCommandPreview } from './components/navigations/command/pre
 export { default as UContextMenu } from './components/navigations/context/menu.svelte';
 export { default as UHorizontalNav } from './components/navigations/horizontal/nav.svelte';
 export { default as UPagination } from './components/navigations/pagination/pagination.svelte';
+export { default as UPallet } from './components/navigations/pallet/pallet.svelte';
 export { default as UTab } from './components/navigations/tab/tab.svelte';
 export { default as UVerticalNav } from './components/navigations/vertical/nav.svelte';
 // notifications
+export { default as UNotification } from './components/notifications/+/notification.svelte';
 export { default as UAlert } from './components/notifications/alert/alert.svelte';
 export { default as UToast } from './components/notifications/toast/toast.svelte';
 // overlays

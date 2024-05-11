@@ -123,8 +123,7 @@ const safelistByComponent: SafelistByComponent = {
 			pattern: new RegExp(`ring-(${colorsAsRegex})-500`),
 			variants: ['focus-visible']
 		}
-	],
-	
+	]
 };
 
 const safelistComponentAliasesMap: { [key: string]: string } = {
