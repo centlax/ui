@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { ULayout, UBody } from '@centlax/ui';
+    import "../app.css"
 </script>
 
 <ULayout>
     <UBody let:UHeader>
-        <UHeader/>
      	<slot />
     </UBody>
 </ULayout>
