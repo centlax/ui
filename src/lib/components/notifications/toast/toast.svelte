@@ -61,18 +61,17 @@
 	/>
 
 	<div class={css.container}>
-		
-			{#if data.title}
-				<h3 use:melt={$title(id)} class="flex items-center gap-2 font-semibold">
-					{data.title}
-					<span class="size-1.5 rounded-full {data.color}" />
-				</h3>
-			{/if}
-			{#if data.description}
-				<div use:melt={$description(id)}>
-					{data.description}
-				</div>
-			{/if}
+		{#if data.title}
+			<h3 use:melt={$title(id)} class="flex items-center gap-2 font-semibold">
+				{data.title}
+				<span class="size-1.5 rounded-full {data.color}" />
+			</h3>
+		{/if}
+		{#if data.description}
+			<div use:melt={$description(id)}>
+				{data.description}
+			</div>
+		{/if}
 		<button use:melt={$close(id)} class={css.button}>
 			<span class="i-fluent-dismiss-circle-20-regular" />
 		</button>
