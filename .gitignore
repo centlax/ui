@@ -3,6 +3,8 @@ node_modules
 /build
 /dist
 /.svelte-kit
+/.vscode
+/target
 ./play
 /package
 .env

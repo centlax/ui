@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import type { Size } from '$lib/types/index.js';
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	export let mode: 'filled' | 'regular' = 'filled';
-	export let size: Size = ui.size;
+	export let size: Size = config.size;
 	export let move: boolean = false;
 	let classProp = '';
 	export { classProp as class };

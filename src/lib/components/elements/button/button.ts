@@ -2,8 +2,7 @@ import type { Size } from '$lib/types/index.js';
 import type { HTMLAnchorAttributes } from 'svelte/elements';
 import type { SafelistColors } from '$lib/theme/safelist.js';
 import { css } from './button.styles.js';
-export interface ButtonProps {
-	//ui?: { east?: string | undefined; west?: string | undefined };
+export interface Button {
 	href?: HTMLAnchorAttributes['href'];
 	icon?: string | { leading?: string; trailing?: string; loading?: string };
 	label?: string;
@@ -18,4 +17,5 @@ export interface ButtonProps {
 	rounded?: boolean;
 	variant?: keyof typeof css.variant.mask;
 	color?: SafelistColors | 'white' | 'gray' | 'black';
+	action?: Function;
 }

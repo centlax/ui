@@ -1,11 +1,12 @@
 import { HTMLAnchorAttributes } from 'svelte/elements';
 export interface Link extends HTMLAnchorAttributes {
 	label?: string;
+	title?: Link['label'];
 	description?: string;
 	active?: boolean;
 	class?: string;
 	disabled?: boolean;
-	icon?: string;
+	icon?: string | any;
 	children?: Link[];
 }
 

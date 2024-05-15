@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { toggleMode } from 'mode-watcher';
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	let icon = {
-		dark: ui.icon.dark,
-		light: ui.icon.light
+		dark: config.icon.dark,
+		light: config.icon.light
 	};
 </script>
 

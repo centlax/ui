@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { twMerge, twJoin } from 'tailwind-merge';
-	import { UIcon, UAvatar, ui } from '$lib/index.js';
+	import { UIcon, UAvatar, config } from '$lib/index.js';
 	import { css } from './divider.js';
 	import type { Size } from '$lib/types/index.js';
 
 	export let label: string = '';
 	export let icon: string = '';
 	export let avatar: string = '';
-	export let size: Size = ui.size as Size;
+	export let size: Size = config.size as Size;
 	export let orientation: 'horizontal' | 'vertical' = 'horizontal';
 	export let variant: 'solid' | 'dotted' | 'dashed' = 'solid';
 	let classProp: string | string[] = '';

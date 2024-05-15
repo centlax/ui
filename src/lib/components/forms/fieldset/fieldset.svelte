@@ -5,7 +5,7 @@
 <script lang="ts">
 	// Imports
 	import { css } from './fieldset.styles.js';
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	import { setContext } from 'svelte';
 	import { twJoin } from 'tailwind-merge';
 	import type { FieldsetProps, FieldsetContext } from './fieldset.props.js';
@@ -13,7 +13,7 @@
 	import { fade } from 'svelte/transition';
 
 	// Props
-	export let size: FieldsetProps['size'] = ui.size;
+	export let size: FieldsetProps['size'] = config.size;
 	export let color: FieldsetProps['color'] = 'white';
 	export let label: FieldsetProps['label'] = '';
 	export let hint: FieldsetProps['hint'] = '';
@@ -36,7 +36,7 @@
 
 <Field {form} let:constraints let:errors {name}>
 	<Control let:attrs>
-		<fieldset class="space-y-1 {css.text[size || ui.size]}">
+		<fieldset class="space-y-1 {css.text[size || config.size]}">
 			<div id="north" class={css.north}>
 				<slot name="label">
 					<Label class={labelCSS}>{label || name}</Label>

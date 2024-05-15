@@ -29,10 +29,10 @@ export { default as UInputPin } from './components/forms/input/pin.svelte';
 export { default as USelect } from './components/forms/select/select.svelte';
 export { default as UToggle } from './components/forms/toggle/toggle.svelte';
 // layouts
+export { default as UContainer } from './components/layouts/+/container.svelte';
 export { default as UFlow } from './components/layouts/+/flow.svelte';
 export { default as UCard } from './components/layouts/card/card.svelte';
 export { default as UCardGroup } from './components/layouts/card/group.svelte';
-export { default as UContainer } from './components/layouts/container/container.svelte';
 export { default as UDivider } from './components/layouts/divider/divider.svelte';
 export { default as UPanel } from './components/layouts/panel/panel.svelte';
 export { default as USkeleton } from './components/layouts/skeleton/skeleton.svelte';
@@ -64,6 +64,7 @@ export { default as UTooltip } from './components/overlays/tooltip/tooltip.svelt
 // aside
 export { default as UAside } from './blocks/aside/aside.svelte';
 export { default as UAsideLinks } from './blocks/aside/links.svelte';
+export { default as UAsideTree } from './blocks/aside/tree.svelte';
 // body
 export { default as UBody } from './blocks/body/body.svelte';
 // dash
@@ -88,9 +89,12 @@ export { default as ULandCard } from './blocks/land/card.svelte';
 export { default as ULandHero } from './blocks/land/hero.svelte';
 // layout
 export { default as ULayout } from './blocks/layout/layout.svelte';
+// nav
+export { default as UNavTree } from './blocks/nav/tree.svelte';
 // page
 export { default as UPage404 } from './blocks/page/404.svelte';
 export { default as UPage500 } from './blocks/page/500.svelte';
+export { default as UPage } from './blocks/page/page.svelte';
 // panel
 export { default as UPanelSidebar } from './blocks/panel/sidebar.svelte';
 // price

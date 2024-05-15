@@ -10,3 +10,9 @@ export function hexToRgb(hex: string) {
 		? `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(result[3], 16)}`
 		: null;
 }
+
+export function stringfy(obj: Object): string {
+	return Object.values(obj)
+		.filter((value) => typeof value !== 'object') // Filter out nested objects
+		.join(' ');
+}

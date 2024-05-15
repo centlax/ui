@@ -1,21 +1,16 @@
 <script lang="ts">
 	import { createSwitch, melt } from '@melt-ui/svelte';
-	import { ui } from '$lib/ui.config.js';
-	import { css } from './toggle.js';
-	import type { Size } from '$lib/types/index.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	type Icon = {
 		on: string;
 		off: string;
 	};
 	import { UIcon } from '$lib/index.js';
-	import Icon from '$lib/components/elements/+/icon.svelte';
 	export let disabled: boolean = false;
 	export let required: boolean = false;
 	export let name: string = '';
 	export let value: string = '';
 	export let state: boolean = false;
-	//export let size: Size = ui.size;
 	export let icon: Icon = { on: '', off: '' };
 	export let thumbUI: string = '';
 

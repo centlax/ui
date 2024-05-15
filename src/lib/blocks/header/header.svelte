@@ -12,7 +12,7 @@
 	import type { Link } from '$lib/types/link.js';
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade, slide } from 'svelte/transition';
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	import type { Size } from '$lib/types/index.js';
 	import { twJoin } from 'tailwind-merge';
 
@@ -20,7 +20,7 @@
 	export let links: Link[] = [];
 	export let title: string = '';
 	export let shadow: boolean = false;
-	export let height: string = ui.header.height;
+	export let height: string = config.header.height;
 	export let open: boolean = false;
 	export let size: Size = 'md';
 	export let border: boolean = false;
@@ -111,7 +111,7 @@
 							color="gray"
 							rounded
 							class={showCSS}
-							icon={open ? ui.icon.close : ui.icon.open}
+							icon={open ? config.icon.close : config.icon.open}
 							square
 							on:click={() => (open = !open)}
 						/>

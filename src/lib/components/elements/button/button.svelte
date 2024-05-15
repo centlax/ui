@@ -1,32 +1,33 @@
 <script lang="ts">
 	// Imports
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
-	import type { ButtonProps } from './button.props.js';
+	import type { Button } from './button.js';
 	import { css } from './button.styles.js';
 	import { UIcon } from '$lib/index.js';
 	import { twJoin } from 'tailwind-merge';
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 
 	// Types
-	type $$Props = (HTMLAnchorAttributes | HTMLButtonAttributes) & ButtonProps;
+	type $$Props = (HTMLAnchorAttributes | HTMLButtonAttributes) & Button;
 
 	// Props
 	let classProp: string | undefined | null = '';
 	export { classProp as class };
-	export let href: ButtonProps['href'] = '';
-	export let icon: ButtonProps['icon'] = '';
-	export let label: ButtonProps['label'] = '';
-	export let truncate: ButtonProps['truncate'] = false;
-	export let square: ButtonProps['square'] = false;
-	export let block: ButtonProps['block'] = false;
-	export let size: ButtonProps['size'] = ui.size;
-	export let loading: ButtonProps['loading'] = false;
-	export let padded: ButtonProps['padded'] = true;
-	export let leading: ButtonProps['leading'] = false;
-	export let trailing: ButtonProps['trailing'] = false;
-	export let rounded: ButtonProps['rounded'] = false;
-	export let variant: ButtonProps['variant'] = 'solid';
-	export let color: ButtonProps['color'] = 'primary';
+	export let href: Button['href'] = '';
+	export let icon: Button['icon'] = '';
+	export let label: Button['label'] = '';
+	export let truncate: Button['truncate'] = false;
+	export let square: Button['square'] = false;
+	export let block: Button['block'] = false;
+	export let size: Button['size'] = config.size;
+	export let loading: Button['loading'] = false;
+	export let padded: Button['padded'] = true;
+	export let leading: Button['leading'] = false;
+	export let trailing: Button['trailing'] = false;
+	export let rounded: Button['rounded'] = false;
+	export let variant: Button['variant'] = 'solid';
+	export let color: Button['color'] = 'primary';
+	export let action: Function = () => {};
 
 	// Config
 	let configVariant: string =
@@ -35,7 +36,7 @@
 
 	// Reactive
 	$: mainIcon = typeof icon === 'string' ? icon : '';
-	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : ui.icon.loading;
+	$: loadingIcon = typeof icon === 'object' && icon.loading ? icon.loading : config.icon.loading;
 	$: leadingIcon = typeof icon === 'object' ? icon.leading : '';
 	$: trailingIcon = typeof icon === 'object' ? icon.trailing : '';
 	$: isLeading =
@@ -46,8 +47,8 @@
 		css.base,
 		css.font,
 		configVariant,
-		!isSquare && css.gap[size || ui.size],
-		css.text[size || ui.size],
+		!isSquare && css.gap[size || config.size],
+		css.text[size || config.size],
 		block ? css.block : css.inline,
 		padded && css.padding[isSquare ? 'square' : 'rectangle'][size || 'sm'],
 		rounded ? 'rounded-full' : css.rounded,
@@ -57,7 +58,7 @@
 	$: leadingIconName = loading ? loadingIcon : leadingIcon || mainIcon;
 	$: trailingIconName = loading && !isLeading ? loadingIcon : trailingIcon || mainIcon;
 
-	$: iconCSS = twJoin(css.icon.base, css.icon.size[size || ui.size]);
+	$: iconCSS = twJoin(css.icon.base, css.icon.size[size || config.size]);
 	$: leadingIconCSS = twJoin(iconCSS, loading && css.icon.loading);
 	$: trailingIconCSS = twJoin(iconCSS, loading && !isLeading && css.icon.loading);
 </script>
@@ -65,6 +66,7 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <svelte:element
 	this={href ? 'a' : 'button'}
+	use:action
 	{href}
 	on:click
 	on:change

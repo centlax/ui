@@ -1,41 +1,41 @@
-<script lang="ts">
-	// imports
-	import { ui } from '$lib/ui.config.js';
-	import type { Size } from '$lib/types/index.js';
-	import { twJoin, twMerge } from 'tailwind-merge';
-
-	// props
-	export let value: string = '';
-	export let size: Size = ui.size;
-	let classProp: string | undefined = '';
-	export { classProp as class };
-
-	// config
-	const css = {
-		base: 'inline-flex items-center justify-center text-gray-900 dark:text-white',
+<script lang="ts" context="module">
+	export const styles = {
+		flex: 'inline-flex items-center justify-center',
 		padding: 'px-1',
-		size: {
-			xs: 'h-4 min-w-[16px] text-[10px]',
-			sm: 'h-5 min-w-[20px] text-[11px]',
-			md: 'h-6 min-w-[24px] text-[12px]',
-			lg: 'h-6 min-w-[24px] text-[12px]',
-			xl: 'h-6 min-w-[24px] text-[12px]'
-		},
+		text: 'text-gray-900 dark:text-white',
 		rounded: 'rounded',
 		font: 'font-medium font-sans',
 		background: 'bg-gray-100 dark:bg-gray-800',
 		ring: 'ring-1 ring-gray-300 dark:ring-gray-700 ring-inset',
-		default: {
-			size: 'sm'
+		attrs: {
+			size: {
+				xs: 'h-4 min-w-[16px] text-[10px]',
+				sm: 'h-5 min-w-[20px] text-[11px]',
+				md: 'h-6 min-w-[24px] text-[12px]',
+				lg: 'h-6 min-w-[24px] text-[12px]',
+				xl: 'h-6 min-w-[24px] text-[12px]'
+			}
 		}
 	};
-	// reactive
-	$: kbdCSS = twMerge(
-		twJoin(css.base, css.size[size], css.padding, css.rounded, css.font, css.background, css.ring),
-		classProp
-	);
 </script>
 
-<kbd class={kbdCSS} {...$$restProps}>
+<script lang="ts">
+	// imports
+	import { config } from '$lib/ui.config.js';
+	import type { Size, DeepPartial } from '$lib/types/index.js';
+	import { twJoin } from 'tailwind-merge';
+	import { stringfy } from '$lib/utils/index.js';
+	import { useUI } from '$lib/composables/useUI.js';
+	// props
+	export let value: string = '';
+	export let size: Size = config.size;
+	let _class: string | DeepPartial<typeof styles> = '';
+	export { classProp as class };
+
+	// config
+	const { css, classer } = useUI(styles, _class);
+</script>
+
+<kbd {...$$restProps} class={twJoin(stringfy(css), css.attrs.size[size], classer)}>
 	<slot>{value}</slot>
 </kbd>

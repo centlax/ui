@@ -1,29 +1,31 @@
 <script lang="ts">
 	// Imports
 	import { createAvatar, melt } from '@melt-ui/svelte';
-	import type { AvatarProps } from './avatar.props.js';
+	import type { Avatar } from './avatar.js';
 	import { twJoin } from 'tailwind-merge';
-	import { css } from './avatar.styles.js';
-	import { ui } from '$lib/ui.config.js';
+	import { styles } from './avatar.styles.js';
+	import { config } from '$lib/ui.config.js';
+	import { useUI } from '$lib/composables/useUI.js';
 
 	// Props
-	let _class: AvatarProps['class'] = '';
+	let _class: Avatar['class'] = '';
 	export { _class as class };
-	export let size: AvatarProps['size'] = ui.size;
-	export let alt: AvatarProps['alt'] = '';
-	export let text: AvatarProps['text'] = '';
-	export let status: AvatarProps['status'] = 'loading';
-	export let icon: AvatarProps['icon'] = '';
-	export let delay: AvatarProps['delay'] = 0;
-	export let src: AvatarProps['src'] = '';
-	export let index: AvatarProps['index'] = 0;
-	export let chip: AvatarProps['chip'] = {
+	export let size: Avatar['size'] = config.size;
+	export let alt: Avatar['alt'] = '';
+	export let text: Avatar['text'] = '';
+	export let status: Avatar['status'] = 'loading';
+	export let icon: Avatar['icon'] = '';
+	export let delay: Avatar['delay'] = 0;
+	export let src: Avatar['src'] = '';
+	export let index: Avatar['index'] = 0;
+	export let chip: Avatar['chip'] = {
 		color: '',
 		position: 'top-right',
 		text: ''
 	};
 
 	// Config
+	const { css, classer } = useUI(styles, _class);
 	const {
 		elements: { image, fallback }
 	} = createAvatar({
@@ -37,14 +39,13 @@
 	// Reactive
 	$: errorImg = status === 'error';
 	$: avatarCSS = twJoin(
-		css.wrapper,
+		css.root,
 		(errorImg || !src) && css.background,
 		css.rounded,
 		css.size[size],
-		typeof _class === 'string' ? _class : _class?.root
+		classer
 	);
 
-	$: imgCSS = twJoin(css.rounded, css.size[size], typeof _class === 'object' && _class.img);
 	$: iconCSS = twJoin(css.icon.base, css.icon.size[size]);
 	$: chipCSS = twJoin(
 		css.chip.base,
@@ -60,13 +61,11 @@
 		.substring(0, 2);
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<span on:click on:mouseenter on:mouseleave style="z-index: {index};" class={avatarCSS}>
+<button on:click on:mouseenter on:mouseleave style="z-index: {index};" class={avatarCSS}>
 	{#if src && !errorImg}
-		<img use:melt={$image} {alt} class={imgCSS} />
+		<img use:melt={$image} {alt} class={css.img} />
 	{:else if text}
-		<span use:melt={$fallback} class={css.text}>{text}</span>
+		<span use:melt={$fallback} class={css.label}>{text}</span>
 	{:else if icon}
 		<span class="{icon} {iconCSS}" />
 	{:else if placeholder}
@@ -78,4 +77,4 @@
 		</span>
 	{/if}
 	<slot />
-</span>
+</button>

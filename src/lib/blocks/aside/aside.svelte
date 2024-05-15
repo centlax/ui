@@ -2,7 +2,7 @@
 	import type { AsideLink } from '$lib/types/link.d.js';
 	import { UAsideLinks } from '$lib/index.js';
 	import { twJoin } from 'tailwind-merge';
-	export let links: AsideLink[];
+	export let links: AsideLink[] = [];
 	let classProp: string | string[] = '';
 	export { classProp as class };
 

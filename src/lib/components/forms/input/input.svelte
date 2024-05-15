@@ -3,7 +3,7 @@
 	import type { InputProps } from './input.props.js';
 	import { twJoin } from 'tailwind-merge';
 	import { css } from './input.styles.js';
-	import { ui as config } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	import { UIcon } from '$lib/index.js';
 	import { getContext, hasContext } from 'svelte';
 	import type { FieldsetContext } from '../fieldset/fieldset.props.js';

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	import { twJoin } from 'tailwind-merge';
 
 	export let as: string = 'div';
@@ -10,7 +10,7 @@
 	const css = {
 		base: 'mx-auto',
 		padding: 'px-6 sm:px-8 lg:px-10',
-		constrained: ui.layout?.constrained
+		constrained: config.layout?.constrained
 	};
 	$: containerCSS = twJoin(css.base, padding && css.padding, css.constrained, classProp);
 </script>

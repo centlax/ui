@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Imports
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	import { UTooltip, ULink, UIcon, UHeaderMenu, UCard, UContainer } from '$lib/index.js';
 	import type { HeaderLink } from '$lib/types/link.js';
 	import { twJoin } from 'tailwind-merge';
@@ -19,12 +19,12 @@
 		icon: {
 			base: 'size-3 text-gray-500',
 			trailing: {
-				name: ui.icon.chevron,
+				name: config.icon.chevron,
 				base: 'size-5 transform transition-transform  duration-200 flex-shrink-0',
 				active: 'rotate-180'
 			},
 			external: {
-				name: ui.icon.external,
+				name: config.icon.external,
 				base: 'size-3 absolute top-0.5 -right-3.5'
 			}
 		}

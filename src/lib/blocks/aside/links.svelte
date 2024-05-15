@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	import { ULink, UIcon } from '$lib/index.js';
-	import { ui } from '$lib/index.js';
+	import { config } from '$lib/index.js';
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import type { AsideLink } from '$lib/types/link.js';
 	export let links: AsideLink[];
@@ -19,7 +19,7 @@
 			base: 'size-4 flex-shrink-0 group-hover:text-white',
 			exact: 'text-current',
 			external: {
-				name: ui.icon.external,
+				name: config.icon.external,
 				base: 'size-3 absolute top-0.5 -right-3.5 text-gray-500'
 			}
 		}

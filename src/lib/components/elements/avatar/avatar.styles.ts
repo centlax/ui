@@ -1,9 +1,7 @@
-export const css = {
-	wrapper: 'relative inline-flex items-center justify-center flex-shrink-0',
+export const styles = {
+	root: 'relative inline-flex items-center justify-center flex-shrink-0',
 	background: 'bg-gray-100 dark:bg-gray-800',
 	rounded: 'rounded-full',
-	text: 'font-medium leading-none text-gray-900 dark:text-white truncate',
-	placeholder: 'font-medium leading-none text-gray-500 dark:text-gray-400 truncate',
 	size: {
 		xs: 'size-6 text-xs',
 		sm: 'size-8 text-sm',
@@ -11,7 +9,9 @@ export const css = {
 		lg: 'size-12 text-lg',
 		xl: 'size-14 text-xl'
 	},
-
+	img: '',
+	label: 'font-medium leading-none text-gray-900 dark:text-white truncate',
+	placeholder: 'font-medium leading-none text-gray-500 dark:text-gray-400 truncate',
 	chip: {
 		base: 'absolute rounded-full ring-1 ring-white dark:ring-gray-900 flex items-center justify-center text-white dark:text-gray-900 font-medium',
 		background: 'bg-{color}-500 dark:bg-{color}-400',

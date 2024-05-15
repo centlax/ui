@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Imports
-	import { UAvatar, ui } from '$lib/index.js';
+	import { UAvatar, config } from '$lib/index.js';
 	import type { Size } from '$lib/types/index.js';
 	import type { ComponentProps } from 'svelte';
 	import { twJoin } from 'tailwind-merge';
@@ -11,7 +11,7 @@
 	export let reverse: boolean = false;
 	export let max: number = avatars.length;
 	export let mult: boolean = false;
-	export let size: Size = ui.size;
+	export let size: Size = config.size;
 
 	// Config
 	reverse && avatars.reverse();

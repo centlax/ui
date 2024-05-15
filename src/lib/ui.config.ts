@@ -1,21 +1,10 @@
 import type { Size } from '$lib/types/index.js';
 import { sharedUI } from './theme/shared.js';
-import type { Colors } from './types/index.js';
-export type UI = {
-	size: Size;
-	colors?: {
-		primary?: Colors['fore'];
-		gray?: Colors['back'];
-	};
-	icon?: {
-		load?: string;
-	};
-	layout?: {
-		constrained?: string;
-	};
-};
 
-export const ui = {
+export const config = {
+	strategy: {
+		override: 'merge' as 'fully' | 'merge'
+	},
 	layout: {
 		constrained: 'max-w-screen-2xl'
 	},

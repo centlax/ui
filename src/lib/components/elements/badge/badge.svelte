@@ -3,13 +3,13 @@
 	import { twJoin } from 'tailwind-merge';
 	import type { BadgeProps } from './badge.props.js';
 	import { css } from './badge.styles.js';
-	import { ui } from '$lib/ui.config.js';
+	import { config } from '$lib/ui.config.js';
 	import { UAvatar } from '$lib/index.js';
 	import { fade } from 'svelte/transition';
 
 	// Props
 	export let label: BadgeProps['label'] = '';
-	export let size: BadgeProps['size'] = ui.size;
+	export let size: BadgeProps['size'] = config.size;
 	export let rounded: BadgeProps['rounded'] = true;
 	export let indicator: BadgeProps['dot'] = false;
 	export let variant: BadgeProps['variants'] = 'solid';
