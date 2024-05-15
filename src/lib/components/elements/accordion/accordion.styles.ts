@@ -1,11 +1,9 @@
 export const styles = {
-	wrapper: 'w-full flex flex-col',
+	root: 'w-full flex flex-col',
 	item: {
 		base: 'w-full flex flex-col',
 		icon: 'ms-auto transform transition-transform duration-200',
-		header: {
-			base: 'flex'
-		},
+		header: 'flex',
 		panel: {
 			size: 'text-sm',
 			color: 'text-gray-600 dark:text-gray-400',

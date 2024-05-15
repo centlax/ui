@@ -12,6 +12,9 @@ export function hexToRgb(hex: string) {
 }
 
 export function stringfy(obj: Object): string {
+	if (typeof obj === 'string') {
+		return obj as string;
+	}
 	return Object.values(obj)
 		.filter((value) => typeof value !== 'object') // Filter out nested objects
 		.join(' ');
