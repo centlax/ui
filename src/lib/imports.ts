@@ -21,6 +21,8 @@ export { default as UImage } from './components/elements/image/image.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
 // forms
 export { default as UCheckbox } from './components/forms/+/checkbox.svelte';
+export { default as UHold } from './components/forms/+/hold.svelte';
+export { default as USwitch } from './components/forms/+/switch.svelte';
 export { default as UFieldset } from './components/forms/fieldset/fieldset.svelte';
 export { default as UForm } from './components/forms/form/form.svelte';
 export { default as UFormGroup } from './components/forms/form/group.svelte';
@@ -89,13 +91,20 @@ export { default as ULandCard } from './blocks/land/card.svelte';
 export { default as ULandHero } from './blocks/land/hero.svelte';
 // layout
 export { default as ULayout } from './blocks/layout/layout.svelte';
+// main
+export { default as UMain } from './blocks/main/main.svelte';
 // nav
+export { default as UNavAccordion } from './blocks/nav/accordion.svelte';
 export { default as UNavTree } from './blocks/nav/tree.svelte';
 // page
-export { default as UPage404 } from './blocks/page/404.svelte';
-export { default as UPage500 } from './blocks/page/500.svelte';
+export { default as UPageCard } from './blocks/page/card.svelte';
+export { default as UPageError } from './blocks/page/error.svelte';
+export { default as UPageHero } from './blocks/page/hero.svelte';
+export { default as UPageLinks } from './blocks/page/links.svelte';
+export { default as UPageMain } from './blocks/page/main.svelte';
 export { default as UPage } from './blocks/page/page.svelte';
 // panel
 export { default as UPanelSidebar } from './blocks/panel/sidebar.svelte';
 // price
+export { default as UPriceCard } from './blocks/price/card.svelte';
 export { default as UPrice } from './blocks/price/price.svelte';

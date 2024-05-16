@@ -22,6 +22,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@centlax/ui": "file:../"
+		"@centlax/ui": "/"
 	}
 }

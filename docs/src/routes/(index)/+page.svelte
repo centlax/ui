@@ -17,7 +17,7 @@
 						icon: 'i-fluent-arrow-right-20-regular',
 						trailing: true,
 						size: 'lg',
-						href: '/getting-started/installation'
+						href: '/start/installation'
 					},
 					{
 						label: 'pnpm add @centlax/ui',
@@ -32,7 +32,7 @@
 				]
 			}}
 			description="Centlax UI simplifies the creation of stunning and responsive web applications with its
-            comprehensive collection of fully styled and opinionated UI components designed for SvelteKit."
+            comprehensive collection of fully styled and customizable UI components designed for SvelteKit."
 			class="max-w-2xl mx-auto"
 		>
 			<h1 slot="title">

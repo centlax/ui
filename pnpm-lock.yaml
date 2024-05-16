@@ -14,6 +14,9 @@ dependencies:
   '@iconify-json/heroicons':
     specifier: ^1.1.20
     version: 1.1.20
+  '@iconify-json/simple-icons':
+    specifier: ^1.1.101
+    version: 1.1.101
   '@sveltejs/kit':
     specifier: ^2.0.0
     version: 2.5.4(@sveltejs/vite-plugin-svelte@3.0.2)(svelte@4.2.12)(vite@5.2.4)
@@ -522,6 +525,12 @@ packages:
 
   /@iconify-json/heroicons@1.1.20:
     resolution: {integrity: sha512-puNt1al/rDw8Rb5x8sfk20UA8AQjMskLMh63nSUBj+8I0lQ7LtX+0Qn8wow2xTXTEsynJ9xXLD8Aat53e0qi8A==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/simple-icons@1.1.101:
+    resolution: {integrity: sha512-7h7iUvCok031UcYUt2+wPD21tOwu/AzFB2I2PzzoC3R1jsNJjn5YV3v1q0g2CXcMYAzcsCyH00RbpFPFAiqjcw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

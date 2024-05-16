@@ -7,7 +7,6 @@
 	import type { Accordion } from './accordion.js';
 	import { useUI } from '$lib/composables/useUI.js';
 	import { stringfy } from '$lib/utils/index.js';
-	import { next } from '@melt-ui/svelte/internal/helpers';
 
 	// Props
 	export let links: Accordion['links'] = [];

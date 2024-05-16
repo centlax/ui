@@ -30,10 +30,37 @@
 
 <script lang="ts">
 	// Imports
-	import { UNavTree } from '$lib/index.js';
+	import { UAccordion } from '$lib/index.js';
 	import type { ComponentProps } from 'svelte';
 	import { stringfy } from '$lib/utils/index.js';
 
 	// Props
-	//export let accordion: ComponentProps<UAccordion> = {};
+	export let links: ComponentProps<UAccordion>['links'] = [];
 </script>
+
+<UAccordion
+	let:link
+	{links}
+	class={{
+		root: css.root,
+		item: {
+			header: stringfy(css.header)
+		}
+	}}
+>
+	<svelte:fragment slot="header" let:link let:value let:i>
+		<h4>{link.title}</h4>
+		<span class="{stringfy(css.header.icon)} {value !== `item-${i + 1}` && '-rotate-90'}" />
+	</svelte:fragment>
+	{#if link?.children}
+		<ul class={stringfy(css.ul)}>
+			{#each link.children as child}
+				<a href={link.href || '/'}>
+					<li class={stringfy(css.list)}>
+						{child.title}
+					</li>
+				</a>
+			{/each}
+		</ul>
+	{/if}
+</UAccordion>

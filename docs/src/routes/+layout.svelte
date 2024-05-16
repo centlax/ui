@@ -2,7 +2,7 @@
 	import { ULayout, UBody, UColorImage, UButton, UHeader, UFooter, UColorMode } from '@centlax/ui';
 	import '../app.css';
 
-	const links = [{ label: 'Docs' }, { label: 'Blocks' }];
+	const links = [{ label: 'Docs', href: '/start' }, { label: 'Blocks' }, { label: 'Templates' }];
 </script>
 
 <ULayout>

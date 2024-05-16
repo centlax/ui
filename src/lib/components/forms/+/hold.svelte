@@ -1,10 +1,3 @@
-<script lang="ts" context="module">
-	// your script goes here
-</script>
-
-<script lang="ts">
-</script>
-
 <fieldset
 	class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200 dark:ring-gray-800"
 >

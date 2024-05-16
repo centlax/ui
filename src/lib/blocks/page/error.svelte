@@ -1,6 +1,5 @@
 <script lang="ts">
 	// imports
-
 	import { UButton } from '$lib/index.js';
 
 	// props

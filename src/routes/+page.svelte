@@ -1,13 +1,5 @@
 <script lang="ts">
-	import {
-		UAccordion,
-		UBadge,
-		UButton,
-		UColorMode,
-		UContainer,
-		UKbd,
-		UNavTree
-	} from '$lib/index.js';
+	import { UColorMode, UContainer, UPrice } from '$lib/index.js';
 	import { useToast } from '$lib/composables/useToast.js';
 	import { generator } from '$lib/utils/safer.js';
 	const toast = useToast();
@@ -26,8 +18,58 @@
 </script>
 
 <UColorMode />
-<UContainer>
-	<div class="flex">
-		<UNavTree accordion={{ links }} />
-	</div>
+<UContainer class="space-y-6 h-svh">
+	<UPrice
+		plans={[
+			{
+				name: 'Free',
+				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+				price: 0,
+				features: {
+					items: [
+						'Curabitur faucibus',
+						'massa ut pretium maximus',
+						'Sed posuere nisi',
+						'Pellentesque eu nibh et neque',
+						'Suspendisse a leo',
+						'Praesent quis venenatis ipsum',
+						'Duis non diam vel tortor'
+					]
+				}
+			},
+			{
+				name: 'Prime',
+				popular: true,
+				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+				price: 0,
+				features: {
+					items: [
+						'Curabitur faucibus',
+						'massa ut pretium maximus',
+						'Sed posuere nisi',
+						'Pellentesque eu nibh et neque',
+						'Suspendisse a leo',
+						'Praesent quis venenatis ipsum',
+						'Duis non diam vel tortor'
+					]
+				}
+			},
+			{
+				name: 'Utra',
+				description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+				price: 0,
+				features: {
+					items: [
+						'Curabitur faucibus',
+						'massa ut pretium maximus',
+						'Sed posuere nisi',
+						'Pellentesque eu nibh et neque',
+						'Suspendisse a leo',
+						'Praesent quis venenatis ipsum',
+						'Duis non diam vel tortor'
+					]
+				}
+			}
+		]}
+	/>
 </UContainer>

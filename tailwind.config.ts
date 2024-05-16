@@ -15,7 +15,7 @@ export default <Partial<Config>>{
 	plugins: [
 		forms({ strategy: 'class' }),
 		iconsPlugin({
-			collections: getIconCollections(['fluent', 'heroicons']),
+			collections: getIconCollections(['fluent', 'heroicons', 'simple-icons']),
 			scale: 1.5
 		})
 	]

@@ -11,6 +11,7 @@ export function hexToRgb(hex: string) {
 		: null;
 }
 
+export { twJoin, twMerge } from 'tailwind-merge';
 export function stringfy(obj: Object): string {
 	if (typeof obj === 'string') {
 		return obj as string;
