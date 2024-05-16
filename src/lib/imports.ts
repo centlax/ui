@@ -21,7 +21,6 @@ export { default as UImage } from './components/elements/image/image.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
 // forms
 export { default as UCheckbox } from './components/forms/+/checkbox.svelte';
-export { default as UHold } from './components/forms/+/hold.svelte';
 export { default as USwitch } from './components/forms/+/switch.svelte';
 export { default as UFieldset } from './components/forms/fieldset/fieldset.svelte';
 export { default as UForm } from './components/forms/form/form.svelte';
