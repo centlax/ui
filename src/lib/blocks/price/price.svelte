@@ -54,7 +54,7 @@
 	{#if plans?.length}
 		<div class={stringfy(css.center)}>
 			{#each plans as plan}
-				<UPriceCard {...{ class: css.center.card.base, ...plan}} />
+				<UPriceCard {...{ class: css.center.card.base, ...plan }} />
 			{/each}
 		</div>
 	{/if}

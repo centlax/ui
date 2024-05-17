@@ -16,7 +16,10 @@ export type BaseVariant = {
 
 export const sharedUI = {
 	font: 'font-medium',
-	rounded: 'rounded-md',
+	rounded: {
+		md: 'rounded-md',
+		full: 'rounded-full'
+	},
 	size: {
 		xs: 'xs',
 		sm: 'sm',

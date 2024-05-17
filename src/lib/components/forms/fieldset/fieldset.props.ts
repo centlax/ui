@@ -1,5 +1,5 @@
 import type { HTMLFieldsetAttributes } from 'svelte/elements';
-import type { InputProps } from '../input/input.props.js';
+import type { InputProps } from '../input/input.js';
 import type { FormPathLeaves } from 'sveltekit-superforms';
 type T = Record<string, unknown>;
 

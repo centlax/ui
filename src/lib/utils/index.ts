@@ -1,3 +1,7 @@
+export { twJoin, twMerge } from 'tailwind-merge';
+export * from './colorize.js';
+export * from './masker.js';
+
 export function hexToRgb(hex: string) {
 	// Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
 	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -11,7 +15,6 @@ export function hexToRgb(hex: string) {
 		: null;
 }
 
-export { twJoin, twMerge } from 'tailwind-merge';
 export function stringfy(obj: Object): string {
 	if (typeof obj === 'string') {
 		return obj as string;

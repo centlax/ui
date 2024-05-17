@@ -1,6 +1,10 @@
 import type { Size } from '$lib/types/index.js';
 import { sharedUI } from './theme/shared.js';
 
+export const ui = {
+	share: sharedUI
+};
+
 export const config = {
 	strategy: {
 		override: 'merge' as 'fully' | 'merge'

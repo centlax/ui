@@ -9,7 +9,6 @@ export { default as UTable } from './components/data/table/table.svelte';
 export { default as UChip } from './components/elements/+/chip.svelte';
 export { default as UIcon } from './components/elements/+/icon.svelte';
 export { default as UKbd } from './components/elements/+/kbd.svelte';
-export { default as UMeter } from './components/elements/+/meter.svelte';
 export { default as UAccordion } from './components/elements/accordion/accordion.svelte';
 export { default as UAvatar } from './components/elements/avatar/avatar.svelte';
 export { default as UAvatarGroup } from './components/elements/avatar/group.svelte';
@@ -19,6 +18,8 @@ export { default as UDropdown } from './components/elements/dropdown/dropdown.sv
 export { default as UDropdownMenu } from './components/elements/dropdown/menu.svelte';
 export { default as UImage } from './components/elements/image/image.svelte';
 export { default as ULink } from './components/elements/link/link.svelte';
+export { default as UMeterGroup } from './components/elements/meter/group.svelte';
+export { default as UMeter } from './components/elements/meter/meter.svelte';
 // forms
 export { default as UCheckbox } from './components/forms/+/checkbox.svelte';
 export { default as USwitch } from './components/forms/+/switch.svelte';

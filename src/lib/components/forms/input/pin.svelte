@@ -27,8 +27,8 @@
 
 <div use:melt={$root} class={css.wrapper}>
 	{#each Array.from({ length: length }) as _}
-		<UInput hide let:inputUI class={css.base}>
-			<input class={inputUI} use:melt={$input()} />
+		<UInput hide class={css.base}>
+			<input use:melt={$input()} />
 		</UInput>
 	{/each}
 </div>
