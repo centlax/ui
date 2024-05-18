@@ -61,17 +61,19 @@
 	class={rootUI}
 	{...$$restProps}
 >
-	<slot name="leading">
-		{#if $$slots.leading || leadingIcon}
+	{#if $$slots.leading || leadingIcon}
+		<slot name="leading">
 			<span class={twJoin(iconUI, leadingIcon)} aria-hidden="true" />
-		{/if}
-	</slot>
-	<slot>
-		<span class={truncate ? css.truncate : ''}>{label}</span>
-	</slot>
-	<slot name="trailing">
-		{#if $$slots.trailing || trailingIcon}
+		</slot>
+	{/if}
+	{#if $$slots.default || label}
+		<slot>
+			<span class={truncate ? css.truncate : ''}>{label}</span>
+		</slot>
+	{/if}
+	{#if $$slots.trailing || trailingIcon}
+		<slot name="trailing">
 			<span class={twJoin(iconUI, trailingIcon)} aria-hidden="true" />
-		{/if}
-	</slot>
+		</slot>
+	{/if}
 </svelte:element>

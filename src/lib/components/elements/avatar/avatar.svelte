@@ -6,6 +6,7 @@
 	import { styles } from './avatar.styles.js';
 	import { config } from '$lib/ui.config.js';
 	import { useUI } from '$lib/composables/useUI.js';
+	import { colorize, stringfy } from '$lib/utils/index.js';
 
 	// Props
 	let _class: Avatar['class'] = '';
@@ -39,9 +40,8 @@
 	// Reactive
 	$: errorImg = status === 'error';
 	$: avatarCSS = twJoin(
-		css.root,
+		stringfy(css.root),
 		(errorImg || !src) && css.background,
-		css.rounded,
 		css.size[size],
 		classer
 	);
@@ -61,7 +61,7 @@
 		.substring(0, 2);
 </script>
 
-<button on:click on:mouseenter on:mouseleave style="z-index: {index};" class={avatarCSS}>
+<button style="z-index: {index}; " on:click on:mouseenter on:mouseleave class={avatarCSS}>
 	{#if src && !errorImg}
 		<img use:melt={$image} {alt} class={css.img} />
 	{:else if text}

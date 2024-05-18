@@ -1,14 +1,20 @@
 <script lang="ts" context="module">
 	export const styles = {
 		root: {
-			base: 'w-fit p-1 flex gap-1 data-[orientation=horizontal]:flex-row',
-			ring: 'rounded-full ring-1 ring-inset ring-gray-200 dark:ring-gray-800',
+			base: 'relative w-fit p-1 flex gap-1 data-[orientation=horizontal]:flex-row',
+			ring: 'ring-1 ring-inset ring-gray-200 dark:ring-gray-800',
 			font: 'font-semibold leading-5',
-			text: 'text-center text-xs'
+			text: 'text-center text-xs',
+			rounded: 'rounded-full'
 		},
-		option: {
-			base: 'cursor-pointer rounded-full px-2.5 py-1',
-			checked: 'bg-primary-500 text-white'
+		button: {
+			base: 'relative text-nowrap z-10 cursor-pointer px-2.5 py-1',
+			checked: 'delay-100 text-white',
+			span: {
+				base: 'absolute inset-0 -z-10',
+				color: 'bg-primary-500 ',
+				rounded: 'rounded-full'
+			}
 		}
 	};
 </script>
@@ -19,6 +25,8 @@
 	import { createRadioGroup, melt } from '@melt-ui/svelte';
 	import { useUI } from '$lib/composables/useUI.js';
 	import type { DeepPartial } from '$lib/types/index.js';
+	import { crossfade } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 
 	// Props
 	let _class: string | DeepPartial<typeof styles> = '';
@@ -38,6 +46,10 @@
 			return (value = next);
 		}
 	});
+	const [send, receive] = crossfade({
+		duration: 200,
+		easing: cubicInOut
+	});
 
 	// Reactive
 	$: $_value = value;
@@ -49,11 +61,17 @@
 		<label class="sr-only" for={option} id="{option}-label" />
 		<button
 			use:melt={$item(option)}
-			class="{$isChecked(option) && css.option.checked} {css.option.base}"
+			class={twJoin(css.button.base, $isChecked(option) && css.button.checked)}
 			id={option}
-			aria-labelledby="{option}-label"
 		>
 			{option}
+			{#if $isChecked(option)}
+				<span
+					in:send={{ key: 'checked' }}
+					out:receive={{ key: 'checked' }}
+					class={stringfy(css.button.span)}
+				/>
+			{/if}
 		</button>
 	{/each}
 	<input hidden name="line-height" use:melt={$hiddenInput} />

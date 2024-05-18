@@ -34,7 +34,7 @@
 
 <script lang="ts">
 	// Imports
-	import { config } from '$lib/index.js';
+	import { config } from '$lib/ui.config.js';
 	import type { Link } from '$lib/types/link.js';
 	import { ULink, UAvatar } from '$lib/index.js';
 	import type { ComponentProps } from 'svelte';

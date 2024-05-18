@@ -1,5 +1,5 @@
 import { ui } from '$lib/ui.config.js';
-export const css = {
+export const styles = {
 	root: 'relative',
 	input: {
 		base: 'relative block w-full disabled:cursor-not-allowed disabled:opacity-75 focus:outline-none border-0',
@@ -37,24 +37,51 @@ export const css = {
 		lg: 'pe-11',
 		xl: 'pe-12'
 	},
-
 	variant: {
-		base: {
-			outline: {
-				mask: '',
-				white: `shadow-sm bg-white dark:bg-gray-900 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:focus:ring-primary-500`,
-				gray: `shadow-sm bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:focus:ring-primary-500`
+		solid: {
+			mask: {
+				base: 'shadow-sm bg-transparent',
+				text: 'text-gray-900 dark:text-white caret-color-500',
+				ring: 'ring-1 ring-inset ring-color-500',
+				focus: 'focus:ring-2 focus:ring-inset focus:ring-color-500'
 			},
-			solid: {
-				mask: '',
-				white: '',
-				gray: ''
+			white: {
+				base: 'shadow-sm bg-white dark:bg-gray-900',
+				text: 'text-gray-900 dark:text-white',
+				ring: 'ring-1 ring-inset ring-gray-300 dark:ring-gray-700',
+				focus: 'focus:ring-2 focus:ring-inset dark:focus:ring-primary-500'
+			},
+			gray: {
+				base: 'shadow-sm bg-gray-200 dark:bg-gray-800',
+				text: 'text-gray-900 dark:text-white',
+				ring: 'ing-1 ring-inset ring-gray-300 dark:ring-gray-700',
+				focus: 'focus:ring-2 focus:ring-inset focus:ring-primary-500'
 			}
 		},
-		mask: {
-			outline: `shadow-sm bg-transparent text-gray-900 dark:text-white ring-1 ring-inset ring-color-500 focus:ring-2 focus:ring-inset focus:ring-color-500`,
-			solid: '',
-			none: 'bg-transparent focus:ring-0 focus:shadow-none'
+		outline: {
+			mask: {
+				base: 'shadow-sm bg-transparent',
+				text: 'text-gray-900 dark:text-white caret-color-500',
+				ring: 'ring-1 ring-inset ring-color-500',
+				focus: 'focus:ring-2 focus:ring-inset focus:ring-color-500'
+			},
+			white: {
+				base: 'shadow-sm bg-white dark:bg-gray-900',
+				text: 'text-gray-900 dark:text-white',
+				ring: 'ring-1 ring-inset ring-gray-300 dark:ring-gray-700',
+				focus: 'focus:ring-2 focus:ring-inset dark:focus:ring-primary-500'
+			},
+			gray: {
+				base: 'shadow-sm bg-gray-50 dark:bg-gray-800',
+				text: 'text-gray-900 dark:text-white',
+				ring: 'ing-1 ring-inset ring-gray-300 dark:ring-gray-700',
+				focus: 'focus:ring-2 focus:ring-inset focus:ring-primary-500'
+			}
+		},
+		ghost: {
+			mask: { base: 'bg-transparent focus:ring-0 focus:shadow-none' },
+			white: { base: 'bg-transparent focus:ring-0 focus:shadow-none' },
+			gray: { base: 'bg-transparent focus:ring-0 focus:shadow-none' }
 		}
 	},
 	icon: {

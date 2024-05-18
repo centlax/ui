@@ -54,7 +54,7 @@
 						</ULink>
 
 						<svelte:fragment slot="content">
-							<UCard padded={false} class="shadow-lg w-[20rem]">
+							<UCard class="shadow-lg w-[20rem]">
 								<UHeaderMenu links={link.children} on:click={close} />
 							</UCard>
 						</svelte:fragment>

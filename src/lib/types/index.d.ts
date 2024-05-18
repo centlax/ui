@@ -26,8 +26,8 @@ type ExcludeColors =
 	| 'color';
 
 // Define type for safelist colors by excluding the excluded colors
-type ForeGroundColors = Exclude<keyof typeof colors, ExcludeColors>;
+type ForeColor = Exclude<keyof typeof colors, ExcludeColors>;
 
 export interface Color {
-	fore: ForeGroundColors;
+	fore: ForeColor;
 }

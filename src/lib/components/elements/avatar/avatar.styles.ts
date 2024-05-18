@@ -1,7 +1,10 @@
 export const styles = {
-	root: 'relative inline-flex items-center justify-center flex-shrink-0',
+	root: {
+		base: 'relative overflow-hidden',
+		flex: 'inline-flex items-center justify-center flex-shrink-0',
+		rounded: 'rounded-full'
+	},
 	background: 'bg-gray-100 dark:bg-gray-800',
-	rounded: 'rounded-full',
 	size: {
 		xs: 'size-6 text-xs',
 		sm: 'size-8 text-sm',
@@ -14,7 +17,7 @@ export const styles = {
 	placeholder: 'font-medium leading-none text-gray-500 dark:text-gray-400 truncate',
 	chip: {
 		base: 'absolute rounded-full ring-1 ring-white dark:ring-gray-900 flex items-center justify-center text-white dark:text-gray-900 font-medium',
-		background: 'bg-{color}-500 dark:bg-{color}-400',
+		background: 'bg-color-500 dark:bg-color-400',
 		position: {
 			'top-right': 'top-0 right-0',
 			'bottom-right': 'bottom-0 right-0',
@@ -30,7 +33,7 @@ export const styles = {
 		}
 	},
 	icon: {
-		base: 'text-gray-500 dark:text-gray-400 flex-shrink-0',
+		base: 'text-gray-600 dark:text-gray-400 flex-shrink-0',
 		size: {
 			xs: 'h-3 w-3',
 			sm: 'h-4 w-4',

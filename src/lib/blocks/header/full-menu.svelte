@@ -2,8 +2,6 @@
 	import { twJoin, twMerge } from 'tailwind-merge';
 	import { ULink, UIcon } from '$lib/index.js';
 	import type { HeaderLink } from '$lib/types/link.js';
-	import { fade, fly, slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
 
 	export let links: HeaderLink[];
 	let classProp: string | string[] = '';

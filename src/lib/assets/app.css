@@ -8,7 +8,7 @@ body {
 }
 
 * {
-	@apply caret-primary-600 dark:caret-primary-500;
+	@apply caret-primary-500;
 }
 
 ::selection {

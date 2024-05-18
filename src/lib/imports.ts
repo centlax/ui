@@ -22,6 +22,7 @@ export { default as UMeterGroup } from './components/elements/meter/group.svelte
 export { default as UMeter } from './components/elements/meter/meter.svelte';
 // forms
 export { default as UCheckbox } from './components/forms/+/checkbox.svelte';
+export { default as UPane } from './components/forms/+/pane.svelte';
 export { default as USwitch } from './components/forms/+/switch.svelte';
 export { default as UFieldset } from './components/forms/fieldset/fieldset.svelte';
 export { default as UForm } from './components/forms/form/form.svelte';
@@ -79,6 +80,8 @@ export { default as UDashSide } from './blocks/dash/side.svelte';
 export { default as UFooter } from './blocks/footer/footer.svelte';
 export { default as UFooterLinks } from './blocks/footer/links.svelte';
 export { default as UFooterNotes } from './blocks/footer/notes.svelte';
+// head
+export { default as UHead } from './blocks/head/head.svelte';
 // header
 export { default as UHeaderFullMenu } from './blocks/header/full-menu.svelte';
 export { default as UHeader } from './blocks/header/header.svelte';

@@ -59,11 +59,11 @@ export const sharedUI = {
 	},
 	icon: {
 		size: {
-			xs: 'size-4',
-			sm: 'size-5',
-			md: 'size-5',
-			lg: 'size-5',
-			xl: 'size-6'
+			xs: 'size-4 dark:size-4',
+			sm: 'size-5 dark:size-5',
+			md: 'size-5 dark:size-5',
+			lg: 'size-5 dark:size-5',
+			xl: 'size-6 dark:size-6'
 		},
 		padding: {
 			x: {
