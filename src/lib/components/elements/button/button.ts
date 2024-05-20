@@ -1,9 +1,8 @@
-import type { Color, Size } from '$lib/types/index.js';
+import type { ClassType, Color, DeepStyle, Size } from '$lib/types/index.js';
 import type { HTMLAnchorAttributes } from 'svelte/elements';
 import { styles } from './button.styles.js';
-import type { DeepPartial } from '$lib/types/index.js';
 
-type ButtonColor = keyof typeof styles.variant.solid;
+type ButtonColor = keyof typeof styles.opt.variant.solid;
 
 export interface Button {
 	href: HTMLAnchorAttributes['href'];
@@ -18,8 +17,8 @@ export interface Button {
 	padded: boolean;
 	size: Size;
 	rounded: boolean;
-	variant: keyof typeof styles.variant;
-	class: string | DeepPartial<typeof styles>;
+	variant: keyof typeof styles.opt.variant;
+	class: string | DeepStyle<typeof styles>;
 	color: Color['fore'] | Exclude<ButtonColor, 'mask'>;
 	action: Function;
 }

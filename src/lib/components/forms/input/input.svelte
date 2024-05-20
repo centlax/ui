@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Imports
 	import type { Input } from './input.js';
-	import { colorize, stringfy, twJoin, masker } from '$lib/utils/index.js';
+	import { colorize, stringify, twJoin, colorify } from '$lib/utils/index.js';
 	import { styles } from './input.styles.js';
 	import { config } from '$lib/ui.config.js';
 	import { useUI } from '$lib/composables/useUI.js';
@@ -31,16 +31,16 @@
 
 	$: leading = $$slots.leading || leadingIcon;
 	$: trailing = $$slots.trailing || trailingIcon;
-	$: leadingUI = twJoin(stringfy(css.icon.leading), css.icon.leading.padding[size]);
-	$: trailingUI = twJoin(stringfy(css.icon.trailing), css.icon.trailing.padding[size]);
+	$: leadingUI = twJoin(stringify(css.icon.leading), css.icon.leading.padding[size]);
+	$: trailingUI = twJoin(stringify(css.icon.trailing), css.icon.trailing.padding[size]);
 
 	$: iconUI = twJoin(css.icon.base, css.icon.size[size]);
 
 	// Reactive
 	$: inputUI = twJoin(
-		stringfy(css.input),
-		stringfy(css.variant[variant][masker(css.variant.solid, color)]),
-		rounded ? css.input.rounded.full : css.input.rounded.md,
+		stringify(css.input),
+		stringify(css.variant[variant][colorify(css.variant.solid, color)]),
+		rounded ? 'rounded-full' : css.input.rounded,
 		$$props.type === 'file' && [css.file.base, css.file.padding[size || 'sm']],
 		css.input.text[size],
 		padded ? css.input.padding.auto[size] : css.input.padding.none,

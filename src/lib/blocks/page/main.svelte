@@ -6,9 +6,9 @@
 </script>
 
 <script lang="ts">
-	import { stringfy } from '$lib/utils/index.js';
+	import { stringify } from '$lib/utils/index.js';
 </script>
 
-<div class={stringfy(css)}>
+<div class={stringify(css)}>
 	<slot />
 </div>

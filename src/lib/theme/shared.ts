@@ -1,25 +1,6 @@
-// shareUI.ts
-import type { ColorMode } from '$lib/types/theme.js';
-
-// @unocss-include
-export type BaseVariant = {
-	base?: string;
-	color: {
-		fore: /* foreground-color */ ColorMode;
-		back: /* backround-color */ ColorMode;
-		hover: {
-			fore: ColorMode;
-			back: ColorMode;
-		};
-	};
-};
-
 export const sharedUI = {
 	font: 'font-medium',
-	rounded: {
-		md: 'rounded-md',
-		full: 'rounded-full'
-	},
+	rounded: 'rounded-md',
 	size: {
 		xs: 'xs',
 		sm: 'sm',
@@ -75,24 +56,4 @@ export const sharedUI = {
 			}
 		}
 	}
-};
-
-export const arrowUI = {
-	base: 'invisible before:visible before:block before:rotate-45 before:z-[-1] before:w-2 before:h-2',
-	ring: 'before:ring-1 before:ring-gray-200 dark:before:ring-gray-800',
-	rounded: 'before:rounded-sm',
-	background: 'before:bg-gray-200 dark:before:bg-gray-800',
-	shadow: 'before:shadow',
-	// eslint-disable-next-line quotes
-	placement: `group-data-[popper-placement*='right']:-left-1 group-data-[popper-placement*='left']:-right-1 group-data-[popper-placement*='top']:-bottom-1 group-data-[popper-placement*='bottom']:-top-1`
-};
-
-export const iconUI = {
-	dark: 'heroicons:moon-20-solid',
-	light: 'heroicons:sun-20-solid',
-	system: 'heroicons:computer-desktop-20-solid',
-	search: 'heroicons:magnifying-glass-20-solid',
-	external: 'heroicons:arrow-up-right-20-solid',
-	chevron: 'heroicons:chevron-down-20-solid',
-	hash: 'heroicons:hashtag-20-solid'
 };

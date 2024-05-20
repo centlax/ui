@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { flyAndScale } from '$lib/utils/transations.js';
+	import { flyAndScale } from '$lib/theme/transations.js';
 	import { createDialog, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
 	export let state: boolean = false;

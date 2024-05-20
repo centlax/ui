@@ -42,7 +42,7 @@
 <script lang="ts">
 	// Imports
 	import { UButton, UCard } from '$lib/index.js';
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import type { ComponentProps } from 'svelte';
 	import { useUI } from '$lib/composables/useUI.js';
 	import type { DeepPartial } from '$lib/types/index.js';
@@ -65,7 +65,7 @@
 <UCard class={{ root: classer, default: { base: css.card } }}>
 	<div class={css.header.base}>
 		{#if popular}
-			<span class={stringfy(css.badge)}> Most popular </span>
+			<span class={stringify(css.badge)}> Most popular </span>
 		{/if}
 
 		<div class={css.header.base}>
@@ -86,8 +86,8 @@
 		<ul class={css.features.base}>
 			<li class={css.features.title}>{features.title || 'Features'}</li>
 			{#each features.items as item}
-				<li class={stringfy(css.features.item)}>
-					<span class={twJoin(stringfy(css.features.icon), features.icon)} />
+				<li class={stringify(css.features.item)}>
+					<span class={twJoin(stringify(css.features.icon), features.icon)} />
 					{item}
 				</li>
 			{/each}

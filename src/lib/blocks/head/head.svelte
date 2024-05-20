@@ -26,7 +26,7 @@
 <script lang="ts">
 	// Imports
 	import { UButton, ULogo, config } from '$lib/index.js';
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import type { ComponentProps } from 'svelte';
 	import { useDark } from '$lib/composables/useDark.js';
 
@@ -49,18 +49,18 @@
 	$: menuIcon = asider ? css.menu.close : css.menu.open;
 </script>
 
-<header class={stringfy(css.root)}>
-	<div id="north" class={stringfy(css.north)}>
-		<a {href} class={stringfy(css.north.west)}>
+<header class={stringify(css.root)}>
+	<div id="north" class={stringify(css.north)}>
+		<a {href} class={stringify(css.north.west)}>
 			<slot name="west">
 				<ULogo class="-ml-1" />
 				{title}
 			</slot>
 		</a>
-		<nav class={twJoin(stringfy(css.north.center), css.show)}>
+		<nav class={twJoin(stringify(css.north.center), css.show)}>
 			<slot>Center</slot>
 		</nav>
-		<nav class={stringfy(css.north.east)}>
+		<nav class={stringify(css.north.east)}>
 			<slot name="east">
 				<div class={twJoin(css.north.east.flex, css.show)}>
 					{#each buttons as button}
@@ -78,14 +78,14 @@
 	</div>
 	{#if asider}
 		<div id="aside" class={css.hide}>
-			<div class={stringfy(css.aside.buttons)}>
+			<div class={stringify(css.aside.buttons)}>
 				<slot name="aside-buttons">
 					{#each buttons as button}
 						<UButton {...button} />
 					{/each}
 				</slot>
 			</div>
-			<nav class={stringfy(css.aside.panel)}>
+			<nav class={stringify(css.aside.panel)}>
 				<slot name="aside-panel" />
 			</nav>
 		</div>

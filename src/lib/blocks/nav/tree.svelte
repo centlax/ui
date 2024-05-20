@@ -32,7 +32,7 @@
 	// Imports
 	import { UNavTree } from '$lib/index.js';
 	import type { ComponentProps } from 'svelte';
-	import { stringfy } from '$lib/utils/index.js';
+	import { stringify } from '$lib/utils/index.js';
 
 	// Props
 	//export let accordion: ComponentProps<UAccordion> = {};

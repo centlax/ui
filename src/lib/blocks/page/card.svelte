@@ -24,7 +24,7 @@
 
 <script lang="ts">
 	// Imports
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { UCard } from '$lib/index.js';
 	import type { Link } from '$lib/types/link.js';
 
@@ -47,13 +47,13 @@
 	{#if link.icon || $$slots.icon}
 		<div class={css.header.base}>
 			<slot name="icon">
-				<span class="{link.icon} {stringfy(css.header.icon)}" />
+				<span class="{link.icon} {stringify(css.header.icon)}" />
 			</slot>
 		</div>
 	{/if}
 
 	{#if link.title || $$slots.title}
-		<p class={stringfy(css.title)}>
+		<p class={stringify(css.title)}>
 			<slot name="title">
 				{link.title}
 			</slot>

@@ -35,7 +35,7 @@
 
 <div class={wrapperCSS}>
 	{#each avatars as avatar, index}
-		{#if index  < max}
+		{#if index < max}
 			<UAvatar
 				{size}
 				{...!mult ? { ...avatars[0], ...avatar } : avatar}
@@ -44,6 +44,6 @@
 		{/if}
 	{/each}
 	{#if leftMax !== 0}
-		<UAvatar {size} text={`+${leftMax}`}  />
+		<UAvatar {size} text={`+${leftMax}`} />
 	{/if}
 </div>

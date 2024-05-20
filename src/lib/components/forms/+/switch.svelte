@@ -21,7 +21,7 @@
 
 <script lang="ts">
 	// Imports
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { createRadioGroup, melt } from '@melt-ui/svelte';
 	import { useUI } from '$lib/composables/useUI.js';
 	import type { DeepPartial } from '$lib/types/index.js';
@@ -55,7 +55,7 @@
 	$: $_value = value;
 </script>
 
-<fieldset use:melt={$root} class={twJoin(stringfy(css.root), classer)} aria-label="View density">
+<fieldset use:melt={$root} class={twJoin(stringify(css.root), classer)} aria-label="View density">
 	<legend class="sr-only">{legend}</legend>
 	{#each options as option}
 		<label class="sr-only" for={option} id="{option}-label" />
@@ -69,7 +69,7 @@
 				<span
 					in:send={{ key: 'checked' }}
 					out:receive={{ key: 'checked' }}
-					class={stringfy(css.button.span)}
+					class={stringify(css.button.span)}
 				/>
 			{/if}
 		</button>

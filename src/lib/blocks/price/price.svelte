@@ -24,7 +24,7 @@
 	// Imports
 	import { type ComponentProps } from 'svelte';
 	import { UPriceCard, USwitch } from '$lib/index.js';
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { useUI } from '$lib/composables/useUI.js';
 	import type { DeepPartial } from '$lib/types/index.js';
 
@@ -52,7 +52,7 @@
 	</div>
 
 	{#if plans?.length}
-		<div class={stringfy(css.center)}>
+		<div class={stringify(css.center)}>
 			{#each plans as plan}
 				<UPriceCard {...{ class: css.center.card.base, ...plan }} />
 			{/each}
@@ -62,7 +62,7 @@
 	<slot />
 
 	{#if custom || $$slots.south}
-		<div class={stringfy(css.south)}>
+		<div class={stringify(css.south)}>
 			<slot name="south" />
 		</div>
 	{/if}

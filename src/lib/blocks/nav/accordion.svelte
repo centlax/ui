@@ -32,7 +32,7 @@
 	// Imports
 	import { UAccordion } from '$lib/index.js';
 	import type { ComponentProps } from 'svelte';
-	import { stringfy } from '$lib/utils/index.js';
+	import { stringify } from '$lib/utils/index.js';
 
 	// Props
 	export let links: ComponentProps<UAccordion>['links'] = [];
@@ -44,19 +44,19 @@
 	class={{
 		root: css.root,
 		item: {
-			header: stringfy(css.header)
+			header: stringify(css.header)
 		}
 	}}
 >
 	<svelte:fragment slot="header" let:link let:value let:i>
 		<h4>{link.title}</h4>
-		<span class="{stringfy(css.header.icon)} {value !== `item-${i + 1}` && '-rotate-90'}" />
+		<span class="{stringify(css.header.icon)} {value !== `item-${i + 1}` && '-rotate-90'}" />
 	</svelte:fragment>
 	{#if link?.children}
-		<ul class={stringfy(css.ul)}>
+		<ul class={stringify(css.ul)}>
 			{#each link.children as child}
 				<a href={link.href || '/'}>
-					<li class={stringfy(css.list)}>
+					<li class={stringify(css.list)}>
 						{child.title}
 					</li>
 				</a>

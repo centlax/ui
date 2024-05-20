@@ -1,6 +1,6 @@
 import type { Link } from '$lib/types/link.js';
 import { styles } from './accordion.styles.js';
-import type { DeepPartial } from '$lib/types/index.js';
+import type { DeepStyle } from '$lib/types/index.js';
 
 export interface Accordion {
 	links: Link[];
@@ -14,5 +14,5 @@ export interface Accordion {
 	disabled: boolean;
 	visible: boolean;
 	value: string | string[] | undefined;
-	class: string | DeepPartial<typeof styles>;
+	class: string | DeepStyle<typeof styles>;
 }

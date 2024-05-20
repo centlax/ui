@@ -25,7 +25,7 @@
 
 <script lang="ts">
 	// Imports
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { useUI } from '$lib/composables/useUI.js';
 	import type { DeepPartial } from '$lib/types/index.js';
 
@@ -40,17 +40,17 @@
 	// Reactive
 </script>
 
-<svelte:element this={as} class={twJoin(stringfy(css), classer)}>
+<svelte:element this={as} class={twJoin(stringify(css), classer)}>
 	{#if $$slots.north}
-		<div class={stringfy(css.north)}>
+		<div class={stringify(css.north)}>
 			<slot name="north" />
 		</div>
 	{/if}
-	<div class={stringfy(css.default)}>
+	<div class={stringify(css.default)}>
 		<slot />
 	</div>
 	{#if $$slots.south}
-		<div class={stringfy(css.south)}>
+		<div class={stringify(css.south)}>
 			<slot name="south" />
 		</div>
 	{/if}

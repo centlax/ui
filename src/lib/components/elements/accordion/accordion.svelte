@@ -6,16 +6,16 @@
 	import { styles } from './accordion.styles.js';
 	import type { Accordion } from './accordion.js';
 	import { useUI } from '$lib/composables/useUI.js';
-	import { stringfy } from '$lib/utils/index.js';
+	import { stringify } from '$lib/utils/index.js';
 
 	// Props
+	let _class: Accordion['class'] = '';
+	export { _class as class };
 	export let links: Accordion['links'] = [];
 	export let multiple: Accordion['multiple'] = false;
 	export let disabled: Accordion['disabled'] = false;
 	export let visible: Accordion['visible'] = false;
-	export let value: Accordion['value'] = links[0].id || 'item-1';
-	let _class: Accordion['class'] = '' as string;
-	export { _class as class };
+	export let value: Accordion['value'] = findID(links?.length ? links[0].id : 'item-1', 0);
 
 	// Config
 	const {
@@ -23,31 +23,36 @@
 		helpers: { isSelected },
 		states: { value: _value }
 	} = createAccordion({
-		multiple: multiple,
-		disabled: disabled,
+		multiple,
+		disabled,
 		forceVisible: visible,
-		onValueChange: ({ next }) => {
-			return (value = next);
-		}
+		onValueChange: ({ next }) => (value = next)
 	});
+
 	const { css, classer } = useUI(styles, _class);
+
+	function findID(id: any, index: number): string {
+		return id ? id : `item-${index + 1}`;
+	}
 
 	// Reactive
 	$: $_value = value;
 </script>
 
-<div class={twJoin(css.root, classer)} {...$root}>
+<div class={twJoin(stringify(css.root), classer)} {...$root}>
 	{#each links as link, i}
-		{@const id = link.id ? link.id : `item-${i + 1}`}
-		{@const props = { id, value: id, disabled: link.disabled }}
-		<div use:melt={$item(props)} class={css.item.base}>
-			<button class={stringfy(css.item.header)} use:melt={$trigger(props)}>
+		<div use:melt={$item(findID(link.id, i))} class={stringify(css.item)}>
+			<button class={stringify(css.item.header)} use:melt={$trigger(findID(link.id, i))}>
 				<slot {value} {link} name="header" {i}>
-					{link.title}
+					{link.label}
 				</slot>
 			</button>
-			{#if $isSelected(id)}
-				<div class={stringfy(css.item.panel)} use:melt={$content(props)} transition:slide>
+			{#if $isSelected(findID(link.id, i))}
+				<div
+					class={stringify(css.item.panel)}
+					use:melt={$content(findID(link.id, i))}
+					transition:slide
+				>
 					<slot {value} {link}>
 						{link.description}
 					</slot>

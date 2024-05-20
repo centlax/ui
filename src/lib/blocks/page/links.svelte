@@ -38,7 +38,7 @@
 	import type { Link } from '$lib/types/link.js';
 	import { ULink, UAvatar } from '$lib/index.js';
 	import type { ComponentProps } from 'svelte';
-	import { stringfy, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { useUI } from '$lib/composables/useUI.js';
 	import type { DeepPartial } from '$lib/types/index.js';
 
@@ -67,7 +67,7 @@
 				<ULink
 					href={link.href}
 					class={{
-						base: stringfy(css.ancor.base),
+						base: stringify(css.ancor.base),
 						active: css.ancor.active,
 						inactive: css.ancor.inactive
 					}}
@@ -75,12 +75,12 @@
 					{#if link.icon}
 						<span class="{link.icon} {css.icon.base}" />
 					{:else if avatar}
-						<UAvatar {...avatar} class={stringfy(css.avatar)} />
+						<UAvatar {...avatar} class={stringify(css.avatar)} />
 					{/if}
-					<span class={stringfy(css.label)}>
+					<span class={stringify(css.label)}>
 						{link.label}
 						{#if link.target === '_blank'}
-							<span class={stringfy(css.icon.external)} />
+							<span class={stringify(css.icon.external)} />
 						{/if}
 					</span>
 				</ULink>

@@ -2,8 +2,8 @@
 	// Imports
 	import { type Button } from './button.js';
 	import { styles } from './button.styles.js';
-	import { stringfy, twJoin, colorize, masker } from '$lib/utils/index.js';
-	import { useUI } from '$lib/composables/useUI.js';
+	import { stringify, twJoin, colorize, iconify, variantify } from '$lib/utils/index.js';
+	import { useUI } from './ui.js';
 	import { config } from '$lib/ui.config.js';
 
 	// Props
@@ -27,29 +27,29 @@
 	const { css, classer } = useUI(styles, _class);
 
 	// Reactive
-	$: _icon = typeof icon === 'string' && icon;
-	$: _leadingIcon = typeof icon === 'object' ? icon.leading : _icon;
-	$: loadingIcon = (typeof icon === 'object' && icon.loading) || config.icon.loading;
-	$: leadingIcon = loading ? `${loadingIcon} ${css.icon.loading}` : _leadingIcon;
-	$: trailingIcon = typeof icon === 'object' && icon.trailing;
+	$: _icon = iconify(icon);
+	$: loadingIcon = `${stringify(css.icon.is.loading)} ${_icon?.loading || config.icon.loading}`;
+	$: leadingIcon = loading ? loadingIcon : _icon?.leading;
+	$: trailingIcon = _icon?.trailing;
 
-	$: iconUI = twJoin(css.icon.base, css.icon.size[size]);
+	$: iconUI = stringify(css.icon, css.icon.opt.size[size]);
 	$: rootUI = twJoin(
-		stringfy(css.root),
-		stringfy(css.variant[variant][masker(css.variant.solid, color)]),
-		css.gap[size],
-		css.text[size],
-		block ? css.block : css.inline,
-		padded && css.padding[square ? 'square' : 'rectangle'][size],
-		rounded ? css.rounded.full : css.rounded.md,
+		stringify(css.root),
+		variantify(css.opt.variant[variant], color),
+		stringify(block ? css.is.block : css.is.inline),
+		stringify(css.opt.text[size], css.opt.gap[size]),
+		rounded ? 'rounded-full' : stringify(css.is.rounded),
+		padded && stringify(css.opt.padding[square ? 'square' : 'rectangle'][size]),
 		classer
 	);
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
 <svelte:element
 	this={href ? 'a' : 'button'}
+	data-size={size}
 	style={colorize(color)}
+	role="button"
+	tabindex={0}
 	use:action
 	{href}
 	on:click
@@ -63,17 +63,17 @@
 >
 	{#if $$slots.leading || leadingIcon}
 		<slot name="leading">
-			<span class={twJoin(iconUI, leadingIcon)} aria-hidden="true" />
+			<span data-size={size} class={twJoin(iconUI, leadingIcon)} aria-hidden="true" />
 		</slot>
 	{/if}
 	{#if $$slots.default || label}
 		<slot>
-			<span class={truncate ? css.truncate : ''}>{label}</span>
+			<span data-size={size} class={stringify(truncate ? css.is.truncate : {})}>{label}</span>
 		</slot>
 	{/if}
 	{#if $$slots.trailing || trailingIcon}
 		<slot name="trailing">
-			<span class={twJoin(iconUI, trailingIcon)} aria-hidden="true" />
+			<span data-size={size} class={twJoin(iconUI, trailingIcon)} aria-hidden="true" />
 		</slot>
 	{/if}
 </svelte:element>

@@ -6,7 +6,7 @@
 	import { styles } from './avatar.styles.js';
 	import { config } from '$lib/ui.config.js';
 	import { useUI } from '$lib/composables/useUI.js';
-	import { colorize, stringfy } from '$lib/utils/index.js';
+	import { colorize, stringify } from '$lib/utils/index.js';
 
 	// Props
 	let _class: Avatar['class'] = '';
@@ -40,7 +40,7 @@
 	// Reactive
 	$: errorImg = status === 'error';
 	$: avatarCSS = twJoin(
-		stringfy(css.root),
+		stringify(css.root),
 		(errorImg || !src) && css.background,
 		css.size[size],
 		classer

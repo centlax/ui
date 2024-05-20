@@ -24,7 +24,7 @@
 	import { config } from '$lib/ui.config.js';
 	import type { Size, DeepPartial } from '$lib/types/index.js';
 	import { twJoin } from 'tailwind-merge';
-	import { stringfy } from '$lib/utils/index.js';
+	import { stringify } from '$lib/utils/index.js';
 	import { useUI } from '$lib/composables/useUI.js';
 	// props
 	export let value: string = '';
@@ -36,6 +36,6 @@
 	const { css, classer } = useUI(styles, _class);
 </script>
 
-<kbd {...$$restProps} class={twJoin(stringfy(css), css.attrs.size[size], classer)}>
+<kbd {...$$restProps} class={twJoin(stringify(css), css.attrs.size[size], classer)}>
 	<slot>{value}</slot>
 </kbd>
