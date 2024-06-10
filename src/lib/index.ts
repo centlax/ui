@@ -1,3 +1,8 @@
-// Reexport your entry components here
-export * from '$lib/ui.config.js';
-export * from '$lib/imports.js';
+// Types
+export type * from '$lib/types/index.js';
+
+// Components
+export * from '$lib/config/imports/components.js';
+
+// Composables
+export * from '$lib/config/imports/composables.js';

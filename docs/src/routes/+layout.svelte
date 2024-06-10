@@ -1,5 +1,8 @@
 <script lang="ts">
-    import "../app.css"
+	import '../app.css';
+	import { ULayout } from '@centlax/ui';
 </script>
 
-<slot/>
+<ULayout>
+	<slot />
+</ULayout>

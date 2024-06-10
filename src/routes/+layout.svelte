@@ -1,8 +1,5 @@
 <script lang="ts">
-	import '$lib/assets/app.css';
-	import { ULayout } from '$lib/index.js';
+	import '$lib/theme/styles/tailwind.css';
 </script>
 
-<ULayout>
-	<slot />
-</ULayout>
+<slot />
