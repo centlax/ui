@@ -27,5 +27,3 @@ export { default as UTooltip } from '../../components/common/overlays/tooltip/to
 export { default as UAsideLinks } from '../../components/website/elements/aside/links.svelte';
 export { default as UHeader } from '../../components/website/elements/header/header.svelte';
 export { default as UHeaderLinks } from '../../components/website/elements/header/links.svelte';
-
-// sections

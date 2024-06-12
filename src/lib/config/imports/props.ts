@@ -24,5 +24,3 @@ export { props as Tooltip } from '../../components/common/overlays/tooltip/toolt
 
 // elements
 export { props as Header } from '../../components/website/elements/header/header.config.js';
-
-// sections
