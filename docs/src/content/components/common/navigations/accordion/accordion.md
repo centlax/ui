@@ -5,6 +5,5 @@ featured: true
 component: true
 ---
 
-## Usage
 
 Use the default slot to set the text of the Button.

@@ -9,17 +9,15 @@ component: true
     import Source from '$lib/components/markdown/source.svelte';
 </script>
 
-## Usage
+
 
 Use the default slot to set the text of the Button.
 
-## Installation
 
 ```bash
 npx shadcn-svelte@latest add alert-dialog
 ```
 
-## Usage
 
 ```svelte
 <script lang="ts">

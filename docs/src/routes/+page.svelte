@@ -1,3 +1,9 @@
+
+<svelte:head>
+    <title>
+        Centlax UI: Elevate Your Design To The Next Level
+    </title>
+</svelte:head>
 <div class="relative max-w-3xl text-balance mx-auto pt-20 sm:pt-24 lg:pt-32">
 	<h1
 		class="text-gray-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white"
