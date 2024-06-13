@@ -6,11 +6,11 @@ export function slugFromPath(path: string) {
 }
 
 type Modules = Record<string, () => Promise<unknown>>;
+
 function findMatch(slug: string, modules: Modules) {
 	let match: { path?: string; resolver?: DocResolver } = {};
-
 	for (const [path, resolver] of Object.entries(modules)) {
-		//  console.log(slugFromPath(path), '===', `components/${slug}`)
+		console.log(slugFromPath(path));
 		if (slugFromPath(path) === `components/${slug}`) {
 			match = { path, resolver: resolver as unknown as DocResolver };
 			break;
@@ -19,7 +19,6 @@ function findMatch(slug: string, modules: Modules) {
 	if (!match.path) {
 		match = getIndexDocIfExists(slug, modules);
 	}
-	//console.log(match)
 
 	return match;
 }
@@ -38,6 +37,7 @@ function getIndexDocIfExists(slug: string, modules: Modules) {
 
 export async function getDoc(slug: string) {
 	const modules = import.meta.glob(`/src/content/**/*.md`);
+
 	const match = findMatch(slug, modules);
 	const doc = await match?.resolver?.();
 

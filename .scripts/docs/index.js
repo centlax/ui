@@ -36,7 +36,7 @@ const generateImports = (dirPath) => {
 				importName = `${toKebabCase(folderName)}-${toKebabCase(fileNameWithoutExtension)}`;
 			}
 
-			const importPath = `$content/${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
+			const importPath = `/src/content/${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
 			imports[importName] = {
 				path: importPath,
 				category: toKebabCase(category),

@@ -1,33 +1,35 @@
-import { redirect } from '@sveltejs/kit';
-import type { EntryGenerator, PageLoad } from './$types.js';
-import { getDoc } from '$lib/utils/doc.js';
+import { error, redirect } from '@sveltejs/kit';
+import type { PageLoad } from './$types.js';
+import type { DocResolver } from '$lib/types/docs.js';
 import { components } from '$lib/config/imports/components.js';
 
 export const load: PageLoad = async (event) => {
-	console.log(event.params.slug)
-	
 	if (event.params.slug === 'components') {
-		redirect(303, '/components/accordion');
+		throw redirect(303, '/components/accordion');
 	}
 
-	const { component, title, metadata } = await getDoc(event.params.slug);
+	const slug = event.params.slug as keyof typeof components;
+	const modules = import.meta.glob(`/src/content/components/**/*.md`);
+
+	let match: { path?: string; resolver?: DocResolver } = {};
+	if (components[slug]) {
+		for (const [path, resolver] of Object.entries(modules)) {
+			if (path === components[slug].path) {
+				match = { path, resolver: resolver as unknown as DocResolver };
+				break;
+			}
+		}
+	}
+
+	// Dynamically import the matched module
+	const doc = await match?.resolver?.();
+	if (!match.path || !doc || !doc.metadata) {
+		error(404, `Component for slug ${event.params.slug} not found`);
+	}
 
 	return {
-		component,
-		metadata,
-		title
+		component: doc.default,
+		metadata: doc.metadata,
+		title: doc.metadata.title
 	};
-};
-
-export const entries: EntryGenerator = () => {
-	console.info('Prerendering /docs');
-	const modules = import.meta.glob('/src/content/**/*.md');
-	const entries = [];
-
-	for (const path of Object.keys(modules)) {
-		const slug = path.replace('/src/content/', '').replace('.md', '').replace('/index', '');
-		entries.push({ slug });
-	}
-
-	return entries;
 };

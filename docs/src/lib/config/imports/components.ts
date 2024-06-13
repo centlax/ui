@@ -1,22 +1,32 @@
 export const components = {
 	modal: {
-		path: '$content/components/application/overlays/modal/modal.md',
+		path: '/src/content/components/application/overlays/modal/modal.md',
 		category: 'application',
 		group: 'overlays'
 	},
 	sheet: {
-		path: '$content/components/application/overlays/sheet/sheet.md',
+		path: '/src/content/components/application/overlays/sheet/sheet.md',
 		category: 'application',
 		group: 'overlays'
 	},
 	button: {
-		path: '$content/components/common/elements/button/button.md',
+		path: '/src/content/components/common/elements/button/button.md',
 		category: 'common',
 		group: 'elements'
 	},
 	'button-group': {
-		path: '$content/components/common/elements/button/group.md',
+		path: '/src/content/components/common/elements/button/group.md',
 		category: 'common',
+		group: 'elements'
+	},
+	accordion: {
+		path: '/src/content/components/common/navigations/accordion/accordion.md',
+		category: 'common',
+		group: 'navigations'
+	},
+	header: {
+		path: '/src/content/components/website/elements/header/header.md',
+		category: 'website',
 		group: 'elements'
 	}
 };
