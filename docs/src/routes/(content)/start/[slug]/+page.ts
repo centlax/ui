@@ -1,19 +1,17 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types.js';
 import type { DocResolver } from '$lib/types/docs.js';
-import { components } from '$lib/config/imports/components.js';
 
 export const load: PageLoad = async (event) => {
-	const slug = event.params.slug as keyof typeof components;
-	const modules = import.meta.glob(`/src/content/components/**/*.md`);
+	const slug = event.params.slug;
+	const modules = import.meta.glob(`/src/content/start/**/*.md`);
 
 	let match: { path?: string; resolver?: DocResolver } = {};
-	if (components[slug]) {
-		for (const [path, resolver] of Object.entries(modules)) {
-			if (path === components[slug].path) {
-				match = { path, resolver: resolver as unknown as DocResolver };
-				break;
-			}
+
+	for (const [path, resolver] of Object.entries(modules)) {
+		if (path.endsWith(`${slug}.md`)) {
+			match = { path, resolver: resolver as unknown as DocResolver };
+			break;
 		}
 	}
 

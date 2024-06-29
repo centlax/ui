@@ -8,7 +8,7 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"fmt": "node ../.scripts/docs/index.js"
+		"fmt": "node ../.scripts/docs/copy.js && node ../.scripts/docs/comps.js"
 	},
 	"devDependencies": {
 		"@mdsx/rehype-custom-highlighter": "^0.0.3",
@@ -19,7 +19,9 @@
 		"autoprefixer": "^10.4.19",
 		"mdsx": "^0.0.5",
 		"postcss": "^8.4.38",
+		"rehype-parse": "^9.0.0",
 		"rehype-pretty-code": "^0.13.2",
+		"rehype-stringify": "^10.0.0",
 		"remark-gfm": "^4.0.0",
 		"shiki": "^1.6.4",
 		"svelte": "^4.2.7",
@@ -35,6 +37,7 @@
 	"dependencies": {
 		"@centlax/ui": "^0.1.0",
 		"@melt-ui/svelte": "^0.81.0",
+		"marked": "^13.0.1",
 		"rehype-slug": "^6.0.0",
 		"rehype-toc": "^3.0.2",
 		"remark-capitalize": "^1.1.0",

@@ -1,7 +1,5 @@
 
-// data
-
-// navigations
+// dash
 
 // elements
 export { props as Accordion } from '../../components/common/elements/accordion/accordion.config.js';

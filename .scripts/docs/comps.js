@@ -14,12 +14,12 @@ const toKebabCase = (str) =>
 const generateImports = (dirPath) => {
 	const imports = {};
 	const files = fs.readdirSync(dirPath);
-
 	for (const file of files) {
 		const filePath = path.join(dirPath, file);
 		const stats = fs.statSync(filePath);
 
 		if (stats.isDirectory()) {
+			if (file === 'md') continue;
 			const nestedImports = generateImports(filePath);
 			Object.assign(imports, nestedImports);
 		} else if (file.endsWith('.md')) {

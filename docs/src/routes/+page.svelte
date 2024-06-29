@@ -1,8 +1,5 @@
-
 <svelte:head>
-    <title>
-        Centlax UI: Elevate Your Design To The Next Level
-    </title>
+	<title>Centlax UI: Elevate Your Design To The Next Level</title>
 </svelte:head>
 <div class="relative max-w-3xl text-balance mx-auto pt-20 sm:pt-24 lg:pt-32">
 	<h1
@@ -10,7 +7,7 @@
 	>
 		Elevate Your Design with a <span class="text-primary-500">Modern UI</span> Library
 	</h1>
-	<p class="mt-6 text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto ">
+	<p class="mt-6 text-lg text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto">
 		Discover the ultimate toolkit for building sleek, responsive, and dynamic interfaces. Harness
 		the full potential of Svelte, Melt UI, and Tailwind CSS to create visually stunning and highly
 		performant web applications. Simplify your workflow, enhance your designs, and deliver

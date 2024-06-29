@@ -1,7 +1,6 @@
 
-// data
-
-// navigations
+// dash
+export { default as UDash } from '../../components/application/dash/dash.svelte';
 
 // elements
 export { default as UAccordion } from '../../components/common/elements/accordion/accordion.svelte';

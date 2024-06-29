@@ -15,7 +15,7 @@
 	<title>{doc.title} - Centlax UI</title>
 </svelte:head>
 
-<div class="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15.5rem] xl:pr-16">
+<div class="max-w-3xl mx-auto pt-10 xl:max-w-none xl:ml-0 xl:mr-[15rem] xl:pr-16">
 	<header id="header" class="relative z-20">
 		<div>
 			<p class="mb-2 capitalize text-sm leading-6 font-semibold text-primary-500">
