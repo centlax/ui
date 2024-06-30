@@ -28,6 +28,8 @@
 	{/if}
 </div>
 
+<slot />
+
 <style>
 	.container {
 		padding: var(--sk-page-padding-top) var(--sk-page-padding-side) 6rem var(--sk-page-padding-side);

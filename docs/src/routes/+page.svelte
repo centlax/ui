@@ -2,6 +2,31 @@
 	<title>Centlax UI: Elevate Your Design To The Next Level</title>
 </svelte:head>
 <div class="relative max-w-3xl text-balance mx-auto pt-20 sm:pt-24 lg:pt-32">
+	<a
+		href="/components/button"
+		class="w-fit mx-auto mb-5 text-xs leading-5 font-medium text-primary-600 dark:text-primary-400 bg-primary-400/10 rounded-full py-1 px-3 hidden xl:flex items-center hover:bg-primary-400/20"
+		><strong class="font-semibold">Introducing Centlax UI</strong><svg
+			width="2"
+			height="2"
+			fill="currentColor"
+			aria-hidden="true"
+			class="ml-2 text-primary-600 dark:text-primary-400/70"
+			><circle cx="1" cy="1" r="1"></circle></svg
+		><span class="ml-2">A modern UI Library for Svelte kit</span><svg
+			width="3"
+			height="6"
+			class="ml-3 overflow-visible text-primary-300 dark:text-primary-400"
+			aria-hidden="true"
+			><path
+				d="M0 0L3 3L0 6"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			></path></svg
+		></a
+	>
 	<h1
 		class="text-gray-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white"
 	>

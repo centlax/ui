@@ -10,4 +10,5 @@ component: true
 </script>
 
 <Preview 
+title="Simple Button"
 name="button"/>

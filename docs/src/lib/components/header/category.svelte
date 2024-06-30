@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import { components } from '$lib/config/imports/components';
 	import { Switch } from '..';
+	import { fade } from 'svelte/transition';
 
 	const items = [
 		{ value: 'common', icon: 'i-fluent-bowl-salad-20-filled' },
@@ -11,17 +12,18 @@
 		{ value: 'application', icon: 'i-fluent-apps-20-filled' }
 	];
 
-	const slug = $page.params['slug'] as keyof typeof components;
-	const c = components[slug]?.category as Category['name'];
-	let cate: Category['name'] = c;
-
+	const slugs: string[] = $page.params.slug.split('/');
+	const component = slugs[1] as keyof typeof components;
+	let category: Category['name'] = components[component]?.category as Category['name'];
 	$: config.update((prev) => {
-		if (isCategory(cate)) {
-			return { ...prev, category: cate };
+		if (isCategory(category)) {
+			return { ...prev, category: category };
 		} else {
 			return prev;
 		}
 	});
 </script>
 
-<Switch {items} bind:value={cate} />
+<div transition:fade={{ duration: 200 }}>
+	<Switch {items} bind:value={category} />
+</div>

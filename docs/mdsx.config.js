@@ -1,16 +1,14 @@
 import { defineConfig } from 'mdsx';
 import remarkGfm from 'remark-gfm';
-import remarkCapitalize from 'remark-capitalize';
 import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeToc from 'rehype-toc';
 import { getHighlighter } from 'shiki';
+import rehypeSlug from 'rehype-slug';
 
 /** @type {import('@mdsx/rehype-custom-highlighter').HighlightOptions} */
 const prettyCodeOptions = {
 	getHighlighter: (options) =>
 		getHighlighter({
 			...options,
-
 			langs: [
 				'plaintext',
 				import('shiki/langs/javascript.mjs'),
@@ -21,17 +19,27 @@ const prettyCodeOptions = {
 				import('shiki/langs/markdown.mjs')
 			]
 		}),
-	keepBackground: false
+	keepBackground: false,
+	onVisitLine(node) {
+		if (node.children.length === 0) {
+			// @ts-expect-error - we're changing the node type
+			node.children = { type: 'text', value: ' ' };
+		}
+	},
+	onVisitHighlightedLine(node) {
+		node.properties.className = ['line--highlighted'];
+	},
+	onVisitHighlightedChars(node) {
+		node.properties.className = ['chars--highlighted'];
+	}
 };
 
 export const mdsxConfig = defineConfig({
 	extensions: ['.md'],
 	remarkPlugins: [remarkGfm],
-	rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
+	rehypePlugins: [[rehypePrettyCode, prettyCodeOptions], rehypeSlug],
 	blueprints: {
 		default: {
-			remarkPlugins: [remarkCapitalize],
-			rehypePlugins: [rehypePrettyCode, rehypeToc],
 			path: 'src/lib/md/blueprints/default.svelte'
 		}
 	}

@@ -8,9 +8,37 @@ body {
 }
 
 body {
-	.markdown {
+	#md {
+		a {
+			@apply text-primary-500 hover:underline decoration-dashed underline-offset-2;
+		}
+
+		h1 {
+			@apply inline-block text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight dark:text-gray-200;
+		}
 		h2 {
-			@apply font-semibold my-2;
+			@apply text-gray-900 text-xl tracking-tight font-bold mt-4 mb-2 dark:text-gray-200;
+		}
+		p {
+			@apply mt-1 text-gray-600 dark:text-gray-400;
+		}
+
+		ul {
+			@apply pr-4;
+			li {
+				@apply text-gray-600 dark:text-gray-400;
+			}
+		}
+		figure{
+			margin: 0;
+		}
+		pre {
+			background-color: transparent;
+			margin-top: 0;
+		}
+
+		.line--highlighted {
+			@apply -mx-4 pl-3 pr-5 border-l-4 border-primary-500 bg-primary-300/[0.15];
 		}
 	}
 }
