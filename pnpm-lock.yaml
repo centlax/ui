@@ -29,9 +29,6 @@ importers:
       prettier-plugin-svelte:
         specifier: ^3.1.2
         version: 3.2.5(prettier@3.3.2)(svelte@4.2.18)
-      publint:
-        specifier: ^0.1.9
-        version: 0.1.16
       svelte:
         specifier: ^4.2.7
         version: 4.2.18
@@ -196,6 +193,9 @@ importers:
       globals:
         specifier: ^15.0.0
         version: 15.8.0
+      publint:
+        specifier: ^0.1.9
+        version: 0.1.16
       svelte:
         specifier: ^4.2.7
         version: 4.2.18
