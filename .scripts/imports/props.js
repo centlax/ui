@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const libDir = 'src/lib';
+const libDir = 'lib';
 const componentsDir = path.join(libDir, 'components');
 const importsFile = path.join(libDir, 'config/imports/props.ts');
 
@@ -37,7 +37,7 @@ const generateImports = (dirPath, imports = [], level = 0) => {
 				}
 			}
 
-			const importPath = `../../${path.relative(libDir, filePath).replace(/\.ts$/, '.js')}`;
+			const importPath = `$lib/${path.relative(libDir, filePath).replace(/\.ts$/, '.js')}`;
 			imports.push(`export { props as ${importName} } from '${importPath}';`);
 		}
 	}

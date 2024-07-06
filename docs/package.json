@@ -1,5 +1,5 @@
 {
-	"name": "docs",
+	"name": "@ui/docs",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -8,7 +8,7 @@
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"fmt": "node ../.scripts/docs/copy.js && node ../.scripts/docs/comps.js"
+		"ato": "node ../.scripts/docs/comps.js"
 	},
 	"devDependencies": {
 		"@mdsx/rehype-custom-highlighter": "^0.0.3",

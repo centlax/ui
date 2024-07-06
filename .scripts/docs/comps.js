@@ -48,6 +48,8 @@ const generateImports = (dirPath) => {
 	return imports;
 };
 
+
+export function generatedComps(){
 const components = generateImports(componentsDir);
 
 // Custom stringification to quote keys with hyphens
@@ -61,3 +63,5 @@ const customStringify = (obj, replacer, space) => {
 const importsContent = `export const components = ${customStringify(components, null, 2)};`;
 fs.writeFileSync(importsFile, importsContent);
 console.log(`Components imports generated and written to ${importsFile}`);
+
+}

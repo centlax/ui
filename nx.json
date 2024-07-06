@@ -1,0 +1,23 @@
+{
+	"$schema": "./node_modules/nx/schemas/nx-schema.json",
+	"tasksRunnerOptions": {
+		"default": {
+			"runner": "nx/tasks-runners/default",
+			"options": {
+				"cacheableOperations": ["build"]
+			}
+		}
+	},
+	"namedInputs": {
+		"md": ["!{projectRoot}/**/*.md"]
+	},
+	"targetDefaults": {
+		"build": {
+			"inputs": ["md", "^md"],
+			"dependsOn": ["^build"]
+		},
+		"dev": {
+			"dependsOn": ["^build"]
+		}
+	}
+}

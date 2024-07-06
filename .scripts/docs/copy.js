@@ -50,5 +50,3 @@ async function copySvelteToMarkdown() {
 	}
 }
 
-// Run the function
-copySvelteToMarkdown();

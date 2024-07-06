@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const libDir = 'src/lib';
+const libDir = 'lib';
 const componentsDir = path.join(libDir, 'components');
 const importsFile = path.join(libDir, 'config/imports/components.ts');
 
