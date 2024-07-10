@@ -3,6 +3,7 @@ node_modules/
 dist/
 package/node_modules
 docs/node_modules
+.play/node_modules
 /.svelte-kit
 package/.svelte-kit
 docs/.svelte-kit
