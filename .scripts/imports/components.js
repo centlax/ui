@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const libDir = 'lib';
+const libDir = 'src/lib';
 const componentsDir = path.join(libDir, 'components');
 const importsFile = path.join(libDir, 'config/imports/components.ts');
 
@@ -16,7 +16,7 @@ const generateImports = (dirPath, imports = [], level = 0) => {
 		const stats = fs.statSync(filePath);
 
 		if (stats.isDirectory()) {
-			if (level === 1) {
+			if (level === 0) {
 				imports.push(`\n// ${file}`);
 			}
 			imports = generateImports(filePath, imports, level + 1);
@@ -24,17 +24,11 @@ const generateImports = (dirPath, imports = [], level = 0) => {
 			const componentDir = path.basename(path.dirname(filePath));
 			const fileNameWithoutExtension = path.basename(file, '.svelte');
 			const pascalCaseDirName = toPascalCase(componentDir);
-			let importName;
+			let importName = pascalCaseDirName;
 
-			if (componentDir === '+') {
-				importName = toPascalCase(fileNameWithoutExtension);
-			} else {
-				importName = pascalCaseDirName;
-
-				if (fileNameWithoutExtension !== 'index' && fileNameWithoutExtension !== componentDir) {
-					const pascalCaseFileName = toPascalCase(fileNameWithoutExtension);
-					importName = `${pascalCaseDirName}${pascalCaseFileName}`;
-				}
+			if (fileNameWithoutExtension !== 'index' && fileNameWithoutExtension !== componentDir) {
+				const pascalCaseFileName = toPascalCase(fileNameWithoutExtension);
+				importName = `${pascalCaseDirName}${pascalCaseFileName}`;
 			}
 
 			const importPath = `../../${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
@@ -49,5 +43,5 @@ export function importComponents() {
 	let imports = generateImports(componentsDir);
 	const importsContent = imports.join('\n');
 	fs.writeFileSync(importsFile, importsContent);
-	console.log(`Componenets imports generated and written to ${importsFile}`);
+	console.log(`Components imports generated and written to ${importsFile}`);
 }

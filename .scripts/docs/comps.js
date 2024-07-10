@@ -48,20 +48,18 @@ const generateImports = (dirPath) => {
 	return imports;
 };
 
+export function generatedComps() {
+	const components = generateImports(componentsDir);
 
-export function generatedComps(){
-const components = generateImports(componentsDir);
+	// Custom stringification to quote keys with hyphens
+	const customStringify = (obj, replacer, space) => {
+		const jsonString = JSON.stringify(obj, replacer, space);
+		return jsonString.replace(/"([a-zA-Z0-9_-]+)":/g, (match, p1) => {
+			return p1.includes('-') ? `"${p1}":` : `${p1}:`;
+		});
+	};
 
-// Custom stringification to quote keys with hyphens
-const customStringify = (obj, replacer, space) => {
-	const jsonString = JSON.stringify(obj, replacer, space);
-	return jsonString.replace(/"([a-zA-Z0-9_-]+)":/g, (match, p1) => {
-		return p1.includes('-') ? `"${p1}":` : `${p1}:`;
-	});
-};
-
-const importsContent = `export const components = ${customStringify(components, null, 2)};`;
-fs.writeFileSync(importsFile, importsContent);
-console.log(`Components imports generated and written to ${importsFile}`);
-
+	const importsContent = `export const components = ${customStringify(components, null, 2)};`;
+	fs.writeFileSync(importsFile, importsContent);
+	console.log(`Components imports generated and written to ${importsFile}`);
 }

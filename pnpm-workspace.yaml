@@ -1,3 +1,5 @@
 packages:
+  - '.play'
   - 'docs'
   - 'package'
+

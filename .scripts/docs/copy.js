@@ -49,4 +49,3 @@ async function copySvelteToMarkdown() {
 		console.error('Error copying Svelte files to Markdown:', error);
 	}
 }
-

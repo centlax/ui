@@ -1,7 +1,6 @@
-import centlax from './lib/config/plugins/tailwind';
+import centlax from './src/lib/config/presets/tailwind';
 
 /** @type {import('tailwindcss').Config} */
 export default {
-	presets: [centlax()],
-	content: ['./lib/**/*.{html,js,svelte,ts}']
+	presets: [centlax()]
 };

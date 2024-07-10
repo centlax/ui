@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const composablesDir = 'lib/composables/use/';
-const importsFile = path.join('lib/config/imports/composables.ts');
+const composablesDir = 'src/lib/composables/use/';
+const importsFile = path.join('src/lib/config/imports/composables.ts');
 
 const generateImports = (dirPath) => {
 	const files = fs.readdirSync(dirPath);

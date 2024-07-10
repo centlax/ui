@@ -8,6 +8,7 @@ docs/.svelte-kit
 /build
 /dist
 /.nx
+.turbo
 .vscode
 /target/
 .env
