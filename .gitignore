@@ -1,20 +1,63 @@
-.DS_Store
+# Node modules
+.svelte-kit
 node_modules/
-/node_modules
-dist/
-package/node_modules
-docs/node_modules
+docs/node_modules/
+package/node_modules/
 .play/node_modules
-/.svelte-kit
-package/.svelte-kit
-docs/.svelte-kit
-/build
-/dist
-/.nx
-.turbo
-.vscode
-/target/
+
+# Build output
+dist/
+package/dist/
+docs/dist/
+.play/dist
+.svelte-kit/
+package/.svelte-kit/
+docs/.svelte-kit/
+.play/.svelte-kit
+
+# Logs
+*.log
+*.log*
+
+# OS-specific files
+.DS_Store
+
+# IDE-specific files
+.vscode/
+.code
+*.iml
+
+# Environment variables
 .env
-.env.\xample
+.env.*
+.env.example
+
+# Temporary files
+*.swp
+
+# Package manager files
+package-lock.json
+pnpm-lock.yaml
+
+# Coverage output
+coverage/
+
+# Generated files
+sw.js
+
+# Turbo repo
+.turbo
+
+# Nx repo
+/.nx
+
+# Template files
+templates/*
+src/template
+
+# Vite config timestamps
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Target directory (for Rust or other compiled languages)
+target/
