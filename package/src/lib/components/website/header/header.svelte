@@ -2,7 +2,7 @@
 	/** Imports */
 	import { useProps, useUI } from '$lib/index.js';
 	import { strify, twJoin } from '$lib/utils/index.js';
-	import { UHeaderLinks, UDrawer, UContainer } from '$lib/index.js';
+	import { UHeaderLinks, USheet } from '$lib/index.js';
 	import { header } from './header.config.js';
 
 	/** Props */
@@ -17,6 +17,7 @@
 	export function toggle() {
 		open = !open;
 	}
+	/** Logic */
 
 	/** UI */
 	const { css, classer } = useUI(header, _class, override);
@@ -24,6 +25,7 @@
 
 <header id="ui-header" class={twJoin(strify(css.root), classer)}>
 	<nav class={strify(css.nav)} aria-label="Global">
+	
 		<a {href} class={strify(css.nav.west)}>
 			<slot name="logo" />
 			{#if name}{name}{/if}
@@ -42,13 +44,13 @@
 	</nav>
 
 	<div data-state="hide">
-		<UDrawer
+		<USheet
 			portal="ui-header"
 			transition={{ content: { x: 250, duration: 100 } }}
 			bind:open
 			class={css.drawer}
 		>
-			<UContainer class={strify(css.mobile.container)}>
+			<div class={strify(css.mobile.container)}>
 				<div class={strify(css.mobile.north)}>
 					<slot name="logo" />
 					<div class={strify(css.nav.east)}>
@@ -61,7 +63,7 @@
 				<div class={strify(css.mobile.south)}>
 					<slot name="buttons" />
 				</div>
-			</UContainer>
-		</UDrawer>
+			</div>
+		</USheet>
 	</div>
 </header>

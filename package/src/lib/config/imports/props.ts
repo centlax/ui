@@ -1,7 +1,4 @@
 
-// drawer
-export { props as Drawer } from '$lib/components/application/drawer/drawer.config.js';
-
 // modal
 export { props as Modal } from '$lib/components/application/modal/modal.config.js';
 
@@ -10,6 +7,9 @@ export { props as Popover } from '$lib/components/application/popover/popover.co
 
 // select
 export { props as SelectMenu } from '$lib/components/application/select/menu.config.js';
+
+// sheet
+export { props as Sheet } from '$lib/components/application/sheet/sheet.config.js';
 
 // tooltip
 export { props as Tooltip } from '$lib/components/application/tooltip/tooltip.config.js';
@@ -31,6 +31,9 @@ export { props as Card } from '$lib/components/common/card/card.config.js';
 
 // container
 export { props as Container } from '$lib/components/common/container/container.config.js';
+
+// fieldset
+export { props as Fieldset } from '$lib/components/common/fieldset/fieldset.config.js';
 
 // input
 export { props as Input } from '$lib/components/common/input/input.config.js';

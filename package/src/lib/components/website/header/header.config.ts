@@ -1,5 +1,5 @@
 import type { Styles, Props, DeepStyles } from '$lib/types/utility.js';
-import { drawer } from '$lib/components/application/drawer/drawer.config.js';
+import { sheet } from '$lib/components/application/sheet/sheet.config.js';
 
 export const props = {
 	class: {} as string | DeepStyles<typeof header>,
@@ -18,7 +18,7 @@ const styles = {
 			spacing: 'py-4 space-y-6',
 			sizing: 'h-full w-full sm:max-w-sm'
 		}
-	} as DeepStyles<typeof drawer>,
+	} as DeepStyles<typeof sheet>,
 
 	root: {
 		layout: '[&_*[data-state=show]]:lg:flex [&_*[data-state=hide]]:flex',

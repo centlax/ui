@@ -1,17 +1,21 @@
 /** Imports */
-import type { DeepStyles, Props, Styles, Size } from '$lib/types/index.js';
+import type { DeepStyles, Props, Styles } from '$lib/types/index.js';
+import type { HTMLInputAttributes } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	wrapper: { layout: 'relative' },
-	root: {
-		layout: 'relative block',
+	root: {},
+	input: {
+		layout: 'block',
 		sizing: 'w-full',
 		interactive: 'disabled:cursor-not-allowed',
-		effect: 'disabled:opacity-75',
-		typography: 'font-medium placeholder-gray-600 dark:placeholder-gray-400',
+		effect: 'disabled:opacity-75 shadow-sm',
+		typography: 'font-medium placeholder-gray-400 dark:placeholder-gray-600',
 		background: 'bg-transparent dark:bg-transparent',
-		border: `focus:outline-none border-0 ring-1 ring-inset ring-gray-300 dark:ring-gray-700 focus:ring-2 focus:ring-inset focus:ring-primary-500 dark:focus:ring-primary-500`
+		border: `focus:outline-none border-0 
+		ring-1 ring-inset ring-gray-300 dark:ring-gray-700 
+		focus:ring-2 focus:ring-inset 
+		focus:ring-primary-500 dark:focus:ring-primary-500`
 	},
 	west: {
 		layout: 'absolute inset-y-0 left-0',
@@ -65,9 +69,8 @@ const styles = {
 					spacing: 'data-[side=west]:pl-3 data-[side=east]:pr-3'
 				}
 			}
-		},
-	},
-
+		}
+	}
 } satisfies Styles;
 export const input = styles;
 
@@ -75,7 +78,8 @@ export const input = styles;
 export const props = {
 	class: {} as string | DeepStyles<typeof input>,
 	override: false,
-	size: 'md' as Size,
+	value: '' as HTMLInputAttributes['value'],
+	size: 'md' as keyof typeof input.opt.size,
 	icon: {} as string | { west?: string; east?: string },
-	loading: false,
+	loading: false
 } satisfies Props;

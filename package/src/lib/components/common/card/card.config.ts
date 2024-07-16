@@ -1,11 +1,7 @@
+/** Imports */
 import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
 
-export const props = {
-	class: {} as string | DeepStyles<typeof card>,
-	override: false,
-	as: 'div'
-} satisfies Props;
-
+/** Styles */
 const styles = {
 	root: {
 		layout: 'overflow-hidden',
@@ -23,5 +19,11 @@ const styles = {
 		spacing: 'px-4 py-5 sm:p-6'
 	}
 } satisfies Styles;
-
 export const card = styles;
+
+/** Props */
+export const props = {
+	class: {} as string | DeepStyles<typeof card>,
+	override: false,
+	as: 'div'
+} satisfies Props;
