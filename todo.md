@@ -8,13 +8,14 @@ Develop the highest priority UI components for our library, focusing on those ne
 
 ## Priority Components for Today
 
+- [ ] COMPLETION
 1. Layout Components
 
    - [x] ULayout
    - [ ] UBody
    - [ ] UMain
-   - [ ] UHeader
-   - [ ] UFooter
+   - [x] UHeader
+   - [x] UFooter
 
 2. Typography Components
 
@@ -22,16 +23,20 @@ Develop the highest priority UI components for our library, focusing on those ne
 
 3. Form Components
 
-   - [ ] UFieldset
-   - [ ] UInput
-   - [ ] UButton
+   - [x] UFieldset
+   - [x] UInput
+   - [x] UButton
    - [x] UCheckbox
 
 4. Feedback Components
 
-   - [ ] UAlert
+   - [x] UAlert
 
 5. Specialized Components
+
    - [ ] UInputPin (for password recovery/verification codes)
    - [ ] UStep (for multi-step processes)
    - [ ] ULandCard (for landing page content)
+
+6. Added
+   - [ ] UCardMedia

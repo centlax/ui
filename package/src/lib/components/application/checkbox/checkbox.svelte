@@ -10,7 +10,7 @@
 	let _class = props.class;
 	export { _class as class };
 	export let override = props.override;
-    export let checked = props.checked;
+	export let checked = props.checked;
 
 	/** UI */
 	const { css, classer } = useUI(checkbox, _class, override);

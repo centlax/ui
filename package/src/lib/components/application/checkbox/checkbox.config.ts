@@ -16,5 +16,5 @@ export const checkbox = styles;
 export const props = {
 	class: {} as string | DeepStyles<typeof checkbox>,
 	override: false,
-    checked: undefined as HTMLInputAttributes['checked']
+	checked: undefined as HTMLInputAttributes['checked']
 } satisfies Props;

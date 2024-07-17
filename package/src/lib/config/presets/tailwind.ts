@@ -2,6 +2,7 @@ import { iconsPlugin, getIconCollections } from '@egoist/tailwindcss-icons';
 import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors.js';
 import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 import colorize from '../../config/plugins/tailwind.js';
 
 export default function (): Partial<Config> {
@@ -44,6 +45,7 @@ export default function (): Partial<Config> {
 		},
 		plugins: [
 			forms(),
+			require('@tailwindcss/typography'),
 			colorize,
 			iconsPlugin({
 				collections: getIconCollections(['fluent']),

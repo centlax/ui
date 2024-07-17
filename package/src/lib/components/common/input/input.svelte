@@ -3,6 +3,7 @@
 	import { useProps, useUI } from '$lib/index.js';
 	import { merge, stringify } from '$lib/utils/index.js';
 	import { input } from './input.config.js';
+	import type { Action } from 'svelte/action';
 
 	/** Props */
 	const props = useProps('Input');
@@ -22,8 +23,10 @@
 </script>
 
 <div class={stringify(css.root)}>
-	<slot />
-	<input {...$$restProps} bind:value class={ui.input} />
+	<slot {ui} />
+	{#if !$$slots.default}
+		<input {...$$restProps} bind:value class={ui.input} />
+	{/if}
 	{#if $$slots.west}
 		<span class={stringify(css.west)}>
 			<slot name="west" />
