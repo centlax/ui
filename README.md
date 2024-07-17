@@ -23,6 +23,17 @@ Read more on [ui.centlax.com](https://ui.centlax.com)
 pnpm add @centlax/ui
 ```
 
+## Usage
+
+```svelte
+<script lang="ts">
+    import { UButton } from "@centlax/ui"
+</script>
+<UButton>
+    Click me!
+</UButton>
+```
+
 
 ## Documentation
 
