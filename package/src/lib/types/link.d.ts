@@ -6,5 +6,6 @@ export interface Link extends HTMLAnchorAttributes {
 	class?: string;
 	disabled?: boolean;
 	icon?: string | any;
-	children?: Link[];
+	links?: Link[];
+	children?: Link['links'];
 }

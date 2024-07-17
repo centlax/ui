@@ -10,8 +10,9 @@ Develop the highest priority UI components for our library, focusing on those ne
 
 1. Layout Components
 
-   - [X] ULayout
-   - [ ] UBody / UMain
+   - [x] ULayout
+   - [ ] UBody
+   - [ ] UMain
    - [ ] UHeader
    - [ ] UFooter
 

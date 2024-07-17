@@ -1,3 +1,5 @@
+// checkbox
+
 // modal
 export { props as Modal } from '$lib/components/application/modal/modal.config.js';
 
@@ -23,6 +25,8 @@ export { props as Avatar } from '$lib/components/common/avatar/avatar.config.js'
 
 // badge
 export { props as Badge } from '$lib/components/common/badge/badge.config.js';
+
+// body
 
 // button
 export { props as Button } from '$lib/components/common/button/button.config.js';
