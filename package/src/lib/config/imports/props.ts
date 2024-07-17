@@ -1,6 +1,7 @@
-
 // modal
 export { props as Modal } from '$lib/components/application/modal/modal.config.js';
+
+// notification
 
 // popover
 export { props as Popover } from '$lib/components/application/popover/popover.config.js';
@@ -41,6 +42,8 @@ export { props as Input } from '$lib/components/common/input/input.config.js';
 // layout
 
 // aside
+
+// footer
 
 // header
 export { props as Header } from '$lib/components/website/header/header.config.js';

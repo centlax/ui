@@ -35,5 +35,3 @@ export const props = {
 		overlay: { duration: 150 }
 	} as { content?: FlyParams; overlay?: FadeParams }
 } satisfies Props;
-
-

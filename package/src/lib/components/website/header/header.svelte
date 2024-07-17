@@ -25,7 +25,6 @@
 
 <header id="ui-header" class={twJoin(strify(css.root), classer)}>
 	<nav class={strify(css.nav)} aria-label="Global">
-	
 		<a {href} class={strify(css.nav.west)}>
 			<slot name="logo" />
 			{#if name}{name}{/if}

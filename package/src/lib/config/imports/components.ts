@@ -1,6 +1,6 @@
-
 // application
 export { default as UModal } from '../../components/application/modal/modal.svelte';
+export { default as UNotification } from '../../components/application/notification/notification.svelte';
 export { default as UPopover } from '../../components/application/popover/popover.svelte';
 export { default as USelectMenu } from '../../components/application/select/menu.svelte';
 export { default as USheet } from '../../components/application/sheet/sheet.svelte';

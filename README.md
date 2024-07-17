@@ -1,7 +1,5 @@
 # Centlax UI
 
-
-
 Centlax UI is a package that provides a set of Svelte components and composables built with [Tailwind CSS](https://tailwindcss.com/) and [Melt UI](https://melt-ui.com/) to help you build beautiful and accessible user interfaces.
 
 Its goal is to provide everything related to UI when building a SvelteKit app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
@@ -27,13 +25,11 @@ pnpm add @centlax/ui
 
 ```svelte
 <script lang="ts">
-    import { UButton } from "@centlax/ui"
+	import { UButton } from '@centlax/ui';
 </script>
-<UButton>
-    Click me!
-</UButton>
-```
 
+<UButton>Click me!</UButton>
+```
 
 ## Documentation
 
