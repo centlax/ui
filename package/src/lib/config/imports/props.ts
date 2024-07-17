@@ -1,4 +1,5 @@
 // checkbox
+export { props as Checkbox } from '$lib/components/application/checkbox/checkbox.config.js';
 
 // modal
 export { props as Modal } from '$lib/components/application/modal/modal.config.js';

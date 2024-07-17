@@ -25,7 +25,7 @@ Develop the highest priority UI components for our library, focusing on those ne
    - [ ] UFieldset
    - [ ] UInput
    - [ ] UButton
-   - [ ] UCheckbox
+   - [x] UCheckbox
 
 4. Feedback Components
 

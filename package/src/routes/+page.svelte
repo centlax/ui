@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { UBody, UHeader, UFooter, UCheckbox } from '$lib/index.js';
-	let value: boolean;
+	import { UBody, UHeader, UFooter, UCheckbox, useDark } from '$lib/index.js';
+	let checked: boolean;
+	const dark = useDark();
 </script>
 
 <UBody>
 	<UHeader />
-	<main class="p-10 bg-white">
+	<button on:click={dark.toggle}>mode</button>
+	<main class="p-10 ">
 		<div class="relative flex items-start">
 			<div class="flex h-6 items-center">
-				<UCheckbox />
+				<UCheckbox bind:checked />
 			</div>
 			<div class="ml-3 text-sm leading-6">
 				<label for="comments" class="font-medium text-gray-900">Comments</label>
@@ -17,7 +19,7 @@
 				</p>
 			</div>
 		</div>
-		<p class="text-gray-900">{value}</p>
+		<p class="text-gray-900">{checked}</p>
 		<UFooter>
 			<div class="space-y-8">
 				<img
