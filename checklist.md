@@ -9,11 +9,10 @@ Develop the highest priority UI components for our library, focusing on those ne
 ## Priority Components for Today
 
 - [ ] COMPLETION
+
 1. Layout Components
 
    - [x] ULayout
-   - [ ] UBody
-   - [ ] UMain
    - [x] UHeader
    - [x] UFooter
 
@@ -37,6 +36,3 @@ Develop the highest priority UI components for our library, focusing on those ne
    - [ ] UInputPin (for password recovery/verification codes)
    - [ ] UStep (for multi-step processes)
    - [ ] ULandCard (for landing page content)
-
-6. Added
-   - [ ] UCardMedia

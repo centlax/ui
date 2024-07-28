@@ -4,7 +4,8 @@
 	import { merge, stringify } from '$lib/utils/helpers.js';
 	import { alert } from './alert.config.js';
 	import { UAvatar, UButton } from '$lib/index.js';
-	import { button } from '$lib/components/common/button/button.config.js';
+	import type { ComponentProps } from 'svelte';
+	import { colorize } from '$lib/utils/index.js';
 
 	/** Imports */
 
@@ -16,24 +17,31 @@
 	export let title = props.title;
 	export let description = props.description;
 	export let icon = props.icon;
-	export let avatar = props.avatar;
-	export let actions = props.actions;
+	export let avatar: ComponentProps<UAvatar> = {};
+	export let actions: ComponentProps<UButton>[] = [];
+	export let variant = props.variant;
 	//export let dismiss = props.dismiss;
 
 	/** UI */
 	const { css, classer } = useUI(alert, _class, override);
+	$: ui = {
+		root: merge(stringify(css.root, css.opt.variant[variant]), classer)
+	};
 </script>
 
-<div class={merge(stringify(css.root), classer)}>
-	<div class={stringify(css.west)}>
-		<slot name="west">
-			{#if icon}
-				<span class={stringify({ svg: icon }, css.west.icon)} />
-			{:else if avatar}
-				<UAvatar {...avatar} />
-			{/if}
-		</slot>
-	</div>
+<div style={colorize()} {...$$restProps} class={ui.root}>
+	{#if $$slots.west || icon || Object.keys(avatar).length !== 0}
+		<div class={stringify(css.west)}>
+			<slot name="west">
+				{#if icon}
+					<span class={stringify({ svg: icon }, css.west.icon)} />
+				{:else if avatar}
+					<UAvatar {...avatar} />
+				{/if}
+			</slot>
+		</div>
+	{/if}
+
 	<div class={stringify(css.center)}>
 		<h4 class={stringify(css.center.title)}>
 			<slot name="title">{title}</slot>
