@@ -1,9 +1,9 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { merge, stringify } from '$lib/utils/index.js';
 	import { fade } from 'svelte/transition';
 	import { fieldset } from './fieldset.config.js';
+	import { useProps, useUI } from '$lib/import.js';
+	import { merge, stringify } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Fieldset');

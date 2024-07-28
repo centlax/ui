@@ -1,6 +1,6 @@
 /** Imports */
-import type { DeepStyles, Props, Styles } from '$lib/types/index.js';
 import type { HTMLInputAttributes } from 'svelte/elements';
+import type { DeepStyles, Props, Styles } from '$lib/types/index.js';
 
 /** Styles */
 const styles = {

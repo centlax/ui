@@ -1,5 +1,5 @@
-// imports
-import { config } from '$lib/config/default.ts';
+/** Imports */
+import type { config } from '$lib/config/default.ts';
 
-// Types
+/** types */
 export type Config = typeof config;

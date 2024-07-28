@@ -1,14 +1,14 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const libDir = 'src/lib';
 const componentsDir = path.join(libDir, 'components');
 const importsFile = path.join(libDir, 'config/imports/props.ts');
 
-const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
 const clearAndUpper = (text) => text.replace(/-/, '').toUpperCase();
+const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
 
-const generateImports = (dirPath, imports = [], level = 0) => {
+function generateImports(dirPath, imports = [], level = 0) {
 	const files = fs.readdirSync(dirPath);
 
 	for (const file of files) {
@@ -43,11 +43,11 @@ const generateImports = (dirPath, imports = [], level = 0) => {
 	}
 
 	return imports;
-};
+}
 
 export function importProps() {
-	let imports = generateImports(componentsDir);
+	const imports = generateImports(componentsDir);
 	const importsContent = imports.join('\n');
 	fs.writeFileSync(importsFile, importsContent);
-	console.log(`Props imports generated and written to ${importsFile}`);
+	console.info(`Props Generated`);
 }

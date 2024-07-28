@@ -1,10 +1,10 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
 	import { createDialog, createSync, melt } from '@melt-ui/svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { sheet } from './sheet.config.js';
+	import { strify, twJoin } from '$lib/utils/index.js';
+	import { useProps, useUI } from '$lib/import.js';
 
 	/** Props */
 	const props = useProps('Sheet');

@@ -1,5 +1,5 @@
 /** Imports */
-import type { Colors } from '$lib/types/index.js';
+import type { Colors } from '$lib/import.js';
 import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
 
 /** Styles */

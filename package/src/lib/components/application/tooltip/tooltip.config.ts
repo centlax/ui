@@ -1,6 +1,6 @@
-import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
-import { type CreatePopoverProps } from '@melt-ui/svelte';
+import type { CreatePopoverProps } from '@melt-ui/svelte';
 import type { FadeParams } from 'svelte/transition';
+import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
 
 export const props = {
 	class: {} as string | DeepStyles<typeof styles>,

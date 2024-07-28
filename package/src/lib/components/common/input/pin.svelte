@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
-	import { UInput } from '$lib/config/imports/components.js';
 	import { createPinInput, melt } from '@melt-ui/svelte';
+	import { UInput } from '$lib/config/imports/components.js';
 
 	/** Props */
 

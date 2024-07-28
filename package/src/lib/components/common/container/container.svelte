@@ -1,8 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
 	import { container } from './container.config.js';
+	import { useProps, useUI } from '$lib/import.js';
+	import { strify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Container');

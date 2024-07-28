@@ -1,12 +1,5 @@
 import type { Link } from '$lib/types/link.js';
-import type { DeepStyles, Styles, Props } from '$lib/types/utility.js';
-
-export const props = {
-	class: {} as string | DeepStyles<typeof headerLinks>,
-	override: false,
-	vertical: false,
-	links: [] as Link[]
-} satisfies Props;
+import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
 
 const styles = {
 	root: {},
@@ -28,3 +21,10 @@ const styles = {
 	}
 } satisfies Styles;
 export const headerLinks = styles;
+
+export const props = {
+	class: {} as string | DeepStyles<typeof headerLinks>,
+	override: false,
+	vertical: false,
+	links: [] as Link[]
+} satisfies Props;

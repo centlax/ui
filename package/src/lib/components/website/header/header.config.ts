@@ -1,14 +1,6 @@
-import type { Styles, Props, DeepStyles } from '$lib/types/utility.js';
-import { sheet } from '$lib/components/application/sheet/sheet.config.js';
-
-export const props = {
-	class: {} as string | DeepStyles<typeof header>,
-	override: false,
-	open: false,
-	name: '',
-	href: '',
-	links: [] as any[]
-} as Props;
+import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
+import type { sheet } from '$lib/components/application/sheet/sheet.config.js';
+import type { Link } from '$lib/import.js';
 
 const styles = {
 	drawer: {
@@ -50,3 +42,12 @@ const styles = {
 	}
 } satisfies Styles;
 export const header = styles;
+
+export const props = {
+	class: {} as string | DeepStyles<typeof header>,
+	override: false,
+	open: false,
+	name: '',
+	href: '',
+	links: [] as Link[]
+} satisfies Props;

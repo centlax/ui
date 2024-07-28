@@ -1,8 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { merge, stringify, twJoin, varify } from '$lib/utils/index.js';
 	import { button } from './button.config.js';
+	import { useProps, useUI } from '$lib/import.js';
+	import { merge, stringify, varify } from '$lib/utils/index.js';
 
 	/** Props  */
 	const props = useProps('Button');

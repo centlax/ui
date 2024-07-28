@@ -1,10 +1,10 @@
 <script lang="ts">
 	/**  Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
 	import { createPopover, createSync, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
 	import { popover } from './popover.config.js';
+	import { strify, twJoin } from '$lib/utils/index.js';
+	import { useProps, useUI } from '$lib/import.js';
 
 	/** Props */
 	const props = useProps('Popover');

@@ -1,13 +1,12 @@
 <script lang="ts">
+	/** Imports */
+	import type { ComponentProps } from 'svelte';
+	import { alert } from './alert.config.js';
 	import { useProps } from '$lib/composables/use/props.js';
 	import { useUI } from '$lib/composables/use/ui.js';
 	import { merge, stringify } from '$lib/utils/helpers.js';
-	import { alert } from './alert.config.js';
-	import { UAvatar, UButton } from '$lib/index.js';
-	import type { ComponentProps } from 'svelte';
+	import { UButton } from '$lib/index.js';
 	import { colorize } from '$lib/utils/index.js';
-
-	/** Imports */
 
 	/** Props */
 	const props = useProps('Alert');
@@ -17,7 +16,6 @@
 	export let title = props.title;
 	export let description = props.description;
 	export let icon = props.icon;
-	export let avatar: ComponentProps<UAvatar> = {};
 	export let actions: ComponentProps<UButton>[] = [];
 	export let variant = props.variant;
 	//export let dismiss = props.dismiss;
@@ -30,13 +28,11 @@
 </script>
 
 <div style={colorize()} {...$$restProps} class={ui.root}>
-	{#if $$slots.west || icon || Object.keys(avatar).length !== 0}
+	{#if $$slots.west || icon}
 		<div class={stringify(css.west)}>
 			<slot name="west">
 				{#if icon}
 					<span class={stringify({ svg: icon }, css.west.icon)} />
-				{:else if avatar}
-					<UAvatar {...avatar} />
 				{/if}
 			</slot>
 		</div>

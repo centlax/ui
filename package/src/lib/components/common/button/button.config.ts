@@ -1,4 +1,4 @@
-import type { DeepStyles, Props, Colors, Styles } from '$lib/types/index.js';
+import type { Colors, DeepStyles, Props, Styles } from '$lib/import.js';
 
 type ButtonColor = keyof typeof styles.opt.variant.solid;
 type ButtonVariant = keyof typeof styles.opt.variant;

@@ -1,14 +1,14 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const libDir = 'src/lib';
 const componentsDir = path.join(libDir, 'components');
 const importsFile = path.join(libDir, 'config/imports/components.ts');
 
-const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
 const clearAndUpper = (text) => text.replace(/-/, '').toUpperCase();
+const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
 
-const generateImports = (dirPath, imports = [], level = 0) => {
+function generateImports(dirPath, imports = [], level = 0) {
 	const files = fs.readdirSync(dirPath);
 
 	for (const file of files) {
@@ -17,7 +17,7 @@ const generateImports = (dirPath, imports = [], level = 0) => {
 
 		if (stats.isDirectory()) {
 			if (level === 0) {
-				imports.push(`\n// ${file}`);
+				imports.push(`\n/** ${file} */`);
 			}
 			imports = generateImports(filePath, imports, level + 1);
 		} else if (file.endsWith('.svelte')) {
@@ -37,11 +37,11 @@ const generateImports = (dirPath, imports = [], level = 0) => {
 	}
 
 	return imports;
-};
+}
 
 export function importComponents() {
-	let imports = generateImports(componentsDir);
+	const imports = generateImports(componentsDir);
 	const importsContent = imports.join('\n');
 	fs.writeFileSync(importsFile, importsContent);
-	console.log(`Components imports generated and written to ${importsFile}`);
+	console.info(`Components Generated`);
 }

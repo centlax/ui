@@ -1,8 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { UFooterLinks, useProps, useUI, type Link, type Props } from '$lib/index.js';
-	import { merge, stringify } from '$lib/utils/helpers.js';
 	import { footer } from './footer.config.js';
+	import { UFooterLinks, useProps, useUI } from '$lib/import.js';
+	import { merge, stringify } from '$lib/utils/helpers.js';
 
 	/** Props */
 	const props = useProps('Footer');
@@ -23,6 +23,7 @@
 	</div>
 	<div class={stringify(css.south)}>
 		<p class={stringify(css.south.notice)}>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			{@html notice}
 		</p>
 	</div>

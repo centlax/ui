@@ -1,8 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { strify, twJoin } from '$lib/utils/index.js';
 	import { headerLinks, props } from './links.js';
-	import { useUI } from '$lib/index.js';
+	import { strify, twJoin } from '$lib/utils/index.js';
+	import { useUI } from '$lib/import.js';
 
 	/** Props */
 	let _class = props.class;
@@ -12,7 +12,7 @@
 
 	/** Logic */
 	$: is = {
-		vertical: vertical
+		vertical
 	};
 
 	/** UI */

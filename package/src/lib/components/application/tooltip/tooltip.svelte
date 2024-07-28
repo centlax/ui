@@ -1,10 +1,10 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
 	import { createSync, createTooltip, melt } from '@melt-ui/svelte';
-	import { stringify, strify, twJoin } from '$lib/utils/index.js';
 	import { fade } from 'svelte/transition';
 	import { tooltip } from './tooltip.config.js';
+	import { strify, stringify, twJoin } from '$lib/utils/index.js';
+	import { useProps, useUI } from '$lib/import.js';
 
 	/** Props */
 	const props = useProps('Tooltip');

@@ -1,9 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
-	import { UHeaderLinks, USheet } from '$lib/index.js';
 	import { header } from './header.config.js';
+	import { UHeaderLinks, USheet, useProps, useUI } from '$lib/import.js';
+	import { strify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Header');

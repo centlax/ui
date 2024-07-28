@@ -1,10 +1,10 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const composablesDir = 'src/lib/composables/use/';
 const importsFile = path.join('src/lib/config/imports/composables.ts');
 
-const generateImports = (dirPath) => {
+function generateImports(dirPath) {
 	const files = fs.readdirSync(dirPath);
 	const imports = [];
 
@@ -20,11 +20,11 @@ const generateImports = (dirPath) => {
 	}
 
 	return imports;
-};
+}
 
 export function importComposables() {
-	let imports = generateImports(composablesDir);
+	const imports = generateImports(composablesDir);
 	const importsContent = imports.join('\n');
 	fs.writeFileSync(importsFile, importsContent);
-	console.log(`Composables imports generated and written to ${importsFile}`);
+	console.info(`Composables Generated`);
 }

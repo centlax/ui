@@ -1,6 +1,6 @@
-import type { FlyAndScaleParams } from '$lib/theme/motion/fly-scale.js';
-import type { Styles, Props, DeepStyles } from '$lib/types/utility.js';
 import type { CreateDialogProps } from '@melt-ui/svelte';
+import type { FlyAndScaleParams } from '$lib/theme/motion/fly-scale.js';
+import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
 
 export const props = {
 	class: {} as string | DeepStyles<typeof modal>,

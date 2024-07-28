@@ -1,8 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI, type Link } from '$lib/index.js';
-	import { merge, stringify } from '$lib/utils/helpers.js';
 	import { footerLinks } from './links.config.js';
+	import { useProps, useUI } from '$lib/import.js';
+	import { merge, stringify } from '$lib/utils/helpers.js';
 
 	/** Props */
 	const props = useProps('FooterLinks');
@@ -20,7 +20,7 @@
 		<div class={stringify(css.column)}>
 			<h3 class={stringify(css.column.title)}>{link.label}</h3>
 			<ul role="list" class={stringify(css.column.ul)}>
-				{#if link['links']}
+				{#if link.links}
 					{#each link.links as { label, href }}
 						<li class={stringify(css.column.ul.li)}>
 							<a {href} class={stringify(css.column.ul.li.ancor)}>{label}</a>

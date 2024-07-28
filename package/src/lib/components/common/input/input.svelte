@@ -1,9 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { merge, stringify } from '$lib/utils/index.js';
 	import { input } from './input.config.js';
-	import type { Action } from 'svelte/action';
+	import { useProps, useUI } from '$lib/import.js';
+	import { merge, stringify } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Input');

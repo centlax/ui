@@ -1,38 +1,41 @@
-# UI Library Development - Priority Components for July 16, 2024
+# UI v1.0.0
 
-## Completion of these components will take chnage verion 0.1.0 to 0.1.1. Read more about [v0.1.1](/version.md)
+## Components
 
-## Objective
+Application
 
-Develop the highest priority UI components for our library, focusing on those needed immediately for account.centlax.com and similar account management systems.
+-[] ULayout
+-[] UAlert
+-[] UModal
+-[] UPopover
+-[] USheet
+-[] UTooltip
 
-## Priority Components for Today
+Common
 
-- [ ] COMPLETION
+-[] UBadge -[x] UCard -[x] UContainer
+-[] UFieldset -[x] ULayout
+-[] UButton
+-[] UInput
+-[] UInputPin
 
-1. Layout Components
+Website
 
-   - [x] ULayout
-   - [x] UHeader
-   - [x] UFooter
+-[] UAside
+-[] UAsideLinks
+-[] UHeader
+-[] UHeaderLinks
+-[] UFooter
+-[] UFooterLinks
 
-2. Typography Components
+## Composables
 
-   - [ ] UHeading (h1-h6, can be implemented via classes)
+Use
 
-3. Form Components
+-[x] useDark
 
-   - [x] UFieldset
-   - [x] UInput
-   - [x] UButton
-   - [x] UCheckbox
+## Config
 
-4. Feedback Components
+Presets
 
-   - [x] UAlert
-
-5. Specialized Components
-
-   - [ ] UInputPin (for password recovery/verification codes)
-   - [ ] UStep (for multi-step processes)
-   - [ ] ULandCard (for landing page content)
+-[x] tailwind

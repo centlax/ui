@@ -1,7 +1,7 @@
 /** Imports */
-import type { DeepStyles, Props, Styles } from '$lib/types/utility.js';
-import { type CreateDialogProps } from '@melt-ui/svelte';
+import type { CreateDialogProps } from '@melt-ui/svelte';
 import type { FadeParams, FlyParams } from 'svelte/transition';
+import type { DeepStyles, Props, Styles } from '$lib/import.js';
 
 /** Styles */
 const styles = {

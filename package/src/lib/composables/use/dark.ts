@@ -1,8 +1,8 @@
 import {
-	toggleMode as toggle,
 	mode,
 	setMode as set,
 	systemPrefersMode as system,
+	toggleMode as toggle,
 	userPrefersMode as user
 } from 'mode-watcher';
 

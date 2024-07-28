@@ -2,7 +2,7 @@
 export * from '$lib/config/imports/components.js';
 
 /** composables */
-export * from '$lib/composables/index.js';
+export * from '$lib/config/imports/composables.js';
 
 /** types */
-export type * from '$lib/types/index.js';
+export type * from '$lib/config/imports/types.js';

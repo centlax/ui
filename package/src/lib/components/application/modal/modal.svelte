@@ -1,11 +1,11 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { flyAndScale } from '$lib/theme/motion/fly-scale.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
 	import { createDialog, createSync, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
 	import { modal } from './modal.config.js';
+	import { useProps, useUI } from '$lib/import.js';
+	import { flyAndScale } from '$lib/theme/motion/fly-scale.js';
+	import { strify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Modal');

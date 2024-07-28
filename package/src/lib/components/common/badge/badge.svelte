@@ -1,8 +1,8 @@
 <script lang="ts">
 	/** Imports */
-	import { useProps, useUI } from '$lib/index.js';
-	import { colorize, merge, stringify } from '$lib/utils/index.js';
 	import { badge } from './badge.config.js';
+	import { useProps, useUI } from '$lib/import.js';
+	import { colorize, merge, stringify } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Badge');
