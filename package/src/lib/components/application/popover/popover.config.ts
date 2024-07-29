@@ -12,7 +12,6 @@ export const props = {
 	visible: true,
 	trap: false,
 	arrow: 0,
-	pointer: true,
 	portal: 'body' as CreatePopoverProps['portal'],
 	transition: { duration: 100 } as FadeParams
 } satisfies Props;

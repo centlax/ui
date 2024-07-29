@@ -18,7 +18,6 @@
 	export let visible = props.visible;
 	export let trap = props.trap;
 	export let arrow = props.arrow;
-	export let pointer = props.pointer;
 	export let portal = props.portal;
 	export let transition = props.transition;
 	export function toggle() {
@@ -35,24 +34,24 @@
 		preventScroll: scroll,
 		arrowSize: arrow,
 		disableFocusTrap: trap,
-		closeOnOutsideClick: pointer,
 		positioning: float,
 		portal
 	});
 	const sync = createSync(states);
 
 	/** React */
+
 	$: sync.open(open, (v) => (open = v));
 </script>
 
+{open}
 {#if $$slots.trigger}
 	<div use:melt={$trigger} class={strify(css.trigger)}>
 		<slot name="trigger" />
 	</div>
 {/if}
-
-<slot name="open" />
-
+<slot name="open" trigger={$trigger} open={toggle} />
+<button on:click={toggle}>open</button>
 {#if open}
 	{#if overlay}
 		<div use:melt={$_overlay} class={strify(css.overlay)} />
@@ -65,6 +64,6 @@
 		{#if arrow > 0}
 			<span class={strify(css.arrow)} use:melt={$_arrow} />
 		{/if}
-		<slot />
+		<slot close={toggle} />
 	</div>
 {/if}

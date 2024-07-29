@@ -10,7 +10,7 @@
 	const props = useProps('Sheet');
 	let _class = props.class;
 	export { _class as class };
-	export let open = props.open;
+	export let value = props.value;
 	export let override = props.override;
 	export let role = props.role;
 	export let scroll = props.scroll;
@@ -19,7 +19,7 @@
 	export let visible = props.visible;
 	export let transition = props.transition;
 	export function toggle() {
-		open = !open;
+		value = !value;
 	}
 
 	/** Config */
@@ -37,26 +37,24 @@
 	const { css, classer } = useUI(sheet, _class, override);
 
 	/** React */
-	$: sync.open(open, (v) => (open = v));
+	$: sync.open(value, (v) => (value = v));
 </script>
 
-{#if $$slots.trigger}
-	<div use:melt={$trigger} class={strify(css.trigger)}>
-		<slot name="trigger" />
-	</div>
-{/if}
+<slot name="trigger" trigger={$trigger} />
+<slot name="open" open={toggle} />
 
-<slot name="open" />
-{#if open}
+{#if value}
 	<div use:melt={$portalled} class={strify(css.root)}>
 		<div use:melt={$overlay} class={strify(css.overlay)} transition:fade={transition.overlay} />
 		<div
 			use:melt={$content}
+			{...$$restProps}
 			class={twJoin(strify(css.content), classer)}
-			transition:fly={transition.content}
+			in:fly={transition.content?.in}
+			out:fly={transition.content?.out}
 			{...$$restProps}
 		>
-			<slot />
+			<slot close={toggle} />
 		</div>
 	</div>
 {/if}

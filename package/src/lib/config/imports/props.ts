@@ -4,8 +4,6 @@ export { props as Alert } from '$lib/components/application/alert/alert.config.j
 // modal
 export { props as Modal } from '$lib/components/application/modal/modal.config.js';
 
-// notification
-
 // popover
 export { props as Popover } from '$lib/components/application/popover/popover.config.js';
 

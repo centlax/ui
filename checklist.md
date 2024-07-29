@@ -1,41 +1,47 @@
-# UI v1.0.0
+# v1.0.0
+
+### Date: 2024 07 28
 
 ## Components
 
-Application
+1. Application
 
--[] ULayout
--[] UAlert
--[] UModal
--[] UPopover
--[] USheet
--[] UTooltip
+   - [x] ULayout
+   - [] UAlert
+   - [x] UModal
+   - [] UPopover
+   - [x] USheet
+   - [] UTooltip
+   - [] UDrawer
 
-Common
+2. Common
 
--[] UBadge -[x] UCard -[x] UContainer
--[] UFieldset -[x] ULayout
--[] UButton
--[] UInput
--[] UInputPin
+   - [] UBadge
+   - [x] UCard
+   - [x] UContainer
+   - [] UFieldset
+   - [x] ULayout
+   - [] UButton
+   - [] UInput
+   - [] UInputPin
 
-Website
+3. Website
 
--[] UAside
--[] UAsideLinks
--[] UHeader
--[] UHeaderLinks
--[] UFooter
--[] UFooterLinks
+   - [] UAside
+   - [] UAsideLinks
+   - [] UHeader
+   - [] UHeaderLinks
+   - [] UFooter
+   - [] UFooterLinks
 
 ## Composables
 
-Use
+4. Use
 
--[x] useDark
+   - [x] useDark
 
 ## Config
 
-Presets
+5. Presets
 
--[x] tailwind
+   - [x] tailwind

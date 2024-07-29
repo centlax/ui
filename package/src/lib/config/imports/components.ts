@@ -1,7 +1,6 @@
 /** application */
 export { default as UAlert } from '../../components/application/alert/alert.svelte';
 export { default as UModal } from '../../components/application/modal/modal.svelte';
-export { default as UNotification } from '../../components/application/notification/notification.svelte';
 export { default as UPopover } from '../../components/application/popover/popover.svelte';
 export { default as USheet } from '../../components/application/sheet/sheet.svelte';
 export { default as UTooltip } from '../../components/application/tooltip/tooltip.svelte';
