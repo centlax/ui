@@ -7,11 +7,9 @@ export const props = {
 	class: {} as string | DeepStyles<typeof modal>,
 	override: false,
 	value: false,
-	role: 'dialog' as CreateDialogProps['role'],
 	scroll: true,
-	close: { outside: true as boolean | undefined },
+	outside: true,
 	portal: 'body' as CreateDialogProps['portal'],
-	visible: false,
 	transition: {
 		overlay: { duration: 150 },
 		content: { duration: 200, y: 8, start: 0.96 }

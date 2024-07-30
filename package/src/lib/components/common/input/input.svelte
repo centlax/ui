@@ -11,7 +11,7 @@
 	export let override = props.override;
 	export let size = props.size;
 	export let value = props.value;
-
+	export let ss: any;
 	/** Logic */
 
 	/** UI */
@@ -22,10 +22,7 @@
 </script>
 
 <div class={stringify(css.root)}>
-	<slot {ui} />
-	{#if !$$slots.default}
-		<input {...$$restProps} bind:value class={ui.input} />
-	{/if}
+	<input {...$$restProps} use:ss bind:value class={ui.input} />
 	{#if $$slots.west}
 		<span class={stringify(css.west)}>
 			<slot name="west" />

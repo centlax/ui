@@ -1,20 +1,7 @@
+/** Imports */
 import type { Colors, DeepStyles, Props, Styles } from '$lib/import.js';
 
-type ButtonColor = keyof typeof styles.opt.variant.solid;
-type ButtonVariant = keyof typeof styles.opt.variant;
-
-export const props = {
-	class: {} as string | DeepStyles<typeof button>,
-	override: false,
-	loading: false,
-	disabled: false,
-	href: '',
-	label: '',
-	color: 'sky' as Colors['mask'] | Exclude<ButtonColor, 'color'>,
-	variant: 'solid' as ButtonVariant,
-	size: 'md' as keyof typeof button.opt.size
-} satisfies Props;
-
+/** Styles */
 const styles = {
 	root: {
 		flex: 'flex justify-center items-center',
@@ -75,3 +62,18 @@ const styles = {
 	}
 } satisfies Styles;
 export const button = styles;
+
+/** Types */
+type ButtonColor = keyof typeof styles.opt.variant.solid;
+type ButtonVariant = keyof typeof styles.opt.variant;
+
+/** Props */
+export const props = {
+	class: {} as string | DeepStyles<typeof button>,
+	override: false,
+	href: '',
+	label: '',
+	color: 'sky' as Colors['mask'] | Exclude<ButtonColor, 'color'>,
+	variant: 'solid' as ButtonVariant,
+	size: 'md' as keyof typeof button.opt.size
+} satisfies Props;

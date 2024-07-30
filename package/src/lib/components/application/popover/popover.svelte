@@ -1,69 +1,56 @@
 <script lang="ts">
-	/**  Imports */
+	/** Imports */
 	import { createPopover, createSync, melt } from '@melt-ui/svelte';
-	import { fade } from 'svelte/transition';
 	import { popover } from './popover.config.js';
 	import { strify, twJoin } from '$lib/utils/index.js';
 	import { useProps, useUI } from '$lib/import.js';
+	import { flyAndScale } from '$lib/theme/motion/fly-scale.js';
 
 	/** Props */
 	const props = useProps('Popover');
 	let _class = props.class;
 	export { _class as class };
-	export let open = props.open;
 	export let override = props.override;
+	export let value = props.value;
 	export let float = props.float;
 	export let scroll = props.scroll;
 	export let overlay = props.overlay;
-	export let visible = props.visible;
-	export let trap = props.trap;
-	export let arrow = props.arrow;
 	export let portal = props.portal;
 	export let transition = props.transition;
 	export function toggle() {
-		open = !open;
+		value = !value;
 	}
+	/** --arrow-size: 8px */
 
 	/** Config */
-	const { css, classer } = useUI(popover, _class, override);
 	const {
-		elements: { trigger, content, overlay: _overlay, arrow: _arrow },
+		elements: { trigger, content, overlay: _overlay, arrow },
 		states
 	} = createPopover({
-		forceVisible: visible,
 		preventScroll: scroll,
-		arrowSize: arrow,
-		disableFocusTrap: trap,
 		positioning: float,
 		portal
 	});
 	const sync = createSync(states);
+	$: sync.open(value, (v) => (value = v));
 
-	/** React */
-
-	$: sync.open(open, (v) => (open = v));
+	/** UI */
+	const { css, classer } = useUI(popover, _class, override);
 </script>
 
-{open}
-{#if $$slots.trigger}
-	<div use:melt={$trigger} class={strify(css.trigger)}>
-		<slot name="trigger" />
-	</div>
-{/if}
-<slot name="open" trigger={$trigger} open={toggle} />
-<button on:click={toggle}>open</button>
-{#if open}
+<slot name="trigger" trigger={$trigger} />
+<slot name="open" open={toggle} />
+{#if value}
 	{#if overlay}
 		<div use:melt={$_overlay} class={strify(css.overlay)} />
 	{/if}
 	<div
+		{...$$restProps}
 		use:melt={$content}
-		transition:fade={transition}
-		class={twJoin(strify(css.content), classer)}
+		transition:flyAndScale={transition}
+		class={twJoin(strify(css.root), classer)}
 	>
-		{#if arrow > 0}
-			<span class={strify(css.arrow)} use:melt={$_arrow} />
-		{/if}
+		<slot name="arrow" arrow={$arrow} />
 		<slot close={toggle} />
 	</div>
 {/if}

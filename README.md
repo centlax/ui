@@ -31,6 +31,28 @@ pnpm add @centlax/ui
 <UButton>Click me!</UButton>
 ```
 
+## Guidelines
+
+**Guidelines help define what makes a component effective. By establishing rules and best practices, we can develop rapidly, create lighter, and build more robust UI libraries.**
+
+**Note:** If a guideline is checked, it is a rule. If not checked, it is highly recommended.
+
+### 1. Pre-Development: Requirements for Component Creation
+
+- [x] If no existing component offers similar results.
+- [ ] Component involves more than one HTML element.
+
+### 2. Development
+
+- [x] Exported props are 15 or fewer (declared props).
+- [x] Nested nodes are 5 or fewer.
+- [ ] Level of nodes is 10 or fewer (loops don't count).
+- [x] Self-containment: The component shouldn't affect anything outside itself.
+
+### 3. Post-Development
+
+- [x] Component name has a maximum of 20 characters.
+
 ## Documentation
 
 Visit https://ui.centlax.com to explore the documentation.

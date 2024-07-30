@@ -2,7 +2,7 @@
 	/** Imports */
 	import { card } from './card.config.js';
 	import { useProps, useUI } from '$lib/import.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Card');
@@ -22,21 +22,21 @@
 	const { css, classer } = useUI(card, _class, override);
 </script>
 
-<svelte:element this={as} {...$$restProps} class={twJoin(strify(css.root), classer)}>
+<svelte:element this={as} {...$$restProps} class={twJoin(stringify(css.root), classer)}>
 	{#if is.north}
-		<div class={strify(css.north)}>
+		<div class={stringify(css.north)}>
 			<slot name="north" />
 		</div>
 	{/if}
 
 	{#if is.center}
-		<div class={strify(css.center)}>
+		<div class={stringify(css.center)}>
 			<slot />
 		</div>
 	{/if}
 
 	{#if is.south}
-		<div class={strify(css.south)}>
+		<div class={stringify(css.south)}>
 			<slot name="south" />
 		</div>
 	{/if}

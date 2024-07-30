@@ -12,11 +12,9 @@
 	export { _class as class };
 	export let value = props.value;
 	export let override = props.override;
-	export let role = props.role;
 	export let scroll = props.scroll;
 	export let outside = props.outside;
 	export let portal = props.portal;
-	export let visible = props.visible;
 	export let transition = props.transition;
 	export function toggle() {
 		value = !value;
@@ -28,10 +26,8 @@
 		states
 	} = createDialog({
 		closeOnOutsideClick: outside,
-		forceVisible: visible,
 		preventScroll: scroll,
-		portal,
-		role
+		portal
 	});
 	const sync = createSync(states);
 	const { css, classer } = useUI(sheet, _class, override);
@@ -47,12 +43,10 @@
 	<div use:melt={$portalled} class={strify(css.root)}>
 		<div use:melt={$overlay} class={strify(css.overlay)} transition:fade={transition.overlay} />
 		<div
+			{...$$restProps}
 			use:melt={$content}
-			{...$$restProps}
 			class={twJoin(strify(css.content), classer)}
-			in:fly={transition.content?.in}
-			out:fly={transition.content?.out}
-			{...$$restProps}
+			transition:fly={transition.content}
 		>
 			<slot close={toggle} />
 		</div>

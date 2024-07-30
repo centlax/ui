@@ -22,19 +22,11 @@ export const props = {
 	class: {} as string | DeepStyles<typeof sheet>,
 	override: false,
 	value: false,
-	role: 'dialog' as CreateDialogProps['role'],
 	scroll: true,
 	outside: true,
-	visible: true,
 	portal: 'body' as CreateDialogProps['portal'],
 	transition: {
-		content: {
-			in: { x: '100%', duration: 500, opacity: 1 },
-			out: { x: '100%', duration: 300, opacity: 1 }
-		},
-		overlay: { duration: 150 }
-	} as {
-		content?: { in?: FlyParams; out?: FlyParams };
-		overlay?: FadeParams;
+		content: { x: '100%', duration: 400, opacity: 1 } as FlyParams,
+		overlay: { duration: 150 } as FadeParams
 	}
 } satisfies Props;

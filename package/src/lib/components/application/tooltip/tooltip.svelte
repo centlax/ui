@@ -2,7 +2,7 @@
 	/** Imports */
 	import { createSync, createTooltip, melt } from '@melt-ui/svelte';
 	import { tooltip } from './tooltip.config.js';
-	import { strify, stringify, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { useProps, useUI } from '$lib/import.js';
 	import { flyAndScale } from '$lib/theme/motion/fly-scale.js';
 
@@ -10,34 +10,26 @@
 	const props = useProps('Tooltip');
 	let _class = props.class;
 	export { _class as class };
-	export let value = props.value;
 	export let override = props.override;
+	export let value = props.value;
 	export let float = props.float;
-	export let arrow = props.arrow;
-	export let pointer = props.pointer;
 	export let transition = props.transition;
-	export let visible = props.visible;
 	export let portal = props.portal;
 	export let delay = props.delay;
-	export let hover = props.hover;
-	export let group = props.hover;
 	export function toggle() {
 		value = !value;
 	}
+	/** arrow-size: 8px */
 
 	/** Config */
 	const {
-		elements: { trigger, content, arrow: _arrow },
+		elements: { trigger, content, arrow },
 		states
 	} = createTooltip({
 		positioning: float,
 		openDelay: delay.open,
 		closeDelay: delay.close,
-		closeOnPointerDown: pointer,
-		forceVisible: visible,
-		disableHoverableContent: hover,
-		portal,
-		group
+		portal
 	});
 
 	const sync = createSync(states);
@@ -51,13 +43,12 @@
 
 {#if value}
 	<div
+		{...$$restProps}
 		use:melt={$content}
 		transition:flyAndScale={transition}
-		class={twJoin(strify(css.root), classer)}
+		class={twJoin(stringify(css.root), classer)}
 	>
-		{#if arrow > 0}
-			<span class={stringify(css.arrow)} use:melt={$_arrow} />
-		{/if}
+		<slot name="arrow" arrow={$arrow} />
 		<slot close={toggle} />
 	</div>
 {/if}

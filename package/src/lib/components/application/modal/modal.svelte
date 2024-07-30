@@ -13,11 +13,9 @@
 	export { _class as class };
 	export let override = props.override;
 	export let value = props.value;
-	export let role = props.role;
 	export let scroll = props.scroll;
-	export let close = props.close;
+	export let outside = props.outside;
 	export let portal = props.portal;
-	export let visible = props.visible;
 	export let transition = props.transition;
 	export function toggle() {
 		value = !value;
@@ -26,14 +24,12 @@
 	/** Config */
 	const { css, classer } = useUI(modal, _class, override);
 	const {
-		elements: { portalled, overlay, content },
+		elements: { portalled, overlay, trigger, content },
 		states
 	} = createDialog({
-		closeOnOutsideClick: typeof close === 'object' ? close.outside : true,
+		closeOnOutsideClick: outside,
 		preventScroll: scroll,
-		forceVisible: visible,
-		portal,
-		role
+		portal
 	});
 	const sync = createSync(states);
 
@@ -41,6 +37,7 @@
 	$: sync.open(value, (v) => (value = v));
 </script>
 
+<slot name="trigger" trigger={$trigger} />
 <slot name="open" open={toggle} />
 {#if value}
 	<div use:melt={$portalled} class={strify(css.root)}>
