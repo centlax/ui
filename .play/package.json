@@ -23,7 +23,8 @@
 	},
 	"dependencies": {
 		"framer-motion": "^11.3.19",
-		"tailwind-merge": "^2.4.0"
+		"tailwind-merge": "^2.4.0",
+		"@centlax/ui": "workspace:*"
 	},
 	"type": "module"
 }

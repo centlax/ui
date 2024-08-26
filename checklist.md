@@ -1,4 +1,17 @@
-# v1.0.0
+# v0.1.0-2
+
+### Date: 2024 07 28
+
+## Components
+
+1. Application
+   - [ ] UDash
+   - [ ] UDashside
+   - [ ] UDashPage
+
+## Composables
+
+# v0.1.0-1
 
 ### Date: 2024 07 28
 
@@ -12,16 +25,17 @@
    - [x] UPopover
    - [x] USheet
    - [x] UTooltip
+   - [x] USwitch
 
 2. Common
 
    - [ ] UBadge
    - [x] UCard
    - [x] UContainer
-   - [ ] UFieldset
+   - [x] UFieldset
    - [x] ULayout
-   - [ ] UButton
-   - [ ] UInput
+   - [x] UButton
+   - [x] UInput
    - [ ] UInputPin
 
 3. Website
@@ -40,8 +54,6 @@
    - [x] useDark
    - [ ] useTransition
 
-## Config
+5. Config
 
-5. Presets
-
-   - [x] tailwind
+   - [x] Tailwind Preset

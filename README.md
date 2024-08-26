@@ -48,6 +48,7 @@ pnpm add @centlax/ui
 - [x] Nested nodes are 5 or fewer.
 - [ ] Level of nodes is 10 or fewer (loops don't count).
 - [x] Self-containment: The component shouldn't affect anything outside itself.
+- [x] Only tailwind classes can be used ( style blocks won't be utilizes).
 
 ### 3. Post-Development
 

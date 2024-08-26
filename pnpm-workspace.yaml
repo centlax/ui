@@ -1,4 +1,5 @@
 packages:
-  - '.play'
-  - 'docs'
-  - 'package'
+  - .play
+  - docs
+  - pkgs
+  - ui
