@@ -2,7 +2,7 @@
 	/** Imports */
 	import { createPopover, createSync, melt } from '@melt-ui/svelte';
 	import { popover } from './popover.config.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 	import { useProps, useUI } from '$lib/import.js';
 	import { flyAndScale } from '$lib/theme/transition/fly-scale.js';
 
@@ -42,13 +42,13 @@
 <slot name="open" open={toggle} />
 {#if value}
 	{#if overlay}
-		<div use:melt={$_overlay} class={strify(css.overlay)} />
+		<div use:melt={$_overlay} class={stringify(css.overlay)} />
 	{/if}
 	<div
 		{...$$restProps}
 		use:melt={$content}
 		transition:flyAndScale={transition}
-		class={twJoin(strify(css.root), classer)}
+		class={twJoin(stringify(css.root), classer)}
 	>
 		<slot name="arrow" arrow={$arrow} />
 		<slot close={toggle} />

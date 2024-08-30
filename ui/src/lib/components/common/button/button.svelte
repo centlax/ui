@@ -5,9 +5,7 @@
 	import { colorize, merge, stringify, varify } from '$lib/utils/index.js';
 
 	/** Props  */
-
 	const props = useProps('Button');
-
 	let _class = props.class;
 	export { _class as class };
 	export let override = props.override;
@@ -16,6 +14,7 @@
 	export let color = props.color;
 	export let variant = props.variant;
 	export let size = props.size;
+
 	/** Logic */
 	$: is = {
 		disabled: $$restProps.disabled || $$restProps.loading

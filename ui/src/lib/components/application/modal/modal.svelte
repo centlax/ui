@@ -5,7 +5,7 @@
 	import { modal } from './modal.config.js';
 	import { useProps, useUI } from '$lib/import.js';
 	import { flyAndScale } from '$lib/theme/transition/fly-scale.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Modal');
@@ -40,11 +40,11 @@
 <slot name="trigger" trigger={$trigger} />
 <slot name="open" open={toggle} />
 {#if value}
-	<div use:melt={$portalled} class={strify(css.root)}>
-		<div use:melt={$overlay} class={strify(css.overlay)} transition:fade={transition.overlay} />
+	<div use:melt={$portalled} class={stringify(css.root)}>
+		<div use:melt={$overlay} class={stringify(css.overlay)} transition:fade={transition.overlay} />
 		<div
 			use:melt={$content}
-			class={twJoin(strify(css.content), classer)}
+			class={twJoin(stringify(css.content), classer)}
 			transition:flyAndScale={transition.content}
 		>
 			<slot close={toggle} />

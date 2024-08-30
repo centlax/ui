@@ -20,7 +20,7 @@ function generateImports(dirPath, imports = [], level = 0) {
 				imports.push(`\n/** ${file} */`);
 			}
 			imports = generateImports(filePath, imports, level + 1);
-		} else if (file.endsWith('.svelte')) {
+		} else if (file.endsWith('.svelte') && !file.startsWith('_')) {
 			const componentDir = path.basename(path.dirname(filePath));
 			const fileNameWithoutExtension = path.basename(file, '.svelte');
 			const pascalCaseDirName = toPascalCase(componentDir);

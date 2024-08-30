@@ -2,7 +2,7 @@
 	/** Imports */
 	import { container } from './container.config.js';
 	import { useProps, useUI } from '$lib/import.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Container');
@@ -15,6 +15,6 @@
 	const { css, classer } = useUI(container, _class, override);
 </script>
 
-<svelte:element this={as} {...$$restProps} class={twJoin(strify(css.root), classer)}>
+<svelte:element this={as} {...$$restProps} class={twJoin(stringify(css.root), classer)}>
 	<slot />
 </svelte:element>

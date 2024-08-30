@@ -6,7 +6,7 @@ import { useConfig } from '../use/config.js';
  *
  */
 const config = useConfig();
-type Prop = keyof typeof config.components;
+type Prop = keyof typeof config.props;
 export function useProps<T extends Prop>(component: T) {
-	return config.components[component];
+	return config.props[component];
 }

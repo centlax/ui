@@ -5,7 +5,7 @@
 	"packageManager": "pnpm@9.5.0",
 	"scripts": {
 		"dev": "pnpm --filter @centlax/ui dev",
-		"lib": "pnpm --filter @centlax/ui --",
+		"ui": "pnpm --filter @centlax/ui --",
 		"docs": "pnpm --filter @ui/docs --",
 		"git": "bash .scripts/git/commit.sh",
 		"lint": "prettier --check . && eslint .",

@@ -1,5 +1,5 @@
-import { defineConfig } from "@centlax/ui"
+import { defineConfig } from '@centlax/ui';
 
 export default defineConfig({
-    props: {override: true}
-})
+	props: { override: true }
+});

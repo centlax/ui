@@ -8,6 +8,6 @@
  */
 
 /** define */
-export * from './define/config.js';
+export * from './define/shortcut.js';
 /** use */
 export * from './use/dark.js';

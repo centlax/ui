@@ -2,7 +2,7 @@
 	/** Imports */
 	import { header } from './header.config.js';
 	import { UHeaderLinks, USheet, useProps, useUI } from '$lib/import.js';
-	import { strify, twJoin } from '$lib/utils/index.js';
+	import { stringify, twJoin } from '$lib/utils/index.js';
 
 	/** Props */
 	const props = useProps('Header');
@@ -22,20 +22,20 @@
 	const { css, classer } = useUI(header, _class, override);
 </script>
 
-<header id="ui-header" class={twJoin(strify(css.root), classer)}>
-	<nav class={strify(css.nav)} aria-label="Global">
-		<a {href} class={strify(css.nav.west)}>
+<header id="ui-header" class={twJoin(stringify(css.root), classer)}>
+	<nav class={stringify(css.nav)} aria-label="Global">
+		<a {href} class={stringify(css.nav.west)}>
 			<slot name="logo" />
 			{#if name}{name}{/if}
 		</a>
 
-		<div data-state="show" class={strify(css.nav.center)}>
+		<div data-state="show" class={stringify(css.nav.center)}>
 			<UHeaderLinks {links} />
 		</div>
 
-		<div class={strify(css.nav.east)}>
+		<div class={stringify(css.nav.east)}>
 			<slot name="buttons" />
-			<div class={strify(css.nav.east)}>
+			<div class={stringify(css.nav.east)}>
 				<slot name="menu" {open} />
 			</div>
 		</div>
@@ -48,17 +48,17 @@
 			bind:open
 			class={css.drawer}
 		>
-			<div class={strify(css.mobile.container)}>
-				<div class={strify(css.mobile.north)}>
+			<div class={stringify(css.mobile.container)}>
+				<div class={stringify(css.mobile.north)}>
 					<slot name="logo" />
-					<div class={strify(css.nav.east)}>
+					<div class={stringify(css.nav.east)}>
 						<slot name="menu" {open} />
 					</div>
 				</div>
-				<div class={strify(css.mobile.center)}>
+				<div class={stringify(css.mobile.center)}>
 					<UHeaderLinks vertical {links} />
 				</div>
-				<div class={strify(css.mobile.south)}>
+				<div class={stringify(css.mobile.south)}>
 					<slot name="buttons" />
 				</div>
 			</div>

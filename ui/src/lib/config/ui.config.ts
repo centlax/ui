@@ -1,11 +1,8 @@
 // Define the UserConfig type based on a specific structure
-import type { DeepPartial } from "$lib/import.js";
-export const userConfig = {
-	// Example config structure (adjust as needed)
-	props: {
-		override: false,
-		size: 'md' as 'xs' | 'sm' | 'md' | 'lg' | 'xl'
-	},
+import * as props from '$lib/config/imports/props.js';
+export const config = {
+	override: false,
+	size: 'md' as 'xs' | 'sm' | 'md' | 'lg' | 'xl',
 	colors: {
 		primary: 'sky',
 		gray: 'cool',
@@ -49,13 +46,5 @@ export const userConfig = {
 		close: 'i-heroicons-x-mark-20-solid',
 		check: 'i-heroicons-check-circle-20-solid'
 	},
-	components: {} // Add your components configuration here
+	props
 };
-
-// Create a type from the structure of userConfig
-export type UserConfig = typeof userConfig;
-
-// Define a function to create a configuration object of type UserConfig
-export function defineConfig(config: DeepPartial<UserConfig>): DeepPartial<UserConfig> {
-	return config;
-}

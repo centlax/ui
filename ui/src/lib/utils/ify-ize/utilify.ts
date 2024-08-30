@@ -1,5 +1,6 @@
 // utilify.ts
-import type { Utility, Styles } from '$lib/types/utility.js';
+import { twJoin, twMerge } from 'tailwind-merge';
+import type { Styles, Utility } from '$lib/types/utility.js';
 // Export with an alias
 
 /**
@@ -13,7 +14,6 @@ import type { Utility, Styles } from '$lib/types/utility.js';
 export function stylify<T extends Styles>(styles: T): T {
 	return styles as T;
 }
-export { stringify as strify };
 
 /**
  * Type definition for a variant object.
@@ -33,7 +33,7 @@ type Variant = {
  * @returns The `ClassType` corresponding to the given color, or the default color if the color is not found.
  * @throws Will throw an error if the `variant` is not a non-null object.
  */
-export function variantify(variant: Variant, color: any): Utility {
+export function variantify(variant: Variant, color: unknown): Utility {
 	// Check if the variant is a valid non-null object.
 	if (!variant || typeof variant !== 'object') {
 		throw new Error('Invalid object input. Object must be a non-null object.');
@@ -51,7 +51,7 @@ export { variantify as varify };
 /**
  * Converts multiple objects into a single string by concatenating non-object property values.
  * If the input is not an object, it returns an empty string.
- * @param {...Object} objs The objects to be converted into a string.
+ * @param {...object} objs The objects to be converted into a string.
  * @returns A string representation of the non-object properties of the input objects.
  */
 export function stringify(...objs: Utility[]): string {

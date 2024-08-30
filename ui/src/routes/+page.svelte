@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { UButton } from '$lib/index.js';
-
+	import { UButton, useDark } from '$lib/index.js';
+	const dark = useDark();
 </script>
 
-<UButton loading>Click me!</UButton>
+<UButton color="amber" label="Click me!" on:click={dark.toggle} />

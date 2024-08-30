@@ -1,6 +1,9 @@
-
 // alert
 export { props as Alert } from '$lib/components/application/alert/alert.config.js';
+
+// dashboard
+
+// headbar
 
 // modal
 export { props as Modal } from '$lib/components/application/modal/modal.config.js';
@@ -8,8 +11,14 @@ export { props as Modal } from '$lib/components/application/modal/modal.config.j
 // popover
 export { props as Popover } from '$lib/components/application/popover/popover.config.js';
 
+// scroll
+export { props as Scroll } from '$lib/components/application/scroll/scroll.config.js';
+
 // sheet
 export { props as Sheet } from '$lib/components/application/sheet/sheet.config.js';
+
+// sidebar
+export { props as Sidebar } from '$lib/components/application/sidebar/sidebar.config.js';
 
 // switch
 export { props as Switch } from '$lib/components/application/switch/switch.config.js';
