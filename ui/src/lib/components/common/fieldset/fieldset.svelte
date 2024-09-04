@@ -19,10 +19,6 @@
 
 	/** UI */
 	const { css, classer } = useUI(fieldset, _class, override);
-
-	$: attrs = {
-		name
-	};
 </script>
 
 <fieldset {...$$restProps} class={merge(stringify(css.root), classer)}>
@@ -42,7 +38,7 @@
 		{/if}
 	</div>
 
-	<slot {attrs} />
+	<slot />
 
 	{#if error}
 		<slot name="error" {error}>

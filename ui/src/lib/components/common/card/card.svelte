@@ -13,18 +13,22 @@
 
 	/** UI */
 	const { css, classer } = useUI(card, _class, override);
-	$: ui = {
-		root: merge(stringify(css.root), classer)
-	};
-
-	/** Attrs */
-	$: attrs = {
-		north: { class: stringify(css.north) },
-		center: { class: stringify(css.center) },
-		south: { class: stringify(css.south) }
-	};
 </script>
 
-<svelte:element this={as} {...$$restProps} class={ui.root}>
-	<slot {attrs} />
+<svelte:element this={as} {...$$restProps} class={merge(stringify(css.root), classer)}>
+	{#if $$slots.north}
+		<div class={stringify(css.north)}>
+			<slot name="north" />
+		</div>
+	{/if}
+	{#if $$slots.default}
+		<div class={stringify(css.center)}>
+			<slot />
+		</div>
+	{/if}
+	{#if $$slots.south}
+		<div class={stringify(css.south)}>
+			<slot name="south" />
+		</div>
+	{/if}
 </svelte:element>

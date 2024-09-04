@@ -1,4 +1,5 @@
 <script lang="ts">
+	/** Imports */
 </script>
 
 <div {...$$restProps} class="flex flex-row bg-white dark:bg-black h-screen overflow-hidden">

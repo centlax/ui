@@ -42,12 +42,7 @@
 	</nav>
 
 	<div data-state="hide">
-		<USheet
-			portal="ui-header"
-			transition={{ content: { x: 250, duration: 100 } }}
-			bind:open
-			class={css.drawer}
-		>
+		<USheet portal="ui-header" bind:open>
 			<div class={stringify(css.mobile.container)}>
 				<div class={stringify(css.mobile.north)}>
 					<slot name="logo" />

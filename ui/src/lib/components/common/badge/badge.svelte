@@ -14,12 +14,9 @@
 
 	/** UI */
 	const { css, classer } = useUI(badge, _class, override);
-	$: ui = {
-		root: merge(stringify(css.root), classer)
-	};
 </script>
 
-<span style={colorize(color)} class={ui.root}>
+<span style={colorize(color)} class={merge(stringify(css.root), classer)}>
 	{#if dot}
 		<i class={stringify(css.dot)} />
 	{/if}

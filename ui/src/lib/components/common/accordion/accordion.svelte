@@ -21,48 +21,27 @@
 		defaultValue: 'item-1'
 	});
 
-	/** Slot Props */
-	let actions = {
-		item: (id: string) => $item(id).action,
-		trigger: (id: string) => $trigger(id).action,
-		content: (id: string) => $content(id).action
-	};
-	let attrs = {
-		item: (id: string) => $item(id),
-		trigger: (id: string) => $trigger(id),
-		content: (id: string) => $content(id)
-	};
-
 	/** UI */
 	const { css, classer } = useUI(accordion, _class, override);
-	$: ui = {
-		root: merge(stringify(css.root), classer)
-	};
-	$: is = {
-		selected: (id: string) => $isSelected(id)
-	};
 </script>
 
-<div use:melt={$root} class={ui.root}>
-	{#if $$slots.default}
-		<slot {actions} {attrs} selected={is.selected} />
-	{:else}
-		{#each links as { id, title, description }, i}
-			<div use:melt={$item(id)}>
-				<slot name="trigger" trigger={$trigger(id)} {title} {i}>
-					<button use:melt={$trigger(id)}>
-						{title}
-					</button>
-				</slot>
+<div use:melt={$root} class={merge(stringify(css.root), classer)}>
+	{#each links as { id, title, links: _children, label, description }, i}
+		<div use:melt={$item(id)}>
+			<slot name="trigger" trigger={$trigger(id)} {title} {i}>
+				<button use:melt={$trigger(id)}>
+					<slot name="trigger-btn" />
+					{title || label}
+				</button>
+			</slot>
 
-				{#if $isSelected(id)}
-					<slot name="content" content={$content(id)} {description} {i}>
-						<div use:melt={$content(id)} transition:slide>
-							{description}
-						</div>
-					</slot>
-				{/if}
-			</div>
-		{/each}
-	{/if}
+			{#if $isSelected(id)}
+				<slot name="content" links={_children} content={$content(id)} {description} {i}>
+					<div use:melt={$content(id)} transition:slide>
+						{description}
+					</div>
+				</slot>
+			{/if}
+		</div>
+	{/each}
 </div>
