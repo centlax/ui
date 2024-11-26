@@ -48,12 +48,15 @@
 </script>
 
 {@render props.children?.()}
-<svelte:element this={props['trigger-as'] ?? 'span'} use:melt={$trigger}>
+
+{#if props.trigger}
+<svelte:element this={as} use:melt={$trigger}>
 	{@render props.trigger?.()}
-</svelte:element>
+</svelte:element>	
+{/if}
+
 {#if value}
-	<svelte:element
-		this={as}
+	<div
 		data-ui="popover"
 		{...props}
 		use:melt={$content}
@@ -65,5 +68,5 @@
 			<div class={st(ui.arrow)} use:melt={$arrow}></div>
 		{/if}
 		{@render props.content?.()}
-	</svelte:element>
+</div>
 {/if}

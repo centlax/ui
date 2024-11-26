@@ -6,22 +6,26 @@
 	import { cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 
-	let { value = $bindable(false), ...props }: TooltipProps = $props();
+	let { as = 'span', value = $bindable(false), ...props }: TooltipProps = $props();
 
 	const {
 		elements: { trigger, content, arrow },
 		states
 	} = createTooltip({
-		positioning: props['floaf'],
-		openDelay: props.delay?.open,
-		closeDelay: props.delay?.close,
+		positioning: props['float'],
 		arrowSize: props['arrow-size'],
 		escapeBehavior: props['escape-behavior'],
-		portal: props['portal'],
-		closeOnPointerDown: props['close-pointer-down'],
-		disableHoverableContent: props['disable-hover'],
 		forceVisible: props['force-visible'],
-		group: props['group']
+		portal: props['portal'],
+		closeOnPointerDown: props['close-on-pointer-down'],
+		openDelay: props['open-delay'],
+		closeDelay: props['close-delay'],
+		disableHoverableContent: props['disable-hoverable-content'],
+		group: props['group'],
+		defaultOpen: props['default-open'],
+		open: props['open'],
+		onOpenChange: props['on-open-change'],
+		ids: props['ids']
 	});
 
 	const sync = createSync(states);
@@ -37,7 +41,7 @@
 </script>
 
 {@render props.children?.()}
-<svelte:element this={props['trigger-as'] ?? 'span'} use:melt={$trigger}>
+<svelte:element this={as} use:melt={$trigger}>
 	{@render props.trigger?.()}
 </svelte:element>
 {#if value}

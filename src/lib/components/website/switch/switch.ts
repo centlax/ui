@@ -34,7 +34,6 @@ export const _switch = styles;
 
 /** Props */
 type Props = Omit<HTMLButtonAttributes, 'class' | 'value'>;
-
 export interface SwitchProps extends BaseProps<typeof _switch>, Props {
 	children?: Snippet;
 	value?: boolean;

@@ -5,7 +5,7 @@ import type { TransformKeysToKebab } from '$lib/types/utils.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { CreateDialogProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 import type { FadeParams, FlyParams } from 'svelte/transition';
 import { shared } from '$lib/theme/styles/index.js';
 
@@ -39,12 +39,13 @@ export const fromTransition = (dir: 'north' | 'south' | 'east' | 'west') => {
 	};
 };
 
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> &
+type Props = Omit<SvelteHTMLElements['div'], 'class'> &
 	Omit<TransformKeysToKebab<CreateDialogProps>, 'value' | 'onOpenChange' | 'ids'>;
 
 export interface SheetProps extends BaseProps<typeof sheet>, Props {
 	children?: Snippet;
 	content?: Snippet;
+	trigger?: Snippet;
 	value?: boolean;
 	transition?: TransitionParams<FlyParams>;
 	'overlay-transition'?: TransitionParams<FadeParams>;

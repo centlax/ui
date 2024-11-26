@@ -53,6 +53,12 @@
 
 {@render props.children?.()}
 
+{#if props.trigger}
+	<svelte:element this={as}>
+		{@render props.trigger?.()}
+	</svelte:element>
+{/if}
+
 {#if value}
 	<div class={st(ui.root)} use:melt={$portalled}>
 		<div
@@ -63,8 +69,7 @@
 			aria-hidden="true"
 		></div>
 
-		<svelte:element
-			this={as}
+		<div
 			{...props}
 			class={css.content}
 			in:fly={txn.content.in}
@@ -72,6 +77,6 @@
 			use:melt={$content}
 		>
 			{@render props.content?.()}
-		</svelte:element>
+		</div>
 	</div>
 {/if}
