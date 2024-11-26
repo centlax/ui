@@ -3,7 +3,7 @@
 	import { type DashAsideProps, dashAside } from './aside.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, st } from '$lib/utils/wind.js';
-	import { UCollapsible, UIcon, UPopover, UToggle } from '$lib/index.js';
+	import { UCollapsible, UIcon, UPopover } from '$lib/index.js';
 	import type { Item } from '$lib/types/item.js';
 
 	/** Props */
@@ -62,7 +62,7 @@
 {#snippet dual(it: T)}
 	<UPopover as="ul" class={st(ui.popover)} float={{ placement: 'left-end' }}>
 		{#if it.items}
-			<UToggle>{@render trigger$(it)}</UToggle>
+			l
 		{:else}
 			{@render trigger$(it)}
 		{/if}

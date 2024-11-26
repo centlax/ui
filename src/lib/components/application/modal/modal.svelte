@@ -68,6 +68,6 @@
 			use:melt={$content}
 		>
 			{@render props.content?.()}
-	</div>
+		</div>
 	</div>
 {/if}

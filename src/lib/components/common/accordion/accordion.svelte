@@ -9,7 +9,7 @@
 	import { useTransition } from '$lib/composables/transition.js';
 
 	/** Imports */
-	let { as = 'div', items, ...props }: AccordionProps<T> = $props();
+	let { as = 'span', items, ...props }: AccordionProps<T> = $props();
 	const {
 		elements: { content, item, trigger, root },
 		helpers: { isSelected }
@@ -17,7 +17,7 @@
 		multiple: props['multiple'] ?? false,
 		disabled: props['disabled'] ?? false,
 		forceVisible: props['force-visible'] ?? false,
-		defaultValue: props['default-value'] ?? `${0}`,
+		defaultValue: props['default-value'] ?? (items?.[0]?.id as string) ?? '0',
 		onValueChange: props['on-value-change']
 	});
 
@@ -35,14 +35,14 @@
 	{@render props.children?.()}
 	{#each items as data, index}
 		<!-- Unique ID for each accordion item -->
-		{@const id = `${index}`}
+		{@const id = (data.id as string) || `${index}`}
 		<div use:melt={$item(id)} class={st(ui.item)}>
-			<button use:melt={$trigger(id)} class={st(ui.trigger)}>
+			<svelte:element this={as} use:melt={$trigger(id)} class={st(ui.trigger)}>
 				{@render props.trigger?.(data)}
-			</button>
+			</svelte:element>
 
 			{#if $isSelected(id)}
-				<svelte:element
+				<div
 					this={as}
 					{...props}
 					use:melt={$content(id)}
@@ -51,7 +51,7 @@
 					class={cn(st(ui.content), ui.class)}
 				>
 					{@render props.content?.(data)}
-				</svelte:element>
+				</div>
 			{/if}
 		</div>
 	{/each}

@@ -50,9 +50,9 @@
 {@render props.children?.()}
 
 {#if props.trigger}
-<svelte:element this={as} use:melt={$trigger}>
-	{@render props.trigger?.()}
-</svelte:element>	
+	<svelte:element this={as} use:melt={$trigger}>
+		{@render props.trigger?.()}
+	</svelte:element>
 {/if}
 
 {#if value}
@@ -68,5 +68,5 @@
 			<div class={st(ui.arrow)} use:melt={$arrow}></div>
 		{/if}
 		{@render props.content?.()}
-</div>
+	</div>
 {/if}

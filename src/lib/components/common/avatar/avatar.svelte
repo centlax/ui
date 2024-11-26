@@ -24,10 +24,6 @@
 	{@render props.children?.()}
 	<img use:melt={$image} alt={props.alt} class={st(ui.image)} />
 	<span use:melt={$fallback} class={st(ui.fallback)}>
-		{#if typeof props.fallback === 'string'}
-			{props.fallback}
-		{:else}
-			{@render props.fallback?.()}
-		{/if}
+		{@render props.fallback?.()}
 	</span>
 </span>

@@ -1,12 +1,8 @@
-// See https://svelte.dev/docs/kit/types#app.d.ts
-// for information about these interfaces
-declare global {
-	namespace App {
-		// interface Error {}
-		// interface Locals {}
-		// interface PageData {}
-		// interface PageState {}
-		// interface Platform {}
-	}
-}
-export {};
+/** src/app.ts */
+import type { UserConfig as UI } from '$lib/config/plugins/app/default.js';
+export declare const primary = "teal";
+declare const _default: {
+    modules: string[];
+    ui: UI;
+};
+export default _default;

@@ -9,7 +9,7 @@ import type { HTMLAttributes } from 'svelte/elements';
 const styles = {
 	root: {
 		typography: 'text-color-500',
-		sizing: 'size-5  ',
+		sizing: 'size-5',
 		border: 'rounded-full border-gray-300 dark:border-gray-700 focus:ring-color-600'
 	}
 } satisfies Styles;

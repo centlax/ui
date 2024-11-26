@@ -9,8 +9,8 @@ import type { HTMLAttributes } from 'svelte/elements';
 const styles = {
 	root: {
 		layout: 'overflow-hidden',
-		background: 'bg-white dark:bg-gray-900',
-		border: `divide-y divide-gray-200 dark:divide-gray-800 rounded-lg ring-1 ring-gray-200 dark:ring-gray-800`,
+		background: 'bg-white dark:bg-neutral-900',
+		border: `divide-y divide-neutral-200 dark:divide-neutral-800 rounded-lg ring-1 ring-neutral-200 dark:ring-neutral-800`,
 		effect: 'shadow'
 	},
 	north: {

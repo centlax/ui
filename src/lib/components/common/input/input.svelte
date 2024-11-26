@@ -2,7 +2,7 @@
 	/** Imports */
 	import { ctxField } from '$lib/composables/form.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn, cl } from '$lib/utils/wind.js';
+	import { st, cn, kl } from '$lib/utils/wind.js';
 	import { input, type InputProps } from './input.js';
 
 	/** Props */
@@ -26,4 +26,4 @@
 	/** Melt Context */
 </script>
 
-<input {...attrs} style={cl(color)} bind:value class={css.input} />
+<input {...attrs} style={kl(color)} bind:value class={css.input} />

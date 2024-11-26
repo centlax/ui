@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { UIcon, UPopover, UToggle } from '$lib/index.js';
+	import { UIcon, UPopover } from '$lib/index.js';
 	import { createSelect, melt } from '@melt-ui/svelte';
 
 	let open = $state(false);

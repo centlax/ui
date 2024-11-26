@@ -7,7 +7,6 @@
 	import { useTransition } from '$lib/composables/transition.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { ctxElement } from '$lib/components/common/element/index.js';
 
 	/** Props */
 	let { as = 'div', value = $bindable(false), from = 'east', ...props }: SheetProps = $props();
@@ -45,10 +44,6 @@
 		overlay: transition.set(props['overlay-transition'], { duration: 150 }),
 		content: transition.set(props['transition'], fromTransition(from))
 	});
-
-	const element = ctxElement();
-	element.set('trigger', { attrs: { ...$trigger }, action: $trigger.action });
-	element.set('close', { attrs: { ...$close }, action: $close.action });
 </script>
 
 {@render props.children?.()}

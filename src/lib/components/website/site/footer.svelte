@@ -8,120 +8,31 @@
 
 	/** Styles */
 	const ui = useUI(siteFooter, props.class, props.override);
-
-	const is = $state({
-		slot: {
-			east: props.east,
-			west: props.west
-		}
-	});
 </script>
 
 <footer class="bg-white pb-8 pt-16 dark:bg-neutral-900/50 sm:pt-24 lg:pt-32">
-	<div class="xl:grid xl:grid-cols-3 xl:gap-8">
+
 		{@render props.logo?.()}
-		<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-			<div class="md:grid md:grid-cols-2 md:gap-8">
-				<div>
-					<h3 class="text-sm/6 font-semibold">Solutions</h3>
+		<nav class="mt-16 grid grid-cols-2 w-full lg:grid-cols-4 gap-8  xl:mt-0">
+			{#each items as item}
+				<div class="col-span-1">
+					<h3 class="text-sm/6 font-semibold">{item.title}</h3>
 					<ul role="list" class="mt-6 space-y-4">
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Marketing</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Analytics</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Automation</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Commerce</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Insights</a
-							>
-						</li>
+						{#if item.items}
+							{#each item.items as it}
+								<li>
+									<a
+										href="/"
+										class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+										>{it.label}</a
+									>
+								</li>
+							{/each}
+						{/if}
 					</ul>
 				</div>
-				<div class="mt-10 md:mt-0">
-					<h3 class="text-sm/6 font-semibold">Support</h3>
-					<ul role="list" class="mt-6 space-y-4">
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Submit ticket</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Documentation</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Guides</a
-							>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="md:grid md:grid-cols-2 md:gap-8">
-				<div>
-					<h3 class="text-sm/6 font-semibold">Company</h3>
-					<ul role="list" class="mt-6 space-y-4">
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>About</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Blog</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Jobs</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Press</a
-							>
-						</li>
-					</ul>
-				</div>
-				<div class="mt-10 md:mt-0">
-					<h3 class="text-sm/6 font-semibold">Legal</h3>
-					<ul role="list" class="mt-6 space-y-4">
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Terms of service</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>Privacy policy</a
-							>
-						</li>
-						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
-								>License</a
-							>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+			{/each}
+		</nav>
 	<div
 		class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between"
 	>

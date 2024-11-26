@@ -1,6 +1,6 @@
 {
-	"name": "utica",
-	"version": "0.0.1",
+	"name": "@centlax/ui",
+	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -31,7 +31,9 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		}
+		},
+		"./tailwind": "./dist/config/plugins/tailwind/index.js"
+
 	},
 	"dependencies": {
 		"@internationalized/date": "^3.6.0",
