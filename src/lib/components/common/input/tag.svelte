@@ -1,6 +1,11 @@
 <script lang="ts">
-	import { UInput } from '$lib/import.js';
+	/** Imports */
 	import { createTagsInput, melt } from '@melt-ui/svelte';
+	import type { InputTagProps } from './tag.js';
+	import { setContext } from 'svelte';
+
+	/** Props */
+	let { ...props }: InputTagProps = $props();
 
 	const {
 		elements: { root, input, tag, deleteTrigger, edit },
@@ -13,18 +18,23 @@
 		},
 		addOnPaste: true
 	});
+	/** Styles */
+
+	setContext('input', input);
 </script>
 
-<div use:melt={$root}>
-	{#each $tags as t}
-		<div use:melt={$tag(t)}>
-			<span>{t.value}</span>
-			<button use:melt={$deleteTrigger(t)}>
-				<span>X</span>
-			</button>
-		</div>
-		<div use:melt={$edit(t)}></div>
-	{/each}
+<div>
+	<div use:melt={$root}>
+		{#each $tags as t}
+			<div use:melt={$tag(t)}>
+				<span>{t.value}</span>
+				<button use:melt={$deleteTrigger(t)}>
+					<span>x</span>
+				</button>
+			</div>
+			<div use:melt={$edit(t)}></div>
+		{/each}
 
-	<UInput melt={$input} />
+		{@render props.children?.()}
+	</div>
 </div>

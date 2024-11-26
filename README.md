@@ -1,81 +1,58 @@
-# Centlax UI
+# create-svelte
 
-Centlax UI is a package that provides a set of Svelte components and composables built with [Tailwind CSS](https://tailwindcss.com/) and [Melt UI](https://melt-ui.com/) to help you build beautiful and accessible user interfaces.
+Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-Its goal is to provide everything related to UI when building a SvelteKit app. This includes components, icons, colors, dark mode but also keyboard shortcuts.
+Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
 
-## Features
+## Creating a project
 
-- Built with [Melt UI](https://melt-ui.com) and [Tailwind CSS](https://tailwindcss.com/)
-- HMR support through Svelte & Vite
-- Dark mode support
-- Keyboard shortcuts ( coming soon )
-- Bundled icons
-- Fully typed
-
-Read more on [ui.centlax.com](https://ui.centlax.com)
-
-## Installation
+If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-pnpm add @centlax/ui
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
 ```
 
-## Usage
+## Developing
 
-```svelte
-<script lang="ts">
-	import { UButton } from '@centlax/ui';
-</script>
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-<UButton>Click me!</UButton>
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-## Guidelines
+Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
 
-**Guidelines help define what makes a component effective. By establishing rules and best practices, we can develop rapidly, create lighter, and build more robust UI libraries.**
+## Building
 
-**Note:** If a guideline is checked, it is a rule. If not checked, it is highly recommended.
+To build your library:
 
-### 1. Pre-Development: Requirements for Component Creation
+```bash
+npm run package
+```
 
-- [x] If no existing component offers similar results.
-- [ ] Component involves more than one HTML element.
+To create a production version of your showcase app:
 
-### 2. Development
+```bash
+npm run build
+```
 
-- [x] Exported props are 15 or fewer (declared props).
-- [x] Nested nodes are 5 or fewer.
-- [ ] Level of nodes is 10 or fewer (loops don't count).
-- [x] Self-containment: The component shouldn't affect anything outside itself.
+You can preview the production build with `npm run preview`.
 
-### 3. Post-Development
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
-- [x] Component name has a maximum of 20 characters.
+## Publishing
 
-## Documentation
+Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
 
-Visit https://ui.centlax.com to explore the documentation.
+To publish your library to [npm](https://www.npmjs.com):
 
-## Credits
-
-- [sveltejs/svelte](https://github.com/sveltejs/svelte)
-- [svecosystem/mode-watcher](https://github.com/svecosystem/mode-watcher)
-- [tailwindlabs/tailwindcss](https://github.com/tailwindlabs/tailwindcss)
-- [melt-ui/melt-ui](https://github.com/melt-ui/melt-ui)
-- [egoist/tailwindcss-icons](https://github.com/egoist/tailwindcss-icons)
-
-## Contributing
-
-Thank you for considering contributing to Centlax UI. Here are a few ways you can get involved:
-
-- Reporting Bugs: If you come across any bugs or issues, please check out the reporting bugs guide to learn how to submit a bug report.
-- Suggestions: Have any thoughts to enhance Centlax UI? We'd love to hear them! Check out the [contribution guide](https://ui.centlax.com/start/contribute) to share your suggestions.
-
-## Local Development
-
-Follow the docs to [Set up your local development environment](https://ui.centlax.com/start/contribute#local-dev-setup) and contribute.
-
-## License
-
-Licensed under the [MIT license](https://github.com/centlax/ui/blob/dev/LICENSE.md).
+```bash
+npm publish
+```

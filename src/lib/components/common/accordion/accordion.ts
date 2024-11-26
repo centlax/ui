@@ -1,29 +1,31 @@
+/** Imports */
+import type { Item } from '$lib/types/item.js';
+import type { BaseProps } from '$lib/types/prop.js';
+import type { TransitionParams } from '$lib/types/transition.js';
+import type { TransformKeysToKebab } from '$lib/types/utils.js';
+import type { Styles } from '$lib/types/ui.js';
 import type { CreateAccordionProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { AccordionLink } from '$lib/types/link.js';
-import type { Styles, DeepStyles } from '$lib/pkgs/utian/type.js';
+import type { SlideParams } from 'svelte/transition';
 
+/** Styles */
 const styles = {
 	root: {},
-	item: {
-		motion: 'transition-colors',
-		trigger: {
-			motion: 'transition-colors',
-			first: {}
-		},
-		content: {
-			layout: 'overflow-hidden'
-		}
-	}
+	item: {},
+	trigger: {},
+	content: {}
 } satisfies Styles;
 export const accordion = styles;
 
-export interface AccordionProps extends Omit<HTMLAttributes<HTMLDivElement>, 'class'> {
-	class?: string | DeepStyles<typeof accordion>;
+/** Props */
+type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> &
+	Omit<TransformKeysToKebab<CreateAccordionProps>, 'value'>;
+export interface AccordionProps<T extends Item<T>> extends BaseProps<typeof accordion>, Props {
 	children?: Snippet;
-	links?: AccordionLink[];
-	multiple?: CreateAccordionProps['multiple'];
-	disabled?: CreateAccordionProps['disabled'];
-	visible?: CreateAccordionProps['forceVisible'];
+	trigger?: Snippet<[T]>;
+	content?: Snippet<[T]>;
+	items: T[];
+	transition?: TransitionParams<SlideParams>;
+	as?: string;
 }

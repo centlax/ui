@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ULayout } from '$lib/index.js';
-	import '../app.css';
+	import '$lib/theme/app.css';
+	import { UProvider } from '$lib/index.js';
 	let { children } = $props();
 </script>
 
-<ULayout>
+<UProvider>
 	{@render children()}
-</ULayout>
+</UProvider>

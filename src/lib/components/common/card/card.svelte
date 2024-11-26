@@ -1,29 +1,24 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	/** Imports */
+	import { useUI } from '$lib/composables/ui.js';
+	import { cn, st } from '$lib/utils/wind.js';
+	import { card, type CardProps } from './card.js';
 
-	interface Props extends HTMLAttributes<HTMLDivElement> {
-		children: Snippet;
-	}
+	/** Props */
+	let { ...props }: CardProps = $props();
 
-	let { children, ...props }: Props = $props();
+	/** Styles */
+	const ui = useUI(card, props.class, props.override);
 </script>
 
-{#snippet north()}
-	<div class="px-4 py-5 sm:px-6">
-		{@render north()}
-	</div>
-{/snippet}
-{#snippet south()}
-	<div class="px-4 py-5 sm:px-6">
-		{@render north()}
-	</div>
-{/snippet}
-
-<div {...props} class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
-	{@render north()}
-	<div class="px-4 py-5 sm:p-6">
-		{@render children()}
-	</div>
-	{@render south()}
+<div data-ui="card" {...props} class={cn(st(ui.root), ui.class)}>
+	{#if props.north}
+		<div class={st(ui.north)}>{@render props.north()}</div>
+	{/if}
+	{#if props.children}
+		<div class={st(ui.center)}>{@render props.children()}</div>
+	{/if}
+	{#if props.south}
+		<div class={st(ui.south)}>{@render props.south()}</div>
+	{/if}
 </div>

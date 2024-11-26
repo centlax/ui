@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const composablesDir = 'src/lib/composables/use/';
+const composablesDir = 'src/lib/composables/';
 const importsFile = path.join('src/lib/config/import/composables.ts');
 
 function generateImports(dirPath) {
@@ -14,7 +14,7 @@ function generateImports(dirPath) {
 
 		if (!stats.isDirectory() && file.endsWith('.ts')) {
 			const fileNameWithoutExtension = path.basename(file, '.ts');
-			const importPath = `../../composables/use/${fileNameWithoutExtension}.js`;
+			const importPath = `../../composables/${fileNameWithoutExtension}.js`;
 			imports.push(`export * from '${importPath}';`);
 		}
 	}

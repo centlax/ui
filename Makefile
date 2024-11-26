@@ -1,3 +1,4 @@
+# Git commands to add, commit, and sync branches
 git:
-	@echo "Git add & commit"
-	bash .config/git.sh
+	@echo "Running Git add & commit process..."
+	bash .scripts/git.sh

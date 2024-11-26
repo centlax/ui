@@ -1,13 +1,16 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
-	import type { HTMLAttributes } from 'svelte/elements';
+	/** Imports */
+	import { type ContainerProps, container } from './container.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { cn, st } from '$lib/utils/wind.js';
 
-	interface containerProps extends HTMLAttributes<HTMLDivElement> {
-		children: Snippet;
-	}
-	let { children, ...props }: containerProps = $props();
+	/** Props */
+	let { ...props }: ContainerProps = $props();
+
+	/** Styles */
+	const ui = useUI(container, props.class, props.override);
 </script>
 
-<div {...props} class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-	{@render children()}
+<div data-ui="layout" {...props} class={cn(st(ui.root), ui.class)}>
+	{@render props.children()}
 </div>
