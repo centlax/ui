@@ -3,7 +3,7 @@ import type { Item } from '$lib/types/item.js';
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
@@ -19,8 +19,7 @@ const styles = {
 export const siteFooter = styles;
 
 /** Props */
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'>;
-
+type Props = Omit<SvelteHTMLElements['footer'], 'class'>;
 export interface SiteFootProps<T extends Item<T>> extends BaseProps<typeof siteFooter>, Props {
 	items: T[];
 	north?: Snippet;
@@ -32,5 +31,5 @@ export interface SiteFootProps<T extends Item<T>> extends BaseProps<typeof siteF
 	east?: Snippet;
 	south?: Snippet;
 	notice?: string;
-	logo?: Snippet
+	logo?: Snippet;
 }

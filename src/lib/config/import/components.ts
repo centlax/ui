@@ -1,12 +1,10 @@
 /** application */
 export { default as UCheckbox } from '../../components/application/checkbox/checkbox.svelte';
-export { default as UCombobox } from '../../components/application/combobox/combobox.svelte';
 export { default as UContext } from '../../components/application/context/context.svelte';
 export { default as UDashAside } from '../../components/application/dash/aside.svelte';
 export { default as UDashHeader } from '../../components/application/dash/header.svelte';
 export { default as UDashLayout } from '../../components/application/dash/layout.svelte';
 export { default as UDashMain } from '../../components/application/dash/main.svelte';
-export { default as UDropdown } from '../../components/application/dropdown/dropdown.svelte';
 export { default as UField } from '../../components/application/field/field.svelte';
 export { default as UFormDebug } from '../../components/application/form/debug.svelte';
 export { default as UForm } from '../../components/application/form/form.svelte';

@@ -3,6 +3,7 @@
 		UButton,
 		UContainer,
 		UIcon,
+		UInput,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -35,24 +36,25 @@
 <USiteLayout>
 	<UContainer>
 		<USheet class="w-full  sm:max-w-sm">
-		<!-- Header -->
-		<USiteHeader logo={centlax} items={heads} />
+			<!-- Header -->
+			<USiteHeader logo={centlax} items={heads} />
 
-		<!-- Aside -->
-		{#snippet content()}
-			<USiteAside />
-		{/snippet}
-	</USheet>
+			<!-- Aside -->
+			{#snippet content()}
+				<USiteAside items={heads} />
+			{/snippet}
+		</USheet>
 
-	<!-- Main  -->
-	<USiteMain>
-		<UButton onclick={dark.toggle}>dark</UButton>
+		<!-- Main  -->
+		<USiteMain>
+			<UButton onclick={dark.toggle}>dark</UButton>
+			<UInput disabled placeholder="you@example.com" />
+			<UInput color="green" placeholder="you@example.com" />
 
-		{@render children?.()}
-	</USiteMain>
+			{@render children?.()}
+		</USiteMain>
 
-	<!-- Footer -->
-	<USiteFooter logo={centlax} notice="Centlax &copy; 2024. All rights reserved." items={foots} />
+		<!-- Footer -->
+		<USiteFooter logo={centlax} notice="Centlax &copy; 2024. All rights reserved." items={foots} />
 	</UContainer>
-	
 </USiteLayout>

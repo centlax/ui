@@ -16,75 +16,106 @@
 		}
 	});
 </script>
-<footer class="dark:bg-neutral-900/50 bg-white pb-8 pt-16 sm:pt-24  lg:pt-32">
+
+<footer class="bg-white pb-8 pt-16 dark:bg-neutral-900/50 sm:pt-24 lg:pt-32">
 	<div class="xl:grid xl:grid-cols-3 xl:gap-8">
 		{@render props.logo?.()}
 		<div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
 			<div class="md:grid md:grid-cols-2 md:gap-8">
 				<div>
-					<h3 class="text-sm/6 font-semibold ">Solutions</h3>
+					<h3 class="text-sm/6 font-semibold">Solutions</h3>
 					<ul role="list" class="mt-6 space-y-4">
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Marketing</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Marketing</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Analytics</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Analytics</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Automation</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Automation</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Commerce</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Commerce</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Insights</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Insights</a
+							>
 						</li>
 					</ul>
 				</div>
 				<div class="mt-10 md:mt-0">
-					<h3 class="text-sm/6 font-semibold ">Support</h3>
+					<h3 class="text-sm/6 font-semibold">Support</h3>
 					<ul role="list" class="mt-6 space-y-4">
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Submit ticket</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Submit ticket</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Documentation</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Documentation</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Guides</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Guides</a
+							>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div class="md:grid md:grid-cols-2 md:gap-8">
 				<div>
-					<h3 class="text-sm/6 font-semibold ">Company</h3>
+					<h3 class="text-sm/6 font-semibold">Company</h3>
 					<ul role="list" class="mt-6 space-y-4">
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">About</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>About</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Blog</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Blog</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Jobs</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Jobs</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Press</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Press</a
+							>
 						</li>
 					</ul>
 				</div>
 				<div class="mt-10 md:mt-0">
-					<h3 class="text-sm/6 font-semibold ">Legal</h3>
+					<h3 class="text-sm/6 font-semibold">Legal</h3>
 					<ul role="list" class="mt-6 space-y-4">
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Terms of service</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Terms of service</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">Privacy policy</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>Privacy policy</a
+							>
 						</li>
 						<li>
-							<a href="/" class="text-sm/6 text-neutral-600 dark:text-neutral-400 hover:text-white">License</a>
+							<a href="/" class="text-sm/6 text-neutral-600 hover:text-white dark:text-neutral-400"
+								>License</a
+							>
 						</li>
 					</ul>
 				</div>
@@ -122,7 +153,7 @@
 	</div>
 	<div class="mt-8 border-t border-white/10 pt-8 md:flex md:items-center md:justify-between">
 		<div class="flex gap-x-6 md:order-2">
-			<a href="/" class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-300">
+			<a href="/" class="text-neutral-600 hover:text-neutral-300 dark:text-neutral-400">
 				<span class="sr-only">Facebook</span>
 				<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 					<path
@@ -132,7 +163,7 @@
 					/>
 				</svg>
 			</a>
-			<a href="/" class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-300">
+			<a href="/" class="text-neutral-600 hover:text-neutral-300 dark:text-neutral-400">
 				<span class="sr-only">Instagram</span>
 				<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 					<path
@@ -142,7 +173,7 @@
 					/>
 				</svg>
 			</a>
-			<a href="/" class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-300">
+			<a href="/" class="text-neutral-600 hover:text-neutral-300 dark:text-neutral-400">
 				<span class="sr-only">X</span>
 				<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 					<path
@@ -150,7 +181,7 @@
 					/>
 				</svg>
 			</a>
-			<a href="/" class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-300">
+			<a href="/" class="text-neutral-600 hover:text-neutral-300 dark:text-neutral-400">
 				<span class="sr-only">GitHub</span>
 				<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 					<path
@@ -160,7 +191,7 @@
 					/>
 				</svg>
 			</a>
-			<a href="/" class="text-neutral-600 dark:text-neutral-400 hover:text-neutral-300">
+			<a href="/" class="text-neutral-600 hover:text-neutral-300 dark:text-neutral-400">
 				<span class="sr-only">YouTube</span>
 				<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
 					<path

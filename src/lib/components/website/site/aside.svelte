@@ -1,3 +1,17 @@
+<script lang="ts" generics="T extends Item<T>">
+	/** Imports */
+	import type { Item } from '$lib/types/item.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { st, cn } from '$lib/utils/wind.js';
+	import { siteAside, type SiteAsideProps } from './aside.js';
+
+	/** Props */
+	let { items, ...props }: SiteAsideProps<T> = $props();
+
+	/** Styles */
+	const ui = useUI(siteAside, props.class, props.override);
+</script>
+
 <!-- Mobile menu, show/hide based on menu open state. -->
 <div class="lg:hidden" role="dialog" aria-modal="true">
 	<!-- Background backdrop, show/hide based on slide-over state. -->

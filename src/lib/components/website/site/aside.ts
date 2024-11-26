@@ -3,7 +3,7 @@ import type { Item } from '$lib/types/item.js';
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
@@ -27,7 +27,7 @@ const styles = {
 export const siteAside = styles;
 
 /** Props */
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'>;
+type Props = Omit<SvelteHTMLElements['aside'], 'class'>;
 export interface SiteAsideProps<T extends Item<T>> extends BaseProps<typeof siteAside>, Props {
 	items: T[];
 	children?: Snippet;

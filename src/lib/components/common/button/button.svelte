@@ -1,21 +1,16 @@
 <script lang="ts">
 	/** Imports  */
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn, colorize } from '$lib/utils/wind.js';
+	import { st, cn, cl } from '$lib/utils/wind.js';
 	import { type ButtonProps, button } from './button.js';
 
 	/** Props  */
-	let { variant = 'solid', color = 'color', size = 'md', ...props }: ButtonProps = $props();
+	let { color = 'primary', ...props }: ButtonProps = $props();
 
 	/** Styles  */
 	const ui = useUI(button, props.class, props.override);
 	let css = $state({
-		button: st(
-			ui.root,
-			// @ts-ignore
-			ui.opt.variant[variant][color],
-			ui.opt.size[size]
-		)
+		button: st(ui.root)
 	});
 </script>
 
@@ -24,7 +19,7 @@
 	{...props}
 	class={cn(css.button, ui.class)}
 	data-ui="button"
-	style={colorize('red')}
+	style={cl(color)}
 >
 	{#if props.children}
 		{@render props.children?.()}

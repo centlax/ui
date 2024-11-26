@@ -11,6 +11,6 @@
 	const ui = useUI(siteLayout, props.class, props.override);
 </script>
 
-<div class={cn(st(ui.root), ui.class)} aria-label="Global">
+<div class={cn(st(ui.root), ui.class)} aria-label="top">
 	{@render props.children?.()}
 </div>

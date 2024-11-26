@@ -8,15 +8,12 @@ import type { CreateDialogProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { FadeParams } from 'svelte/transition';
+import { shared } from '$lib/theme/styles/index.js';
 
 /** Styles */
 const styles = {
-	root: {
-		flex: ''
-	},
-	overlay: {
-		flex: 'fixed inset-0 z-50 transition-colors bg-black/50 backdrop-blur-sm'
-	},
+	root: {},
+	overlay: shared.overlay,
 	content: {
 		flex: 'fixed z-50 left-[50%] top-[50%]  -translate-x-1/2 -translate-y-1/2 focus:outline-none'
 	}
