@@ -2,7 +2,6 @@
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import { statify } from '$lib/utils/wind.js';
-import type { Snippet } from 'svelte';
 import type { HTMLInputAttributes } from 'svelte/elements';
 
 /** Styles */
@@ -30,6 +29,5 @@ export const input = styles;
 /** Props */
 type Props = Omit<HTMLInputAttributes, 'class'>;
 export interface InputProps extends BaseProps<typeof input>, Props {
-	children?: Snippet;
 	color?: string;
 }

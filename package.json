@@ -33,7 +33,6 @@
 			"svelte": "./dist/index.js"
 		},
 		"./tailwind": "./dist/config/plugins/tailwind/index.js"
-
 	},
 	"dependencies": {
 		"@internationalized/date": "^3.6.0",

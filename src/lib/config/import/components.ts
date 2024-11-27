@@ -20,6 +20,7 @@ export { default as UBadge } from '../../components/common/badge/badge.svelte';
 export { default as UButton } from '../../components/common/button/button.svelte';
 export { default as UCard } from '../../components/common/card/card.svelte';
 export { default as UContainer } from '../../components/common/container/container.svelte';
+export { default as UInputGroup } from '../../components/common/input/group.svelte';
 export { default as UInput } from '../../components/common/input/input.svelte';
 export { default as UMenu } from '../../components/common/menu/menu.svelte';
 export { default as UProvider } from '../../components/common/provider/provider.svelte';
