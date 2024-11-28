@@ -13,7 +13,7 @@
 		USiteMain
 	} from '$lib/index.js';
 	import type { Snippet } from 'svelte';
-	import Logo from '../logo.svelte';
+	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
 
@@ -35,13 +35,13 @@
 
 <USiteLayout>
 	<UContainer>
-		<USheet class="w-full  sm:max-w-sm">
+		<USheet transition={{ duration: 300 }} class="w-full sm:max-w-sm">
 			<!-- Header -->
 			<USiteHeader logo={centlax} items={heads} />
 
 			<!-- Aside -->
 			{#snippet content()}
-				<USiteAside items={heads} />
+				<USiteAside logo={centlax} items={heads} />
 			{/snippet}
 		</USheet>
 

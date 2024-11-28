@@ -1,4 +1,4 @@
-export const defaultColors = {
+export const _default = {
 	inherit: 'inherit',
 	current: 'currentColor',
 	transparent: 'transparent',

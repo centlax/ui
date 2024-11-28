@@ -11,8 +11,7 @@ const styles = {
 	root: {
 		layout: clsx(
 			'relative isolate block',
-			'[&_input]:has-[[data-ui=icon]:first-child]:pl-10 [&_input]:has-[[data-ui=icon]:last-child]:pr-10 ',
-            
+			'[&_input]:has-[[data-ui=icon]:first-child]:pl-10 [&_input]:has-[[data-ui=icon]:last-child]:pr-10 '
 		)
 	}
 } satisfies Styles;

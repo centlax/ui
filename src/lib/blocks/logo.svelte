@@ -6,5 +6,8 @@
 
 <span
 	{...props}
-	class={cn('i-fluent-target-arrow-16-filled size-10 rotate-45 text-sky-500', props.class)}
+	class={cn(
+		'i-fluent-target-arrow-16-filled -ml-1 block size-10 rotate-45 text-sky-500 ',
+		props.class
+	)}
 ></span>

@@ -9,7 +9,7 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 const styles = {
 	/** absolute inset-x-0 top-0 z-50  for staying up */
 	root: {
-		layout: 'flex items-center justify-between p-6 lg:px-8',
+		layout: 'flex items-center justify-between',
 		typography: 'text-neutral-900 dark:text-white'
 	},
 	west: {

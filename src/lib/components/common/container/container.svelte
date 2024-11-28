@@ -11,6 +11,6 @@
 	const ui = useUI(container, props.class, props.override);
 </script>
 
-<div data-ui="layout" {...props} class={cn(st(ui.root), ui.class)}>
+<div id="container" data-ui="layout" {...props} class={cn(st(ui.root), ui.class)}>
 	{@render props.children()}
 </div>

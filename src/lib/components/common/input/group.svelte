@@ -10,7 +10,6 @@
 
 	/** Styles */
 	const ui = useUI(inputGroup, props.class, props.override);
-	
 
 	/** Melt Context */
 </script>

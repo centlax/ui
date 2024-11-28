@@ -4,7 +4,7 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteHead, type SiteHeadProps } from './header.js';
-	import { UIcon, UTooltip } from '$lib/index.js';
+	import { UIcon, UToggle, UTooltip } from '$lib/index.js';
 
 	/** Props */
 	let { items, ...props }: SiteHeadProps<T> = $props();
@@ -17,32 +17,15 @@
 	<a href="/" class="text-sm/6 font-semibold text-neutral-900 dark:text-white">{it.label}</a>
 {/snippet}
 
-<div class="flex items-center justify-between bg-transparent py-6" aria-label="Global">
+<header id="site-header" class="flex w-full items-center justify-between py-6" aria-label="global">
 	<div class="flex lg:flex-1">
 		{@render props.logo?.()}
 	</div>
 	<div class="flex lg:hidden">
-		<button
-			type="button"
-			class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-neutral-700"
-		>
+		<UToggle as="button" class="flex lg:hidden">
 			<span class="sr-only">Open main menu</span>
-			<svg
-				class="size-6"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				aria-hidden="true"
-				data-slot="icon"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-				/>
-			</svg>
-		</button>
+			<UIcon class="size-6" name="i-fluent-text-align-justify-24-regular" />
+		</UToggle>
 	</div>
 	<nav class="hidden lg:flex lg:gap-x-12">
 		{#each items as it}
@@ -52,4 +35,4 @@
 	<div class="hidden lg:flex lg:flex-1 lg:justify-end">
 		<a href="/" class="text-sm/6 font-semibold">Log in <span aria-hidden="true">&rarr;</span></a>
 	</div>
-</div>
+</header>
