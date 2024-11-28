@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '$lib/theme/app.css';
+	import '../app.css';
 	import { UProvider } from '$lib/index.js';
 	let { children } = $props();
 </script>

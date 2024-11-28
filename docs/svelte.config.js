@@ -11,7 +11,6 @@ if (process.env.ADAPTER === 'CDF') {
 	adapter = adapterAuto();
 }
 
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
@@ -21,7 +20,7 @@ const config = {
 	kit: {
 		adapter,
 		alias: {
-			'$md/*': './src/md',
+			'$md/*': './src/md'
 		}
 	},
 

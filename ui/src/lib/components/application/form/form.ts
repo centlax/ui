@@ -1,6 +1,6 @@
 import type { Snippet } from 'svelte';
 import type { HTMLFormAttributes } from 'svelte/elements';
-import type { SuperForm } from 'sveltekit-superforms/client';
+import type { SuperForm } from 'sveltekit-superforms';
 
 const styles = {};
 export const form = styles;

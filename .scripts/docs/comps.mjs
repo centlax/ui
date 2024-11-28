@@ -39,7 +39,7 @@ const generateImports = (dirPath) => {
 			const importPath = `/src/md/${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
 			imports[importName] = {
 				path: importPath,
-				category: toKebabCase(category),
+				category: toKebabCase(category)
 				//group: toKebabCase(group)
 			};
 		}

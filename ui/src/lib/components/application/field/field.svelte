@@ -1,7 +1,5 @@
 <script lang="ts">
 	/** Imports  */
-	import { ctxForm, ctxField } from '$lib/composables/form.js';
-	import { formFieldProxy } from 'sveltekit-superforms';
 	import { field, type FieldProps } from './field.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
@@ -10,23 +8,14 @@
 	/** Props  */
 	let { name, ...props }: FieldProps = $props();
 
-	const _form = ctxForm();
-	const form = _form.get();
-
-	const proxy = formFieldProxy(form, name);
-	const ctx = ctxField();
-	ctx.set(proxy, name);
-
-	const { errors } = proxy;
-
 	/** Styles  */
 	const ui = useUI(field, props.class, props.override);
 </script>
 
 {#snippet _error()}
 	<p transition:fade class={st(ui.error)}>
-		{#if typeof props.error === 'string' || $errors}
-			{props.error || $errors?.[0]}
+		{#if typeof props.error === 'string'}
+			{props.error}
 		{:else}
 			{@render props.error?.()}
 		{/if}
@@ -45,7 +34,7 @@
 
 <div {...props} class={cn(st(ui.root), ui.class)}>
 	{@render props.children?.()}
-	{#if props.error || $errors}
+	{#if props.error}
 		{@render _error()}
 	{:else}
 		{@render _help()}

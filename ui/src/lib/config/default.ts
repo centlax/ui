@@ -33,7 +33,7 @@ type BackgroundColors = (typeof colors.background)[number];
 export const defaultConfig = {
 	colors: {
 		primary: 'sky' as ForegroundColors | (string & {}), // Allow predefined + custom strings
-		neutral: 'stone' as BackgroundColors | (string & {}), // Allow predefined + custom strings
+		neutral: 'warm' as BackgroundColors | (string & {}), // Allow predefined + custom strings
 		success: 'green' as ForegroundColors | (string & {}),
 		warning: 'yellow' as ForegroundColors | (string & {}),
 		danger: 'red' as ForegroundColors | (string & {}),

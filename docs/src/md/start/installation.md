@@ -48,7 +48,7 @@ Update your tailwind.config.js file to include Centlax UI's preset as starting b
 import centlax from '@centlax/ui/tailwind';
 /** @type {import('tailwindcss').Config} */
 export default {
-    content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts}'],
 	presets: [centlax()]
 };
 ```
@@ -70,7 +70,7 @@ Create a ./src/routes/+layout.svelte file and import the app.css file.
 ```svelte
 <script lang="ts">
 	import '../app.css';
-    import { UProvider } from '@centlax/ui';
+	import { UProvider } from '@centlax/ui';
 	let { children } = $props();
 </script>
 
@@ -88,7 +88,7 @@ Now you can start using Centlax UI components in your project:
 	import { UButton } from '@centlax/ui';
 </script>
 
-<UButton class="bg-red-500" >Click me!</UButton>
+<UButton class="bg-red-500">Click me!</UButton>
 ```
 
 ## Start your build process

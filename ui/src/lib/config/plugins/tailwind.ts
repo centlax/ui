@@ -1,6 +1,5 @@
 import { getIconCollections, iconsPlugin } from '@egoist/tailwindcss-icons';
 import type { Config } from 'tailwindcss';
-import aspectRatio from '@tailwindcss/aspect-ratio';
 import containerQueries from '@tailwindcss/container-queries';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
@@ -10,10 +9,6 @@ import { _default } from '../../theme/colors/index.js';
 export default function (): Partial<Config> {
 	return {
 		darkMode: 'class',
-		content: [
-			'./src/**/*.{html,js,svelte,ts}',
-			'./node_modules/@centlax/ui/**/*.{html,js,svelte,ts}'
-		],
 		theme: {
 			container: {
 				center: true,
@@ -107,10 +102,9 @@ export default function (): Partial<Config> {
 			}
 		},
 		plugins: [
-			forms,
-			typography,
+			forms(),
+			typography(),
 			containerQueries,
-			aspectRatio,
 			colorize,
 			iconsPlugin({
 				collections: getIconCollections(['fluent']),

@@ -7,8 +7,8 @@ import type { HTMLLabelAttributes } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		flex: 'flex justify-between',
-		typography: 'block text-sm/6 font-medium text-neutral-900 dark:bg-white'
+		layout: 'block',
+		typography: 'text-sm/6 font-medium text-neutral-900 dark:text-white'
 	}
 } satisfies Styles;
 export const label = styles;
@@ -17,4 +17,5 @@ export const label = styles;
 type Props = Omit<HTMLLabelAttributes, 'class'>;
 export interface LabelProps extends BaseProps<typeof label>, Props {
 	children?: Snippet;
+	text?: string;
 }
