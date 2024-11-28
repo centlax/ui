@@ -1,4 +1,12 @@
 /** components */
-export * from '$lib/config/import/components.js';
-export * from '$lib/config/import/composables.js';
-export * from '$lib/config/import/types.js';
+export * from '$lib/components/export.js';
+
+/** composables */
+export * from '$lib/composables/export.js';
+
+/** types */
+export * from '$lib/types/export.js';
+
+/** utils */
+export * from '$lib/utils/export.js';
+

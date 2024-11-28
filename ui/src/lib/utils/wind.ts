@@ -60,7 +60,7 @@ export function statify(state: State): string {
  * colorize('sky');
  * // Output: "--color-50: var(--color-sky-50); --color-100: var(--color-sky-100); ..."
  */
-export function kl(color: string = 'primary'): string {
+export function co(color: string = 'primary'): string {
 	const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 	return shades.map((shade) => `--color-${shade}: var(--color-${color}-${shade});`).join(' ');
 }

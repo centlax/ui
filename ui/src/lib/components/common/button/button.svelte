@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports  */
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn, kl } from '$lib/utils/wind.js';
+	import { st, cn, co } from '$lib/utils/wind.js';
 	import { type ButtonProps, button } from './button.js';
 
 	/** Props  */
@@ -19,7 +19,7 @@
 	{...props}
 	class={cn(css.button, ui.class)}
 	data-ui="button"
-	style={kl(color)}
+	style={co(color)}
 >
 	{#if props.children}
 		{@render props.children?.()}

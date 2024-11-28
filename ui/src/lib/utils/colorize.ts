@@ -1,5 +1,5 @@
 import type { PluginCreator } from 'tailwindcss/types/config.js';
-import { hexToRgb } from '../../../utils/hex.js';
+import { hexToRgb } from './hex.js';
 
 // Define the type for the color object
 type ColorObject = {

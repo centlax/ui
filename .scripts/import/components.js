@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const libDir = 'src/lib';
+const libDir = 'ui/src/lib';
 const componentsDir = path.join(libDir, 'components');
-const importsFile = path.join(libDir, 'config/import/components.ts');
+const importsFile = path.join(libDir, 'components/export.ts');
 
 const clearAndUpper = (text) => text.replace(/-/, '').toUpperCase();
 const toPascalCase = (str) => str.replace(/(^\w|-\w)/g, clearAndUpper);
@@ -31,7 +31,7 @@ function generateImports(dirPath, imports = [], level = 0) {
 				importName = `${pascalCaseDirName}${pascalCaseFileName}`;
 			}
 
-			const importPath = `../../${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
+			const importPath = `$lib/${path.relative(libDir, filePath).replace(/\\/g, '/')}`;
 			imports.push(`export { default as U${importName} } from '${importPath}';`);
 		}
 	}

@@ -1,6 +1,6 @@
 /** src/app.ts */
 /** NOT IN USE YET. */
-import type { UserConfig as UI } from '$lib/config/plugins/app/default.js';
+import type { UserConfig as UI } from '$lib/config/default.js';
 export const primary = 'teal';
 
 export default defineApp({

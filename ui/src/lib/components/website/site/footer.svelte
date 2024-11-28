@@ -92,7 +92,7 @@
 			<div>
 				<h3 class="text-sm/6 font-semibold text-white">Subscribe to our newsletter</h3>
 				<p class="mt-2 text-sm/6 text-neutral-300">
-					The latest news, articles, and resources, sent to your inbox weekly.
+					The latest news, articles, and resources, sent to your inbox weecoy.
 				</p>
 			</div>
 			<form class="mt-6 sm:flex sm:max-w-md lg:mt-0">

@@ -4,8 +4,8 @@ import aspectRatio from '@tailwindcss/aspect-ratio';
 import containerQueries from '@tailwindcss/container-queries';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-import colorize from './colorize.js';
-import { _default } from './colors.js';
+import colorize from '../../utils/colorize.js';
+import { _default } from '../../theme/colors/index.js';
 
 export default function (): Partial<Config> {
 	return {
