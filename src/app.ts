@@ -7,7 +7,7 @@ export default defineApp({
 	modules: ['@centlax/ui'],
 	ui: {
 		colors: {
-			primary: 'sky',
+			primary: 'fuchsia',
 			neutral: 'warm'
 		}
 	}
