@@ -8,7 +8,10 @@
 		"ato": "node .scripts/import.js",
 		"site": "pnpm --filter @ui/docs --",
 		"play": "pnpm --filter @ui/play --",
-		"ui": "pnpm --filter @centlax/ui --"
+		"ui": "pnpm --filter @centlax/ui --",
+		"cs:init": "changeset",
+		"cs:version": "changeset version",
+		"cs:publish": "changeset publish"
 	},
 	"files": [
 		"dist",
@@ -18,7 +21,6 @@
 	"sideEffects": [
 		"**/*.css"
 	],
-
 	"peerDependencies": {
 		"svelte": "^5.0.0"
 	},
@@ -34,8 +36,6 @@
 		"svelte-check": "^4.1.0",
 		"typescript": "^5.7.2",
 		"typescript-eslint": "^8.16.0"
-	
-		
 	},
 	"prettier": {
 		"useTabs": true,
@@ -54,5 +54,8 @@
 				}
 			}
 		]
+	},
+	"dependencies": {
+		"@changesets/cli": "^2.27.10"
 	}
 }

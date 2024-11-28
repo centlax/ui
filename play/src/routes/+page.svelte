@@ -11,8 +11,7 @@
 		UInput,
 		UAvatar,
 		UDashLayout,
-
-		UButton,
+		UButton
 	} from '@centlax/ui';
 	import { data } from './one';
 	const dark = useDark();
@@ -24,9 +23,7 @@
 		sheet = false;
 	}
 	const { asides } = data;
-
 </script>
-
 
 {#snippet aside()}
 	<UDashAside item-dismiss={dismiss} items={asides}>

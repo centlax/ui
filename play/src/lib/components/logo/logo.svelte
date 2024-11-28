@@ -4,5 +4,5 @@
 
 <span
 	{...props}
-	class="i-fluent-target-arrow-16-filled -ml-1 block size-10 rotate-45 text-primary-500"
+	class="i-fluent-target-arrow-16-filled text-primary-500 -ml-1 block size-10 rotate-45"
 ></span>

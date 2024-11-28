@@ -1,6 +1,9 @@
 <script lang="ts">
-	import '../app.css';
+	import { UProvider } from '@centlax/ui';
+	import '$lib/assets/app.css';
 	let { children } = $props();
 </script>
 
-{@render children()}
+<UProvider>
+	{@render children()}
+</UProvider>

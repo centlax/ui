@@ -1,6 +1,9 @@
 {
 	"name": "@centlax/ui",
-	"version": "1.0.0",
+	"version": "1.0.1",
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
