@@ -4,6 +4,8 @@
 	let { children } = $props();
 </script>
 
-<UProvider>
+<UProvider class="bg-white dark:bg-neutral-900 h-full w-full">
 	{@render children()}
 </UProvider>
+
+
