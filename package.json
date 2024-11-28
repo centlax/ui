@@ -2,6 +2,7 @@
 	"name": "@ui/root",
 	"version": "1.0.0",
 	"private": true,
+	"packageManager": "pnpm@9.13.2",
 	"scripts": {
 		"fmt": "prettier --write --check .",
 		"lint": "prettier --check . && eslint .",
