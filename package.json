@@ -1,0 +1,61 @@
+{
+	"name": "@ui/root",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"fmt": "prettier --write --check .",
+		"lint": "prettier --check . && eslint .",
+		"ato": "node .scripts/import.js",
+		"site": "pnpm --filter @ui/docs --",
+		"play": "pnpm --filter @ui/play --",
+		"ui": "pnpm --filter @centlax/ui --",
+		"cs:init": "changeset",
+		"cs:version": "changeset version",
+		"cs:publish": "changeset publish"
+	},
+	"files": [
+		"dist",
+		"!dist/**/*.test.*",
+		"!dist/**/*.spec.*"
+	],
+	"sideEffects": [
+		"**/*.css"
+	],
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "^4.0.2",
+		"@types/eslint-config-prettier": "^6.11.3",
+		"eslint": "^9.15.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-svelte": "^2.46.0",
+		"prettier": "^3.4.0",
+		"prettier-plugin-svelte": "^3.3.2",
+		"prettier-plugin-tailwindcss": "^0.6.9",
+		"svelte-check": "^4.1.0",
+		"typescript": "^5.7.2",
+		"typescript-eslint": "^8.16.0"
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"trailingComma": "none",
+		"printWidth": 100,
+		"plugins": [
+			"prettier-plugin-svelte",
+			"prettier-plugin-tailwindcss"
+		],
+		"overrides": [
+			{
+				"files": "*.svelte",
+				"options": {
+					"parser": "svelte"
+				}
+			}
+		]
+	},
+	"dependencies": {
+		"@changesets/cli": "^2.27.10"
+	}
+}
