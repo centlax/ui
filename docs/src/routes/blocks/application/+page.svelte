@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from '$lib/blocks/logo.svelte';
+	import Logo from '$lib/components/logo/logo.svelte';
 	import {
 		UDashAside,
 		USheet,
@@ -11,8 +11,7 @@
 		UInput,
 		UAvatar,
 		UDashLayout
-	} from '$lib/index.js';
-	import { data } from './one.js';
+	} from '@centlax/ui';
 	const dark = useDark();
 	let sheet = $state(false);
 	function toggle() {
@@ -21,6 +20,7 @@
 	function dismiss() {
 		sheet = false;
 	}
+	let { data } = $props();
 	const { asides } = data;
 </script>
 
@@ -31,7 +31,6 @@
 		{/snippet}
 	</UDashAside>
 {/snippet}
-
 <UDashLayout>
 	<USheet
 		transition={{ duration: 250 }}

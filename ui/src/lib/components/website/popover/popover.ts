@@ -27,4 +27,5 @@ export interface PopoverProps extends BaseProps<typeof popover>, Props {
 	value?: boolean;
 	transition?: TransitionParams<FadeParams>;
 	as?: keyof HTMLElementTagNameMap;
+	'trigger-as'?: keyof HTMLElementTagNameMap;
 }

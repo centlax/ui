@@ -2,9 +2,9 @@
 import type { Item } from '$lib/types/item.js';
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import { statify } from '$lib/utils/wind.js';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
+import type { DashAsideItemProps } from './aside-item.js';
 
 /** Styles */
 const styles = {
@@ -13,7 +13,7 @@ const styles = {
 		flex: 'flex h-full grow flex-col gap-y-5',
 		border: 'ring-1 ring-black/10 dark:ring-white/10',
 		background: 'bg-white dark:bg-neutral-900',
-		spacing: 'px-6 pb-4 '
+		spacing: 'px-6 pb-4'
 	},
 	north: {
 		flex: 'flex shrink-0 items-center',
@@ -26,35 +26,9 @@ const styles = {
 			title: {
 				typography: 'text-xs/6 font-semibold text-neutral-400'
 			},
-			ul: {
-				spacing: '-mx-2 space-y-1',
-				li: {
-					a: {
-						flex: 'group flex gap-x-3 ',
-						typography: 'font-semibold text-sm/6 ',
-						border: 'rounded-md',
-						spacing: 'py-1.5 px-2',
-						is: {
-							active: {
-								typography: 'text-neutral-900  dark:text-white',
-								background: 'bg-neutral-50 dark:bg-neutral-800',
-								border: 'ring-1 ring-black/[0.025] dark:ring-white/[0.085]',
-								effect: 'shadow-sm'
-							},
-							inactive: {
-								typography: statify({
-									default: 'text-neutral-600 dark:text-neutral-400',
-									hover: 'hover:text-neutral-900 dark:hover:text-white'
-								}),
-								background: 'hover:bg-neutral-50 dark:hover:bg-neutral-800'
-							}
-						}
-					},
-					icon: {
-						flex: 'shrink-0',
-						sizing: 'size-6 '
-					}
-				}
+			items: {
+				grid: 'grid grid-cols-1 gap-y-2',
+				spacing: '-mx-2'
 			}
 		}
 	},
@@ -70,6 +44,7 @@ export interface DashAsideProps<T extends Item<T>> extends BaseProps<typeof dash
 	north?: Snippet;
 	south?: Snippet;
 	items: T[];
+	mode?: DashAsideItemProps<T>['mode'];
 	'item-dismiss'?: DashAsideProps<T>['onclick'];
-	mode?: 'pine' /** | 'dual' | 'sake' */;
+	'show-title'?: boolean;
 }

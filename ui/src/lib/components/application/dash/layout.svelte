@@ -2,6 +2,7 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
+	import { ctxDash } from './dash.svelte.js';
 	import { dashLayout, type DashLayoutProps } from './layout.js';
 
 	/** Props */
@@ -11,7 +12,7 @@
 	const ui = useUI(dashLayout, props.class, props.override);
 </script>
 
-<div data-ui="layout" class={cn(st(ui.root), ui.class)}>
+<div id="dash-layout" class={cn(st(ui.root), ui.class)}>
 	{@render props.children?.()}
 </div>
 

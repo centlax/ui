@@ -1,29 +1,15 @@
-import type { Link } from '$lib/types/item.js';
+import type { Link } from '@centlax/ui';
 
 const asides: Link[] = [
 	{
 		title: 'General',
 		items: [
-			{ label: 'Overview', href: '/', icon: 'i-fluent-data-pie-24-regular' },
+			{ label: 'Overview', icon: 'i-fluent-data-pie-24-regular' },
 			{ label: 'Profile', icon: 'i-fluent-person-ribbon-24-regular' },
 
 			{
 				label: 'Applications',
-				icon: 'i-fluent-apps-24-regular',
-				items: [
-					{
-						label: 'Units',
-						icon: 'i-fluent-layer-diagonal-24-regular'
-					},
-					{
-						label: 'Privacy',
-						icon: 'i-fluent-fingerprint-24-regular'
-					},
-					{
-						label: 'Security',
-						icon: 'i-fluent-shield-keyhole-24-regular'
-					}
-				]
+				icon: 'i-fluent-apps-24-regular'
 			},
 			{
 				label: 'Activities',
@@ -39,21 +25,7 @@ const asides: Link[] = [
 			},
 			{
 				label: 'Privacy',
-				icon: 'i-fluent-fingerprint-24-regular',
-				items: [
-					{
-						label: 'Unigts',
-						icon: 'i-fluent-layer-diagonal-24-regular'
-					},
-					{
-						label: 'Privgacy',
-						icon: 'i-fluent-fingerprint-24-regular'
-					},
-					{
-						label: 'Securgity',
-						icon: 'i-fluent-shield-keyhole-24-regular'
-					}
-				]
+				icon: 'i-fluent-fingerprint-24-regular'
 			},
 			{
 				label: 'Security',
@@ -113,7 +85,9 @@ const foots: Link[] = [
 	}
 ];
 
-export const data = {
-	asides,
-	foots
-};
+export function load() {
+	return {
+		asides,
+		foots
+	};
+}

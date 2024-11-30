@@ -22,9 +22,10 @@ type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> &
 	Omit<TransformKeysToKebab<CreateCollapsibleProps>, 'value'>;
 export interface CollapsibleProps extends BaseProps<typeof collapsible>, Props {
 	children?: Snippet;
-	trigger?: Snippet<[boolean]>;
+	trigger?: Snippet<[{ value: boolean }]>;
 	content?: Snippet;
 	transition?: TransitionParams<SlideParams>;
 	value?: boolean;
 	as?: keyof HTMLElementTagNameMap;
+	'trigger-as'?: keyof HTMLElementTagNameMap;
 }

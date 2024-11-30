@@ -9,7 +9,7 @@
 	import { useTransition } from '$lib/composables/transition.js';
 
 	/** Imports */
-	let { as = 'span', items, ...props }: AccordionProps<T> = $props();
+	let { items, ...props }: AccordionProps<T> = $props();
 	const {
 		elements: { content, item, trigger, root },
 		helpers: { isSelected }
@@ -37,13 +37,17 @@
 		<!-- Unique ID for each accordion item -->
 		{@const id = (data.id as string) || `${index}`}
 		<div use:melt={$item(id)} class={st(ui.item)}>
-			<svelte:element this={as} use:melt={$trigger(id)} class={st(ui.trigger)}>
+			<svelte:element
+				this={props['trigger-as'] || 'span'}
+				use:melt={$trigger(id)}
+				class={st(ui.trigger)}
+			>
 				{@render props.trigger?.(data)}
 			</svelte:element>
 
 			{#if $isSelected(id)}
-				<div
-					this={as}
+				<svelte:element
+					this={props.as || 'div'}
 					{...props}
 					use:melt={$content(id)}
 					in:slide={txn.in}
@@ -51,7 +55,7 @@
 					class={cn(st(ui.content), ui.class)}
 				>
 					{@render props.content?.(data)}
-				</div>
+				</svelte:element>
 			{/if}
 		</div>
 	{/each}

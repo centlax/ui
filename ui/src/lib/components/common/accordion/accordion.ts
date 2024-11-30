@@ -28,4 +28,5 @@ export interface AccordionProps<T extends Item<T>> extends BaseProps<typeof acco
 	items: T[];
 	transition?: TransitionParams<SlideParams>;
 	as?: keyof HTMLElementTagNameMap;
+	'trigger-as'?: keyof HTMLElementTagNameMap;
 }

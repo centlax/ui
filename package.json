@@ -4,9 +4,10 @@
 	"private": true,
 	"packageManager": "pnpm@9.13.2",
 	"scripts": {
+		"dev": "pnpm --filter @centlax/ui dev",
 		"fmt": "prettier --write --check .",
 		"lint": "prettier --check . && eslint .",
-		"ato": "node .scripts/import.js",
+		"ato": "node .scripts/import/init.mjs",
 		"site": "pnpm --filter @ui/docs --",
 		"play": "pnpm --filter @ui/play --",
 		"ui": "pnpm --filter @centlax/ui --",

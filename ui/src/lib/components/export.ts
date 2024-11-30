@@ -1,6 +1,7 @@
 /** application */
 export { default as UCheckbox } from '$lib/components/application/checkbox/checkbox.svelte';
 export { default as UContext } from '$lib/components/application/context/context.svelte';
+export { default as UDashAsideItem } from '$lib/components/application/dash/aside-item.svelte';
 export { default as UDashAside } from '$lib/components/application/dash/aside.svelte';
 export { default as UDashHeader } from '$lib/components/application/dash/header.svelte';
 export { default as UDashLayout } from '$lib/components/application/dash/layout.svelte';

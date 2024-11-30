@@ -106,6 +106,7 @@ export default function (): Partial<Config> {
 			typography(),
 			containerQueries,
 			colorize,
+
 			iconsPlugin({
 				collections: getIconCollections(['fluent']),
 				scale: 1.5

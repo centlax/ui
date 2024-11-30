@@ -9,7 +9,7 @@
 	import { useToggle } from '$lib/composables/toggle.js';
 
 	/** Props */
-	let { as = 'div', value = $bindable(false), ...props }: CollapsibleProps = $props();
+	let { value = $bindable(false), ...props }: CollapsibleProps = $props();
 
 	const {
 		elements: { root, content, trigger },
@@ -38,14 +38,14 @@
 	{@render props.children?.()}
 
 	{#if props.trigger}
-		<span aria-label="toggle" use:melt={$trigger} class={st(ui.trigger)}>
-			{@render props.trigger(value)}
-		</span>
+		<svelte:element this={props['trigger-as'] || 'span'} use:melt={$trigger} class={st(ui.trigger)}>
+			{@render props.trigger({ value })}
+		</svelte:element>
 	{/if}
 
 	{#if value}
 		<svelte:element
-			this={as}
+			this={props.as || 'div'}
 			{...props}
 			use:melt={$content}
 			in:slide={txn.in}

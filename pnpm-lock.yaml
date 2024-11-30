@@ -52,8 +52,8 @@ importers:
   docs:
     dependencies:
       '@centlax/ui':
-        specifier: ^1.0.1
-        version: 1.0.1(svelte@5.2.10)(tailwindcss@3.4.15)
+        specifier: ^1.0.2
+        version: 1.0.2(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(@types/json-schema@7.0.15)(svelte@5.2.10)(tailwindcss@3.4.15)(typescript@5.7.2)
       '@sveltejs/adapter-cloudflare':
         specifier: ^4.7.4
         version: 4.7.4(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(wrangler@3.91.0(@cloudflare/workers-types@4.20241127.0))
@@ -161,6 +161,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
+      bits-ui:
+        specifier: 1.0.0-next.63
+        version: 1.0.0-next.63(svelte@5.2.10)
       prettier-plugin-tailwindcss:
         specifier: ^0.6.5
         version: 0.6.9(prettier-plugin-svelte@3.3.2(prettier@3.4.1)(svelte@5.2.10))(prettier@3.4.1)
@@ -224,9 +227,6 @@ importers:
       '@internationalized/date':
         specifier: ^3.6.0
         version: 3.6.0
-      '@melt-ui/pp':
-        specifier: ^0.3.2
-        version: 0.3.2(@melt-ui/svelte@0.86.2(svelte@5.2.10))(svelte@5.2.10)
       '@melt-ui/svelte':
         specifier: ^0.86.2
         version: 0.86.2(svelte@5.2.10)
@@ -236,16 +236,22 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
-      deepmerge:
-        specifier: ^4.3.1
-        version: 4.3.1
       mode-watcher:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.2.10)
+      nanoid:
+        specifier: ^5.0.5
+        version: 5.0.9
+      paneforge:
+        specifier: ^0.0.2
+        version: 0.0.2(svelte@5.2.10)
       sveltekit-superforms:
         specifier: ^2.20.1
         version: 2.20.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(@types/json-schema@7.0.15)(svelte@5.2.10)(typescript@5.7.2)
     devDependencies:
+      '@melt-ui/pp':
+        specifier: ^0.3.2
+        version: 0.3.2(@melt-ui/svelte@0.86.2(svelte@5.2.10))(svelte@5.2.10)
       '@playwright/test':
         specifier: ^1.49.0
         version: 1.49.0
@@ -282,6 +288,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
       eslint:
         specifier: ^9.15.0
         version: 9.15.0(jiti@1.21.6)
@@ -371,8 +380,8 @@ packages:
     resolution: {integrity: sha512-FDSOghenHTiToteC/QRlv2q3DhPZ/oOXTBoirfWNx1Cx3TMVcGWQtMMmQcSvb/JjpNeGzx8Pq/b4fKEJuWm1sw==}
     engines: {node: '>=6.9.0'}
 
-  '@centlax/ui@1.0.1':
-    resolution: {integrity: sha512-k1m8n5GHQsALoGMNmM7H1skgj/Hul+bueINcfiLh4IzKHwKUO/mCXRfZ+BB0OFvL0nFBwwMn7GM8NWiPqWvLSA==}
+  '@centlax/ui@1.0.2':
+    resolution: {integrity: sha512-X2oGCCtUD1qDSKd9GXYA6GcnueDYAcnJMMcTL/2eY+p+HBwtZDiUuhV/GenfBjW6VeiURuny7IvGXPX6905n2g==}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -1759,6 +1768,12 @@ packages:
     peerDependencies:
       svelte: ^5.0.0-next.1
 
+  bits-ui@1.0.0-next.63:
+    resolution: {integrity: sha512-3z4+N+KudMK8AeBzhy/0568zVoEJCUgL4RkElB41BWGjofk68en2TaAfKFhhc/bn4z+uKrs9r1NtybDdsy0bpA==}
+    engines: {node: '>=18', pnpm: '>=8.7.0'}
+    peerDependencies:
+      svelte: ^5.0.0-next.1
+
   blake3-wasm@2.1.5:
     resolution: {integrity: sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g==}
 
@@ -2835,6 +2850,11 @@ packages:
   package-manager-detector@0.2.5:
     resolution: {integrity: sha512-3dS7y28uua+UDbRCLBqltMBrbI+A5U2mI9YuxHRxIWYmLj3DwntEBmERYzIAQ4DMeuCUOBSak7dBHHoXKpOTYQ==}
 
+  paneforge@0.0.2:
+    resolution: {integrity: sha512-1xNMq+uslstqum4D8CzzkPGqnTWUlevjYtMjUhuEOiuz7E0fJHFuM8ogk8+LJnVbAg3hMJJ/9Mu4A1KaxK38oQ==}
+    peerDependencies:
+      svelte: ^4.0.0
+
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
     engines: {node: '>=6'}
@@ -3831,18 +3851,25 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.1
 
-  '@centlax/ui@1.0.1(svelte@5.2.10)(tailwindcss@3.4.15)':
+  '@centlax/ui@1.0.2(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(@types/json-schema@7.0.15)(svelte@5.2.10)(tailwindcss@3.4.15)(typescript@5.7.2)':
     dependencies:
+      '@egoist/tailwindcss-icons': 1.8.1(tailwindcss@3.4.15)
+      '@iconify-json/fluent': 1.2.8
       '@internationalized/date': 3.6.0
-      '@tailwindcss/container-queries': 0.1.1(tailwindcss@3.4.15)
-      '@tailwindcss/forms': 0.5.9(tailwindcss@3.4.15)
-      '@tailwindcss/typography': 0.5.15(tailwindcss@3.4.15)
+      '@melt-ui/svelte': 0.86.2(svelte@5.2.10)
       bits-ui: 1.0.0-next.60(svelte@5.2.10)
       clsx: 2.1.1
-      deepmerge: 4.3.1
+      mode-watcher: 0.4.1(svelte@5.2.10)
+      nanoid: 5.0.9
+      paneforge: 0.0.2(svelte@5.2.10)
       svelte: 5.2.10
+      sveltekit-superforms: 2.20.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(@types/json-schema@7.0.15)(svelte@5.2.10)(typescript@5.7.2)
     transitivePeerDependencies:
+      - '@sveltejs/kit'
+      - '@types/json-schema'
+      - supports-color
       - tailwindcss
+      - typescript
 
   '@changesets/apply-release-plan@7.0.6':
     dependencies:
@@ -5270,6 +5297,16 @@ snapshots:
       svelte: 5.2.10
       svelte-toolbelt: 0.4.6(svelte@5.2.10)
 
+  bits-ui@1.0.0-next.63(svelte@5.2.10):
+    dependencies:
+      '@floating-ui/core': 1.6.8
+      '@floating-ui/dom': 1.6.12
+      '@internationalized/date': 3.6.0
+      esm-env: 1.2.0
+      runed: 0.15.4(svelte@5.2.10)
+      svelte: 5.2.10
+      svelte-toolbelt: 0.4.6(svelte@5.2.10)
+
   blake3-wasm@2.1.5: {}
 
   brace-expansion@1.1.11:
@@ -6401,6 +6438,11 @@ snapshots:
   package-json-from-dist@1.0.1: {}
 
   package-manager-detector@0.2.5: {}
+
+  paneforge@0.0.2(svelte@5.2.10):
+    dependencies:
+      nanoid: 5.0.9
+      svelte: 5.2.10
 
   parent-module@1.0.1:
     dependencies:
