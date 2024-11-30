@@ -2,7 +2,7 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
-	import { ctxDash } from './dash.svelte.js';
+	import { PaneGroup } from 'paneforge';
 	import { dashLayout, type DashLayoutProps } from './layout.js';
 
 	/** Props */

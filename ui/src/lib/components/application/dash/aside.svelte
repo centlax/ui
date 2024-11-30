@@ -1,13 +1,13 @@
-<script lang="ts" generics="T extends Item<T>">
+<script lang="ts">
 	/** Imports */
 	import { type DashAsideProps, dashAside } from './aside.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, st } from '$lib/utils/wind.js';
 	import { UDashAsideItem } from '$lib/index.js';
-	import type { Item } from '$lib/types/item.js';
+	import { Pane, PaneResizer } from 'paneforge';
 
 	/** Props */
-	let { items, north, south, children, ...props }: DashAsideProps<T> = $props();
+	let { items, north, south, children, ...props }: DashAsideProps = $props();
 
 	/** styles */
 	const ui = useUI(dashAside, props.class, props.override);
@@ -47,3 +47,4 @@
 		</div>
 	{/if}
 </aside>
+

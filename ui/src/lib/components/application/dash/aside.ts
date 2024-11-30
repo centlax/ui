@@ -9,12 +9,13 @@ import type { DashAsideItemProps } from './aside-item.js';
 /** Styles */
 const styles = {
 	root: {
-		layout: '@container/aside overflow-y-auto',
+		layout: '@container/aside overflow-y-auto overflow-x-hidden',
 		flex: 'flex h-full grow flex-col gap-y-5',
 		border: 'ring-1 ring-black/10 dark:ring-white/10',
 		background: 'bg-white dark:bg-neutral-900',
 		spacing: 'px-6 pb-4'
 	},
+	
 	north: {
 		flex: 'flex shrink-0 items-center',
 		sizing: 'h-[--dash-height]'
@@ -27,7 +28,7 @@ const styles = {
 				typography: 'text-xs/6 font-semibold text-neutral-400'
 			},
 			items: {
-				grid: 'grid grid-cols-1 gap-y-2',
+				grid: 'grid grid-cols-1 gap-y-1.5',
 				spacing: '-mx-2'
 			}
 		}
@@ -39,12 +40,12 @@ export const dashAside = styles;
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class' | 'title'>;
 
-export interface DashAsideProps<T extends Item<T>> extends BaseProps<typeof dashAside>, Props {
+export interface DashAsideProps extends BaseProps<typeof dashAside>, Props {
 	children?: Snippet;
 	north?: Snippet;
 	south?: Snippet;
-	items: T[];
-	mode?: DashAsideItemProps<T>['mode'];
-	'item-dismiss'?: DashAsideProps<T>['onclick'];
+	items: Item[];
+	mode?: DashAsideItemProps['mode'];
+	'item-dismiss'?: DashAsideProps['onclick'];
 	'show-title'?: boolean;
 }

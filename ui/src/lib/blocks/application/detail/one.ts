@@ -1,6 +1,6 @@
-import type { Link } from '$lib/types/item.js';
+import type { Item } from '$lib/types/item.js';
 
-const asides: Link[] = [
+const asides: Item[] = [
 	{
 		title: 'General',
 		items: [
@@ -75,7 +75,7 @@ const asides: Link[] = [
 		]
 	}
 ];
-const foots: Link[] = [
+const foots: Item[] = [
 	{
 		title: 'Solutions',
 		items: [

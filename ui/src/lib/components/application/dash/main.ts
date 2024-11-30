@@ -10,7 +10,7 @@ const styles = {
 	root: {
 		layout: '@container/main',
 		sizing: 'h-screen ',
-		spacing: 'py-10 px-3 sm:px-4 lg:ml-6 lg:px-6 lg:pl-[--dash-width]'
+		spacing: 'py-10 px-3 sm:px-4 '
 	}
 } satisfies Styles;
 export const dashMain = styles;

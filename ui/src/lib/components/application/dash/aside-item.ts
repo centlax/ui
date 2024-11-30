@@ -66,11 +66,11 @@ export const dashAsideItem = styles;
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class' | 'title'> & BaseProps<typeof dashAsideItem>;
 
-export interface DashAsideItemProps<T extends Item<T>> extends Props {
+export interface DashAsideItemProps extends Props {
 	children?: Snippet;
-	item: T;
+	item: Item;
 	mode?: 'pine' | 'dual' /** 'pine | 'dual' | 'sake' */;
-	dismiss?: DashAsideItemProps<T>['onclick'];
+	dismiss?: DashAsideItemProps['onclick'];
 	index?: number;
 	transition?: TransitionParams<SlideParams>;
 }
