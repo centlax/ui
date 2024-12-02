@@ -1,7 +1,1 @@
-
-
-
-
-export interface ControlProps {
-    
-}
+export interface ControlProps {}

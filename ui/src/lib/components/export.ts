@@ -40,8 +40,11 @@ export { default as UDescription } from '$lib/components/website/description/des
 export { default as UIcon } from '$lib/components/website/icon/icon.svelte';
 export { default as ULabel } from '$lib/components/website/label/label.svelte';
 export { default as UPopover } from '$lib/components/website/popover/popover.svelte';
+export { default as USiteAsideItem } from '$lib/components/website/site/aside-item.svelte';
 export { default as USiteAside } from '$lib/components/website/site/aside.svelte';
+export { default as USiteFooterItem } from '$lib/components/website/site/footer-item.svelte';
 export { default as USiteFooter } from '$lib/components/website/site/footer.svelte';
+export { default as USiteHeaderItem } from '$lib/components/website/site/header-item.svelte';
 export { default as USiteHeader } from '$lib/components/website/site/header.svelte';
 export { default as USiteLayout } from '$lib/components/website/site/layout.svelte';
 export { default as USiteMain } from '$lib/components/website/site/main.svelte';

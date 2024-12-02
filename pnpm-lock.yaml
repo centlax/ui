@@ -197,21 +197,12 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.2
         version: 0.86.2(svelte@5.2.12)
-      bits-ui:
-        specifier: 1.0.0-next.65
-        version: 1.0.0-next.65(svelte@5.2.12)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
       mode-watcher:
         specifier: ^0.4.1
         version: 0.4.1(svelte@5.2.12)
-      nanoid:
-        specifier: ^5.0.9
-        version: 5.0.9
-      paneforge:
-        specifier: 1.0.0-next.1
-        version: 1.0.0-next.1(svelte@5.2.12)
       sveltekit-superforms:
         specifier: ^2.20.1
         version: 2.20.1(@sveltejs/kit@2.9.0(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.12)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.12)(vite@5.4.11(@types/node@22.10.1)))(@types/json-schema@7.0.15)(svelte@5.2.12)(typescript@5.7.2)
@@ -1750,12 +1741,6 @@ packages:
     peerDependencies:
       svelte: ^5.0.0-next.1
 
-  bits-ui@1.0.0-next.65:
-    resolution: {integrity: sha512-6pJ2dYP28kkYhvXKyUh22ocTyzciRrx752FJ8+oKUDQ07qnP4O/D8oAFo9pbZVU1MJ3wSMTXkpOVI/DrkJhChQ==}
-    engines: {node: '>=18', pnpm: '>=8.7.0'}
-    peerDependencies:
-      svelte: ^5.0.0-next.1
-
   blake3-wasm@2.1.5:
     resolution: {integrity: sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g==}
 
@@ -2845,11 +2830,6 @@ packages:
     resolution: {integrity: sha512-1xNMq+uslstqum4D8CzzkPGqnTWUlevjYtMjUhuEOiuz7E0fJHFuM8ogk8+LJnVbAg3hMJJ/9Mu4A1KaxK38oQ==}
     peerDependencies:
       svelte: ^4.0.0
-
-  paneforge@1.0.0-next.1:
-    resolution: {integrity: sha512-K28RZ/KLqnZJeuZ7TZNv5C51NrQ3UPggf2sIhIXjTd4brpRZpmCA9C2SL2o4CC0U2Ox75KxUFwEXq2A/iDBuZg==}
-    peerDependencies:
-      svelte: ^5.0.0-next.1
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -5362,16 +5342,6 @@ snapshots:
       svelte: 5.2.10
       svelte-toolbelt: 0.4.6(svelte@5.2.10)
 
-  bits-ui@1.0.0-next.65(svelte@5.2.12):
-    dependencies:
-      '@floating-ui/core': 1.6.8
-      '@floating-ui/dom': 1.6.12
-      '@internationalized/date': 3.6.0
-      esm-env: 1.2.1
-      runed: 0.15.4(svelte@5.2.12)
-      svelte: 5.2.12
-      svelte-toolbelt: 0.4.6(svelte@5.2.12)
-
   blake3-wasm@2.1.5: {}
 
   brace-expansion@1.1.11:
@@ -6522,11 +6492,6 @@ snapshots:
       nanoid: 5.0.9
       svelte: 5.2.10
 
-  paneforge@1.0.0-next.1(svelte@5.2.12):
-    dependencies:
-      svelte: 5.2.12
-      svelte-toolbelt: 0.4.6(svelte@5.2.12)
-
   parent-module@1.0.1:
     dependencies:
       callsites: 3.1.0
@@ -6827,11 +6792,6 @@ snapshots:
       esm-env: 1.2.1
       svelte: 5.2.10
 
-  runed@0.15.4(svelte@5.2.12):
-    dependencies:
-      esm-env: 1.2.1
-      svelte: 5.2.12
-
   sade@1.8.1:
     dependencies:
       mri: 1.2.0
@@ -7041,12 +7001,6 @@ snapshots:
       clsx: 2.1.1
       style-to-object: 1.0.8
       svelte: 5.2.10
-
-  svelte-toolbelt@0.4.6(svelte@5.2.12):
-    dependencies:
-      clsx: 2.1.1
-      style-to-object: 1.0.8
-      svelte: 5.2.12
 
   svelte2tsx@0.7.28(svelte@5.2.10)(typescript@5.7.2):
     dependencies:

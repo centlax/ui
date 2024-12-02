@@ -8,28 +8,44 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		layout: 'lg:pt-18 mx-auto mt-32 w-full bg-neutral-900 px-6 pb-8 pt-10 sm:mt-56 sm:pt-24 lg:px-8'
+		layout: 'relative',
+		sizing: 'w-full',
+		background: 'bg-white/90 dark:bg-neutral-900/90',
+		border: 'border-t border-black/10 dark:border-white/10',
+		spacing: 'py-10'
 	},
-	north: {},
-	west: { flex: 'mb-16 w-[20rem] md:flex' },
-	center: { flex: 'flex flex-grow flex-wrap justify-between gap-8' },
-	east: {},
-	south: {}
+	north: {
+		flex: 'flex',
+		sizing: 'w-full'
+	},
+	contain: {
+		flex: 'flex justify-between gap-5',
+		west: {
+			flex: 'flex',
+			sizing: 'max-w-[15rem]'
+		},
+		center: {
+			flex: 'flex flex-grow flex-wrap justify-between gap-8'
+		},
+		east: {
+			flex: 'flex',
+			sizing: 'w-full'
+		}
+	},
+	south: {
+		grid: 'grid grid-cols-1',
+		border: 'divide-y divide-black/10 dark:divide-white/10'
+	}
 } satisfies Styles;
 export const siteFooter = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['footer'], 'class'>;
-export interface SiteFootProps<T extends Item<T>> extends BaseProps<typeof siteFooter>, Props {
-	items: T[];
+export interface SiteFootProps extends BaseProps<typeof siteFooter>, Props {
+	items: Item[];
 	north?: Snippet;
 	west?: Snippet;
-	topp?: Snippet;
 	children?: Snippet;
-	trigger?: Snippet<[T]>;
-	content?: Snippet<[T]>;
 	east?: Snippet;
 	south?: Snippet;
-	notice?: string;
-	logo?: Snippet;
 }

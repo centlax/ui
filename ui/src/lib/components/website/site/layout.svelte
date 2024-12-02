@@ -14,3 +14,9 @@
 <div class={cn(st(ui.root), ui.class)} aria-label="top">
 	{@render props.children?.()}
 </div>
+
+<style>
+	:root{
+		--site-height: 3rem;
+	}
+</style>

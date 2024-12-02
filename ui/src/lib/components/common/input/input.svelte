@@ -22,5 +22,4 @@
 	});
 </script>
 
-	<input bind:value {...props} style={co(color)} class={css.input} />
-
+<input bind:value {...props} style={co(color)} class={css.input} />

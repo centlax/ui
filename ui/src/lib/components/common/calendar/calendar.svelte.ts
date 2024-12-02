@@ -1,21 +1,17 @@
-import { type CreateCalendarProps } from '@melt-ui/svelte';
-import type { CalendarProps } from './calendar.js';
-
-function kebabToCamel(key: string): string {
-	return key.replace(/-([a-z])/g, (_, char) => char.toUpperCase());
-}
-
-export function calendarOptions(props: CalendarProps): CreateCalendarProps {
-	// Dynamically map props
-	console.log(props);
-	const options = Object.keys(props).reduce((acc, kebabKey) => {
-		// Convert kebab-case keys to camelCase
-		const camelKey = kebabToCamel(kebabKey);
-		// Assign values from kebab-case props to camelCase keys in options
-		// @ts-ignore
-		acc[camelKey] = props[kebabKey as keyof CalendarProps];
-		return acc;
-	}, {} as CreateCalendarProps);
-
-	return options;
-}
+export const calendarDefaults = {
+	isDateDisabled: undefined,
+	isDateUnavailable: undefined,
+	value: undefined,
+	preventDeselect: false,
+	numberOfMonths: 1,
+	pagedNavigation: false,
+	weekStartsOn: 0,
+	fixedWeeks: false,
+	calendarLabel: 'Event Date',
+	locale: 'en',
+	minValue: undefined,
+	maxValue: undefined,
+	disabled: false,
+	readonly: false,
+	weekdayFormat: 'narrow'
+};

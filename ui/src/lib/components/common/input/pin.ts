@@ -1,10 +1,11 @@
 /** Imports */
 import type { CreatePinInputProps } from '@melt-ui/svelte';
-import type { InputProps } from './input.js';
 import type { TransformKeysToKebab } from '$lib/types/utils.js';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Props */
-type Props = TransformKeysToKebab<CreatePinInputProps>
-export interface InputPinProps extends InputProps {
-
+type Props = Omit<SvelteHTMLElements['input'], 'class'> &
+	Omit<TransformKeysToKebab<CreatePinInputProps>, 'value'>;
+export interface InputPinProps extends Props {
+	value?: string[];
 }

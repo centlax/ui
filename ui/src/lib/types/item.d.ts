@@ -5,7 +5,10 @@ export interface Item<T extends Record<string, unknown> = unknown> extends HTMLA
 	 * Label for the link
 	 */
 	label?: string;
-
+	/**
+	 * Text for the link
+	 */
+	text?: string;
 	/**
 	 * Description for the link
 	 */

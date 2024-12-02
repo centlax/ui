@@ -2,6 +2,7 @@
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { TransformKeysToKebab } from '$lib/types/utils.js';
+import type { DateValue } from '@internationalized/date';
 import type { CreateCalendarProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
@@ -44,8 +45,10 @@ const styles = {
 						sizing: '',
 						typography: 'text-center',
 						spacing: 'p-1.5',
-						'is-outside': {
-							effect: 'opacity-10'
+						is: {
+							outside: {
+								effect: 'opacity-10'
+							}
 						}
 					}
 				}
@@ -56,10 +59,12 @@ const styles = {
 export const calendar = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'> & TransformKeysToKebab<CreateCalendarProps>;
-
+type Props = Omit<SvelteHTMLElements['div'], 'class'> &
+	Omit<TransformKeysToKebab<CreateCalendarProps>, 'value'>;
 export interface CalendarProps extends BaseProps<typeof calendar>, Props {
 	children?: Snippet;
 	prev?: Snippet;
 	next?: Snippet;
+	value?: DateValue;
+	heading?: Snippet<[string]>;
 }

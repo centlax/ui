@@ -1,79 +1,79 @@
-import type { Link } from '$lib/types/item.js';
+import type { Item } from '$lib/types/item.js';
 
-const heads: Link[] = [
+const heads: Item[] = [
 	{
 		title: 'Product',
 		items: [
 			{
-				label: 'Marketing',
+				text: 'Marketing',
 				href: '/',
 				icon: 'i-fluent-building-retail-toolbox-24-regular',
 				description: 'Get a better understanding of your traffic'
 			},
 			{
-				label: 'Analytics',
+				text: 'Analytics',
 				href: '/',
 				icon: 'i-fluent-building-retail-toolbox-24-regular',
 				description: 'Get a better understanding of your traffic'
 			},
 			{
-				label: 'Automation',
+				text: 'Automation',
 				href: '/',
 				icon: 'i-fluent-building-retail-toolbox-24-regular',
 				description: 'Get a better understanding of your traffic'
 			},
 			{
-				label: 'Commerce',
+				text: 'Commerce',
 				href: '/',
 				icon: 'i-fluent-building-retail-toolbox-24-regular',
 				description: 'Get a better understanding of your traffic'
 			},
 			{
-				label: 'Insights',
+				text: 'Insights',
 				href: '/',
 				icon: 'i-fluent-building-retail-toolbox-24-regular',
 				description: 'Get a better understanding of your traffic'
 			}
 		]
 	},
-	{ label: 'Features' },
-	{ label: 'Marketplace' },
-	{ label: 'Centlax' }
+	{ text: 'Features' },
+	{ text: 'Marketplace' },
+	{ text: 'Centlax' }
 ];
-const foots: Link[] = [
+const foots: Item[] = [
 	{
 		title: 'Solutions',
 		items: [
-			{ label: 'Marketing', href: '/' },
-			{ label: 'Analytics', href: '/' },
-			{ label: 'Automation', href: '/' },
-			{ label: 'Commerce', href: '/' },
-			{ label: 'Insights', href: '/' }
+			{ text: 'Marketing', href: '/' },
+			{ text: 'Analytics', href: '/' },
+			{ text: 'Automation', href: '/' },
+			{ text: 'Commerce', href: '/' },
+			{ text: 'Insights', href: '/' }
 		]
 	},
 	{
 		title: 'Support',
 		items: [
-			{ label: 'Submit ticket', href: '/' },
-			{ label: 'Documentation', href: '/' },
-			{ label: 'Guides', href: '/' }
+			{ text: 'Submit ticket', href: '/' },
+			{ text: 'Documentation', href: '/' },
+			{ text: 'Guides', href: '/' }
 		]
 	},
 	{
 		title: 'Company',
 		items: [
-			{ label: 'About', href: '/' },
-			{ label: 'Blog', href: '/' },
-			{ label: 'Jobs', href: '/' },
-			{ label: 'Press', href: '/' }
+			{ text: 'About', href: '/' },
+			{ text: 'Blog', href: '/' },
+			{ text: 'Jobs', href: '/' },
+			{ text: 'Press', href: '/' }
 		]
 	},
 	{
 		title: 'Legal',
 		items: [
-			{ label: 'Terms of service', href: '/' },
-			{ label: 'Privacy policy', href: '/' },
-			{ label: 'License', href: '/' }
+			{ text: 'Terms of service', href: '/' },
+			{ text: 'Privacy policy', href: '/' },
+			{ text: 'License', href: '/' }
 		]
 	}
 ];

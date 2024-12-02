@@ -7,35 +7,31 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	/** absolute inset-x-0 top-0 z-50  for staying up */
 	root: {
 		layout: 'flex items-center justify-between',
-		typography: 'text-neutral-900 dark:text-white'
+		typography: 'text-neutral-900 dark:text-white',
+		sizing: 'w-full'
 	},
 	west: {
-		flex: 'flex flex-1 lg:flex-auto justify-between'
+		flex: 'flex lg:flex-1'
 	},
 	center: {
 		layout: 'hidden lg:flex lg:gap-x-12',
-		trigger: {},
-		content: {}
 	},
 
 	east: {
 		layout: 'hidden lg:flex lg:flex-1 lg:justify-end'
 	}
 } satisfies Styles;
-export const siteHead = styles;
+export const siteHeader = styles;
 
 /** Props */
 
 type Props = Omit<SvelteHTMLElements['header'], 'class'>;
-export interface SiteHeadProps<T extends Item<T>> extends BaseProps<typeof siteHead>, Props {
-	items: T[];
+export interface SiteHeaderProps extends BaseProps<typeof siteHeader>, Props {
+	items: Item[];
 	west?: Snippet;
 	children?: Snippet;
 	east?: Snippet;
-	trigger?: Snippet<[T]>;
-	content?: Snippet<[T]>;
 	logo?: Snippet;
 }

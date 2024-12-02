@@ -4,7 +4,6 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, st } from '$lib/utils/wind.js';
 	import { UDashAsideItem } from '$lib/index.js';
-	import { Pane, PaneResizer } from 'paneforge';
 
 	/** Props */
 	let { items, north, south, children, ...props }: DashAsideProps = $props();
