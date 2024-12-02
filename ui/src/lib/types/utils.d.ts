@@ -13,3 +13,11 @@ type CamelToKebab<S extends string> =
 export type TransformKeysToKebab<T> = {
 	[K in keyof T as CamelToKebab<Extract<K, string>>]: T[K];
 };
+
+type ReverseCamelToKebab<S extends string> = S extends `${infer T}-${infer U}`
+	? `${T}${Capitalize<KebabToCamel<U>>}`
+	: S;
+
+export type ReverseTransformKeysToKeba<T> = {
+	[K in keyof T as KebabToCamel<Extract<K, string>>]: T[K];
+};

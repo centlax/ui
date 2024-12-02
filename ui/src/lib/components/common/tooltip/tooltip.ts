@@ -1,7 +1,7 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { TransformKeysToKebab } from '$lib/types/utils.js';
+import type { CamelToKebab, TransformKeysToKebab } from '$lib/types/utils.js';
 import type { CreateTooltipProps, TooltipElements } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';

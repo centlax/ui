@@ -4,7 +4,6 @@
 	import { createTooltip, melt, createSync } from '@melt-ui/svelte';
 	import { tooltip, type TooltipProps } from './tooltip.js';
 	import { cn, st } from '$lib/utils/wind.js';
-	//import { useTransition } from '$lib/composables/transition.js';
 	import { useUI } from '$lib/composables/ui.js';
 
 	/** Props */
@@ -39,8 +38,6 @@
 
 	/** Styles */
 	const ui = useUI(tooltip, props.class, props.override);
-	// const transition = useTransition();
-	//const txn = $state(transition.set());
 </script>
 
 {@render props.children?.()}

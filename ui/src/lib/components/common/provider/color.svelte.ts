@@ -21,7 +21,7 @@ export const root = $state(() => {
 	};
 
 	return `
-	<${tag} id="utica-colors" type="text/css">
+	<${tag} id="ui-colors" type="text/css">
 			:root {
 				${Object.entries(colors)
 					.map(([key, value]: [string, string]) => generateShades(key, value))
@@ -36,6 +36,10 @@ export const root = $state(() => {
 					.map((key) => generateColor(key, 400))
 					.join('\n  ')}
 	}
+	</${tag}>
+
+	<${tag} id="ui-radius">
+		:root { --ui-radius: 0.25rem; }
 	</${tag}>
 					
 		`;

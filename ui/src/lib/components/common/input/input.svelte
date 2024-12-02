@@ -12,6 +12,16 @@
 	let css = $state({
 		input: cn(st(ui.root), ui.class)
 	});
+
+	const attrs = $state({
+		...props,
+		style: co(color),
+		class: css.input
+	});
 </script>
 
-<input {...props} style={co(color)} bind:value class={css.input} />
+{#if props.child}
+	{@render props.child(attrs)}
+{:else}
+	<input bind:value {...props} style={co(color)} class={css.input} />
+{/if}

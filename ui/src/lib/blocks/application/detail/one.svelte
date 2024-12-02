@@ -12,7 +12,6 @@
 		UAvatar,
 		UDashLayout
 	} from '$lib/index.js';
-	import { PaneGroup } from 'paneforge';
 	import { data } from './one.js';
 	const dark = useDark();
 	let sheet = $state(false);

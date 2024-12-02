@@ -15,7 +15,7 @@ const styles = {
 		background: 'bg-white dark:bg-neutral-900',
 		spacing: 'px-6 pb-4'
 	},
-	
+
 	north: {
 		flex: 'flex shrink-0 items-center',
 		sizing: 'h-[--dash-height]'

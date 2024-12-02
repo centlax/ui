@@ -183,39 +183,6 @@ importers:
         specifier: ^5.0.3
         version: 5.4.11(@types/node@22.10.1)
 
-  test/hyperdrive-tutorial:
-    devDependencies:
-      '@cloudflare/workers-types':
-        specifier: ^4.20241127.0
-        version: 4.20241127.0
-      '@sveltejs/adapter-auto':
-        specifier: ^3.0.0
-        version: 3.3.1(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))
-      '@sveltejs/adapter-cloudflare':
-        specifier: ^4.7.4
-        version: 4.7.4(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(wrangler@3.91.0(@cloudflare/workers-types@4.20241127.0))
-      '@sveltejs/kit':
-        specifier: ^2.0.0
-        version: 2.8.5(@sveltejs/vite-plugin-svelte@4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1))
-      '@sveltejs/vite-plugin-svelte':
-        specifier: ^4.0.0
-        version: 4.0.2(svelte@5.2.10)(vite@5.4.11(@types/node@22.10.1))
-      svelte:
-        specifier: ^5.0.0
-        version: 5.2.10
-      svelte-check:
-        specifier: ^4.0.0
-        version: 4.1.0(svelte@5.2.10)(typescript@5.7.2)
-      typescript:
-        specifier: ^5.0.0
-        version: 5.7.2
-      vite:
-        specifier: ^5.0.3
-        version: 5.4.11(@types/node@22.10.1)
-      wrangler:
-        specifier: ^3.91.0
-        version: 3.91.0(@cloudflare/workers-types@4.20241127.0)
-
   ui:
     dependencies:
       '@egoist/tailwindcss-icons':
@@ -231,8 +198,8 @@ importers:
         specifier: ^0.86.2
         version: 0.86.2(svelte@5.2.12)
       bits-ui:
-        specifier: 1.0.0-next.60
-        version: 1.0.0-next.60(svelte@5.2.12)
+        specifier: 1.0.0-next.65
+        version: 1.0.0-next.65(svelte@5.2.12)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1779,6 +1746,12 @@ packages:
 
   bits-ui@1.0.0-next.63:
     resolution: {integrity: sha512-3z4+N+KudMK8AeBzhy/0568zVoEJCUgL4RkElB41BWGjofk68en2TaAfKFhhc/bn4z+uKrs9r1NtybDdsy0bpA==}
+    engines: {node: '>=18', pnpm: '>=8.7.0'}
+    peerDependencies:
+      svelte: ^5.0.0-next.1
+
+  bits-ui@1.0.0-next.65:
+    resolution: {integrity: sha512-6pJ2dYP28kkYhvXKyUh22ocTyzciRrx752FJ8+oKUDQ07qnP4O/D8oAFo9pbZVU1MJ3wSMTXkpOVI/DrkJhChQ==}
     engines: {node: '>=18', pnpm: '>=8.7.0'}
     peerDependencies:
       svelte: ^5.0.0-next.1
@@ -5379,16 +5352,6 @@ snapshots:
       svelte: 5.2.10
       svelte-toolbelt: 0.4.6(svelte@5.2.10)
 
-  bits-ui@1.0.0-next.60(svelte@5.2.12):
-    dependencies:
-      '@floating-ui/core': 1.6.8
-      '@floating-ui/dom': 1.6.12
-      '@internationalized/date': 3.6.0
-      esm-env: 1.2.1
-      runed: 0.15.4(svelte@5.2.12)
-      svelte: 5.2.12
-      svelte-toolbelt: 0.4.6(svelte@5.2.12)
-
   bits-ui@1.0.0-next.63(svelte@5.2.10):
     dependencies:
       '@floating-ui/core': 1.6.8
@@ -5398,6 +5361,16 @@ snapshots:
       runed: 0.15.4(svelte@5.2.10)
       svelte: 5.2.10
       svelte-toolbelt: 0.4.6(svelte@5.2.10)
+
+  bits-ui@1.0.0-next.65(svelte@5.2.12):
+    dependencies:
+      '@floating-ui/core': 1.6.8
+      '@floating-ui/dom': 1.6.12
+      '@internationalized/date': 3.6.0
+      esm-env: 1.2.1
+      runed: 0.15.4(svelte@5.2.12)
+      svelte: 5.2.12
+      svelte-toolbelt: 0.4.6(svelte@5.2.12)
 
   blake3-wasm@2.1.5: {}
 

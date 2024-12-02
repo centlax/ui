@@ -18,7 +18,7 @@ const styles = {
 			spacing: 'mt-1 px-2'
 		},
 		dual: {
-			layout: 'z-50 absolute',
+			layout: 'z-50',
 			flex: 'flex flex-col',
 			background: 'bg-white dark:bg-neutral-900/80',
 			border: 'border-r border-black/10 dark:border-white/10',

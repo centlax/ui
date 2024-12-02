@@ -8,7 +8,7 @@
 	import { writable } from 'svelte/store';
 
 	/** Props */
-	let { mode = 'pine', item, children, ...props }: DashAsideItemProps = $props();
+	let { mode = 'dual', item, children, ...props }: DashAsideItemProps = $props();
 
 	/** styles */
 	const ui = useUI(dashAsideItem, props.class, props.override);
@@ -30,16 +30,11 @@
 		id="sub-menu-{props.index}"
 		aria-expanded={expand}
 		data-subitem={subitem}
-		onscroll={() => {
-			if ($tip) {
-				$tip = false;
-			}
-		}}
 	>
 		{#if !subitem}
 			<UIcon name={it.icon as string} class={st(ui.trigger.icon)} />
 		{/if}
-		<span class="hidden @[2rem]/aside:flex"> {it.label || it.title} </span>
+		{it.label || it.title}
 
 		{#if it.items && mode === 'dual'}
 			<UIcon
@@ -77,12 +72,7 @@
 		{/snippet}
 	</UCollapsible>
 {:else if mode === 'dual'}
-	<UTooltip
-		group
-		open={tip}
-		float={{ placement: 'right', overflowPadding: 0, strategy: 'fixed' }}
-		class={css.root}
-	>
+	<UTooltip group open={tip} float={{ placement: 'right', overflowPadding: 0 }} class={css.root}>
 		{#snippet trigger()}
 			{@render trigger$(false, item, false)}
 		{/snippet}
