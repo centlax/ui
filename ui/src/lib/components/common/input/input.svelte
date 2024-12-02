@@ -2,7 +2,9 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn, co } from '$lib/utils/wind.js';
+	import { getContext, hasContext } from 'svelte';
 	import { input, type InputProps } from './input.js';
+	import { melt } from '@melt-ui/svelte';
 
 	/** Props */
 	let { color = 'primary', value = $bindable(), ...props }: InputProps = $props();
@@ -20,8 +22,5 @@
 	});
 </script>
 
-{#if props.child}
-	{@render props.child(attrs)}
-{:else}
 	<input bind:value {...props} style={co(color)} class={css.input} />
-{/if}
+

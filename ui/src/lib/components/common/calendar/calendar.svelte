@@ -54,7 +54,6 @@
 						<tr class={st(ui.main.month.body.week)}>
 							{#each weekDates as date}
 								<td
-									role="gridcell"
 									class={st(ui.main.month.body.week.day)}
 									aria-disabled={$isDateDisabled(date) || $isDateUnavailable(date)}
 									use:melt={$cell(date, month.value)}

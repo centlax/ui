@@ -17,7 +17,7 @@ export const popover = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['div'], 'class'> &
-	Omit<TransformKeysToKebab<CreatePopoverProps>, 'value' | 'positioning' | 'onOpenChange' | 'ids'>;
+	Omit<TransformKeysToKebab<CreatePopoverProps>, 'positioning'>;
 
 export interface PopoverProps extends BaseProps<typeof popover>, Props {
 	children?: Snippet;

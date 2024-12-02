@@ -15,24 +15,28 @@
 		elements: { trigger, content, arrow, close, overlay },
 		states
 	} = createPopover({
-		positioning: props['float'] ?? { placement: 'bottom' },
-		disableFocusTrap: props['disable-focus-trap'] ?? false,
-		arrowSize: props['arrow-size'] ?? 8,
-		escapeBehavior: props['escape-behavior'] ?? 'close',
-		closeOnOutsideClick: props['close-on-outside-click'] ?? true,
-		preventScroll: props['prevent-scroll'] ?? true,
-		preventTextSelectionOverflow: props['prevent-text-selection-overflow'] ?? true,
+		positioning: props['float'],
+		disableFocusTrap: props['disable-focus-trap'],
+		arrowSize: props['arrow-size'],
+		escapeBehavior: props['escape-behavior'],
+		closeOnOutsideClick: props['close-on-outside-click'],
+		preventScroll: props['prevent-scroll'],
+		preventTextSelectionOverflow: props['prevent-text-selection-overflow'],
 		portal: props['portal'] ?? 'body',
-		forceVisible: props['force-visible'] ?? false,
+		forceVisible: props['force-visible'],
 		openFocus: props['open-focus'],
 		closeFocus: props['close-focus'],
-		defaultOpen: props['default-open'] ?? false
+		defaultOpen: props['default-open'],
+		open: props['open'],
+		onOpenChange: props['on-open-change']
 	});
 
+	const { open } = states;
 	const sync = createSync(states);
 	$effect(() => {
 		sync.open(value, (v) => (value = v));
 	});
+
 	const toogle = useToggle();
 	toogle.set(states.open, $trigger, $close);
 
@@ -55,7 +59,7 @@
 	</svelte:element>
 {/if}
 
-{#if value}
+{#if $open}
 	<svelte:element
 		this={props.as || 'div'}
 		data-ui="popover"

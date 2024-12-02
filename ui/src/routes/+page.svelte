@@ -6,7 +6,5 @@
 </script>
 
 <UContainer>
-	<UCalendar fixed-weeks />
+	<UInputPin />
 </UContainer>
-
-<UInputDate />
