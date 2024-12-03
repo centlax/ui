@@ -2,10 +2,10 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { chip, type ChipProps } from './chip.js';
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn, co } from '$lib/utils/wind.js';
 
 	/** Props */
-	let { ...props }: ChipProps = $props();
+	let {color, ...props }: ChipProps = $props();
 
 	/** Styles */
 	const ui = useUI(chip, props.class, props.override);
@@ -21,6 +21,6 @@
 	});
 </script>
 
-<span {...props} class={css.chip}>
+<span {...props} style={co(color)} class={css.chip}>
 	{@render props.children?.()}
 </span>

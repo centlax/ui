@@ -5,6 +5,8 @@
 		UIcon,
 		UInput,
 		UInputGroup,
+		USelect,
+		USelectMenu,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -74,6 +76,8 @@
 	<!-- Main  -->
 	<USiteMain>
 		<UButton onclick={dark.toggle}>dark</UButton>
+		<USelectMenu items={[]} />
+		<USelect/>
 		{@render children?.()}
 	</USiteMain>
 

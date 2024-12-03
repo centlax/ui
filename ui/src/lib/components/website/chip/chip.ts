@@ -11,7 +11,7 @@ const styles = {
 		layout: 'block',
 		sizing: 'size-1.5',
 		border: 'rounded-full ring-2 ring-white dark:ring-neutral-900',
-		background: 'bg-neutral-500',
+		background: 'bg-color-500',
 		typography: 'text-xs'
 	},
 	opt: {
