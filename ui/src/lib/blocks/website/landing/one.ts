@@ -3,6 +3,8 @@ import type { Item } from '$lib/types/item.js';
 const heads: Item[] = [
 	{
 		title: 'Product',
+		icon: 'i-fluent-building-retail-toolbox-24-regular',
+
 		items: [
 			{
 				text: 'Marketing',
@@ -36,7 +38,15 @@ const heads: Item[] = [
 			}
 		]
 	},
-	{ text: 'Features' },
+	{
+		text: 'Features',
+		items: [
+			{ text: 'About', href: '/' },
+			{ text: 'Blog', href: '/' },
+			{ text: 'Jobs', href: '/' },
+			{ text: 'Press', href: '/' }
+		]
+	},
 	{ text: 'Marketplace' },
 	{ text: 'Centlax' }
 ];

@@ -11,39 +11,30 @@
 </script>
 
 <footer class={cn(st(ui.root), ui.class)}>
-	{#if props.north?.()}
-		<div class={st(ui.north)}>
-			{@render props.north?.()}
-		</div>
-	{/if}
+	<div hidden={!props.north} class={st(ui.north)}>
+		{@render props.north?.()}
+	</div>
 
 	<div class={st(ui.contain)}>
-		{#if props.west}
-			<div class={st(ui.contain.west)}>
-				{@render props.west?.()}
-			</div>
-		{/if}
-
-		{#if props.children}
-			{@render props.children?.()}
-		{:else}
-			<nav class={st(ui.contain.center)}>
+		<div hidden={!props.west} class={st(ui.contain.west)}>
+			{@render props.west?.()}
+		</div>
+		<nav class={st(ui.contain.center)}>
+			{#if props.children}
+				{@render props.children?.()}
+			{:else}
 				{#each items as it}
 					<USiteFooterItem item={it} />
 				{/each}
-			</nav>
-		{/if}
+			{/if}
+		</nav>
 
-		{#if props.east}
-			<div class={st(ui.contain.east)}>
-				{@render props.east?.()}
-			</div>
-		{/if}
+		<div hidden={!props.east} class={st(ui.contain.east)}>
+			{@render props.east?.()}
+		</div>
 	</div>
 
-	{#if props.south}
-		<div class={st(ui.south)}>
-			{@render props.south?.()}
-		</div>
-	{/if}
+	<div hidden={!props.south} class={st(ui.south)}>
+		{@render props.south?.()}
+	</div>
 </footer>

@@ -6,6 +6,4 @@
 	//import Panel from '$lib/blocks/application/panels/pane.svelte';
 </script>
 
-<UContainer>
-	<Landing />
-</UContainer>
+<Landing />

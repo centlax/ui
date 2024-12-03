@@ -38,7 +38,6 @@
 
 		{#if it.items && mode === 'dual'}
 			<UIcon
-				data-ui="icon"
 				data-expanded={expand}
 				class={st(ui.trigger['chevron-icon'])}
 				name="i-fluent-chevron-right-20-filled"

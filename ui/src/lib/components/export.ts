@@ -28,7 +28,6 @@ export { default as UInput } from '$lib/components/common/input/input.svelte';
 export { default as UInputPin } from '$lib/components/common/input/pin.svelte';
 export { default as UMenu } from '$lib/components/common/menu/menu.svelte';
 export { default as UProvider } from '$lib/components/common/provider/provider.svelte';
-export { default as UTipper } from '$lib/components/common/tipper/tipper.svelte';
 export { default as UToast } from '$lib/components/common/toast/toast.svelte';
 export { default as UToggle } from '$lib/components/common/toggle/toggle.svelte';
 export { default as UTooltip } from '$lib/components/common/tooltip/tooltip.svelte';

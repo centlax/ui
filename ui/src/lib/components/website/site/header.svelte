@@ -13,19 +13,20 @@
 </script>
 
 <header class={cn(st(ui.root), ui.class)} aria-label="global">
-	<div class={st(ui.west)}>
-		{@render props.logo?.()}
-		<UToggle as="button" class="flex lg:hidden">
-			<span class="sr-only">Open main menu</span>
-			<UIcon class="size-6" name="i-fluent-text-align-justify-24-regular" />
-		</UToggle>
+	<div data-slot={props.west} class={st(ui.west)}>
+		{@render props.west?.()}
 	</div>
-	<nav class={st(ui.center)}>
-		{#each items as it}
-			<USiteHeaderItem item={it} />
-		{/each}
+
+	<nav data-slot={props.children} class={st(ui.center)}>
+		{#if props.children}
+			{@render props.children?.()}
+		{:else}
+			{#each items as it}
+				<USiteHeaderItem item={it} />
+			{/each}
+		{/if}
 	</nav>
-	<div class={st(ui.east)}>
+	<div data-slot={props.east} class={st(ui.east)}>
 		{@render props.east?.()}
 	</div>
 </header>

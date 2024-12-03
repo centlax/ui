@@ -7,52 +7,59 @@
 	import { siteAsideItem, type SiteAsideItemProps } from './aside-item.js';
 
 	/** Props */
-	let { item, ...props }: SiteAsideItemProps = $props();
+	let { item, mode = 'pine', ...props }: SiteAsideItemProps = $props();
 
 	/** Styles */
 	const ui = useUI(siteAsideItem, props.class, props.override);
 	let expand: boolean = $state(false);
+	const css = $state({
+		root: cn(st(ui.root, ui.opt[mode]))
+	});
 </script>
 
 {#snippet item$(it: Item, subitem: boolean)}
-	<button
-		class="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm/6 font-semibold hover:bg-neutral-50 data-[subitem=true]:pl-9 dark:hover:bg-neutral-800"
+	{@const active = it.title === 'Product'}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<svelte:element
+		this={it.href ? 'a' : 'button'}
+		onclick={it.href ? props.dismiss : null}
+		href={it.href}
+		class={st(ui.trigger, ui.trigger.is[active ? 'active' : 'inactive'])}
 		aria-controls="disclosure-{item.index}"
-		aria-expanded="false"
 		data-expand={expand}
 		data-subitem={subitem}
 	>
-		{item.title || item.text}
+		{#if !subitem && it.icon}
+			<UIcon name={it.icon as string} class={st(ui.trigger.icon)} />
+		{/if}
+		<span>{it.title || it.text}</span>
 		{#if it.items}
 			<UIcon
 				data-expand={expand}
-				class="size-5 flex-none data-[expand=true]:rotate-90"
+				class={st(ui.trigger.chevron)}
 				name="i-fluent-chevron-right-24-filled"
 			/>
 		{/if}
-	</button>
+	</svelte:element>
 {/snippet}
 
-<div class="-mx-2 space-y-1">
-	{#if !item.items}
-		{@render item$(item, false)}
-	{:else}
-		{@const items = item.items}
-		<UCollapsible
-			transition={{ duration: 300 }}
-			bind:value={expand}
-			class="mt-2 space-y-2"
-			id="disclosure-1"
-		>
-			{#snippet trigger()}
-				{@render item$(item, false)}
-			{/snippet}
-			{#snippet content()}
-				<!-- 'Product' sub-menu, show/hide based on menu state. -->
-				{#each items as it}
-					{@render item$(it, true)}
-				{/each}
-			{/snippet}
-		</UCollapsible>
-	{/if}
-</div>
+{#if !item.items}
+	{@render item$(item, false)}
+{:else}
+	{@const items = item.items}
+	<UCollapsible
+		transition={{ duration: 300 }}
+		class={css.root}
+		bind:value={expand}
+		id="disclosure-{item.index}"
+	>
+		{#snippet trigger()}
+			{@render item$(item, false)}
+		{/snippet}
+		{#snippet content()}
+			{#each items as it}
+				{@render item$(it, true)}
+			{/each}
+		{/snippet}
+	</UCollapsible>
+{/if}

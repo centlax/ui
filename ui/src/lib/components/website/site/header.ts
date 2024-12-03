@@ -10,17 +10,19 @@ const styles = {
 	root: {
 		layout: 'flex items-center justify-between',
 		typography: 'text-neutral-900 dark:text-white',
-		sizing: 'w-full'
+		sizing: 'w-full h-[--site-height]'
 	},
 	west: {
-		flex: 'flex lg:flex-1'
+		flex: 'flex flex-grow items-center justify-between lg:flex-1 '
 	},
 	center: {
-		layout: 'hidden lg:flex lg:gap-x-12'
+		layout: 'hidden',
+		flex: 'lg:flex lg:gap-x-12'
 	},
 
 	east: {
-		layout: 'hidden lg:flex lg:flex-1 lg:justify-end'
+		layout: 'hidden ',
+		flex: 'lg:flex lg:flex-1 lg:justify-end'
 	}
 } satisfies Styles;
 export const siteHeader = styles;

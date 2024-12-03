@@ -12,7 +12,7 @@ const styles = {
 		sizing: 'w-full',
 		background: 'bg-white/90 dark:bg-neutral-900/90',
 		border: 'border-t border-black/10 dark:border-white/10',
-		spacing: 'py-10'
+		spacing: 'py-10',
 	},
 	north: {
 		flex: 'flex',
@@ -20,17 +20,12 @@ const styles = {
 	},
 	contain: {
 		flex: 'flex justify-between gap-5',
-		west: {
-			flex: 'flex',
-			sizing: 'max-w-[15rem]'
-		},
+		west: {},
 		center: {
-			flex: 'flex flex-grow flex-wrap justify-between gap-8'
+			flex: 'flex flex-grow flex-wrap justify-between gap-8',
+			sizing: 'w-fit'
 		},
-		east: {
-			flex: 'flex',
-			sizing: 'w-full'
-		}
+		east: {}
 	},
 	south: {
 		grid: 'grid grid-cols-1',

@@ -8,14 +8,13 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		spacing: '-mx-2 space-y-1'
+		spacing: '-mx-2 space-y-2'
 	},
 	opt: {
 		pine: {
-			spacing: 'mt-1 px-2'
+			spacing: 'mt-2 px-2'
 		},
 		dual: {
-			layout: 'z-50',
 			flex: 'flex flex-col',
 			background: 'bg-white dark:bg-neutral-900/80',
 			border: 'border-r border-black/10 dark:border-white/10',
@@ -26,7 +25,7 @@ const styles = {
 		sake: {}
 	},
 	trigger: {
-		flex: 'flex items-center w-full gap-x-3 ',
+		flex: 'flex items-center w-full gap-x-3',
 		typography: 'font-semibold text-left text-sm/6 ',
 		border: 'rounded-md',
 		spacing: 'py-1.5 pr-2 pl-2 data-[subitem=true]:pl-9',
@@ -48,14 +47,14 @@ const styles = {
 		},
 		icon: {
 			flex: 'shrink-0',
-			sizing: 'size-6',
+			sizing: 'size-5',
 			typography: 'text-inherit'
 		},
 		chevron: {
 			flex: 'shrink-0',
 			sizing: 'size-5',
 			spacing: 'ml-auto',
-			transform: 'data-[expanded=true]:rotate-90 transition-transform duration-[150ms] ease-in-out',
+			transform: 'data-[expand=true]:rotate-90 transition-transform duration-[150ms] ease-in-out',
 			typography: 'text-inherit'
 		}
 	}
@@ -63,8 +62,9 @@ const styles = {
 export const siteAsideItem = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface SiteAsideItemProps extends BaseProps<typeof siteAsideItem>, Props {
+type Props = Omit<SvelteHTMLElements['aside'], 'class'> & BaseProps<typeof siteAsideItem>;
+export interface SiteAsideItemProps extends Props {
 	item: Item;
+	mode?: 'pine' | 'dual' /** 'pine | 'dual' | 'sake' */;
 	dismiss?: SiteAsideItemProps['onclick'];
 }

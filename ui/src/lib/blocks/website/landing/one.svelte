@@ -10,7 +10,8 @@
 		USiteFooter,
 		USiteHeader,
 		USiteLayout,
-		USiteMain
+		USiteMain,
+		UToggle
 	} from '$lib/index.js';
 	import type { Snippet } from 'svelte';
 	import Logo from '../../logo.svelte';
@@ -33,32 +34,49 @@
 		<Logo />
 	</a>
 {/snippet}
+{#snippet site(mode: 'header' | 'aside')}
+	{@render centlax()}
+	<UToggle as="button" class={mode === 'header' ? 'flex lg:hidden' : ''}>
+		<span class="sr-only">Open/Close main menu</span>
+		<UIcon
+			class="size-6"
+			name={mode === 'header'
+				? 'i-fluent-text-align-justify-24-regular'
+				: 'i-fluent-dismiss-24-regular'}
+		/>
+	</UToggle>
+{/snippet}
 
-<USiteLayout>
-	<UContainer>
-		<USheet transition={{ duration: 300 }} class="w-full sm:max-w-sm">
-			<!-- Header -->
-			<USiteHeader logo={centlax} items={heads} />
-
-			<!-- Aside -->
-			{#snippet content()}
-				<USiteAside logo={centlax} items={heads} />
+<USiteLayout class="container">
+	<USheet transition={{ duration: 300 }} class="w-full sm:max-w-[--site-width]">
+		<!-- Header -->
+		<USiteHeader items={heads}>
+			{#snippet west()}
+				{@render site('header')}
 			{/snippet}
-		</USheet>
+			{#snippet east()}
+				<a href="/" class="0 text-sm/6 font-semibold"
+					>Log in <span aria-hidden="true">&rarr;</span></a
+				>
+			{/snippet}
+		</USiteHeader>
 
-		<!-- Main  -->
-		<USiteMain>
-			<UButton onclick={dark.toggle}>dark</UButton>
-			<UInputGroup>
-				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-					<UIcon class="size-5 text-gray-500" name="i-fluent-person-24-regular" />
-				</div>
-				<UInput />
-			</UInputGroup>
-			{@render children?.()}
-		</USiteMain>
+		<!-- Aside -->
+		{#snippet content()}
+			<USiteAside items={heads}>
+				{#snippet north()}
+					{@render site('aside')}
+				{/snippet}
+			</USiteAside>
+		{/snippet}
+	</USheet>
 
-		<!-- Footer -->
-		<USiteFooter items={foots} />
-	</UContainer>
+	<!-- Main  -->
+	<USiteMain>
+		<UButton onclick={dark.toggle}>dark</UButton>
+		{@render children?.()}
+	</USiteMain>
+
+	<!-- Footer -->
+	<USiteFooter items={foots} />
 </USiteLayout>

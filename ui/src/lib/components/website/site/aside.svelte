@@ -3,7 +3,7 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteAside, type SiteAsideProps } from './aside.js';
-	import { UIcon, USiteAsideItem, UToggle } from '$lib/index.js';
+	import { USiteAsideItem } from '$lib/index.js';
 
 	/** Props */
 	let { items, ...props }: SiteAsideProps = $props();
@@ -13,29 +13,21 @@
 </script>
 
 <aside role="dialog" aria-modal="true" class={cn(st(ui.root), ui.class)}>
-	{#if props.north}
+	<div hidden={!props.north} class={st(ui.north)}>
 		{@render props.north?.()}
-	{:else}
-		<div class="flex items-center justify-between">
-			{@render props.logo?.()}
-			<UToggle as="button" class="">
-				<span class="sr-only">Close menu</span>
-				<UIcon name="i-fluent-dismiss-24-regular" />
-			</UToggle>
-		</div>
-	{/if}
+	</div>
 
-	{#if props.children}
-		{@render props.children?.()}
-	{:else}
-		<nav class="mt-6 flow-root">
+	<nav class={st(ui.center)}>
+		{#if props.children}
+			{@render props.children?.()}
+		{:else}
 			{#each items as it}
 				<USiteAsideItem item={it} />
 			{/each}
-		</nav>
-	{/if}
+		{/if}
+	</nav>
 
-	{#if props.south}
+	<div hidden={!props.south} class={st(ui.south)}>
 		{@render props.south?.()}
-	{/if}
+	</div>
 </aside>
