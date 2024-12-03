@@ -71,6 +71,5 @@ export interface DashAsideItemProps extends Props {
 	item: Item;
 	mode?: 'pine' | 'dual' /** 'pine | 'dual' | 'sake' */;
 	dismiss?: DashAsideItemProps['onclick'];
-	index?: number;
 	transition?: TransitionParams<SlideParams>;
 }

@@ -16,7 +16,7 @@ const styles = {
 		flex: 'flex lg:flex-1'
 	},
 	center: {
-		layout: 'hidden lg:flex lg:gap-x-12',
+		layout: 'hidden lg:flex lg:gap-x-12'
 	},
 
 	east: {

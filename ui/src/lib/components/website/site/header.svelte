@@ -15,6 +15,10 @@
 <header class={cn(st(ui.root), ui.class)} aria-label="global">
 	<div class={st(ui.west)}>
 		{@render props.logo?.()}
+		<UToggle as="button" class="flex lg:hidden">
+			<span class="sr-only">Open main menu</span>
+			<UIcon class="size-6" name="i-fluent-text-align-justify-24-regular" />
+		</UToggle>
 	</div>
 	<nav class={st(ui.center)}>
 		{#each items as it}
@@ -23,9 +27,5 @@
 	</nav>
 	<div class={st(ui.east)}>
 		{@render props.east?.()}
-		<UToggle as="button" class="flex lg:hidden">
-			<span class="sr-only">Open main menu</span>
-			<UIcon class="size-6" name="i-fluent-text-align-justify-24-regular" />
-		</UToggle>
 	</div>
 </header>

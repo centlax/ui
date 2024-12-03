@@ -1,6 +1,9 @@
+import { CalendarDate } from '@internationalized/date';
+
 export const calendarDefaults = {
 	isDateDisabled: undefined,
 	isDateUnavailable: undefined,
+	defaultValue: new CalendarDate(2024, 1, 11),
 	value: undefined,
 	preventDeselect: false,
 	numberOfMonths: 1,

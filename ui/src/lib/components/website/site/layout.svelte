@@ -16,7 +16,7 @@
 </div>
 
 <style>
-	:root{
+	:root {
 		--site-height: 3rem;
 	}
 </style>

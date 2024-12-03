@@ -24,10 +24,18 @@
 			</UToggle>
 		</div>
 	{/if}
-	<div class="mt-6 flow-root">
-		{#each items as it}
-			<USiteAsideItem item={it} />
-		{/each}
-	</div>
-	<div></div>
+
+	{#if props.children}
+		{@render props.children?.()}
+	{:else}
+		<nav class="mt-6 flow-root">
+			{#each items as it}
+				<USiteAsideItem item={it} />
+			{/each}
+		</nav>
+	{/if}
+
+	{#if props.south}
+		{@render props.south?.()}
+	{/if}
 </aside>

@@ -18,9 +18,7 @@ const styles = {
 		layout: 'flex items-center justify-between'
 	},
 	center: {
-		spacing: '-my-6 mt-6 flow-root space-y-2  py-6',
-		trigger: {},
-		content: {}
+		spacing: '-my-6 mt-6 flow-root space-y-2  py-6'
 	},
 	south: {
 		spacing: 'py-6'

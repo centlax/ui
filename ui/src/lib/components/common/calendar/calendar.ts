@@ -10,20 +10,25 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		sizing: 'w-fit ',
+		sizing: 'w-fit',
 		background: 'bg-white dark:bg-neutral-900',
 		spacing: 'p-3',
-		border: 'rounded-lg',
+		border: 'rounded-lg ring-1 ring-black/10 dark:ring-white/10',
 		effect: 'shadow-sm',
 		typography: 'text-sm font-semibold'
 	},
 	header: {
-		flex: 'flex items-center justify-between',
+		flex: 'flex items-center justify-between px-1.5',
 		heading: {
+			layout: 'relative',
 			flex: 'text-center font-medium truncate mx-auto'
 		},
-		prev: {},
-		next: {}
+		prev: {
+			flex: 'flex'
+		},
+		next: {
+			flex: 'flex'
+		}
 	},
 	main: {
 		flex: 'flex flex-col space-y-4 pt-4 sm:flex-row sm:space-x-4 sm:space-y-0',
@@ -31,6 +36,7 @@ const styles = {
 			flex: '',
 			head: {
 				custom: '',
+				typography: 'text-primary-500',
 				week: {
 					custom: '',
 					day: {}
@@ -39,12 +45,9 @@ const styles = {
 			body: {
 				typography: 'text-sm font-medium',
 				week: {
-					flex: '',
+					flex: 'relative text-center text-sm',
 					day: {
-						flex: '',
-						sizing: '',
 						typography: 'text-center',
-						spacing: 'p-1.5',
 						is: {
 							outside: {
 								effect: 'opacity-10'

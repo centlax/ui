@@ -26,8 +26,8 @@
 		onclick={it.href ? props.dismiss : null}
 		href={it.href}
 		class={st(ui.trigger, ui.trigger.is[active ? 'active' : 'inactive'])}
-		aria-controls="sub-menu-{props.index}"
-		id="sub-menu-{props.index}"
+		aria-controls="sub-menu-{it.index}"
+		id="sub-menu-{it.index}"
 		aria-expanded={expand}
 		data-subitem={subitem}
 	>
@@ -62,7 +62,7 @@
 	<UCollapsible
 		transition={props.transition ?? { duration: 300 }}
 		class={css.root}
-		id="sub-menu-{props.index}"
+		id="sub-menu-{item.index}"
 	>
 		{#snippet trigger({ value })}
 			{@render trigger$(value, item, false)}

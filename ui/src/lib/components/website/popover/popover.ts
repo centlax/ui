@@ -10,7 +10,9 @@ import type { FadeParams } from 'svelte/transition';
 
 /** Styles */
 const styles = {
-	root: {},
+	root: {
+		layout: 'z-10'
+	},
 	arrow: {}
 } satisfies Styles;
 export const popover = styles;
@@ -29,3 +31,22 @@ export interface PopoverProps extends BaseProps<typeof popover>, Props {
 	as?: keyof HTMLElementTagNameMap;
 	'trigger-as'?: keyof HTMLElementTagNameMap;
 }
+
+export const defaults: CreatePopoverProps = {
+	positioning: {
+		placement: 'bottom'
+	},
+	arrowSize: 8,
+	defaultOpen: false,
+	disableFocusTrap: false,
+	escapeBehavior: 'close',
+	preventScroll: false,
+	onOpenChange: undefined,
+	closeOnOutsideClick: true,
+	portal: 'body',
+	forceVisible: false,
+	openFocus: undefined,
+	closeFocus: undefined,
+	onOutsideClick: undefined,
+	preventTextSelectionOverflow: true
+};

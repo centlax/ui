@@ -3,23 +3,27 @@
 	import { useToggle } from '$lib/composables/toggle.js';
 	import { createPopover, createSync, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
-	import { popover, type PopoverProps } from './popover.js';
+	import { defaults, popover, type PopoverProps } from './popover.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 
 	/** Props */
-	let { value = $bindable(false), ...props }: PopoverProps = $props();
+	let {
+		value = $bindable(false),
+
+		...props
+	}: PopoverProps = $props();
 
 	const {
 		elements: { trigger, content, arrow, close, overlay },
 		states
 	} = createPopover({
-		positioning: props['float'],
+		positioning: props['float'] ?? defaults['positioning'],
 		disableFocusTrap: props['disable-focus-trap'],
 		arrowSize: props['arrow-size'],
 		escapeBehavior: props['escape-behavior'],
-		closeOnOutsideClick: props['close-on-outside-click'],
+		closeOnOutsideClick: props['close-on-outside-click'] ?? defaults['closeOnOutsideClick'],
 		preventScroll: props['prevent-scroll'],
 		preventTextSelectionOverflow: props['prevent-text-selection-overflow'],
 		portal: props['portal'] ?? 'body',

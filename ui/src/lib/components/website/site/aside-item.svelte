@@ -1,6 +1,8 @@
 <script lang="ts">
 	/** Imports */
+	import { UCollapsible, UIcon } from '$lib/components/export.js';
 	import { useUI } from '$lib/composables/ui.js';
+	import type { Item } from '$lib/types/item.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteAsideItem, type SiteAsideItemProps } from './aside-item.js';
 
@@ -9,57 +11,48 @@
 
 	/** Styles */
 	const ui = useUI(siteAsideItem, props.class, props.override);
+	let expand: boolean = $state(false);
 </script>
 
-<div class="">
+{#snippet item$(it: Item, subitem: boolean)}
 	<button
-		type="button"
-		class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold hover:bg-gray-50"
-		aria-controls="disclosure-1"
+		class="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-sm/6 font-semibold hover:bg-neutral-50 data-[subitem=true]:pl-9 dark:hover:bg-neutral-800"
+		aria-controls="disclosure-{item.index}"
 		aria-expanded="false"
+		data-expand={expand}
+		data-subitem={subitem}
 	>
-		Product
-		<!--
-      Expand/collapse icon, toggle classes based on menu open state.
-
-      Open: "rotate-180", Closed: ""
-    -->
-		<svg
-			class="size-5 flex-none"
-			viewBox="0 0 20 20"
-			fill="currentColor"
-			aria-hidden="true"
-			data-slot="icon"
-		>
-			<path
-				fill-rule="evenodd"
-				d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-				clip-rule="evenodd"
+		{item.title || item.text}
+		{#if it.items}
+			<UIcon
+				data-expand={expand}
+				class="size-5 flex-none data-[expand=true]:rotate-90"
+				name="i-fluent-chevron-right-24-filled"
 			/>
-		</svg>
+		{/if}
 	</button>
-	<!-- 'Product' sub-menu, show/hide based on menu state. -->
-	<div class="mt-2 space-y-2" id="disclosure-1">
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Analytics</a
+{/snippet}
+
+<div class="-mx-2 space-y-1">
+	{#if !item.items}
+		{@render item$(item, false)}
+	{:else}
+		{@const items = item.items}
+		<UCollapsible
+			transition={{ duration: 300 }}
+			bind:value={expand}
+			class="mt-2 space-y-2"
+			id="disclosure-1"
 		>
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Engagement</a
-		>
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Security</a
-		>
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Integrations</a
-		>
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Automations</a
-		>
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Watch demo</a
-		>
-		<a href="/" class="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold hover:bg-gray-50"
-			>Contact sales</a
-		>
-	</div>
+			{#snippet trigger()}
+				{@render item$(item, false)}
+			{/snippet}
+			{#snippet content()}
+				<!-- 'Product' sub-menu, show/hide based on menu state. -->
+				{#each items as it}
+					{@render item$(it, true)}
+				{/each}
+			{/snippet}
+		</UCollapsible>
+	{/if}
 </div>
