@@ -4,7 +4,7 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteHeaderItem, type SiteHeaderItemProps } from './header-item.js';
-	import { UIcon, UToggle, UTooltip } from '$lib/index.js';
+	import { UIcon, UTooltip } from '$lib/index.js';
 
 	/** Props */
 	let { item, ...props }: SiteHeaderItemProps = $props();
@@ -14,33 +14,27 @@
 </script>
 
 {#snippet item$(it: Item)}
-	<button
-		type="button"
-		class="flex items-center gap-x-1 text-sm/6 font-semibold text-neutral-900 dark:text-white"
-		aria-expanded="false"
-	>
+	<a href={it.href} class={st(ui.trigger)}>
 		{it.title || it.text}
 		{#if it.items}
-			<UIcon class="size-5 flex-none text-neutral-400" name="i-fluent-chevron-down-20-filled" />
+			<UIcon class={st(ui.trigger.chevron)} name="i-fluent-chevron-down-20-filled" />
 		{/if}
-	</button>
+	</a>
 {/snippet}
 
 {#snippet subItem(it: Item)}
-	<div
-		class="group relative flex items-center gap-x-6 rounded-[calc(theme(borderRadius.lg)-1px)] p-2 text-sm/6 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-	>
-		<div
-			class="flex size-10 flex-none items-center justify-center rounded-lg bg-neutral-100 ring-1 ring-black/10 group-hover:bg-white dark:bg-neutral-800 dark:ring-white/5 dark:group-hover:bg-neutral-900"
-		>
-			<UIcon class="size-6 text-neutral-600 group-hover:text-indigo-600" name="" />
+	<div class={st(ui.content)}>
+		<div class={st(ui.content.west)}>
+			<UIcon class={st(ui.content.west.icon)} name={it.icon as string} />
 		</div>
-		<div class="flex-auto">
-			<a href="/" class="block font-semibold text-neutral-900">
-				{it.label}
-				<span class="absolute inset-0"></span>
+		<div class={st(ui.content.east)}>
+			<a href="/" class={st(ui.content.east.title)}>
+				{it.text}
+				<span aria-hidden="true" class="absolute inset-0"></span>
 			</a>
-			<p class="mt-1 text-neutral-600">Get a better understanding of your traffic</p>
+			<p class={st(ui.content.east.description)}>
+				{it.description}
+			</p>
 		</div>
 	</div>
 {/snippet}
@@ -49,11 +43,7 @@
 	{@render item$(item)}
 {:else}
 	{@const items = item.items}
-	<UTooltip
-		class=" w-screen max-w-md overflow-hidden rounded-xl bg-white p-2.5 shadow-sm ring-1 ring-black/10 backdrop-blur-lg dark:bg-neutral-900/90 dark:ring-white/10"
-		arrow-size={10}
-		group
-	>
+	<UTooltip class={cn(st(ui.root), ui.class)} group>
 		{#snippet trigger()}
 			{@render item$(item)}
 		{/snippet}

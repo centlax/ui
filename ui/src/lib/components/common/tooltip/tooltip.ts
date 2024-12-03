@@ -9,7 +9,7 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		layout: 'relative  '
+		layout: 'relative z-10'
 	},
 	trigger: {},
 	arrow: {}

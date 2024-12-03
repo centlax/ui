@@ -9,10 +9,9 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 const styles = {
 	root: {
 		layout: 'relative',
-		sizing: 'w-full',
 		background: 'bg-white/90 dark:bg-neutral-900/90',
 		border: 'border-t border-black/10 dark:border-white/10',
-		spacing: 'py-10',
+		spacing: 'py-10'
 	},
 	north: {
 		flex: 'flex',
@@ -22,7 +21,7 @@ const styles = {
 		flex: 'flex justify-between gap-5',
 		west: {},
 		center: {
-			flex: 'flex flex-grow flex-wrap justify-between gap-8',
+			flex: 'flex flex-grow flex-wrap justify-start gap-10 sm:gap-20',
 			sizing: 'w-fit'
 		},
 		east: {}

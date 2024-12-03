@@ -4,6 +4,7 @@ const heads: Item[] = [
 	{
 		title: 'Product',
 		icon: 'i-fluent-building-retail-toolbox-24-regular',
+		href: '/',
 
 		items: [
 			{
