@@ -3,7 +3,6 @@ import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
-import type { DashProps } from './dash.svelte.js';
 
 /** Styles */
 const styles = {
@@ -29,7 +28,7 @@ export const dashHeader = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['header'], 'class'>;
-export interface DashHeaderProps extends BaseProps<typeof dashHeader>, Props, DashProps {
+export interface DashHeaderProps extends BaseProps<typeof dashHeader>, Props {
 	children?: Snippet;
 	west?: Snippet;
 	east?: Snippet;

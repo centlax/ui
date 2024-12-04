@@ -5,7 +5,7 @@
 	import { dashLayout, type DashLayoutProps } from './layout.js';
 
 	/** Props */
-	let { height = 4, width = 18, ...props }: DashLayoutProps = $props();
+	let { ...props }: DashLayoutProps = $props();
 
 	/** styles */
 	const ui = useUI(dashLayout, props.class, props.override);

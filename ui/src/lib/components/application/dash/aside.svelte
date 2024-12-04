@@ -31,7 +31,7 @@
 						{/if}
 						<ul role="list" class={st(ui.center.item.items)}>
 							{#each item.items as it, i}
-								<UDashAsideItem dismiss={props['item-dismiss']} item={it} index={i} />
+								<UDashAsideItem dismiss={props['item-dismiss']} item={it} />
 							{/each}
 						</ul>
 					{/if}

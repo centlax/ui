@@ -3,7 +3,7 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteHeader, type SiteHeaderProps } from './header.js';
-	import { UIcon, USiteHeaderItem, UToggle } from '$lib/index.js';
+	import { USiteHeaderItem } from '$lib/index.js';
 
 	/** Props */
 	let { items, ...props }: SiteHeaderProps = $props();

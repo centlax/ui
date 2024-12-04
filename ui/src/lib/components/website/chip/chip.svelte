@@ -5,7 +5,7 @@
 	import { st, cn, co } from '$lib/utils/wind.js';
 
 	/** Props */
-	let {color, ...props }: ChipProps = $props();
+	let { color, ...props }: ChipProps = $props();
 
 	/** Styles */
 	const ui = useUI(chip, props.class, props.override);

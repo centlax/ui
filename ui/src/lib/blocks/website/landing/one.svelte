@@ -13,6 +13,7 @@
 		USiteHeader,
 		USiteLayout,
 		USiteMain,
+		USwitch,
 		UToggle
 	} from '$lib/index.js';
 	import type { Snippet } from 'svelte';
@@ -75,10 +76,12 @@
 
 	<!-- Main  -->
 	<USiteMain>
-		<UButton onclick={dark.toggle}>dark</UButton>
-		<USelectMenu items={[]} />
-		<USelect/>
+		<UButton text="dark" onclick={dark.toggle}/>
+	
+
 		{@render children?.()}
+
+	
 	</USiteMain>
 
 	<!-- Footer -->

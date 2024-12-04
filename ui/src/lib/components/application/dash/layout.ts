@@ -3,7 +3,6 @@ import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
-import type { DashProps } from './dash.svelte.js';
 
 /** Styles */
 const styles = {
@@ -17,6 +16,6 @@ export const dashLayout = styles;
 
 /** Props */
 type Props = Omit<HTMLAttributes<HTMLDivElement>, 'class'>;
-export interface DashLayoutProps extends BaseProps<typeof dashLayout>, Props, DashProps {
+export interface DashLayoutProps extends BaseProps<typeof dashLayout>, Props {
 	children: Snippet;
 }

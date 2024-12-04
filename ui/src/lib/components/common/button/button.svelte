@@ -1,29 +1,33 @@
 <script lang="ts">
 	/** Imports  */
+	import { UIcon } from '$lib/components/export.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn, co } from '$lib/utils/wind.js';
 	import { type ButtonProps, button } from './button.js';
 
 	/** Props  */
-	let { color = 'primary', ...props }: ButtonProps = $props();
+	let { loading = false, color = 'primary', ...props }: ButtonProps = $props();
 
 	/** Styles  */
 	const ui = useUI(button, props.class, props.override);
 	let css = $state({
-		button: st(ui.root)
+		button: cn(st(ui.root, ui.opt.size['md'], ui.opt.variant['solid']['color']), ui.class)
 	});
 </script>
 
 <svelte:element
 	this={props.href ? 'a' : 'button'}
 	{...props}
-	class={cn(css.button, ui.class)}
-	data-ui="button"
+	class={css.button}
 	style={co(color)}
+	disabled={props.disabled || loading}
 >
-	{#if props.children}
-		{@render props.children?.()}
-	{:else}
-		{props.about}
+	{@render props.children?.()}
+	{props.text}
+
+	{#if loading}
+		<span class={st(ui.load)}>
+			<UIcon name={st(ui.load.icon)} />
+		</span>
 	{/if}
 </svelte:element>

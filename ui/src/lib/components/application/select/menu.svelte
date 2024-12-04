@@ -70,7 +70,6 @@
 					use:melt={$option({ value: item, label: item })}
 				>
 					<div class="flex items-center">
-						
 						<UChip color="green" class="size-2" aria-hidden="true" />
 						<span class="ml-3 block truncate font-normal">
 							{item}
