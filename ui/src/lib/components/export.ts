@@ -1,3 +1,4 @@
+
 /** application */
 export { default as UCheckbox } from '$lib/components/application/checkbox/checkbox.svelte';
 export { default as UContext } from '$lib/components/application/context/context.svelte';
@@ -10,6 +11,7 @@ export { default as UField } from '$lib/components/application/field/field.svelt
 export { default as UFormDebug } from '$lib/components/application/form/debug.svelte';
 export { default as UForm } from '$lib/components/application/form/form.svelte';
 export { default as UModal } from '$lib/components/application/modal/modal.svelte';
+export { default as UProgress } from '$lib/components/application/progress/progress.svelte';
 export { default as USelectMenu } from '$lib/components/application/select/menu.svelte';
 export { default as USelect } from '$lib/components/application/select/select.svelte';
 export { default as USheet } from '$lib/components/application/sheet/sheet.svelte';

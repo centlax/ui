@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { createSlider, createSync, melt } from '@melt-ui/svelte';
+	import { createSlider, melt } from '@melt-ui/svelte';
 	import { slider, type SliderProps, sliderOptions as options } from './slider.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, co, st } from '$lib/utils/wind.js';

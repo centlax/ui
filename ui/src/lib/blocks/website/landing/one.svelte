@@ -2,6 +2,7 @@
 	import {
 		UButton,
 		UIcon,
+		UProgress,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -84,6 +85,7 @@
 		<div class="flex flex-col gap-4 text-center">
 			<code>autoSort: true; value: [{$value2}]</code>
 			<USlider value={value2} />
+			<UProgress/>
 		</div>
 	</USiteMain>
 
