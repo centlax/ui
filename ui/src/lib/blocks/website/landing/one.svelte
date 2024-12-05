@@ -1,25 +1,21 @@
 <script lang="ts">
 	import {
 		UButton,
-		UContainer,
 		UIcon,
-		UInput,
-		UInputGroup,
-		USelect,
-		USelectMenu,
 		USheet,
 		USiteAside,
 		USiteFooter,
 		USiteHeader,
 		USiteLayout,
 		USiteMain,
-		USwitch,
+		USlider,
 		UToggle
 	} from '$lib/index.js';
 	import type { Snippet } from 'svelte';
 	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
+	import { writable } from 'svelte/store';
 
 	let {
 		children
@@ -29,6 +25,8 @@
 	const { heads, foots } = data;
 	const dark = useDark();
 	//notice="Centlax &copy; 2024. All rights reserved."
+	let value1 = writable([30, 40, 50, 60, 70]);
+	let value2 = writable([30, 40, 50, 60, 70]);
 </script>
 
 {#snippet centlax()}
@@ -76,14 +74,19 @@
 
 	<!-- Main  -->
 	<USiteMain>
-		<UButton text="dark" onclick={dark.toggle}/>
-	
-
+		<UButton text="dark" onclick={dark.toggle} />
 		{@render children?.()}
 
-	
+		<div class="flex flex-col gap-4 text-center">
+			<code>autoSort: false; value: [{$value1}]</code>
+			<USlider value={value1} auto-sort={false} />
+		</div>
+		<div class="flex flex-col gap-4 text-center">
+			<code>autoSort: true; value: [{$value2}]</code>
+			<USlider value={value2} />
+		</div>
 	</USiteMain>
 
 	<!-- Footer -->
-	<USiteFooter items={foots} />
+	<USiteFooter />
 </USiteLayout>

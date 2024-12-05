@@ -11,7 +11,7 @@ const styles = {
 		layout: 'relative',
 		background: 'bg-white/90 dark:bg-neutral-900/90',
 		border: 'border-t border-black/10 dark:border-white/10',
-		spacing: 'py-10'
+		spacing: 'py-2 sm:py-4 md:py-6 lg:py-8'
 	},
 	north: {
 		flex: 'flex',
@@ -36,7 +36,7 @@ export const siteFooter = styles;
 /** Props */
 type Props = Omit<SvelteHTMLElements['footer'], 'class'>;
 export interface SiteFootProps extends BaseProps<typeof siteFooter>, Props {
-	items: Item[];
+	items?: Item[];
 	north?: Snippet;
 	west?: Snippet;
 	children?: Snippet;

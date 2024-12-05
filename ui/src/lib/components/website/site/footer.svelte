@@ -22,7 +22,7 @@
 		<nav class={st(ui.contain.center)}>
 			{#if props.children}
 				{@render props.children?.()}
-			{:else}
+			{:else if items}
 				{#each items as it}
 					<USiteFooterItem item={it} />
 				{/each}

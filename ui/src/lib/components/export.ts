@@ -13,6 +13,7 @@ export { default as UModal } from '$lib/components/application/modal/modal.svelt
 export { default as USelectMenu } from '$lib/components/application/select/menu.svelte';
 export { default as USelect } from '$lib/components/application/select/select.svelte';
 export { default as USheet } from '$lib/components/application/sheet/sheet.svelte';
+export { default as USlider } from '$lib/components/application/slider/slider.svelte';
 
 /** common */
 export { default as UAccordion } from '$lib/components/common/accordion/accordion.svelte';

@@ -44,5 +44,4 @@ export interface SwitchProps extends BaseProps<typeof _switch>, Props {
 	children?: Snippet;
 	value?: boolean;
 	color?: string;
-
 }

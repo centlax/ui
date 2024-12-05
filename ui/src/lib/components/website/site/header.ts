@@ -31,7 +31,7 @@ export const siteHeader = styles;
 
 type Props = Omit<SvelteHTMLElements['header'], 'class'>;
 export interface SiteHeaderProps extends BaseProps<typeof siteHeader>, Props {
-	items: Item[];
+	items?: Item[];
 	west?: Snippet;
 	children?: Snippet;
 	east?: Snippet;

@@ -20,7 +20,7 @@
 	<nav data-slot={props.children} class={st(ui.center)}>
 		{#if props.children}
 			{@render props.children?.()}
-		{:else}
+		{:else if items}
 			{#each items as it}
 				<USiteHeaderItem item={it} />
 			{/each}

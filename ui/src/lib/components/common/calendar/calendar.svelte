@@ -6,7 +6,6 @@
 	import { calendarDefaults } from './calendar.svelte.js';
 	import { UIcon, UPopover } from '$lib/components/export.js';
 	import { CalendarDate } from '@internationalized/date';
-	import { slide } from 'svelte/transition';
 
 	let { ...props }: CalendarProps = $props();
 
@@ -110,7 +109,9 @@
 					<tr class={st(ui.main.month.head.week)}>
 						{#each $weekdays as day}
 							<th class={st(ui.main.month.head.week.day)}>
-								{day}
+								<div>
+									{day}
+								</div>
 							</th>
 						{/each}
 					</tr>
