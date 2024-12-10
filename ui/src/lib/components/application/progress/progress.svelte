@@ -30,7 +30,7 @@
 
 <div style={co(color)} use:melt={$root} class={cn(st(ui.root), ui.class)}>
 	<div
-		class="h-full w-full rounded-full bg-color-500 transition-transform duration-[660ms]
+		class="bg-color-500 h-full w-full rounded-full transition-transform duration-[660ms]
         ease-[cubic-bezier(0.65,0,0.35,1)]"
 		style={`transform: translateX(-${100 - (100 * ($value ?? 0)) / ($max ?? 1)}%)`}
 	></div>

@@ -8,6 +8,7 @@ import type { CreateAccordionProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
 import type { SlideParams } from 'svelte/transition';
+import type { WhenTrue } from '@melt-ui/svelte/internal/types';
 
 /** Styles */
 const styles = {
@@ -19,13 +20,21 @@ const styles = {
 export const accordion = styles;
 
 /** Props */
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> &
-	Omit<TransformKeysToKebab<CreateAccordionProps>, 'value'>;
-export interface AccordionProps<T extends Item<T>> extends BaseProps<typeof accordion>, Props {
+type Value<Multiple extends boolean = false> = Multiple extends false ? string : string[];
+export type MeltValue<T extends boolean> =
+	| WhenTrue<false | T, string[], string, string | string[]>
+	| undefined;
+type Props<T extends boolean> = Omit<HTMLAttributes<HTMLElement>, 'class'> &
+	TransformKeysToKebab<Omit<CreateAccordionProps<T>, 'value' | 'multiple'>>;
+export interface AccordionProps<Multiple extends boolean>
+	extends BaseProps<typeof accordion>,
+		Props<Multiple> {
 	children?: Snippet;
-	trigger?: Snippet<[T]>;
-	content?: Snippet<[T]>;
-	items: T[];
+	multiple?: Multiple;
+	trigger?: Snippet<[Item]>;
+	content?: Snippet<[Item]>;
+	value?: Value<Multiple>;
+	items: Item[];
 	transition?: TransitionParams<SlideParams>;
 	as?: keyof HTMLElementTagNameMap;
 	'trigger-as'?: keyof HTMLElementTagNameMap;

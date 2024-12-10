@@ -1,26 +1,31 @@
-<script lang="ts" generics="T extends Item<T>">
+<script lang="ts" generics="Multiple extends boolean = false">
 	/** Imports */
 	import type { Item } from '$lib/types/item.js';
-	import { createAccordion, melt } from '@melt-ui/svelte';
+	import { createAccordion, createSync, melt } from '@melt-ui/svelte';
 	import { slide } from 'svelte/transition';
-	import { accordion, type AccordionProps } from './accordion.js';
+	import { accordion, type AccordionProps, type MeltValue } from './accordion.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 
 	/** Imports */
-	let { items, ...props }: AccordionProps<T> = $props();
+	let { value = $bindable(), items, ...props }: AccordionProps<Multiple> = $props();
 	const {
 		elements: { content, item, trigger, root },
-		helpers: { isSelected }
+		helpers: { isSelected },
+		states
 	} = createAccordion({
 		multiple: props['multiple'] ?? false,
 		disabled: props['disabled'] ?? false,
 		forceVisible: props['force-visible'] ?? false,
-		defaultValue: props['default-value'] ?? (items?.[0]?.id as string) ?? '0',
+		defaultValue: props['default-value'],
 		onValueChange: props['on-value-change']
 	});
 
+	const sync = createSync(states);
+	$effect(() => {
+		sync.value(value as MeltValue<Multiple>, (v) => ((value as MeltValue<Multiple>) = v));
+	});
 	/** Styles */
 	const ui = useUI(accordion, props.class, props.override);
 	const transition = useTransition();

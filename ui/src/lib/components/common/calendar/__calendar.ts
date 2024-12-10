@@ -32,17 +32,18 @@ type CalendarValue<
 	Range extends boolean = false,
 	Multiple extends boolean = false
 > = Range extends true ? DateRange : Multiple extends true ? DateValue[] : DateValue;
-
-//TransformKeysToKebab<Omit<CreateCalendarProps, 'multiple' | 'value'>>;
-
-type Props = Omit<SvelteHTMLElements['div'], 'class'>;
+export type MeltValue<T extends boolean> =
+	| WhenTrue<T, DateValue[], DateValue, DateValue | DateValue[]>
+	| undefined;
+type Props = Omit<SvelteHTMLElements['div'], 'class'> &
+	TransformKeysToKebab<Omit<CreateCalendarProps, 'multiple' | 'value'>>;
 export interface CalendarProps<Range extends boolean, Multiple extends boolean>
 	extends BaseProps<typeof calendar>,
 		Props {
 	children?: Snippet;
 	multiple?: Multiple;
 	range?: Range;
-	value?: CalendarValue<Range, Multiple>;
+	value?: Writable<CalendarValue<Range, Multiple>>;
 	header?: Snippet;
 	main?: Snippet;
 	footer?: Snippet;

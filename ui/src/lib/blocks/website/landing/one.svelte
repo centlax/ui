@@ -1,15 +1,14 @@
 <script lang="ts">
 	import {
 		UButton,
+		UCalendar,
 		UIcon,
-		UProgress,
 		USheet,
 		USiteAside,
 		USiteFooter,
 		USiteHeader,
 		USiteLayout,
 		USiteMain,
-		USlider,
 		UToggle
 	} from '$lib/index.js';
 	import type { Snippet } from 'svelte';
@@ -17,6 +16,7 @@
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
 	import { writable } from 'svelte/store';
+	import { CalendarDate, type DateValue } from '@internationalized/date';
 
 	let {
 		children
@@ -25,9 +25,8 @@
 	} = $props();
 	const { heads, foots } = data;
 	const dark = useDark();
-	//notice="Centlax &copy; 2024. All rights reserved."
-	let value1 = writable([30, 40, 50, 60, 70]);
-	let value2 = writable([30, 40, 50, 60, 70]);
+
+	let value = $state({ start: new CalendarDate(2022, 2, 3), end: new CalendarDate(2022, 2, 20) });
 </script>
 
 {#snippet centlax()}
@@ -77,16 +76,8 @@
 	<USiteMain>
 		<UButton text="dark" onclick={dark.toggle} />
 		{@render children?.()}
-
-		<div class="flex flex-col gap-4 text-center">
-			<code>autoSort: false; value: [{$value1}]</code>
-			<USlider value={value1} auto-sort={false} />
-		</div>
-		<div class="flex flex-col gap-4 text-center">
-			<code>autoSort: true; value: [{$value2}]</code>
-			<USlider value={value2} />
-			<UProgress/>
-		</div>
+		[{value.start}]
+		<UCalendar range bind:value />
 	</USiteMain>
 
 	<!-- Footer -->

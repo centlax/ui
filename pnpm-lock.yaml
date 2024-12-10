@@ -197,6 +197,9 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.2
         version: 0.86.2(svelte@5.2.12)
+      bits-ui:
+        specifier: 1.0.0-next.63
+        version: 1.0.0-next.63(svelte@5.2.12)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -5337,10 +5340,20 @@ snapshots:
       '@floating-ui/core': 1.6.8
       '@floating-ui/dom': 1.6.12
       '@internationalized/date': 3.6.0
-      esm-env: 1.2.0
+      esm-env: 1.2.1
       runed: 0.15.4(svelte@5.2.10)
       svelte: 5.2.10
       svelte-toolbelt: 0.4.6(svelte@5.2.10)
+
+  bits-ui@1.0.0-next.63(svelte@5.2.12):
+    dependencies:
+      '@floating-ui/core': 1.6.8
+      '@floating-ui/dom': 1.6.12
+      '@internationalized/date': 3.6.0
+      esm-env: 1.2.1
+      runed: 0.15.4(svelte@5.2.12)
+      svelte: 5.2.12
+      svelte-toolbelt: 0.4.6(svelte@5.2.12)
 
   blake3-wasm@2.1.5: {}
 
@@ -6792,6 +6805,11 @@ snapshots:
       esm-env: 1.2.1
       svelte: 5.2.10
 
+  runed@0.15.4(svelte@5.2.12):
+    dependencies:
+      esm-env: 1.2.1
+      svelte: 5.2.12
+
   sade@1.8.1:
     dependencies:
       mri: 1.2.0
@@ -7001,6 +7019,12 @@ snapshots:
       clsx: 2.1.1
       style-to-object: 1.0.8
       svelte: 5.2.10
+
+  svelte-toolbelt@0.4.6(svelte@5.2.12):
+    dependencies:
+      clsx: 2.1.1
+      style-to-object: 1.0.8
+      svelte: 5.2.12
 
   svelte2tsx@0.7.28(svelte@5.2.10)(typescript@5.7.2):
     dependencies:
