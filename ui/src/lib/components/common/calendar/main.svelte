@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { melt } from '@melt-ui/svelte';
-	import { ctxCalendar } from './_calendar.svelte.js';
+	import { ctxCalendar } from './calendar.svelte.js';
 	import { cn, st } from '$lib/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { calendarMain, type CalendarMainProps } from './main.js';
-	import type { DateValue } from '@internationalized/date';
 
 	let { ...props }: CalendarMainProps = $props();
 
@@ -41,11 +40,7 @@
 								aria-hidden="true"
 								aria-disabled={$isDateDisabled(date) || $isDateUnavailable(date)}
 							>
-								<div
-									role="button"
-									use:melt={$cell(date, month.value)}
-									class={st(ui.month.body.week.day)}
-								>
+								<div use:melt={$cell(date, month.value)} class={st(ui.month.body.week.day)}>
 									{date.day}
 								</div>
 							</td>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { UIcon, UPopover } from '$lib/index.js';
 	import { melt } from '@melt-ui/svelte';
-	import { ctxCalendar } from './_calendar.svelte.js';
+	import { ctxCalendar } from './calendar.svelte.js';
 	import { cn, st } from '$lib/utils/wind.js';
 	import { calendarHeader, type CalendarHeaderProps } from './header.js';
 	import { useUI } from '$lib/composables/ui.js';
@@ -9,6 +9,7 @@
 	let { ...props }: CalendarHeaderProps = $props();
 
 	const ctx = ctxCalendar();
+	const calendar = ctx.get();
 	const {
 		elements: { heading, prevButton },
 		states: { headingValue, value },
@@ -39,7 +40,7 @@
 				<button onclick={prevYear}>
 					<UIcon name="i-fluent-chevron-left-16-filled" />
 				</button>
-				<button>{$value?.year}</button>
+				<button>year</button>
 				<button onclick={nextYear}>
 					<UIcon name="i-fluent-chevron-right-16-filled" />
 				</button>
@@ -51,9 +52,7 @@
 							onclick={() => {
 								setMonth(i + 1);
 							}}
-							class="rounded p-1 text-center {$value?.month === i + 1
-								? 'bg-primary-500'
-								: ''} hover:bg-primary-500"
+							class="rounded p-1 text-center"
 						>
 							{month}
 						</button>

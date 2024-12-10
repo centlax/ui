@@ -23,8 +23,8 @@ const styles = {
 			background: 'bg-white dark:bg-neutral-900/80',
 			border: 'border-r border-black/10 dark:border-white/10',
 			filter: 'backdrop-blur-lg',
-			sizing: 'h-full w-[--dash-width]',
-			spacing: 'ml-3 p-4'
+			sizing: 'h-screen w-[--dash-width]',
+			spacing: 'ml-5 p-4'
 		}
 	},
 	trigger: {

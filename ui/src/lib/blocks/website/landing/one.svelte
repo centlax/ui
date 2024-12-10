@@ -3,6 +3,7 @@
 		UButton,
 		UCalendar,
 		UIcon,
+		UInputDate,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -15,8 +16,9 @@
 	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
-	import { writable } from 'svelte/store';
 	import { CalendarDate, type DateValue } from '@internationalized/date';
+	import type { DateRange } from '@melt-ui/svelte';
+	import { writable } from 'svelte/store';
 
 	let {
 		children
@@ -26,7 +28,7 @@
 	const { heads, foots } = data;
 	const dark = useDark();
 
-	let value = $state({ start: new CalendarDate(2022, 2, 3), end: new CalendarDate(2022, 2, 20) });
+	let value = $state<DateValue>();
 </script>
 
 {#snippet centlax()}
@@ -76,8 +78,11 @@
 	<USiteMain>
 		<UButton text="dark" onclick={dark.toggle} />
 		{@render children?.()}
-		[{value.start}]
-		<UCalendar range bind:value />
+
+
+		<UInputDate picker/>
+
+		<input type="datetime" />
 	</USiteMain>
 
 	<!-- Footer -->

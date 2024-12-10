@@ -25,27 +25,40 @@ const styles = {
 			typography: 'text-sm font-medium',
 			week: {
 				flex: 'relative text-center text-sm',
+				layout: 'group',
+				effect: '[&>[data-outside-visible-months]+[data-outside-months]]:opacity-10',
 				day: {
-					layout: 'relative',
-					flex: 'flex  items-center justify-center',
-					typography: clsx('whitespace-nowrap', 'data-[selected]:text-primary-900'),
+					flex: 'flex items-center justify-center ',
+					sizing: 'size-8',
+					spacing: 'm-0.5',
+					interactive: clsx(
+						'cursor-pointer select-none',
+						'data-[outside-month]:pointer-events-none',
+						'data-[outside-visible-months]:pointer-events-none',
+						'data-[outside-visible-months]:cursor-default',
+						'data-[outside-month]:cursor-default'
+					),
+					border: clsx(
+						'rounded-full ring-inset focus:ring focus:ring-primary-400',
+						'data-[selection-start]:bg-primary-500',
+						'data-[selection-end]:bg-primary-500'
+					),
 					background: clsx(
 						'hover:bg-primary-500/50',
-						'data-[range-highlighted]:bg-primary-200 dark:data-[range-highlighted]:bg-primary-800',
-						'data-[selected]:bg-primary-300'
+						'data-[highlighted]:bg-primary-500/50',
+						'data-[range-highlighted]:bg-primary-200',
+						'data-[selected]:bg-primary-500',
+						'data-[outside-visible-months]:hover:bg-transparent',
+						'data-[outside-month]:hover:bg-transparent'
 					),
-					border: statify({
-						default: 'rounded-full',
-						focus: 'focus:outline-none focus:ring-2 focus:ring-primary-500'
-					}),
-					spacing: 'm-0.5',
-					sizing: 'size-8',
+					typography: clsx(
+						'data-[selected]:text-white'
+						//'data-[highlighted]:text-white',
+					),
 					effect: clsx(
-						'data-[disabled]:opacity-40',
-						'data-[outside-months]:opacity-40 ',
-						'data-[outside-visible-months]:opacity-0'
-					),
-					interactive: 'data-[outside-visible-months]:pointer-events-none'
+						'data-[outside-visible-months]:opacity-40',
+						'data-[disabled]:opacity-40 data-[outside-month]:opacity-40'
+					)
 				}
 			}
 		}

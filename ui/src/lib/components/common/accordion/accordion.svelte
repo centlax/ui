@@ -11,7 +11,7 @@
 	/** Imports */
 	let { value = $bindable(), items, ...props }: AccordionProps<Multiple> = $props();
 	const {
-		elements: { content, item, trigger, root },
+		elements: { content, item, trigger, root, heading },
 		helpers: { isSelected },
 		states
 	} = createAccordion({

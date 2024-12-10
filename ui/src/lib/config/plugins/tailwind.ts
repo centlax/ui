@@ -5,6 +5,7 @@ import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import colorize from '../../utils/colorize.js';
 import { _default } from '../../theme/colors/index.js';
+import plugin from 'tailwindcss/plugin.js';
 
 export default function (): Partial<Config> {
 	return {

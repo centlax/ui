@@ -1,45 +1,55 @@
 <script lang="ts" generics="Range extends boolean = false, Multiple extends boolean = false">
-	/** Imports */
-	import { Calendar as DefaultCalendar, RangeCalendar as RangeCalendar } from 'bits-ui';
-	import type { CalendarProps } from './__calendar.js';
+	import { melt } from '@melt-ui/svelte';
+	import { type CalendarProps, calendar as styles } from './calendar.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { cn, st } from '$lib/utils/wind.js';
+	import { createCalendar, ctxCalendar } from './calendar.svelte.js';
+	import { UCalendarFooter, UCalendarHeader, UCalendarMain } from '$lib/index.js';
 
-	/** Props */
-	let {...props}: CalendarProps<Range, Multiple> = $props();
+	let { value = $bindable(), ...props }: CalendarProps<Range, Multiple> = $props();
 
-	const Calendar = $state(props.range ? RangeCalendar : DefaultCalendar);
+	let { bound: boundCalendar, range: rangeCalendar } = createCalendar<Range, Multiple>(props);
+	const calendar = props.range ? rangeCalendar : boundCalendar;
+
+	const {
+		elements: { calendar: root, heading, grid, cell, prevButton, nextButton },
+		states
+	} = calendar;
+
+	const ctx = ctxCalendar();
+	ctx.set(calendar);
+
+	const { months, headingValue, weekdays, value: v } = states;
+	$effect(() => {
+		$v = value;
+	});
+	$effect(() => {
+		//@ts-ignore
+		value = $v;
+	});
+
+	/** Styles */
+	const ui = useUI(styles, props.class, props.override);
 </script>
 
-<Calendar.Root type="single">
-	{#snippet children({ months, weekdays })}
-		<Calendar.Header>
-			<Calendar.PrevButton />
-			<Calendar.Heading />
-			<Calendar.NextButton />
-		</Calendar.Header>
-
-		{#each months as month}
-			<Calendar.Grid>
-				<Calendar.GridHead>
-					<Calendar.GridRow>
-						{#each weekdays as day}
-							<Calendar.HeadCell>
-								{day}
-							</Calendar.HeadCell>
-						{/each}
-					</Calendar.GridRow>
-				</Calendar.GridHead>
-				<Calendar.GridBody>
-					{#each month.weeks as weekDates}
-						<Calendar.GridRow>
-							{#each weekDates as date}
-								<Calendar.Cell {date} month={month.value}>
-									<Calendar.Day />
-								</Calendar.Cell>
-							{/each}
-						</Calendar.GridRow>
-					{/each}
-				</Calendar.GridBody>
-			</Calendar.Grid>
-		{/each}
-	{/snippet}
-</Calendar.Root>
+<div use:melt={$root} class={cn(st(ui.root), ui.class)}>
+	{#if props.children}
+		{@render props.children?.()}
+	{:else}
+		{#if props.header}
+			{@render props.header?.()}
+		{:else}
+			<UCalendarHeader />
+		{/if}
+		{#if props.main}
+			{@render props.main?.()}
+		{:else}
+			<UCalendarMain />
+		{/if}
+		{#if props.footer}
+			{@render props.footer?.()}
+		{:else}
+			<UCalendarFooter />
+		{/if}
+	{/if}
+</div>
