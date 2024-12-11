@@ -3,22 +3,21 @@
 		UButton,
 		UCalendar,
 		UIcon,
-		UInputDate,
 		USheet,
 		USiteAside,
 		USiteFooter,
 		USiteHeader,
 		USiteLayout,
 		USiteMain,
+		USwitch,
 		UToggle
 	} from '$lib/index.js';
 	import type { Snippet } from 'svelte';
 	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
-	import { CalendarDate, type DateValue } from '@internationalized/date';
-	import type { DateRange } from '@melt-ui/svelte';
-	import { writable } from 'svelte/store';
+	import { today, type DateValue } from '@internationalized/date';
+	import type { DateRange } from 'bits-ui';
 
 	let {
 		children
@@ -28,7 +27,7 @@
 	const { heads, foots } = data;
 	const dark = useDark();
 
-	let value = $state<DateValue>();
+	let value = $state<DateValue>(today('UTC'));
 </script>
 
 {#snippet centlax()}
@@ -78,11 +77,10 @@
 	<USiteMain>
 		<UButton text="dark" onclick={dark.toggle} />
 		{@render children?.()}
-
-
-		<UInputDate picker/>
-
-		<input type="datetime" />
+		{value}
+		<USwitch />
+		<UCalendar number-of-months={2} class="mt-2" bind:value />
+		<input type="date" />
 	</USiteMain>
 
 	<!-- Footer -->

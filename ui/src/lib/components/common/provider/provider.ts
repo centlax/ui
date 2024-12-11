@@ -1,9 +1,8 @@
 /** Imports */
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
 
 /** Props */
-export interface ProviderProps extends HTMLAttributes<HTMLDivElement> {
+export interface ProviderProps {
 	children: Snippet;
 	toast?: Snippet;
 }

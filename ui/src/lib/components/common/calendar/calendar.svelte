@@ -5,51 +5,53 @@
 	import { cn, st } from '$lib/utils/wind.js';
 	import { createCalendar, ctxCalendar } from './calendar.svelte.js';
 	import { UCalendarFooter, UCalendarHeader, UCalendarMain } from '$lib/index.js';
+	import { today } from '@internationalized/date';
 
-	let { value = $bindable(), ...props }: CalendarProps<Range, Multiple> = $props();
+	let {
+		as = 'div',
+		value = $bindable(),
+		placeholder = $bindable(today('UTC')),
+		...props
+	}: CalendarProps<Range, Multiple> = $props();
 
 	let { bound: boundCalendar, range: rangeCalendar } = createCalendar<Range, Multiple>(props);
 	const calendar = props.range ? rangeCalendar : boundCalendar;
 
 	const {
-		elements: { calendar: root, heading, grid, cell, prevButton, nextButton },
+		elements: { calendar: root },
 		states
 	} = calendar;
 
 	const ctx = ctxCalendar();
 	ctx.set(calendar);
 
-	const { months, headingValue, weekdays, value: v } = states;
+	const { value: v, placeholder: p } = states;
 	$effect(() => {
 		$v = value;
+		$p = placeholder;
 	});
 	$effect(() => {
 		//@ts-ignore
 		value = $v;
+		placeholder = $p;
 	});
 
 	/** Styles */
 	const ui = useUI(styles, props.class, props.override);
 </script>
 
-<div use:melt={$root} class={cn(st(ui.root), ui.class)}>
+<svelte:element this={as} use:melt={$root} class={cn(st(ui.root), ui.class)}>
 	{#if props.children}
 		{@render props.children?.()}
 	{:else}
-		{#if props.header}
-			{@render props.header?.()}
-		{:else}
+		{#if props.header}{@render props.header?.()}{:else}
 			<UCalendarHeader />
 		{/if}
-		{#if props.main}
-			{@render props.main?.()}
-		{:else}
+		{#if props.main}{@render props.main?.()}{:else}
 			<UCalendarMain />
 		{/if}
-		{#if props.footer}
-			{@render props.footer?.()}
-		{:else}
+		{#if props.footer}{@render props.footer?.()}{:else}
 			<UCalendarFooter />
 		{/if}
 	{/if}
-</div>
+</svelte:element>

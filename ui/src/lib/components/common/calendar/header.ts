@@ -17,8 +17,7 @@ const styles = {
 		flex: 'flex'
 	},
 	popover: {
-		flex: 'w-[10rem] rounded  bg-neutral-800/10 p-1.5 text-sm font-medium outline-none ring-1 ring-white/10 backdrop-blur-lg',
-		trigger: {}
+		flex: 'w-full max-w-[12rem] rounded  bg-neutral-800/10 p-1.5 text-sm font-medium outline-none ring-1 ring-white/10 backdrop-blur-lg'
 	},
 
 	next: {

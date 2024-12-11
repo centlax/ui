@@ -1,7 +1,9 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
+import type { TransformKeysToKebab } from '$lib/types/utils.js';
 import { cn, statify } from '$lib/utils/wind.js';
+import type { CreateSwitchProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { HTMLButtonAttributes } from 'svelte/elements';
 
@@ -10,7 +12,7 @@ import type { HTMLButtonAttributes } from 'svelte/elements';
 
 const styles = {
 	root: {
-		layout: 'relative touch-none',
+		layout: 'group relative touch-none',
 		background: statify({
 			default: 'bg-neutral-200 dark:bg-neutral-800 ',
 			checked: 'data-[state=checked]:bg-color-500 dark:data-[state=checked]:bg-color-500'
@@ -25,12 +27,12 @@ const styles = {
 		transition: 'transition-colors  duration-200 ease-in-out'
 	},
 	thumb: {
-		sizing: 'size-[--size]',
+		sizing: 'size-[--thumb]',
 		transition: cn(
 			'transition translate-x-[--padding] duration-200 ease-in-out',
-			'data-[checked=true]:translate-x-[calc(var(--width)-var(--size)-var(--padding))]'
+			'data-[checked=true]:translate-x-[calc(var(--width)-var(--thumb)-var(--padding))]'
 		),
-		layout: 'block',
+		layout: 'flex justify-center items-center',
 		border: 'rounded-full',
 		background: 'bg-white',
 		effect: 'shadow-sm'
@@ -39,9 +41,10 @@ const styles = {
 export const _switch = styles;
 
 /** Props */
-type Props = Omit<HTMLButtonAttributes, 'class' | 'value'>;
+type Props = Omit<HTMLButtonAttributes, 'class'> &
+	TransformKeysToKebab<Omit<CreateSwitchProps, 'checked'>>;
 export interface SwitchProps extends BaseProps<typeof _switch>, Props {
 	children?: Snippet;
-	value?: boolean;
+	checked?: boolean;
 	color?: string;
 }

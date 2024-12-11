@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Popover } from "bits-ui";
+	import { Popover } from 'bits-ui';
 </script>
- 
+
 <Popover.Root>
 	<Popover.Trigger />
 	<Popover.Content>

@@ -6,7 +6,7 @@
 	import { cn, co, st } from '$lib/utils/wind.js';
 
 	/** Props */
-	let { value = $bindable(false), ...props }: SwitchProps = $props();
+	let { checked = $bindable(false), ...props }: SwitchProps = $props();
 
 	const {
 		elements: { root, input },
@@ -14,7 +14,7 @@
 	} = createSwitch();
 	const sync = createSync(states);
 	$effect(() => {
-		sync.checked(value, (v) => (value = v));
+		sync.checked(checked, (c) => (checked = c));
 	});
 
 	/** Styles */
@@ -24,20 +24,23 @@
 <button
 	aria-label="switch"
 	role="switch"
-	aria-checked="false"
+	aria-checked={checked}
+	{...props}
 	use:melt={$root}
 	style={co(props.color)}
 	class={cn(st(ui.root), ui.class)}
 >
-	<span data-checked={value} class={st(ui.thumb)}></span>
+	<span data-checked={checked} class={st(ui.thumb)}>
+		{@render props.children?.()}
+	</span>
 	<input use:melt={$input} />
 </button>
 
 <style>
 	button {
-		--size: 1.5rem;
-		--padding: calc(var(--size) / 10);
-		--width: calc(var(--size) * 2);
-		--heigth: calc(var(--size) * 1.2);
+		--thumb: var(--size, 1.5rem);
+		--padding: calc(var(--thumb) / 10);
+		--width: calc(var(--thumb) * 2);
+		--heigth: calc(var(--thumb) * 1.2);
 	}
 </style>

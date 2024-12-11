@@ -27,19 +27,15 @@ const styles = {
 export const calendar = styles;
 
 /** Props */
-export type CreateBoundCalendarProps<T extends boolean> = BoundProps<T>;
+export type CreateBoundCalendarProps<T extends boolean = false> = BoundProps<T>;
 export type CreateRangeCalendarProps = RangeProps;
 export type BoundValue = DateValue | DateValue[] | undefined;
 export type RangeValue = DateRange | undefined;
+export type ChangeBoundValue = DateValue | DateValue[] | undefined;
+export type ChangeRangeValue = ChangeFn<DateRange> | undefined;
 export type OmitCalendarProps<T> = Omit<
 	T,
-	| 'placeholder'
-	| 'defaultPlaceholder'
-	| 'value'
-	| 'multiple'
-	| 'defaultValue'
-	| 'onPlaceholderChange'
-	| 'onValueChange'
+	'placeholder' | 'defaultPlaceholder' | 'value' | 'multiple' | 'defaultValue' | 'onValueChange'
 >;
 
 type CalendarValue<

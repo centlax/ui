@@ -7,8 +7,6 @@
 
 	/** Props */
 	let { ...props }: ProviderProps = $props();
-
-	/** Styles */
 </script>
 
 <ModeWatcher />
@@ -21,6 +19,5 @@
 {:else}
 	<UToast />
 {/if}
-<div {...props}>
-	{@render props.children()}
-</div>
+
+{@render props.children?.()}
