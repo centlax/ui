@@ -1,5 +1,146 @@
 <script lang="ts">
-	let { children } = $props();
+	import { createContextMenu, melt } from '@melt-ui/svelte';
+	import { writable } from 'svelte/store';
+	import type { ContextProps } from './context.js';
+
+	const settingsSync = writable(true);
+	const hideMeltUI = writable(false);
+
+	let { ...props }: ContextProps = $props();
+
+	const {
+		elements: { trigger, menu, item, separator },
+		builders: { createSubmenu, createMenuRadioGroup, createCheckboxItem }
+	} = createContextMenu({
+		loop: true
+	});
+
+	const {
+		elements: { subMenu: subMenuA, subTrigger: subTriggerA }
+	} = createSubmenu();
+
+	const {
+		elements: { radioGroup, radioItem },
+		helpers: { isChecked }
+	} = createMenuRadioGroup({
+		defaultValue: 'Hunter Johnston'
+	});
+
+	const {
+		elements: { checkboxItem }
+	} = createCheckboxItem({
+		checked: settingsSync
+	});
+
+	const {
+		elements: { checkboxItem: checkboxItemA }
+	} = createCheckboxItem({
+		checked: hideMeltUI
+	});
+
+	const personsArr = ['Hunter Johnston', 'Thomas G. Lopes', 'Adrian Gonz', 'Franck Poingt'];
 </script>
 
-{@render children?.()}
+<span class="trigger" use:melt={$trigger}>
+	{@render props.children()}
+</span>
+
+<div class=" menu" use:melt={$menu}>
+	<div class="item" use:melt={$item}>About Melt UI</div>
+	<div class="item" use:melt={$item}>Check for Updates...</div>
+	<div class="separator" use:melt={$separator}></div>
+	<div class="item" use:melt={$checkboxItem}>
+		<div class="check">
+			{#if $settingsSync}
+				v
+			{/if}
+		</div>
+		Settings Sync is On
+	</div>
+	<div class="item" use:melt={$subTriggerA}>
+		Profiles
+		<div class="rightSlot">></div>
+	</div>
+	<div class="menu subMenu" use:melt={$subMenuA}>
+		<div class="text">People</div>
+		<div use:melt={$radioGroup}>
+			{#each personsArr as person}
+				<div class="item" use:melt={$radioItem({ value: person })}>
+					<div class="check">
+						{#if $isChecked(person)}
+							<div class="dot"></div>
+						{/if}
+					</div>
+					{person}
+				</div>
+			{/each}
+		</div>
+	</div>
+	<div use:melt={$separator} class="separator"></div>
+
+	<div class="item" use:melt={$checkboxItemA}>
+		<div class="check">
+			{#if $hideMeltUI}
+				v
+			{/if}
+		</div>
+		Hide Melt UI
+		<div class="rightSlot">⌘H</div>
+	</div>
+	<div class="item" use:melt={$item} data-disabled>
+		Show All Components
+		<div class="rightSlot">⇧⌘N</div>
+	</div>
+	<div use:melt={$separator} class="separator"></div>
+	<div class="item" use:melt={$item}>
+		Quit Melt UI
+		<div class="rightSlot">⌘Q</div>
+	</div>
+</div>
+
+<style lang="postcss">
+	.menu {
+		@apply z-10 flex max-h-[300px] min-w-[220px] flex-col shadow;
+		@apply rounded-lg bg-white p-1 lg:max-h-none;
+		@apply ring-0 !important;
+	}
+	.subMenu {
+		@apply min-w-[220px] shadow-md shadow-neutral-900/30;
+	}
+	.item {
+		@apply relative h-6 min-h-[24px] select-none rounded-md pl-6 pr-1;
+		@apply text-primary-900 z-20 outline-none;
+		@apply data-[highlighted]:bg-primary-200 data-[highlighted]:text-primary-900;
+		@apply data-[disabled]:text-neutral-300;
+		@apply flex items-center text-sm leading-none;
+		@apply ring-0 !important;
+	}
+
+	.trigger {
+		@apply border-primary-900 text-primary-700 block rounded-xl border-2 border-dashed font-semibold;
+		@apply bg-primary-100 w-[300px] py-12 text-center shadow;
+	}
+	.check {
+		@apply text-primary-500 absolute left-2 top-1/2;
+		translate: 0 calc(-50% + 1px);
+	}
+
+	.dot {
+		@apply bg-primary-900 h-[4.75px] w-[4.75px] rounded-full;
+	}
+
+	.separator {
+		@apply bg-primary-200 m-[5px] h-[1px];
+	}
+
+	.rightSlot {
+		@apply ml-auto pl-5;
+	}
+
+	.check {
+		@apply absolute left-0 inline-flex w-6 items-center justify-center;
+	}
+	.text {
+		@apply pl-6 text-xs leading-6 text-neutral-600;
+	}
+</style>

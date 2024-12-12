@@ -3,7 +3,9 @@
 		UButton,
 		UCalendar,
 		UChoose,
+		UContext,
 		UIcon,
+		UMenuList,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -80,6 +82,8 @@
 		{value}
 		<USwitch />
 		<UChoose />
+		<UMenuList />
+		<UContext>Click me!</UContext>
 	</USiteMain>
 
 	<!-- Footer -->

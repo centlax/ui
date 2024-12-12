@@ -43,6 +43,8 @@ export { default as UMarkLayout } from '$lib/components/common/mark/layout.svelt
 export { default as UMarkMain } from '$lib/components/common/mark/main.svelte';
 export { default as UMarkTableItem } from '$lib/components/common/mark/table-item.svelte';
 export { default as UMarkTable } from '$lib/components/common/mark/table.svelte';
+export { default as UMenuCard } from '$lib/components/common/menu/card.svelte';
+export { default as UMenuList } from '$lib/components/common/menu/list.svelte';
 export { default as UMenu } from '$lib/components/common/menu/menu.svelte';
 export { default as UProvider } from '$lib/components/common/provider/provider.svelte';
 export { default as UStepper } from '$lib/components/common/stepper/stepper.svelte';
@@ -55,6 +57,7 @@ export { default as UChip } from '$lib/components/website/chip/chip.svelte';
 export { default as UChoose } from '$lib/components/website/choose/choose.svelte';
 export { default as UCollapsible } from '$lib/components/website/collapsible/collapsible.svelte';
 export { default as UDescription } from '$lib/components/website/description/description.svelte';
+export { default as UDropdown } from '$lib/components/website/dropdown/dropdown.svelte';
 export { default as UIcon } from '$lib/components/website/icon/icon.svelte';
 export { default as ULabel } from '$lib/components/website/label/label.svelte';
 export { default as UPopover } from '$lib/components/website/popover/popover.svelte';
