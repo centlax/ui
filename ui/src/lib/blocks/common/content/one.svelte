@@ -7,12 +7,12 @@
 		UMarkMain,
 		UMarkTable
 	} from '$lib/components/export.js';
-	import { asides, heads } from './one.js';
+	import { asides, heads, asideTops } from './one.js';
 </script>
 
 <UMarkLayout>
 	<UMarkHeader items={heads} />
-	<UMarkAside items={asides} />
+	<UMarkAside top-items={asideTops} items={asides} />
 	<UMarkMain>
 		<div class="relative z-20">
 			<div>

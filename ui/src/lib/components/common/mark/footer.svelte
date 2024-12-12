@@ -14,9 +14,7 @@
 <footer class={cn(st(ui.root), ui.class)}>
 	{@render props.children?.()}
 	<div class="mb-3 flex items-center font-semibold text-neutral-700 dark:text-neutral-200">
-		<a
-			class="group flex items-center hover:text-neutral-900 dark:hover:text-white"
-			href="/docs/installation"
+		<a class="group flex items-center hover:text-neutral-900 dark:hover:text-white" href="/"
 			><svg
 				viewBox="0 0 3 6"
 				class="mr-3 h-1.5 w-auto overflow-visible text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300"
@@ -31,7 +29,7 @@
 			>Installation</a
 		><a
 			class="group ml-auto flex items-center hover:text-neutral-900 dark:hover:text-white"
-			href="/docs/using-with-preprocessors"
+			href="/"
 			>Using with Preprocessors<svg
 				viewBox="0 0 3 6"
 				class="ml-3 h-1.5 w-auto overflow-visible text-neutral-400 group-hover:text-neutral-600 dark:group-hover:text-neutral-300"
@@ -57,9 +55,7 @@
 				>
 			</p>
 		</div>
-		<a
-			class="hover:text-neutral-900 dark:hover:text-neutral-400"
-			href="https://github.com/tailwindlabs/tailwindcss.com/edit/master/src/pages/docs/editor-setup.mdx"
+		<a class="hover:text-neutral-900 dark:hover:text-neutral-400" href="/"
 			>Edit this page on GitHub</a
 		>
 	</div>

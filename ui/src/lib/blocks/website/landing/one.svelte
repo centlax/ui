@@ -2,6 +2,7 @@
 	import {
 		UButton,
 		UCalendar,
+		UChoose,
 		UIcon,
 		USheet,
 		USiteAside,
@@ -17,7 +18,6 @@
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
 	import { today, type DateValue } from '@internationalized/date';
-	import type { DateRange } from 'bits-ui';
 
 	let {
 		children
@@ -79,8 +79,7 @@
 		{@render children?.()}
 		{value}
 		<USwitch />
-		<UCalendar number-of-months={2} class="mt-2" bind:value />
-		<input type="date" />
+		<UChoose />
 	</USiteMain>
 
 	<!-- Footer -->

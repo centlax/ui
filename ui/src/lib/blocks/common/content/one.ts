@@ -6,6 +6,17 @@ export const heads: Item[] = [
 	{ text: 'Blog' },
 	{ text: 'Showcase' }
 ];
+
+export const asideTops: Item[] = [
+	{ text: 'Documentation' },
+	{ text: 'Components' },
+	{ text: 'Templates' },
+	{ text: 'Screencasts' },
+	{ text: 'Playground' },
+	{ text: 'Resources' },
+	{ text: 'Community' }
+];
+
 export const asides: Item[] = [
 	{
 		title: 'Getting Started',
@@ -18,6 +29,7 @@ export const asides: Item[] = [
 			{ text: 'Upgrade Guide' }
 		]
 	},
+
 	{
 		title: 'Core Concepts',
 		items: [

@@ -41,3 +41,10 @@
 	</div>
 	{@render props.children?.()}
 </svelte:element>
+
+<style>
+	:root {
+		--mark-width: var(--width, 20rem);
+		--mark-heigth: var(--height, 3rem);
+	}
+</style>
