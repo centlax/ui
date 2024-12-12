@@ -6,13 +6,16 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {}
+	root: {
+		typography: 'text-xs font-semibold text-neutral-500',
+		spacing: 'my-3 px-3'
+	}
 } satisfies Styles;
-export const command = styles;
+export const optionTitle = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface CommandProps extends BaseProps<typeof command>, Props {
+type Props = Omit<SvelteHTMLElements['h3'], 'class'>;
+export interface OptionTitleProps extends BaseProps<typeof optionTitle>, Props {
 	children?: Snippet;
-	preview?: Snippet<[string]>;
+	text?: string;
 }

@@ -11,18 +11,18 @@ const styles = {
 			'text-primary-900 relative h-72 w-52 overflow-hidden rounded-md border bg-white shadow-lg'
 	},
 	viewport: {
-		layout: 'h-full w-full rounded-[inherit]'
+		layout: 'rounded-[inherit]',
+		sizing: 'size-full'
 	},
-	content: {
-		layout: ''
-	},
+	content: {},
 	y: {
 		bar: {
 			layout:
 				'bg-primary-800/10 flex h-full w-2.5 touch-none select-none border-l border-l-transparent p-px transition-colors'
 		},
 		thumb: {
-			layout: 'bg-primary-600 relative flex-1 rounded-full'
+			layout: 'relative flex-1 rounded-full',
+			background: 'bg-primary-600'
 		}
 	},
 	x: {

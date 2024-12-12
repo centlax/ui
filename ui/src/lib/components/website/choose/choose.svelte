@@ -1,34 +1,47 @@
 <script lang="ts">
+	/** Imports */
 	import { UIcon } from '$lib/components/export.js';
-	import { createSelect, melt } from '@melt-ui/svelte';
-	import { fade } from 'svelte/transition';
+	import { createSync, melt } from '@melt-ui/svelte';
+	import { createChoose } from './choose.svelte.js';
+	import { choose, type ChooseProps } from './choose.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { st } from '$lib/utils/wind.js';
+	import { ctxOption } from '$lib/composables/option.js';
 
-	const options = {
-		sweet: ['Caramel', 'Chocolate', 'Strawberry', 'Cookies & Cream'],
-		savory: ['Basil', 'Bacon', 'Rosemary']
-	};
+	/** Props */
+	let {
+		children,
+		open = $bindable(false),
+		selected = $bindable(),
+		...props
+	}: ChooseProps = $props();
 
 	const {
 		elements: { trigger, menu, option, group, groupLabel },
-		states: { selectedLabel, open },
+		states,
 		helpers: { isSelected }
-	} = createSelect<string>({
-		forceVisible: true,
-		positioning: {
-			placement: 'bottom',
-			fitViewport: true,
-			sameWidth: true
-		}
+	} = createChoose<string>(props);
+	const { selectedLabel } = states;
+
+	const ctx = ctxOption();
+	ctx.group.set(group);
+	ctx.title.set(groupLabel);
+	ctx.option.set(option);
+
+	const sync = createSync({ open: states['open'] });
+	$effect(() => {
+		sync.open(open, (o) => (open = o));
 	});
+
+	/** Styles */
+	const ui = useUI(choose, props.class, props.override);
 </script>
 
 <button
 	class="focus:outline-primary-600 grid w-full cursor-default grid-cols-1 rounded-md bg-white py-1.5 pl-3 pr-2 text-left text-neutral-900 outline outline-1 -outline-offset-1 outline-neutral-300 focus:outline focus:outline-2 focus:-outline-offset-2 sm:text-sm/6"
 	aria-haspopup="listbox"
-	aria-expanded="true"
-	aria-labelledby="listbox-label"
+	aria-expanded={open}
 	use:melt={$trigger}
-	aria-label="choose"
 >
 	<span class="col-start-1 row-start-1 truncate pr-6"> {$selectedLabel || 'Select a flavor'} </span>
 	<UIcon
@@ -36,39 +49,8 @@
 		name="i-fluent-chevron-up-down-16-filled"
 	/>
 </button>
-{#if $open}
-	<div
-		class=" z-10 flex max-h-[300px] flex-col
-      overflow-y-auto rounded-lg bg-white p-1
-      shadow focus:!ring-0"
-		use:melt={$menu}
-		transition:fade={{ duration: 0 }}
-	>
-		{#each Object.entries(options) as [key, arr]}
-			<div use:melt={$group(key)}>
-				<div
-					class="py-1 pl-4 pr-4 font-semibold capitalize text-neutral-800"
-					use:melt={$groupLabel(key)}
-				>
-					{key}
-				</div>
-				{#each arr as item}
-					<div
-						class="hover:bg-primary-100 focus:text-primary-700 data-[highlighted]:bg-primary-200 data-[highlighted]:text-primary-900 relative cursor-pointer rounded-lg
-                py-1 pl-8
-                pr-4
-                text-neutral-800 focus:z-10
-                data-[disabled]:opacity-50"
-						use:melt={$option({ value: item, label: item })}
-					>
-						<div class="check {$isSelected(item) ? 'block' : 'hidden'}">
-							<UIcon class="size-4" name="i-fluent-checkmark-20-regular" />
-						</div>
-
-						{item}
-					</div>
-				{/each}
-			</div>
-		{/each}
+{#if open}
+	<div class={st(ui.card)} use:melt={$menu}>
+		{@render children?.()}
 	</div>
 {/if}

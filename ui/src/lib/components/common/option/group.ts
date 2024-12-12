@@ -8,11 +8,11 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 const styles = {
 	root: {}
 } satisfies Styles;
-export const command = styles;
+export const optionGroup = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface CommandProps extends BaseProps<typeof command>, Props {
+type Props = Omit<SvelteHTMLElements['optgroup'], 'class'>;
+export interface OptionGroupProps extends BaseProps<typeof optionGroup>, Props {
 	children?: Snippet;
-	preview?: Snippet<[string]>;
+	id: string;
 }

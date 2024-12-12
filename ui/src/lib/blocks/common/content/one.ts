@@ -28,9 +28,9 @@ export const asides: Item[] = [
 			{ text: 'Browser Support' },
 			{ text: 'Upgrade Guide' }
 		]
-	},
+	}
 
-	{
+	/* {
 		title: 'Core Concepts',
 		items: [
 			{ text: 'Utility-First Fundamentals' },
@@ -192,5 +192,5 @@ export const asides: Item[] = [
 			{ text: 'Ring Offset Width' },
 			{ text: 'Ring Offset Color' }
 		]
-	}
+	} */
 ];

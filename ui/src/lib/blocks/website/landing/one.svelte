@@ -1,11 +1,13 @@
 <script lang="ts">
 	import {
 		UButton,
-		UCalendar,
 		UChoose,
-		UContext,
 		UIcon,
+		UKbd,
 		UMenuList,
+		UOption,
+		UOptionGroup,
+		UOptionTitle,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -30,6 +32,10 @@
 	const dark = useDark();
 
 	let value = $state<DateValue>(today('UTC'));
+	const options = {
+		sweet: ['Caramel', 'Chocolate', 'Strawberry', 'Cookies & Cream'],
+		savory: ['Basil', 'Bacon', 'Rosemary']
+	};
 </script>
 
 {#snippet centlax()}
@@ -81,9 +87,20 @@
 		{@render children?.()}
 		{value}
 		<USwitch />
-		<UChoose />
+		<UChoose>
+			{#each Object.entries(options) as [key, arr]}
+				<UOptionGroup id={key}>
+					<UOptionTitle text={key} />
+					{#each arr as item}
+						<UOption value={item} label={item}>
+							{item}
+						</UOption>
+					{/each}
+				</UOptionGroup>
+			{/each}
+		</UChoose>
 		<UMenuList />
-		<UContext>Click me!</UContext>
+		<UKbd class="mt-2" multiple value={['⌘', 'K']} />
 	</USiteMain>
 
 	<!-- Footer -->

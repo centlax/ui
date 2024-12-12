@@ -2,6 +2,7 @@
 import type { Item } from '$lib/types/item.js';
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
+import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
@@ -15,6 +16,8 @@ export const markFooter = styles;
 /** Props */
 type Props = Omit<SvelteHTMLElements['footer'], 'class'> & BaseProps<typeof markFooter>;
 export interface MarkFooterProps extends Props {
-	mode?: 'pine' | 'dual' /** 'pine | 'dual' | 'sake' */;
 	as?: keyof HTMLElementTagNameMap;
+	north?: Snippet;
+	children?: Snippet;
+	south?: Snippet;
 }

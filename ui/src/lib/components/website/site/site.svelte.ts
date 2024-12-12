@@ -1,1 +1,5 @@
-export function createSite() {}
+export function createSite() {
+	return {
+		elements: {}
+	};
+}
