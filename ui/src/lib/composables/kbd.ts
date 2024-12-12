@@ -27,7 +27,7 @@ export const kbdKeysMap = {
 	home: '↖',
 	end: '↘'
 };
-export type KbdKey = keyof typeof kbdKeysMap
-export type KbdKeySpecific = keyof KbdKeysSpecificMap
+export type KbdKey = keyof typeof kbdKeysMap;
+export type KbdKeySpecific = keyof KbdKeysSpecificMap;
 
 export function useKbd() {}

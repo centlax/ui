@@ -1,3 +1,4 @@
+
 /** application */
 export { default as UCheckbox } from '$lib/components/application/checkbox/checkbox.svelte';
 export { default as UCombobox } from '$lib/components/application/combobox/combobox.svelte';
@@ -44,8 +45,8 @@ export { default as UMarkMain } from '$lib/components/common/mark/main.svelte';
 export { default as UMarkTableItem } from '$lib/components/common/mark/table-item.svelte';
 export { default as UMarkTable } from '$lib/components/common/mark/table.svelte';
 export { default as UMenuCard } from '$lib/components/common/menu/card.svelte';
+export { default as UMenuItem } from '$lib/components/common/menu/item.svelte';
 export { default as UMenuList } from '$lib/components/common/menu/list.svelte';
-export { default as UMenu } from '$lib/components/common/menu/menu.svelte';
 export { default as UProvider } from '$lib/components/common/provider/provider.svelte';
 export { default as UStepper } from '$lib/components/common/stepper/stepper.svelte';
 export { default as UToast } from '$lib/components/common/toast/toast.svelte';
