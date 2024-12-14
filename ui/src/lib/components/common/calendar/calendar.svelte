@@ -1,11 +1,12 @@
 <script lang="ts" generics="Range extends boolean = false, Multiple extends boolean = false">
-	import { melt } from '@melt-ui/svelte';
-	import { type CalendarProps, calendar as styles } from './calendar.js';
+	import { createSync, melt } from '@melt-ui/svelte';
+	import { type CalendarProps, type CalendarValue, calendar as styles } from './calendar.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, st } from '$lib/utils/wind.js';
 	import { createCalendar, ctxCalendar } from './calendar.svelte.js';
 	import { UCalendarFooter, UCalendarHeader, UCalendarMain } from '$lib/index.js';
 	import { today } from '@internationalized/date';
+	import type { Writable } from 'svelte/store';
 
 	let {
 		as = 'div',
@@ -25,15 +26,13 @@
 	const ctx = ctxCalendar();
 	ctx.set(calendar);
 
-	const { value: v, placeholder: p } = states;
-	$effect(() => {
-		$v = value;
-		$p = placeholder;
+	const sync = createSync({
+		value: states['value'] as Writable<CalendarValue<Range, Multiple> | undefined>,
+		placeholder: states['placeholder']
 	});
 	$effect(() => {
-		//@ts-ignore
-		value = $v;
-		placeholder = $p;
+		sync.value(value, (v) => (value = v));
+		sync.placeholder(placeholder, (p) => (placeholder = p));
 	});
 
 	/** Styles */

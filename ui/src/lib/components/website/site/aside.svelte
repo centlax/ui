@@ -12,7 +12,7 @@
 	const ui = useUI(siteAside, props.class, props.override);
 </script>
 
-<aside role="dialog" aria-modal="true" class={cn(st(ui.root), ui.class)}>
+<aside class={cn(st(ui.root), ui.class)}>
 	<div hidden={!props.north} class={st(ui.north)}>
 		{@render props.north?.()}
 	</div>

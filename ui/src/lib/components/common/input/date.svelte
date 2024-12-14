@@ -1,66 +1,60 @@
-<script lang="ts">
+<script lang="ts" generics="Picker extends boolean = false, Range extends boolean = false">
 	/** Imports */
-	import { createDateRangeField, melt, type SegmentPart } from '@melt-ui/svelte';
-	import type { InputDateProps } from './date.js';
+	import { inputDate, type InputDateProps } from './date.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { melt } from '@melt-ui/svelte';
+	import { createInputDate } from './date.svelte.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { UCalendar, UIcon, UPopover } from '$lib/components/export.js';
-	import { CalendarDateTime } from '@internationalized/date';
 
 	/** Props */
-	let { ...props }: InputDateProps = $props();
+	let { ...props }: InputDateProps<Picker, Range> = $props();
+	const date = createInputDate(props);
+
 	const {
-		elements: { field, startSegment, endSegment, startHiddenInput, endHiddenInput },
-		states: { segmentContents },
-		options: { locale }
-	} = createDateRangeField({
-		defaultValue: props['default-value'],
-		onValueChange: props['on-value-change'],
-		defaultPlaceholder: props['default-placeholder'] ?? new CalendarDateTime(2023, 10, 11, 12, 30),
-		placeholder: props['placeholder'],
-		onPlaceholderChange: props['on-placeholder-change'],
-		isDateUnavailable: props['is-date-unavailable'],
-		minValue: props['min-value'],
-		maxValue: props['max-value'],
-		disabled: props['disabled'],
-		readonly: props['readonly'],
-		//readonlySegments: props['read-only-segments'],
-		hourCycle: props['hour-cycle'],
-		locale: props['locale'] ?? 'en',
-		granularity: props['granularity'],
-		// name
-		required: props['required'],
-		ids: props['ids']
-		//startIds
-	});
+		share: {
+			elements: { root },
+			options: { locale }
+		},
+		field: {
+			elements: { segment },
+			states: { segmentContents: fieldContent }
+		},
+		range: {
+			elements: { startSegment, endSegment },
+			states: { segmentContents: rangeContent }
+		}
+	} = date;
+
+	/** Styles */
+	const ui = useUI(inputDate, props.class, props.override);
+	let custom = $state<HTMLElement>(null!);
 </script>
 
-<div use:melt={$field} class="flex">
+{#snippet content$(segs: any, ment: any)}
+	{#each segs as seg}
+		<div use:melt={ment(seg.part)}>
+			{seg.value}
+		</div>
+	{/each}
+{/snippet}
+
+<div bind:this={custom} id="content" use:melt={$root} class={cn(st(ui.root), ui.class)}>
 	{#key $locale}
-		{#each $segmentContents.start as seg, i (i)}
-			<div use:melt={$startSegment(seg.part)}>
-				{seg.value}
-			</div>
-		{/each}
-		{#if props['range']}
+		{#if props.range}
+			{@render content$($rangeContent.start, $startSegment)}
 			<span aria-hidden="true">-</span>
-			{#each $segmentContents.end as seg, i (i)}
-				<div use:melt={$endSegment(seg.part)}>
-					{seg.value}
-				</div>
-			{/each}
-		{/if}
-		{#if props.picker}
-			<UPopover float={{ flip: true }}>
-				{#snippet trigger()}
-					<div>
-						<UIcon name="i-fluent-calendar-24-regular" />
-					</div>
-				{/snippet}
-				{#snippet content()}
-					<UCalendar />
-				{/snippet}
-			</UPopover>
+			{@render content$($rangeContent.end, $endSegment)}
+		{:else}
+			{@render content$($fieldContent, $segment)}
 		{/if}
 	{/key}
-	<input use:melt={$startHiddenInput} />
-	<input use:melt={$endHiddenInput} />
+	<UPopover float={{ placement: 'top' }}>
+		{#snippet trigger()}
+			<UIcon name="i-fluent-calendar-24-regular" />
+		{/snippet}
+		{#snippet content()}
+			<UCalendar />
+		{/snippet}
+	</UPopover>
 </div>

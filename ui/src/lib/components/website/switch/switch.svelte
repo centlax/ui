@@ -1,9 +1,10 @@
 <script lang="ts">
 	/** Imports */
-	import { createSwitch, createSync, melt } from '@melt-ui/svelte';
+	import { createSync, melt } from '@melt-ui/svelte';
 	import { _switch, type SwitchProps } from './switch.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, co, st } from '$lib/utils/wind.js';
+	import { createSwitch } from './switch.svelte.js';
 
 	/** Props */
 	let { checked = $bindable(false), ...props }: SwitchProps = $props();
@@ -11,7 +12,8 @@
 	const {
 		elements: { root, input },
 		states
-	} = createSwitch();
+	} = createSwitch(props);
+
 	const sync = createSync(states);
 	$effect(() => {
 		sync.checked(checked, (c) => (checked = c));
@@ -22,7 +24,6 @@
 </script>
 
 <button
-	aria-label="switch"
 	role="switch"
 	aria-checked={checked}
 	{...props}

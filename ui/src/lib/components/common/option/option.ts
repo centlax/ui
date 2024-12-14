@@ -7,7 +7,10 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {}
+	root: {
+		layout:
+			'relative cursor-pointer rounded-md py-1.5 px-2 text-neutral-800 hover:bg-primary-100 focus:z-10  focus:text-primary-700  data-[highlighted]:bg-primary-200 data-[highlighted]:text-primary-900 data-[disabled]:opacity-50'
+	}
 } satisfies Styles;
 export const option = styles;
 

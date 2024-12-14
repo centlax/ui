@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" generics="Main extends boolean = false">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, st } from '$lib/utils/wind.js';

@@ -8,9 +8,8 @@ import type { HTMLAttributes } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		typography: 'text-color-500',
-		sizing: 'size-5',
-		border: 'rounded-full border-gray-300 dark:border-gray-700 focus:ring-color-600'
+		typography:
+			'mx-auto max-w-xl transform divide-y divide-gray-100 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black/5 transition-all'
 	}
 } satisfies Styles;
 export const menuCard = styles;

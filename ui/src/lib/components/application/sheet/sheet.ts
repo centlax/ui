@@ -7,14 +7,15 @@ import type { CreateDialogProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 import type { FadeParams, FlyParams } from 'svelte/transition';
-import { shared } from '$lib/theme/styles/index.js';
+import { shared } from '$lib/theme/styles/overlay/overlay.svelte.js';
 
 /** Styles */
 const styles = {
 	root: {},
 	overlay: shared.overlay,
 	content: {
-		flex: 'fixed z-50 focus:outline-none',
+		flex: 'fixed z-50',
+		border: 'focus:outline-none',
 		opt: {
 			from: {
 				north: { layout: 'inset-x-0 top-0' },

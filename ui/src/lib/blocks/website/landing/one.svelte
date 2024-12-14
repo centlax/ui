@@ -1,13 +1,12 @@
 <script lang="ts">
 	import {
 		UButton,
-		UChoose,
+		UCheckbox,
+		UDrawer,
 		UIcon,
-		UKbd,
-		UMenuList,
-		UOption,
-		UOptionGroup,
-		UOptionTitle,
+		UInputDate,
+		UPagination,
+		UPanel,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -22,6 +21,7 @@
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
 	import { today, type DateValue } from '@internationalized/date';
+	import Placeholder from '$lib/blocks/placeholder.svelte';
 
 	let {
 		children
@@ -85,22 +85,20 @@
 	<USiteMain>
 		<UButton text="dark" onclick={dark.toggle} />
 		{@render children?.()}
-		{value}
-		<USwitch />
-		<UChoose>
-			{#each Object.entries(options) as [key, arr]}
-				<UOptionGroup id={key}>
-					<UOptionTitle text={key} />
-					{#each arr as item}
-						<UOption value={item} label={item}>
-							{item}
-						</UOption>
-					{/each}
-				</UOptionGroup>
-			{/each}
-		</UChoose>
-		<UMenuList />
-		<UKbd class="mt-2" multiple value={['⌘', 'K']} />
+
+		<USwitch class="mt-2" />
+		<UCheckbox default-checked="indeterminate" />
+		<div class="flex w-full justify-center">
+			<UPagination page={1} count={99} />
+		</div>
+		<UDrawer class="h-[20rem]">
+			{#snippet trigger()}
+				open
+			{/snippet}
+			{#snippet content()}
+				klsdjf
+			{/snippet}
+		</UDrawer>
 	</USiteMain>
 
 	<!-- Footer -->

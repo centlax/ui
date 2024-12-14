@@ -30,7 +30,6 @@ export const avatar = styles;
 type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'> &
 	TransformKeysToKebab<CreateAvatarProps>;
 export interface AvatarProps extends BaseProps<typeof avatar>, Props {
-	children?: Snippet;
 	fallback?: Snippet;
 	alt?: string;
 }

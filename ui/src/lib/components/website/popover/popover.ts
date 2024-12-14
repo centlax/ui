@@ -19,34 +19,16 @@ export const popover = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['div'], 'class'> &
-	Omit<TransformKeysToKebab<CreatePopoverProps>, 'positioning'>;
+	Omit<TransformKeysToKebab<CreatePopoverProps>, 'open' | 'positioning'>;
 
 export interface PopoverProps extends BaseProps<typeof popover>, Props {
 	children?: Snippet;
 	trigger?: Snippet;
 	content?: Snippet;
 	float?: CreatePopoverProps['positioning'];
-	value?: boolean;
+	open?: boolean;
 	transition?: TransitionParams<FadeParams>;
 	as?: keyof HTMLElementTagNameMap;
 	'trigger-as'?: keyof HTMLElementTagNameMap;
+	anchor?: HTMLElement;
 }
-
-export const defaults: CreatePopoverProps = {
-	positioning: {
-		placement: 'bottom'
-	},
-	arrowSize: 8,
-	defaultOpen: false,
-	disableFocusTrap: false,
-	escapeBehavior: 'close',
-	preventScroll: false,
-	onOpenChange: undefined,
-	closeOnOutsideClick: true,
-	portal: 'body',
-	forceVisible: false,
-	openFocus: undefined,
-	closeFocus: undefined,
-	onOutsideClick: undefined,
-	preventTextSelectionOverflow: true
-};

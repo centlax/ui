@@ -38,7 +38,7 @@ export type OmitCalendarProps<T> = Omit<
 	'placeholder' | 'defaultPlaceholder' | 'value' | 'multiple' | 'defaultValue' | 'onValueChange'
 >;
 
-type CalendarValue<
+export type CalendarValue<
 	Range extends boolean = false,
 	Multiple extends boolean = false
 > = Range extends true ? DateRange : Multiple extends true ? DateValue[] : DateValue;

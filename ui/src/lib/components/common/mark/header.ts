@@ -7,10 +7,11 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {
-		spacing:
-			'supports-backdrop-blur:bg-white/60 sticky top-0 z-40 w-full flex-none  backdrop-blur transition-colors duration-500 lg:z-50 lg:border-b lg:border-neutral-900/10 dark:border-neutral-50/[0.06] bg-transparent'
-	}
+	root: {},
+	west: {},
+	center: {},
+	east: {},
+	south: {}
 } satisfies Styles;
 export const markHeader = styles;
 
@@ -22,4 +23,5 @@ export interface MarkHeaderProps extends Props {
 	west?: Snippet;
 	children?: Snippet;
 	east?: Snippet;
+	south?: Snippet;
 }

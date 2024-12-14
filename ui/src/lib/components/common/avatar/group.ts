@@ -8,7 +8,9 @@ import type { HTMLAttributes } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {}
+	root: {
+		layout: 'isolate'
+	}
 } satisfies Styles;
 export const avatarGroup = styles;
 
