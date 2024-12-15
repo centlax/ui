@@ -1,7 +1,8 @@
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { TransformKeysToKebab } from '$lib/types/utils.js';
-import type { CreateDateRangeFieldProps, DateField } from '@melt-ui/svelte';
+import type { DateValue } from '@internationalized/date';
+import type { CreateDateRangeFieldProps, DateField, DateRange } from '@melt-ui/svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
@@ -14,16 +15,14 @@ const styles = {
 export const inputDate = styles;
 
 /** Types */
-export interface InputDateTypes {
-	content: DateField['states']['segmentContents'];
-}
+export type InputDateValue<Range extends boolean> = Range extends true ? DateRange : DateValue;
+export type SatisfyInputDateValue = (DateValue & DateRange) | undefined;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'> &
-	TransformKeysToKebab<Omit<CreateDateRangeFieldProps, 'readonlySegments'>>;
-export interface InputDateProps<Picker extends boolean, Range extends boolean>
-	extends BaseProps<typeof styles>,
-		Props {
-	picker?: Picker;
-	range?: Range;
+type Props = Omit<SvelteHTMLElements['div'], 'class'>;
+//TransformKeysToKebab<Omit<, 'readonlySegments'>>;
+export interface InputDateProps<Range extends boolean> extends BaseProps<typeof styles>, Props {
+	picker?: boolean;
+	range?: Range & boolean;
+	value?: InputDateValue<Range>;
 }

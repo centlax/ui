@@ -1,8 +1,9 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { Snippet } from 'svelte';
+import type { Component, Snippet } from 'svelte';
 import type { HTMLAttributes } from 'svelte/elements';
+import type Aside from './aside.svelte';
 
 /** Styles */
 const styles = {
@@ -15,7 +16,7 @@ const styles = {
 export const siteLayout = styles;
 
 /** Props */
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'>;
+type Props = Omit<HTMLAttributes<HTMLElement>, 'class' | 'children'>;
 export interface SiteLayoutProps extends BaseProps<typeof siteLayout>, Props {
 	children?: Snippet;
 }

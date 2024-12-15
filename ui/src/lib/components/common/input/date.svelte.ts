@@ -7,9 +7,7 @@ const {
 	elements: { startSegment }
 } = createDateRange();
 
-export function createInputDate<Picker extends boolean, Range extends boolean>(
-	props: InputDateProps<Picker, Range>
-) {
+export function createInputDate<Range extends boolean>(props: InputDateProps<Range>) {
 	const field = createDateField();
 	const range = createDateRange();
 

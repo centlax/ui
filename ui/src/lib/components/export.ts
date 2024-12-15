@@ -2,6 +2,7 @@
 export { default as UCheckbox } from '$lib/components/application/checkbox/checkbox.svelte';
 export { default as UCombobox } from '$lib/components/application/combobox/combobox.svelte';
 export { default as UCommand } from '$lib/components/application/command/command.svelte';
+export { default as UComplete } from '$lib/components/application/complete/complete.svelte';
 export { default as UContext } from '$lib/components/application/context/context.svelte';
 export { default as UDashAsideItem } from '$lib/components/application/dash/aside-item.svelte';
 export { default as UDashAside } from '$lib/components/application/dash/aside.svelte';
@@ -9,6 +10,9 @@ export { default as UDashFooter } from '$lib/components/application/dash/footer.
 export { default as UDashHeader } from '$lib/components/application/dash/header.svelte';
 export { default as UDashLayout } from '$lib/components/application/dash/layout.svelte';
 export { default as UDashMain } from '$lib/components/application/dash/main.svelte';
+export { default as UDeckLayout } from '$lib/components/application/deck/layout.svelte';
+export { default as UDeckSearch } from '$lib/components/application/deck/search.svelte';
+export { default as UEditor } from '$lib/components/application/editor/editor.svelte';
 export { default as UField } from '$lib/components/application/field/field.svelte';
 export { default as UFormDebug } from '$lib/components/application/form/debug.svelte';
 export { default as UForm } from '$lib/components/application/form/form.svelte';
@@ -16,6 +20,9 @@ export { default as UMenubar } from '$lib/components/application/menubar/menubar
 export { default as UModal } from '$lib/components/application/modal/modal.svelte';
 export { default as UPagination } from '$lib/components/application/pagination/pagination.svelte';
 export { default as UProgress } from '$lib/components/application/progress/progress.svelte';
+export { default as UQuick } from '$lib/components/application/quick/quick.svelte';
+export { default as URate } from '$lib/components/application/rate/rate.svelte';
+export { default as UResize } from '$lib/components/application/resize/resize.svelte';
 export { default as USelect } from '$lib/components/application/select/select.svelte';
 export { default as USheet } from '$lib/components/application/sheet/sheet.svelte';
 export { default as USlider } from '$lib/components/application/slider/slider.svelte';
@@ -58,8 +65,10 @@ export { default as UOptionGroup } from '$lib/components/common/option/group.sve
 export { default as UOption } from '$lib/components/common/option/option.svelte';
 export { default as UOptionTitle } from '$lib/components/common/option/title.svelte';
 export { default as UProvider } from '$lib/components/common/provider/provider.svelte';
+export { default as URadio } from '$lib/components/common/radio/radio.svelte';
 export { default as UStepper } from '$lib/components/common/stepper/stepper.svelte';
 export { default as UToast } from '$lib/components/common/toast/toast.svelte';
+export { default as UToggleGroup } from '$lib/components/common/toggle/group.svelte';
 export { default as UToggle } from '$lib/components/common/toggle/toggle.svelte';
 export { default as UTooltip } from '$lib/components/common/tooltip/tooltip.svelte';
 

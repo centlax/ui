@@ -1,41 +1,27 @@
 <script lang="ts">
 	import {
 		UButton,
-		UCheckbox,
 		UDrawer,
 		UIcon,
-		UInputDate,
-		UPagination,
-		UPanel,
+		UPopover,
 		USheet,
 		USiteAside,
 		USiteFooter,
 		USiteHeader,
 		USiteLayout,
 		USiteMain,
+		UStepper,
 		USwitch,
 		UToggle
 	} from '$lib/index.js';
-	import type { Snippet } from 'svelte';
 	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
-	import { today, type DateValue } from '@internationalized/date';
-	import Placeholder from '$lib/blocks/placeholder.svelte';
 
-	let {
-		children
-	}: {
-		children?: Snippet;
-	} = $props();
+	let {}: {} = $props();
 	const { heads, foots } = data;
 	const dark = useDark();
-
-	let value = $state<DateValue>(today('UTC'));
-	const options = {
-		sweet: ['Caramel', 'Chocolate', 'Strawberry', 'Cookies & Cream'],
-		savory: ['Basil', 'Bacon', 'Rosemary']
-	};
+	let simba = $state<HTMLElement>(null!);
 </script>
 
 {#snippet centlax()}
@@ -71,7 +57,7 @@
 			{/snippet}
 		</USiteHeader>
 
-		<!-- Aside -->
+		<!-- Aside  -->
 		{#snippet content()}
 			<USiteAside items={heads}>
 				{#snippet north()}
@@ -84,21 +70,25 @@
 	<!-- Main  -->
 	<USiteMain>
 		<UButton text="dark" onclick={dark.toggle} />
-		{@render children?.()}
 
 		<USwitch class="mt-2" />
-		<UCheckbox default-checked="indeterminate" />
-		<div class="flex w-full justify-center">
-			<UPagination page={1} count={99} />
+		<UDrawer />
+		<div class="w-fit space-y-10">
+			<div
+				id="trigger"
+				class="h-[5rem] w-[10rem] rounded bg-neutral-800 ring-1 ring-white/10"
+			></div>
+			<UPopover custom-anchor={simba}>
+				{#snippet trigger()}
+					<UButton text="open" />
+				{/snippet}
+				{#snippet content()}
+					<div class="h-[5rem] w-[10rem] rounded bg-neutral-800 ring-1 ring-white/10">
+						<button>close</button>
+					</div>
+				{/snippet}
+			</UPopover>
 		</div>
-		<UDrawer class="h-[20rem]">
-			{#snippet trigger()}
-				open
-			{/snippet}
-			{#snippet content()}
-				klsdjf
-			{/snippet}
-		</UDrawer>
 	</USiteMain>
 
 	<!-- Footer -->

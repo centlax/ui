@@ -197,9 +197,6 @@ importers:
       '@melt-ui/svelte':
         specifier: ^0.86.2
         version: 0.86.2(svelte@5.11.0)
-      bits-ui:
-        specifier: 1.0.0-next.63
-        version: 1.0.0-next.63(svelte@5.11.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1

@@ -34,6 +34,7 @@ export function createPopover(props: PopoverProps) {
 		openFocus: props['open-focus'],
 		closeFocus: props['close-focus'],
 		defaultOpen: props['default-open'],
-		onOpenChange: props['on-open-change']
+		onOpenChange: props['on-open-change'],
+		ids: props['ids']
 	});
 }

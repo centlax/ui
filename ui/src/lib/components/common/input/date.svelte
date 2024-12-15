@@ -1,4 +1,4 @@
-<script lang="ts" generics="Picker extends boolean = false, Range extends boolean = false">
+<script lang="ts" generics="Range extends boolean = false">
 	/** Imports */
 	import { inputDate, type InputDateProps } from './date.js';
 	import { useUI } from '$lib/composables/ui.js';
@@ -8,7 +8,7 @@
 	import { UCalendar, UIcon, UPopover } from '$lib/components/export.js';
 
 	/** Props */
-	let { ...props }: InputDateProps<Picker, Range> = $props();
+	let { ...props }: InputDateProps<Range> = $props();
 	const date = createInputDate(props);
 
 	const {

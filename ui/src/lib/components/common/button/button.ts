@@ -122,7 +122,8 @@ const styles = {
 		background: 'bg-inherit',
 		icon: {
 			animation: 'animate-spin',
-			svg: 'i-fluent-arrow-sync-24-filled'
+			svg: 'i-fluent-arrow-sync-24-filled',
+			sizing: 'size-6'
 		}
 	}
 } satisfies Styles;

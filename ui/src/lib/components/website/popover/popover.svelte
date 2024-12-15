@@ -10,11 +10,11 @@
 	import { createPopover } from './popover.svelte.js';
 
 	/** Props */
-	let { open = $bindable(false), anchor, ...props }: PopoverProps = $props();
+	let { as = 'div', open = $bindable(false), ...props }: PopoverProps = $props();
 	const {
 		elements: { trigger, content, arrow, close },
 		states,
-		options: { positioning }
+		options: {}
 	} = createPopover(props);
 
 	const sync = createSync(states);
@@ -44,16 +44,14 @@
 
 {#if open}
 	<svelte:element
-		this={props.as || 'div'}
+		this={as}
 		{...props}
 		use:melt={$content}
 		in:fade={txn.content.in}
 		out:fade={txn.content.out}
 		class={cn(st(ui.root), ui.class)}
 	>
-		{#if props['arrow-size']}
-			<div class={st(ui.arrow)} use:melt={$arrow}></div>
-		{/if}
+		<div hidden={!props['arrow-size']} class={st(ui.arrow)} use:melt={$arrow}></div>
 		{@render props.content?.()}
 	</svelte:element>
 {/if}

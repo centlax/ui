@@ -4,13 +4,15 @@
 	import { cn, st } from '$lib/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { calendarMain, type CalendarMainProps } from './main.js';
+	import { slide } from 'svelte/transition';
+	import { cubicIn, sineIn } from 'svelte/easing';
 
 	let { ...props }: CalendarMainProps = $props();
 
 	const ctx = ctxCalendar();
 	const {
 		elements: { grid, cell },
-		states: { months, weekdays },
+		states: { months, weekdays, value, headingValue },
 		helpers: { isDateUnavailable, isDateDisabled }
 	} = ctx.get();
 

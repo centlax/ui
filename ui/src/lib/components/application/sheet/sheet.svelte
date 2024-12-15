@@ -7,6 +7,7 @@
 	import { useTransition } from '$lib/composables/transition.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
+	import { createSheet } from './sheet.svelte.js';
 
 	/** Props */
 	let { as = 'div', value = $bindable(false), from = 'east', ...props }: SheetProps = $props();
@@ -14,17 +15,7 @@
 	const {
 		elements: { overlay, content, portalled, trigger, close },
 		states
-	} = createDialog({
-		role: props['role'] ?? 'dialog',
-		preventScroll: props['prevent-scroll'] ?? true,
-		escapeBehavior: props['escape-behavior'] ?? 'close',
-		closeOnOutsideClick: props['close-on-outside-click'] ?? true,
-		portal: props['portal'] ?? 'body',
-		forceVisible: props['force-visible'] ?? false,
-		openFocus: props['open-focus'],
-		closeFocus: props['close-focus'],
-		defaultOpen: props['default-open'] ?? false
-	});
+	} = createSheet(props);
 	const sync = createSync(states);
 	$effect(() => {
 		sync.open(value, (v) => (value = v));
