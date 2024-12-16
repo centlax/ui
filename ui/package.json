@@ -41,6 +41,7 @@
 		"@melt-ui/svelte": "^0.86.2",
 		"clsx": "^2.1.1",
 		"mode-watcher": "^0.4.1",
+		"runed": "^0.19.0",
 		"sveltekit-superforms": "^2.21.1",
 		"vaul-svelte": "1.0.0-next.3"
 	},

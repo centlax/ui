@@ -1,9 +1,15 @@
-import { createScrollArea } from '@melt-ui/svelte';
-import type { ScrollProps } from './scroll.js';
+import { createScrollArea, type CreateScrollAreaProps } from '@melt-ui/svelte';
+import type { ScrollViewProps } from './view.js';
 
-export function createScroll(props: ScrollProps) {
+const defaults: CreateScrollAreaProps = {
+	type: 'hover',
+	hideDelay: 600,
+	dir: 'ltr'
+};
+export function createScrollView(props: ScrollViewProps) {
 	return createScrollArea({
-		type: 'hover',
-		dir: 'ltr'
+		type: props['type'] ?? defaults['type'],
+		hideDelay: props['hide-delay'] ?? defaults['hideDelay'],
+		dir: props['dir'] ?? defaults['dir']
 	});
 }

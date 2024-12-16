@@ -3,8 +3,8 @@ import type { Config } from 'tailwindcss';
 import containerQueries from '@tailwindcss/container-queries';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-import colorize from '../../utils/colorize.js';
-import { _default } from '../../theme/colors/index.js';
+import colorize from '../internal/utils/colorize.js';
+import { _default } from '../theme/colors/index.js';
 
 export default function (): Partial<Config> {
 	return {

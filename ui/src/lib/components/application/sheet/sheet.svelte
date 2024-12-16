@@ -5,7 +5,7 @@
 	import { useToggle } from '$lib/composables/toggle.js';
 	import { fromTransition, sheet, type SheetProps } from './sheet.js';
 	import { useTransition } from '$lib/composables/transition.js';
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { createSheet } from './sheet.svelte.js';
 

@@ -10,7 +10,6 @@
 		USiteHeader,
 		USiteLayout,
 		USiteMain,
-		UStepper,
 		USwitch,
 		UToggle
 	} from '$lib/index.js';
@@ -44,53 +43,39 @@
 {/snippet}
 
 <USiteLayout class="container">
-	<USheet transition={{ duration: 300 }} class="w-full sm:max-w-[--site-width]">
-		<!-- Header -->
-		<USiteHeader items={heads}>
-			{#snippet west()}
-				{@render site('header')}
+	{#snippet children()}
+		<USheet transition={{ duration: 300 }} class="w-full sm:max-w-[--site-width]">
+			<!-- Header -->
+			<USiteHeader items={heads}>
+				{#snippet west()}
+					{@render site('header')}
+				{/snippet}
+				{#snippet east()}
+					<a href="/" class="0 text-sm/6 font-semibold"
+						>Log in <span aria-hidden="true">&rarr;</span></a
+					>
+				{/snippet}
+			</USiteHeader>
+
+			<!-- Aside  -->
+			{#snippet content()}
+				<USiteAside items={heads}>
+					{#snippet north()}
+						{@render site('aside')}
+					{/snippet}
+				</USiteAside>
 			{/snippet}
-			{#snippet east()}
-				<a href="/" class="0 text-sm/6 font-semibold"
-					>Log in <span aria-hidden="true">&rarr;</span></a
-				>
-			{/snippet}
-		</USiteHeader>
+		</USheet>
 
-		<!-- Aside  -->
-		{#snippet content()}
-			<USiteAside items={heads}>
-				{#snippet north()}
-					{@render site('aside')}
-				{/snippet}
-			</USiteAside>
-		{/snippet}
-	</USheet>
+		<!-- Main  -->
+		<USiteMain>
+			<UButton text="dark" onclick={dark.toggle} />
 
-	<!-- Main  -->
-	<USiteMain>
-		<UButton text="dark" onclick={dark.toggle} />
+			<USwitch class="mt-2" />
+			<UDrawer />
+		</USiteMain>
 
-		<USwitch class="mt-2" />
-		<UDrawer />
-		<div class="w-fit space-y-10">
-			<div
-				id="trigger"
-				class="h-[5rem] w-[10rem] rounded bg-neutral-800 ring-1 ring-white/10"
-			></div>
-			<UPopover custom-anchor={simba}>
-				{#snippet trigger()}
-					<UButton text="open" />
-				{/snippet}
-				{#snippet content()}
-					<div class="h-[5rem] w-[10rem] rounded bg-neutral-800 ring-1 ring-white/10">
-						<button>close</button>
-					</div>
-				{/snippet}
-			</UPopover>
-		</div>
-	</USiteMain>
-
-	<!-- Footer -->
-	<USiteFooter />
+		<!-- Footer -->
+		<USiteFooter />
+	{/snippet}
 </USiteLayout>

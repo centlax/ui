@@ -2,7 +2,7 @@
 	/** Imports  */
 	import { field, type FieldProps } from './field.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { fade } from 'svelte/transition';
 
 	/** Props  */

@@ -2,7 +2,7 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { chip, type ChipProps } from './chip.js';
-	import { st, cn, co } from '$lib/utils/wind.js';
+	import { st, cn, co } from '$lib/internal/utils/wind.js';
 
 	/** Props */
 	let { color, ...props }: ChipProps = $props();

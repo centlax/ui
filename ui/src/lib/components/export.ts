@@ -4,6 +4,7 @@ export { default as UCombobox } from '$lib/components/application/combobox/combo
 export { default as UCommand } from '$lib/components/application/command/command.svelte';
 export { default as UComplete } from '$lib/components/application/complete/complete.svelte';
 export { default as UContext } from '$lib/components/application/context/context.svelte';
+export { default as UContextMenu } from '$lib/components/application/context/menu.svelte';
 export { default as UDashAsideItem } from '$lib/components/application/dash/aside-item.svelte';
 export { default as UDashAside } from '$lib/components/application/dash/aside.svelte';
 export { default as UDashFooter } from '$lib/components/application/dash/footer.svelte';
@@ -19,6 +20,7 @@ export { default as UForm } from '$lib/components/application/form/form.svelte';
 export { default as UMenubar } from '$lib/components/application/menubar/menubar.svelte';
 export { default as UModal } from '$lib/components/application/modal/modal.svelte';
 export { default as UPagination } from '$lib/components/application/pagination/pagination.svelte';
+export { default as UPath } from '$lib/components/application/path/path.svelte';
 export { default as UProgress } from '$lib/components/application/progress/progress.svelte';
 export { default as UQuick } from '$lib/components/application/quick/quick.svelte';
 export { default as URate } from '$lib/components/application/rate/rate.svelte';
@@ -44,6 +46,8 @@ export { default as UCalendarMain } from '$lib/components/common/calendar/main.s
 export { default as UCard } from '$lib/components/common/card/card.svelte';
 export { default as UCarousel } from '$lib/components/common/carousel/carousel.svelte';
 export { default as UContainer } from '$lib/components/common/container/container.svelte';
+export { default as UFootbar } from '$lib/components/common/footbar/footbar.svelte';
+export { default as UHeadbar } from '$lib/components/common/headbar/headbar.svelte';
 export { default as UInputDate } from '$lib/components/common/input/date.svelte';
 export { default as UInputGroup } from '$lib/components/common/input/group.svelte';
 export { default as UInput } from '$lib/components/common/input/input.svelte';
@@ -66,10 +70,13 @@ export { default as UOption } from '$lib/components/common/option/option.svelte'
 export { default as UOptionTitle } from '$lib/components/common/option/title.svelte';
 export { default as UProvider } from '$lib/components/common/provider/provider.svelte';
 export { default as URadio } from '$lib/components/common/radio/radio.svelte';
+export { default as USearch } from '$lib/components/common/search/search.svelte';
+export { default as USidebar } from '$lib/components/common/sidebar/sidebar.svelte';
 export { default as UStepper } from '$lib/components/common/stepper/stepper.svelte';
 export { default as UToast } from '$lib/components/common/toast/toast.svelte';
 export { default as UToggleGroup } from '$lib/components/common/toggle/group.svelte';
 export { default as UToggle } from '$lib/components/common/toggle/toggle.svelte';
+export { default as UToken } from '$lib/components/common/token/token.svelte';
 export { default as UTooltip } from '$lib/components/common/tooltip/tooltip.svelte';
 
 /** website */
@@ -85,7 +92,7 @@ export { default as ULabel } from '$lib/components/website/label/label.svelte';
 export { default as ULoadbar } from '$lib/components/website/loadbar/loadbar.svelte';
 export { default as UPanel } from '$lib/components/website/panel/panel.svelte';
 export { default as UPopover } from '$lib/components/website/popover/popover.svelte';
-export { default as UScroll } from '$lib/components/website/scroll/scroll.svelte';
+export { default as UScrollView } from '$lib/components/website/scroll/view.svelte';
 export { default as USeparator } from '$lib/components/website/separator/separator.svelte';
 export { default as USiteAsideItem } from '$lib/components/website/site/aside-item.svelte';
 export { default as USiteAside } from '$lib/components/website/site/aside.svelte';

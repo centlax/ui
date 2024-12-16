@@ -2,7 +2,7 @@
 	/** Imports  */
 	import { UIcon } from '$lib/components/export.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn, co } from '$lib/utils/wind.js';
+	import { st, cn, co } from '$lib/internal/utils/wind.js';
 	import { type ButtonProps, button } from './button.js';
 
 	/** Props  */

@@ -18,6 +18,7 @@ interface CreateDrawer {
 		handel: Handel;
 	};
 }
+
 function dir(d: DrawerProps['from']): Root['direction'] {
 	switch (d) {
 		case 'east':

@@ -3,7 +3,7 @@
 	import { UIcon, UPopover } from '$lib/index.js';
 	import { melt } from '@melt-ui/svelte';
 	import { ctxCalendar } from './calendar.svelte.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { calendarHeader, type CalendarHeaderProps } from './header.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import Button from '../button/button.svelte';

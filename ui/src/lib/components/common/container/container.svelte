@@ -2,7 +2,7 @@
 	/** Imports */
 	import { type ContainerProps, container } from './container.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 
 	/** Props */
 	let { ...props }: ContainerProps = $props();

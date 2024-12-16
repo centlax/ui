@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { useUI } from '$lib/composables/ui.js';
 	import { siteFooter, type SiteFootProps } from './footer.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { USiteFooterItem } from '$lib/components/export.js';
 
 	let { items, ...props }: SiteFootProps = $props();

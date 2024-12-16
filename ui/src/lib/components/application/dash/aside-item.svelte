@@ -2,7 +2,7 @@
 	/** Imports */
 	import { type DashAsideItemProps, dashAsideItem } from './aside-item.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { UIcon, UCollapsible, UTooltip } from '$lib/index.js';
 	import type { Item } from '$lib/types/item.js';
 	import { writable } from 'svelte/store';

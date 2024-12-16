@@ -5,7 +5,7 @@
 	import { fade } from 'svelte/transition';
 	import { popover, type PopoverProps } from './popover.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 	import { createPopover } from './popover.svelte.js';
 

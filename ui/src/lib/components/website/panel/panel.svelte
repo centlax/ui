@@ -2,7 +2,7 @@
 	/** Imports */
 	import { panel, type PanelProps } from './panel.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { createPanel } from './panel.svelte.js';
 	import { createSync, melt } from '@melt-ui/svelte';
 	import { cubicInOut } from 'svelte/easing';

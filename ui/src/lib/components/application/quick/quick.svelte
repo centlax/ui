@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { quick, type QuickProps } from './quick.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
 
 	/** Props */

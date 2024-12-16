@@ -9,11 +9,11 @@ import type { HTMLAttributes } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		layout: 'isolate'
+		layout: 'isolate mt-3 flex -space-x-2 overflow-hidden'
 	}
 } satisfies Styles;
 export const avatarGroup = styles;
-
+// for image == inline-block h-12 w-12 rounded-full ring-2 ring-white
 /** Props */
 type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'> &
 	TransformKeysToKebab<CreateAvatarProps>;

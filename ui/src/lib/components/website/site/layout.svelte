@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { siteLayout, type SiteLayoutProps } from './layout.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import Aside from './aside.svelte';

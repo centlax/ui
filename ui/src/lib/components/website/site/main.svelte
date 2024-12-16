@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { siteMain, type SiteMainProps } from './main.js';
 	import { useUI } from '$lib/composables/ui.js';
 

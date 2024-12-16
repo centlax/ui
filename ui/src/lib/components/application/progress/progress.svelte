@@ -3,7 +3,7 @@
 	import { createProgress, melt } from '@melt-ui/svelte';
 	import { progress, type SliderProps, progressOptions as options } from './progress.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, co, st } from '$lib/utils/wind.js';
+	import { cn, co, st } from '$lib/internal/utils/wind.js';
 	import { writable } from 'svelte/store';
 
 	/** Props */

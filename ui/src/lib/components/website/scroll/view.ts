@@ -1,6 +1,8 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
+import type { TransformKeysToKebab } from '$lib/types/utils.js';
+import type { CreateScrollAreaProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
@@ -36,10 +38,10 @@ const styles = {
 	},
 	corner: {}
 } satisfies Styles;
-export const scroll = styles;
+export const scrollView = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface ScrollProps extends BaseProps<typeof scroll>, Props {
+type Props = Omit<SvelteHTMLElements['div'], 'class'> & TransformKeysToKebab<CreateScrollAreaProps>;
+export interface ScrollViewProps extends BaseProps<typeof scrollView>, Props {
 	children: Snippet;
 }

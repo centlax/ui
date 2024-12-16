@@ -2,7 +2,7 @@
 	import { createSync, melt } from '@melt-ui/svelte';
 	import { type CalendarProps, type CalendarValue, calendar as styles } from './calendar.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { createCalendar, ctxCalendar } from './calendar.svelte.js';
 	import { UCalendarFooter, UCalendarHeader, UCalendarMain } from '$lib/index.js';
 	import { today } from '@internationalized/date';

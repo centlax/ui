@@ -2,7 +2,7 @@
 	/** Imports */
 	import type { Item } from '$lib/types/item.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/utils/wind.js';
+	import { st, cn } from '$lib/internal/utils/wind.js';
 	import { siteHeaderItem, type SiteHeaderItemProps } from './header-item.js';
 	import { UIcon, UTooltip } from '$lib/index.js';
 

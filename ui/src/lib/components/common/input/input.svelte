@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn, co } from '$lib/utils/wind.js';
+	import { st, cn, co } from '$lib/internal/utils/wind.js';
 	import { getContext, hasContext } from 'svelte';
 	import { input, type InputProps } from './input.js';
 	import { melt } from '@melt-ui/svelte';

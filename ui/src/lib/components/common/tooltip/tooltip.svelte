@@ -3,7 +3,7 @@
 	import { useToggle } from '$lib/composables/toggle.js';
 	import { melt, createSync, createTooltip } from '@melt-ui/svelte';
 	import { tooltip, type TooltipProps } from './tooltip.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
 
 	/** Props */

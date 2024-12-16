@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn } from '$lib/utils/wind.js';
+	import { cn } from '$lib/internal/utils/wind.js';
 
 	let { ...props } = $props();
 </script>

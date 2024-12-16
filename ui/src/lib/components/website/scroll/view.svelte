@@ -1,20 +1,20 @@
 <script lang="ts">
 	/** Imports */
 	import { melt } from '@melt-ui/svelte';
-	import { createScroll } from './scroll.svelte.js';
-	import { scroll, type ScrollProps } from './scroll.js';
+	import { createScrollView } from './scroll.svelte.js';
+	import { scrollView, type ScrollViewProps } from './view.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 
 	/** Props */
-	let { ...props }: ScrollProps = $props();
+	let { ...props }: ScrollViewProps = $props();
 
 	const {
 		elements: { root, content, viewport, corner, scrollbarY, thumbY, thumbX, scrollbarX }
-	} = createScroll(props);
+	} = createScrollView(props);
 
 	/** Styles */
-	const ui = useUI(scroll, props.class, props.override);
+	const ui = useUI(scrollView, props.class, props.override);
 </script>
 
 <div use:melt={$root} {...props} class={cn(st(ui.root), ui.class)}>

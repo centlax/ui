@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { melt } from '@melt-ui/svelte';
 	import { ctxCalendar } from './calendar.svelte.js';
-	import { cn, st } from '$lib/utils/wind.js';
+	import { cn, st } from '$lib/internal/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { calendarMain, type CalendarMainProps } from './main.js';
 	import { slide } from 'svelte/transition';
