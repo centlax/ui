@@ -3,7 +3,7 @@
 	import { createSync, melt } from '@melt-ui/svelte';
 	import { _switch, type SwitchProps } from './switch.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, co, st } from '$lib/internal/utils/wind.js';
+	import { cn, co, st } from '$lib/utils/wind.js';
 	import { createSwitch } from './switch.svelte.js';
 
 	/** Props */

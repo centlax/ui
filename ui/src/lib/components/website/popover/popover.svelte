@@ -5,9 +5,10 @@
 	import { fade } from 'svelte/transition';
 	import { popover, type PopoverProps } from './popover.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 	import { createPopover } from './popover.svelte.js';
+	import { setContext } from 'svelte';
 
 	/** Props */
 	let { as = 'div', open = $bindable(false), ...props }: PopoverProps = $props();
@@ -36,11 +37,6 @@
 </script>
 
 {@render props.children?.()}
-{#if props.trigger}
-	<svelte:element this={props['trigger-as'] || 'span'} use:melt={$trigger}>
-		{@render props.trigger?.()}
-	</svelte:element>
-{/if}
 
 {#if open}
 	<svelte:element

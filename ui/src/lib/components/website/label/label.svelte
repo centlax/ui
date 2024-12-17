@@ -2,7 +2,7 @@
 	/** Imports */
 	import { label, type LabelProps } from './label.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { createLabel } from './label.svelte.js';
 	import { melt } from '@melt-ui/svelte';
 

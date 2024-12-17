@@ -1,4 +1,4 @@
-import type { State, Utility } from '../types/ui.js';
+import type { State, Utility } from '../../types/ui.js';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import type { ClassValue } from 'clsx';

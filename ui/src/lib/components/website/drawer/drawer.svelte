@@ -4,7 +4,7 @@
 	import { drawer, type DrawerProps } from './drawer.js';
 	import { createDrawer } from './drawer.svelte.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 
 	/** Props */
 	let { from = 'south', ...props }: DrawerProps = $props();

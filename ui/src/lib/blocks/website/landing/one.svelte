@@ -4,6 +4,8 @@
 		UDrawer,
 		UIcon,
 		UPopover,
+		URadio,
+		URadioGroup,
 		USheet,
 		USiteAside,
 		USiteFooter,
@@ -16,6 +18,8 @@
 	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
+	import { melt } from '@melt-ui/svelte';
+	import { getContext } from 'svelte';
 
 	let {}: {} = $props();
 	const { heads, foots } = data;
@@ -73,6 +77,11 @@
 
 			<USwitch class="mt-2" />
 			<UDrawer />
+			<URadioGroup>
+				<URadio value="one" />
+				<URadio value="two" />
+				<URadio value="three" />
+			</URadioGroup>
 		</USiteMain>
 
 		<!-- Footer -->

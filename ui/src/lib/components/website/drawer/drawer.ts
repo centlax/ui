@@ -1,5 +1,5 @@
 /* Imports */
-import { shared } from '$lib/theme/styles/overlay/overlay.svelte.js';
+import { shared } from '$lib/styles/overlay/overlay.svelte.js';
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { TransformKeysToKebab } from '$lib/types/utils.js';

@@ -5,7 +5,7 @@
 	import { collapsible, type CollapsibleProps } from './collapsible.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { useTransition } from '$lib/composables/transition.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { useToggle } from '$lib/composables/toggle.js';
 
 	/** Props */

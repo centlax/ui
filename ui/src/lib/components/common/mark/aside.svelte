@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { markAside, type MarkAsideProps } from './aside.js';
 	import { UMarkAsideItem } from '$lib/components/export.js';
 

@@ -16,7 +16,7 @@
 	import { toast, type ToastProps } from './toast.js';
 	import type { Snippet } from 'svelte';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 
 	/** Props */

@@ -7,7 +7,7 @@ import type { CreateDialogProps } from '@melt-ui/svelte';
 import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 import type { FadeParams, FlyParams } from 'svelte/transition';
-import { shared } from '$lib/theme/styles/overlay/overlay.svelte.js';
+import { shared } from '$lib/styles/overlay/overlay.svelte.js';
 
 /** Styles */
 const styles = {

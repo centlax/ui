@@ -15,6 +15,7 @@ const styles = {
 	root: {
 		layout: 'z-10'
 	},
+	overlay: {},
 	arrow: {}
 } satisfies Styles;
 export const popover = styles;
@@ -25,7 +26,6 @@ type Props = Omit<SvelteHTMLElements['div'], 'class'> &
 		TransformKeysToKebab<
 			CreatePopoverProps & {
 				customAnchor?: HTMLElement | null;
-				triggerAs?: keyof HTMLElementTagNameMap;
 			}
 		>,
 		'open' | 'positioning'

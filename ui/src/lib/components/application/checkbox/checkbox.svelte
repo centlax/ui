@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, co, st } from '$lib/internal/utils/wind.js';
+	import { cn, co, st } from '$lib/utils/wind.js';
 	import { createSync, melt } from '@melt-ui/svelte';
 	import { checkbox, type CheckboxProps } from './checkbox.js';
 	import { createCheckbox } from './checkbox.svelte.js';

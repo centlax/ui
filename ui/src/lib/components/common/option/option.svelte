@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { melt, type Select } from '@melt-ui/svelte';
 	import { option as styles, type OptionProps } from './option.js';
 	import { getContext } from 'svelte';

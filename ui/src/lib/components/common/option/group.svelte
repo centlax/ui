@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { melt } from '@melt-ui/svelte';
 	import { optionGroup, type OptionGroupProps } from './group.js';
 	import { createOption } from './option.svelte.js';

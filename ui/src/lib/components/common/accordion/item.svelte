@@ -2,7 +2,7 @@
 	/** Imports */
 	import { slide } from 'svelte/transition';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 	import { accordionItem, type AccordionItemProps } from './item.js';
 	import { ctxAccordion } from './accordion.svelte.js';

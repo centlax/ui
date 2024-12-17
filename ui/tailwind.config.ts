@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import ui from './src/lib/config/plugins/tailwind';
+import ui from './src/lib/plugins/tailwind';
 
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],

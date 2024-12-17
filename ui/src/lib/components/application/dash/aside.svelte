@@ -2,7 +2,7 @@
 	/** Imports */
 	import { type DashAsideProps, dashAside } from './aside.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { UDashAsideItem } from '$lib/index.js';
 
 	/** Props */

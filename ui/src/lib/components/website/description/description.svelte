@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { description, type DescriptionProps } from './description.js';
 
 	/** Imports */

@@ -1,7 +1,7 @@
 <script lang="ts" generics="Main extends boolean = false">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { markAsideItem, type MarkAsideItemProps } from './aside-item.js';
 
 	/** Props */

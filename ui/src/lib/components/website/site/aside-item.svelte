@@ -3,7 +3,7 @@
 	import { UCollapsible, UIcon } from '$lib/components/export.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import type { Item } from '$lib/types/item.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { siteAsideItem, type SiteAsideItemProps } from './aside-item.js';
 
 	/** Props */

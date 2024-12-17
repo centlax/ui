@@ -5,7 +5,7 @@
 	import { createChoose } from './choose.svelte.js';
 	import { choose, type ChooseProps } from './choose.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st } from '$lib/internal/utils/wind.js';
+	import { st } from '$lib/utils/wind.js';
 	import { ctxOption } from '$lib/composables/option.js';
 
 	/** Props */

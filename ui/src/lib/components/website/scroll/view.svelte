@@ -4,7 +4,7 @@
 	import { createScrollView } from './scroll.svelte.js';
 	import { scrollView, type ScrollViewProps } from './view.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 
 	/** Props */
 	let { ...props }: ScrollViewProps = $props();

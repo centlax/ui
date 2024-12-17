@@ -5,7 +5,7 @@
 	import { slide } from 'svelte/transition';
 	import { accordion, type AccordionProps, type MeltValue } from './accordion.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 
 	/** Imports */

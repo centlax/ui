@@ -4,7 +4,7 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { melt } from '@melt-ui/svelte';
 	import { createInputDate } from './date.svelte.js';
-	import { cn, st } from '$lib/internal/utils/wind.js';
+	import { cn, st } from '$lib/utils/wind.js';
 	import { UCalendar, UIcon, UPopover } from '$lib/components/export.js';
 
 	/** Props */

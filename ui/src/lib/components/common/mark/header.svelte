@@ -2,7 +2,7 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.js';
 	import { UMarkHeaderItem } from '$lib/index.js';
-	import { st, cn } from '$lib/internal/utils/wind.js';
+	import { st, cn } from '$lib/utils/wind.js';
 	import { markHeader, type MarkHeaderProps } from './header.js';
 
 	/** Props */
