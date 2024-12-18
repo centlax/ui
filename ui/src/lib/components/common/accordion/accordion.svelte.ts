@@ -20,8 +20,8 @@ export function createAccordion<Multiple extends boolean = false>(
 	});
 }
 
-const key = Symbol('accordion');
 export function ctxAccordion() {
+	const key = Symbol('accordion');
 	function set(accordion: Accordion) {
 		setContext(key, accordion);
 	}

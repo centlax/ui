@@ -8,20 +8,16 @@
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useTransition } from '$lib/composables/transition.js';
 	import { createPopover } from './popover.svelte.js';
-	import { setContext } from 'svelte';
 
 	/** Props */
 	let { as = 'div', open = $bindable(false), ...props }: PopoverProps = $props();
 	const {
 		elements: { trigger, content, arrow, close },
-		states,
-		options: {}
+		states
 	} = createPopover(props);
 
 	const sync = createSync(states);
-	$effect(() => {
-		sync.open(open, (v) => (open = v));
-	});
+	$effect(() => sync.open(open, (o) => (open = o)));
 
 	const toogle = useToggle();
 	toogle.set(states.open, $trigger, $close);
