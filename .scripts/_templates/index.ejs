@@ -1,0 +1,9 @@
+// _templates/component/new/index.ejs
+
+{{#each names}}
+const {{this}} = () => {
+  return <div>{{this}} component</div>;
+};
+
+export default {{this}};
+{{/each}}

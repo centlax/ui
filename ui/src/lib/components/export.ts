@@ -11,14 +11,14 @@ export { default as UDashFooter } from '$lib/components/application/dash/footer.
 export { default as UDashHeader } from '$lib/components/application/dash/header.svelte';
 export { default as UDashLayout } from '$lib/components/application/dash/layout.svelte';
 export { default as UDashMain } from '$lib/components/application/dash/main.svelte';
-export { default as UDeckLayout } from '$lib/components/application/deck/layout.svelte';
-export { default as UDeckSearch } from '$lib/components/application/deck/search.svelte';
+export { default as UDeskLayout } from '$lib/components/application/desk/layout.svelte';
+export { default as UDeskSearch } from '$lib/components/application/desk/search.svelte';
 export { default as UEditor } from '$lib/components/application/editor/editor.svelte';
 export { default as UField } from '$lib/components/application/field/field.svelte';
 export { default as UFormDebug } from '$lib/components/application/form/debug.svelte';
 export { default as UForm } from '$lib/components/application/form/form.svelte';
 export { default as UMenubar } from '$lib/components/application/menubar/menubar.svelte';
-export { default as UModal } from '$lib/components/application/modal/modal.svelte';
+export { default as UModal } from '$lib/components/application/modal/modal.js';
 export { default as UNotification } from '$lib/components/application/notification/notification.svelte';
 export { default as UPagination } from '$lib/components/application/pagination/pagination.svelte';
 export { default as UPath } from '$lib/components/application/path/path.svelte';
@@ -32,13 +32,12 @@ export { default as UResize } from '$lib/components/application/resize/resize.sv
 export { default as USelect } from '$lib/components/application/select/select.svelte';
 export { default as USheet } from '$lib/components/application/sheet/sheet.svelte';
 export { default as USlider } from '$lib/components/application/slider/slider.svelte';
-export { default as UTable } from '$lib/components/application/table/table.svelte';
+export { default as UTable } from '$lib/components/application/table/table.js';
 export { default as UToolbar } from '$lib/components/application/toolbar/toolbar.svelte';
 export { default as UTree } from '$lib/components/application/tree/tree.svelte';
 
 /** common */
 export { default as UAccordion } from '$lib/components/common/accordion/accordion.svelte';
-export { default as UAccordionItem } from '$lib/components/common/accordion/item.svelte';
 export { default as UAvatar } from '$lib/components/common/avatar/avatar.svelte';
 export { default as UAvatarGroup } from '$lib/components/common/avatar/group.svelte';
 export { default as UBadge } from '$lib/components/common/badge/badge.svelte';
@@ -49,7 +48,9 @@ export { default as UCalendarHeader } from '$lib/components/common/calendar/head
 export { default as UCalendarMain } from '$lib/components/common/calendar/main.svelte';
 export { default as UCard } from '$lib/components/common/card/card.svelte';
 export { default as UCarousel } from '$lib/components/common/carousel/carousel.svelte';
+export { default as UChain } from '$lib/components/common/chain/chain.svelte';
 export { default as UContainer } from '$lib/components/common/container/container.svelte';
+export { default as UCorate } from '$lib/components/common/corate/corate.svelte';
 export { default as UDataList } from '$lib/components/common/data/list.svelte';
 export { default as UFootbar } from '$lib/components/common/footbar/footbar.svelte';
 export { default as UHeadbar } from '$lib/components/common/headbar/headbar.svelte';

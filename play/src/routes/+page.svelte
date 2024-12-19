@@ -10,8 +10,7 @@
 		useDark,
 		UInput,
 		UAvatar,
-		UDashLayout,
-		UButton
+		UDashLayout
 	} from '@centlax/ui';
 	import { data } from './one';
 	const dark = useDark();

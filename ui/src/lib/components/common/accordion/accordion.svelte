@@ -1,6 +1,5 @@
 <script lang="ts" generics="Multiple extends boolean = false">
 	/** Imports */
-	import type { Item } from '$lib/types/item.js';
 	import { createAccordion, createSync, melt } from '@melt-ui/svelte';
 	import { slide } from 'svelte/transition';
 	import { accordion, type AccordionProps, type MeltValue } from './accordion.js';

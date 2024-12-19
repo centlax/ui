@@ -1,0 +1,20 @@
+---
+to: ui/src/lib/components/{{kebabCase name}}/{{kebabCase name}}.ts
+---
+import type { SubComponent } from '$lib/types/svelte.js';
+{{#each subcomponents}}
+import {{pascalCase this}} from './elements/{{kebabCase this}}.svelte';
+{{/each}}
+
+type {{pascalCase name}}Type = typeof {{pascalCase rootComponent}} & {
+{{#each subcomponents}}
+	{{pascalCase this}}: SubComponent<typeof {{pascalCase this}}>;
+{{/each}}
+};
+
+const {{pascalCase name}} = {{pascalCase rootComponent}} as {{pascalCase name}}Type;
+{{#each subcomponents}}
+{{pascalCase name}}.{{pascalCase this}} = {{pascalCase this}} as {{pascalCase name}}Type['{{pascalCase this}}'];
+{{/each}}
+
+export default {{pascalCase name}};
