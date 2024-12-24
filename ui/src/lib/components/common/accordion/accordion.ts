@@ -1,41 +1,18 @@
-/** Imports */
-import type { Item } from '$lib/types/item.js';
-import type { BaseProps } from '$lib/types/prop.js';
-import type { TransitionParams } from '$lib/types/transition.js';
-import type { TransformKeysToKebab } from '$lib/types/utils.js';
-import type { Styles } from '$lib/types/ui.js';
-import type { CreateAccordionProps } from '@melt-ui/svelte';
-import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
-import type { SlideParams } from 'svelte/transition';
-import type { WhenTrue } from '@melt-ui/svelte/internal/types';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Content from './elements/content.svelte';
+import Item from './elements/item.svelte';
+import Trigger from './elements/trigger.svelte';
 
-/** Styles */
-const styles = {
-	root: {},
-	item: {},
-	trigger: {},
-	content: {}
-} satisfies Styles;
-export const accordion = styles;
+type AccordionType = typeof Root & {
+	Content: SubComponent<typeof Content>;
+	Item: SubComponent<typeof Item>;
+	Trigger: SubComponent<typeof Trigger>;
+};
 
-/** Props */
-type Value<Multiple extends boolean = false> = Multiple extends false ? string : string[];
-export type MeltValue<T extends boolean> =
-	| WhenTrue<false | T, string[], string, string | string[]>
-	| undefined;
-type Props<T extends boolean> = Omit<HTMLAttributes<HTMLElement>, 'class'> &
-	TransformKeysToKebab<Omit<CreateAccordionProps<T>, 'value' | 'multiple'>>;
-export interface AccordionProps<Multiple extends boolean>
-	extends BaseProps<typeof accordion>,
-		Props<Multiple> {
-	children?: Snippet;
-	multiple?: Multiple;
-	trigger?: Snippet<[Item]>;
-	content?: Snippet<[Item]>;
-	value?: Value<Multiple>;
-	items: Item[];
-	transition?: TransitionParams<SlideParams>;
-	as?: keyof HTMLElementTagNameMap;
-	'trigger-as'?: keyof HTMLElementTagNameMap;
-}
+const Accordion = Root as AccordionType;
+Accordion.Content = Content as AccordionType['Content'];
+Accordion.Item = Item as AccordionType['Item'];
+Accordion.Trigger = Trigger as AccordionType['Trigger'];
+
+export default Accordion;

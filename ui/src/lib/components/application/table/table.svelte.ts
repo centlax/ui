@@ -1,24 +1,14 @@
-import { useUI } from '$lib/composables/ui.js';
-import type { DeepStyles } from '$lib/types/ui.js';
-import { cn, st } from '$lib/utils/wind.js';
+import { uify, type ToStrClass } from '$lib/utils/ui.js';
 import { tableBody, type TableBodyProps } from './elements/body.js';
 import { tableCaption, type TableCaptionProps } from './elements/caption.js';
-import { tableDCell, type TableDCellProps } from './elements/d-cell.js';
+import { tableCol, type TableColProps } from './elements/col.js';
+import { tableDCell, type TableDCellProps } from './elements/data.js';
 import { tableFoot, type TableFootProps } from './elements/foot.js';
-import { tableHCell, type TableHCellProps } from './elements/h-cell.js';
+import { tableGCol, type TableGColProps } from './elements/c-group.js';
+import { tableHCell, type TableHCellProps } from './elements/h-data.js';
 import { tableHead, type TableHeadProps } from './elements/head.js';
 import { tableRoot, type TableRootProps } from './elements/root.js';
 import { tableRow, type TableRowProps } from './elements/row.js';
-
-function uify<T extends Record<string, unknown>>(
-	styles: T,
-	oclass: string | undefined | DeepStyles<T>,
-	override?: boolean
-): string {
-	const ui = useUI(styles, oclass, override);
-	return cn(st(ui.root), ui.class) as string;
-}
-type ToStrClass<T> = Omit<T, 'class'> & { class: string };
 
 export function createTable() {
 	function root(props: TableRootProps): ToStrClass<TableRootProps> {
@@ -41,6 +31,14 @@ export function createTable() {
 		return { ...props, class: uify(tableFoot, props.class, props.override) };
 	}
 
+	function col(props: TableColProps): ToStrClass<TableColProps> {
+		return { ...props, class: uify(tableCol, props.class, props.override) };
+	}
+
+	function gCol(props: TableGColProps): ToStrClass<TableGColProps> {
+		return { ...props, class: uify(tableGCol, props.class, props.override) };
+	}
+
 	function row(props: TableRowProps): ToStrClass<TableRowProps> {
 		return { ...props, class: uify(tableRow, props.class, props.override) };
 	}
@@ -61,7 +59,9 @@ export function createTable() {
 			foot,
 			row,
 			hCell,
-			dCell
+			dCell,
+			col,
+			gCol
 		},
 		states: {},
 		options: {},

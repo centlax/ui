@@ -1,30 +1,21 @@
-/** Imports */
-import type { Item } from '$lib/types/item.js';
-import type { BaseProps } from '$lib/types/prop.js';
-import type { Styles } from '$lib/types/ui.js';
-import type { TransformKeysToKebab } from '$lib/types/utils.js';
-import type { CreateSelectProps } from '@melt-ui/svelte';
-import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Content from './elements/content.svelte';
+import OGroup from './elements/o-group.svelte';
+import Option from './elements/option.svelte';
+import Trigger from './elements/trigger.svelte';
 
-/** Styles */
-const styles = {
-	root: {},
-	card: {
-		layout:
-			'z-10 flex max-h-[300px] flex-col overflow-y-auto rounded-lg bg-white p-1 shadow focus:!ring-0'
-	}
-} satisfies Styles;
-export const choose = styles;
+type ChooseType = typeof Root & {
+	Content: SubComponent<typeof Content>;
+	OGroup: SubComponent<typeof OGroup>;
+	Option: SubComponent<typeof Option>;
+	Trigger: SubComponent<typeof Trigger>;
+};
 
-/** Props */
+const Choose = Root as ChooseType;
+Choose.Content = Content as ChooseType['Content'];
+Choose.OGroup = OGroup as ChooseType['OGroup'];
+Choose.Option = Option as ChooseType['Option'];
+Choose.Trigger = Trigger as ChooseType['Trigger'];
 
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> &
-	TransformKeysToKebab<Omit<CreateSelectProps, 'open' | 'selected' | 'positioning'>>;
-export interface ChooseProps extends BaseProps<typeof choose>, Props {
-	children?: Snippet;
-	as?: keyof HTMLElementTagNameMap;
-	open?: boolean;
-	float?: CreateSelectProps['positioning'];
-	selected?: Item;
-}
+export default Choose;

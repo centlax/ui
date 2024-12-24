@@ -3,23 +3,16 @@
 		UButton,
 		UDrawer,
 		UIcon,
-		UPopover,
 		URadio,
 		URadioGroup,
 		USheet,
-		USiteAside,
-		USiteFooter,
-		USiteHeader,
-		USiteLayout,
-		USiteMain,
+		USite,
 		USwitch,
 		UToggle
 	} from '$lib/index.js';
 	import Logo from '../../logo.svelte';
 	import { data } from './one.js';
 	import { useDark } from '$lib/composables/dark.js';
-	import { melt } from '@melt-ui/svelte';
-	import { getContext } from 'svelte';
 
 	let {}: {} = $props();
 	const { heads, foots } = data;
@@ -46,11 +39,11 @@
 	</UToggle>
 {/snippet}
 
-<USiteLayout class="container">
+<USite.Layout class="container">
 	{#snippet children()}
 		<USheet transition={{ duration: 300 }} class="w-full sm:max-w-[--site-width]">
 			<!-- Header -->
-			<USiteHeader items={heads}>
+			<USite.Header items={heads}>
 				{#snippet west()}
 					{@render site('header')}
 				{/snippet}
@@ -59,20 +52,20 @@
 						>Log in <span aria-hidden="true">&rarr;</span></a
 					>
 				{/snippet}
-			</USiteHeader>
+			</USite.Header>
 
 			<!-- Aside  -->
 			{#snippet content()}
-				<USiteAside items={heads}>
+				<USite.Aside items={heads}>
 					{#snippet north()}
 						{@render site('aside')}
 					{/snippet}
-				</USiteAside>
+				</USite.Aside>
 			{/snippet}
 		</USheet>
 
 		<!-- Main  -->
-		<USiteMain>
+		<USite.Main>
 			<UButton text="dark" onclick={dark.toggle} />
 
 			<USwitch class="mt-2" />
@@ -82,9 +75,9 @@
 				<URadio value="two" />
 				<URadio value="three" />
 			</URadioGroup>
-		</USiteMain>
+		</USite.Main>
 
 		<!-- Footer -->
-		<USiteFooter />
+		<USite.Footer />
 	{/snippet}
-</USiteLayout>
+</USite.Layout>

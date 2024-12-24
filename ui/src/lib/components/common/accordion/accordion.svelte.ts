@@ -1,41 +1,35 @@
-import { createAccordion as _createAccordion, type Accordion } from '@melt-ui/svelte';
-import { type AccordionProps } from './accordion.js';
-import { getContext, hasContext, setContext } from 'svelte';
+import { uify, type ToStrClass } from '$lib/utils/ui.js';
+import type { SvelteHTMLElements } from 'svelte/elements';
+import type { AccordionContentProps } from './elements/content.js';
+import type { AccordionRootProps } from './elements/root.js';
+import type { BaseProps } from '$lib/types/prop.js';
+import { accordionItem, type AccordionItemProps } from './elements/item.js';
+import type { AccordionTriggerProps } from './elements/trigger.js';
 
-const defaults = {
-	multiple: false,
-	disabled: false,
-	forceVisible: false
-};
-
-export function createAccordion<Multiple extends boolean = false>(
-	props: AccordionProps<Multiple>
-): Accordion<Multiple> {
-	return _createAccordion<Multiple>({
-		multiple: props['multiple'] ?? (defaults['multiple'] as Multiple),
-		disabled: props['disabled'] ?? defaults['disabled'],
-		forceVisible: props['force-visible'] ?? defaults['forceVisible'],
-		defaultValue: props['default-value'],
-		onValueChange: props['on-value-change']
-	});
-}
-
-export function ctxAccordion() {
-	const key = Symbol('accordion');
-	function set(accordion: Accordion) {
-		setContext(key, accordion);
-	}
-	function get(): Accordion {
-		return getContext<Accordion>(key);
+export function createAccordion() {
+	function root(props: AccordionRootProps): AccordionRootProps {
+		return { ...props };
 	}
 
-	function has(): boolean {
-		return hasContext(key);
+	function item(props: AccordionItemProps): ToStrClass<AccordionItemProps> {
+		return { ...props, class: uify(accordionItem, props.class, props.override) };
+	}
+
+	function trigger(props: AccordionTriggerProps): ToStrClass<AccordionTriggerProps> {
+		return { ...props, class: '' };
+	}
+
+	function content(props: AccordionContentProps): ToStrClass<AccordionContentProps> {
+		return { ...props, class: '' };
 	}
 
 	return {
-		set,
-		get,
-		has
+		contexts: {},
+		elements: {
+			root,
+			item,
+			trigger,
+			content
+		}
 	};
 }

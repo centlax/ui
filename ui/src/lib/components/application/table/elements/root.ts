@@ -12,4 +12,6 @@ export const tableRoot = styles;
 
 /* Props */
 type Props = Omit<SvelteHTMLElements['table'], 'class'>;
-export interface TableRootProps extends BaseProps<typeof tableRoot>, Props {}
+export interface TableRootProps extends BaseProps<typeof tableRoot>, Props {
+	sample?: object;
+}

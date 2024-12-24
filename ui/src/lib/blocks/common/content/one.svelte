@@ -1,19 +1,12 @@
 <script lang="ts">
-	import {
-		UMarkAside,
-		UMarkFooter,
-		UMarkHeader,
-		UMarkLayout,
-		UMarkMain,
-		UMarkTable
-	} from '$lib/components/export.js';
+	import { UMark } from '$lib/components/export.js';
 	import { asides, heads, asideTops } from './one.js';
 </script>
 
-<UMarkLayout>
-	<UMarkHeader items={heads} />
-	<UMarkAside top-items={asideTops} items={asides} />
-	<UMarkMain></UMarkMain>
-	<UMarkTable />
-	<UMarkFooter />
-</UMarkLayout>
+<UMark.Layout>
+	<UMark.Header items={heads} />
+	<UMark.Aside top-items={asideTops} items={asides} />
+	<UMark.Main></UMark.Main>
+	<UMark.Table selector="d" />
+	<UMark.Footer />
+</UMark.Layout>

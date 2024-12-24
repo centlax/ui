@@ -1,17 +1,19 @@
 import fs from 'fs';
 import path from 'path';
 
-// Helper function to convert to CamelCase
-function toCamelCase(name) {
+// Helper function to convert to PascalCase
+function toPascalCase(name) {
 	return name
 		.split('-')
 		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
 		.join('');
 }
 
-const baseDir = 'ui/src/lib/components'; // Adjust this base directory
+const baseDir = 'ui/src/lib/components'; // Base directory for components
 
-// Function to find components dynamically
+/**
+ * Recursively find components with `elements` directories.
+ */
 function findComponents(dir = baseDir) {
 	const components = [];
 
@@ -22,21 +24,14 @@ function findComponents(dir = baseDir) {
 			return; // Skip non-directories
 		}
 
-		console.log(`Checking directory: ${itemPath}`);
 		const elementsPath = path.join(itemPath, 'elements');
 
 		if (fs.existsSync(elementsPath) && fs.statSync(elementsPath).isDirectory()) {
-			const files = fs.readdirSync(elementsPath);
+			const files = fs.readdirSync(elementsPath).filter((file) => file.endsWith('.svelte'));
+			const hasRoot = files.includes('root.svelte');
+			const subComponents = files.map((file) => path.basename(file, '.svelte'));
 
-			if (files.includes('root.svelte')) {
-				console.log(`Found root.svelte in: ${itemPath}`);
-				const subComponents = files
-					.filter((file) => file !== 'root.svelte' && file.endsWith('.svelte'))
-					.map((file) => path.basename(file, '.svelte'));
-
-				console.log(`Subcomponents for ${itemPath}: ${subComponents.join(', ')}`);
-				components.push({ dir: itemPath, subComponents });
-			}
+			components.push({ dir: itemPath, subComponents, hasRoot });
 		} else {
 			// Recursively scan subdirectories
 			components.push(...findComponents(itemPath));
@@ -46,24 +41,45 @@ function findComponents(dir = baseDir) {
 	return components;
 }
 
-// Generate the component file dynamically
-function generateComponentFile(componentDir, subComponents) {
-	const componentName = toCamelCase(path.basename(componentDir));
+/**
+ * Generate `<foldername>.ts` for the component upfront if it doesn't exist.
+ */
+function ensureFolderFile(componentDir) {
+	const folderName = path.basename(componentDir);
+	const folderFile = path.join(componentDir, `${folderName}.ts`);
+
+	if (!fs.existsSync(folderFile)) {
+		const folderContent = `
+export {};
+		`.trim();
+
+		fs.writeFileSync(folderFile, folderContent, 'utf-8');
+		console.log(`Ensured folder file exists: ${folderFile}`);
+	}
+}
+
+/**
+ * Generate component file for directories with `root.svelte`.
+ */
+function generateRootComponentFile(componentDir, subComponents) {
+	const componentName = toPascalCase(path.basename(componentDir));
 	const outputFile = path.join(componentDir, `${componentName}.ts`);
 
 	const subComponentImports = subComponents
+		.filter((subComponent) => subComponent !== 'root')
 		.map(
 			(subComponent) =>
-				`import ${toCamelCase(subComponent)} from './elements/${subComponent}.svelte';`
+				`import ${toPascalCase(subComponent)} from './elements/${subComponent}.svelte';`
 		)
 		.join('\n');
 
 	const subComponentAssignments = subComponents
+		.filter((subComponent) => subComponent !== 'root')
 		.map(
 			(subComponent) =>
-				`${componentName}.${toCamelCase(subComponent)} = ${toCamelCase(
+				`${componentName}.${toPascalCase(subComponent)} = ${toPascalCase(
 					subComponent
-				)} as ${componentName}Type['${toCamelCase(subComponent)}'];`
+				)} as ${componentName}Type['${toPascalCase(subComponent)}'];`
 		)
 		.join('\n');
 
@@ -74,9 +90,10 @@ ${subComponentImports}
 
 type ${componentName}Type = typeof Root & {
 ${subComponents
+	.filter((subComponent) => subComponent !== 'root')
 	.map(
 		(subComponent) =>
-			`    ${toCamelCase(subComponent)}: SubComponent<typeof ${toCamelCase(subComponent)}>;`
+			`    ${toPascalCase(subComponent)}: SubComponent<typeof ${toPascalCase(subComponent)}>;`
 	)
 	.join('\n')}
 };
@@ -85,13 +102,46 @@ const ${componentName} = Root as ${componentName}Type;
 ${subComponentAssignments}
 
 export default ${componentName};
-`.trim();
+	`.trim();
 
 	fs.writeFileSync(outputFile, fileContent, 'utf-8');
-	console.log(`Generated component file: ${outputFile}`);
+	console.log(`Generated component file with root: ${outputFile}`);
 }
 
-// Main function to orchestrate the process
+/**
+ * Generate `export.ts` for components inside `elements`.
+ */
+function generateExportFile(componentDir, subComponents) {
+	const exportFile = path.join(componentDir, 'export.ts');
+
+	const exportContent = subComponents
+		.map(
+			(subComponent) =>
+				`export { default as ${toPascalCase(subComponent)} } from './elements/${subComponent}.svelte';`
+		)
+		.join('\n');
+
+	fs.writeFileSync(exportFile, exportContent, 'utf-8');
+	console.log(`Generated export file: ${exportFile}`);
+}
+
+/**
+ * Generate `<foldername>.ts` for directories without `root.svelte` that exports everything from `export.ts`.
+ */
+function generateFolderExportFile(componentDir) {
+	const folderName = path.basename(componentDir);
+	const folderFile = path.join(componentDir, `${folderName}.ts`);
+
+	const exportFile = path.join(componentDir, 'export.ts');
+	const fileContent = `export * as default from './export.js';`.trim();
+
+	fs.writeFileSync(folderFile, fileContent, 'utf-8');
+	console.log(`Generated folder export file: ${folderFile}`);
+}
+
+/**
+ * Main function to generate components.
+ */
 async function generateComponents() {
 	console.log('Starting component generation process...');
 	const components = findComponents();
@@ -101,9 +151,20 @@ async function generateComponents() {
 		return;
 	}
 
-	for (const { dir, subComponents } of components) {
-		console.log(`Generating component for directory: ${dir}`);
-		generateComponentFile(dir, subComponents);
+	for (const { dir, subComponents, hasRoot } of components) {
+		// Ensure `<foldername>.ts` exists upfront
+		ensureFolderFile(dir);
+
+		if (hasRoot) {
+			// Generate for components with `root.svelte`
+			console.log(`Processing directory with root.svelte: ${dir}`);
+			generateRootComponentFile(dir, subComponents);
+		} else {
+			// Generate for components without `root.svelte`
+			console.log(`Processing directory without root.svelte: ${dir}`);
+			generateExportFile(dir, subComponents);
+			generateFolderExportFile(dir); // Ensure `<foldername>.ts` only exports from `export.ts`
+		}
 	}
 
 	console.log('Component generation process completed.');

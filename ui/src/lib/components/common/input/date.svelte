@@ -5,7 +5,6 @@
 	import { melt } from '@melt-ui/svelte';
 	import { createInputDate } from './date.svelte.js';
 	import { cn, st } from '$lib/utils/wind.js';
-	import { UCalendar, UIcon, UPopover } from '$lib/components/export.js';
 
 	/** Props */
 	let { ...props }: InputDateProps<Range> = $props();
@@ -49,12 +48,4 @@
 			{@render content$($fieldContent, $segment)}
 		{/if}
 	{/key}
-	<UPopover float={{ placement: 'top' }}>
-		{#snippet trigger()}
-			<UIcon name="i-fluent-calendar-24-regular" />
-		{/snippet}
-		{#snippet content()}
-			<UCalendar />
-		{/snippet}
-	</UPopover>
 </div>

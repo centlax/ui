@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { Dialog } from 'bits-ui';
+	import { Dialog as Primitive } from 'bits-ui';
 	let { children } = $props();
 </script>
 
-<Dialog.Close>
+<Primitive.Close>
 	{@render children?.()}
-</Dialog.Close>
+</Primitive.Close>

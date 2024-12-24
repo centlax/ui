@@ -6,39 +6,39 @@
 	--ui-text-dimmed: var(--ui-color-neutral-400);
 	--ui-text-muted: var(--ui-color-neutral-500);
 	--ui-text-toned: var(--ui-color-neutral-600);
+	--ui-text-light: var(--ui-color-neutral-900);
 	--ui-text: var(--ui-color-neutral-700);
-	--ui-text-highlighted: var(--ui-color-neutral-900);
 
 	--ui-bg: var(--color-white);
-	--ui-bg-muted: var(--ui-color-neutral-50);
-	--ui-bg-elevated: var(--ui-color-neutral-100);
-	--ui-bg-accented: var(--ui-color-neutral-200);
-	--ui-bg-inverted: var(--ui-color-neutral-900);
+	--ui-bg-muted: var(--color-neutral-50);
+	--ui-bg-elevated: var(--color-neutral-100);
+	--ui-bg-accented: var(--color-neutral-200);
+	--ui-bg-inverted: var(--color-neutral-900);
 
-	--ui-border: var(--ui-color-neutral-200);
-	--ui-border-muted: var(--ui-color-neutral-200);
-	--ui-border-accented: var(--ui-color-neutral-300);
-	--ui-border-inverted: var(--ui-color-neutral-900);
+	--ui-border: var(--color-neutral-200);
+	--ui-border-muted: var(--color-neutral-200);
+	--ui-border-accented: var(--color-neutral-300);
+	--ui-border-inverted: var(--color-neutral-900);
 
 	--ui-radius: var(--radius-sm);
 	--ui-container: var(--container-7xl);
 }
 
 .dark {
-	--ui-text-dimmed: var(--ui-color-neutral-500);
-	--ui-text-muted: var(--ui-color-neutral-400);
-	--ui-text-toned: var(--ui-color-neutral-300);
-	--ui-text: var(--ui-color-neutral-200);
-	--ui-text-highlighted: var(--color-white);
+	--ui-text-dimmed: var(--color-neutral-500);
+	--ui-text-muted: var(--color-neutral-400);
+	--ui-text-toned: var(--color-neutral-300);
+	--ui-text-light: var(--color-white);
+	--ui-text: var(--color-neutral-200);
 
-	--ui-bg: var(--ui-color-neutral-900);
-	--ui-bg-muted: var(--ui-color-neutral-800);
-	--ui-bg-elevated: var(--ui-color-neutral-800);
-	--ui-bg-accented: var(--ui-color-neutral-700);
+	--ui-bg: var(--color-neutral-900);
+	--ui-bg-muted: var(--color-neutral-800);
+	--ui-bg-elevated: var(--color-neutral-800);
+	--ui-bg-accented: var(--color-neutral-700);
 	--ui-bg-inverted: var(--color-white);
 
-	--ui-border: var(--ui-color-neutral-800);
-	--ui-border-muted: var(--ui-color-neutral-700);
-	--ui-border-accented: var(--ui-color-neutral-700);
+	--ui-border: var(--color-neutral-800);
+	--ui-border-muted: var(--color-neutral-700);
+	--ui-border-accented: var(--color-neutral-700);
 	--ui-border-inverted: var(--color-white);
 }

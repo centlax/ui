@@ -1,31 +1,15 @@
-/** Imports */
-import type { BaseProps } from '$lib/types/prop.js';
-import type { TransitionParams } from '$lib/types/transition.js';
-import type { TransformKeysToKebab } from '$lib/types/utils.js';
-import type { Styles } from '$lib/types/ui.js';
-import type { CreateCollapsibleProps } from '@melt-ui/svelte';
-import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
-import type { SlideParams } from 'svelte/transition';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Content from './elements/content.svelte';
+import Trigger from './elements/trigger.svelte';
 
-/** Styles */
-const styles = {
-	root: {},
-	item: {},
-	trigger: {},
-	content: {}
-} satisfies Styles;
-export const collapsible = styles;
+type CollapsibleType = typeof Root & {
+	Content: SubComponent<typeof Content>;
+	Trigger: SubComponent<typeof Trigger>;
+};
 
-/** Props */
-type Props = Omit<HTMLAttributes<HTMLElement>, 'class'> &
-	Omit<TransformKeysToKebab<CreateCollapsibleProps>, 'value'>;
-export interface CollapsibleProps extends BaseProps<typeof collapsible>, Props {
-	children?: Snippet;
-	trigger?: Snippet<[{ value: boolean }]>;
-	content?: Snippet;
-	transition?: TransitionParams<SlideParams>;
-	value?: boolean;
-	as?: keyof HTMLElementTagNameMap;
-	'trigger-as'?: keyof HTMLElementTagNameMap;
-}
+const Collapsible = Root as CollapsibleType;
+Collapsible.Content = Content as CollapsibleType['Content'];
+Collapsible.Trigger = Trigger as CollapsibleType['Trigger'];
+
+export default Collapsible;

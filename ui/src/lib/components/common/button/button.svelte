@@ -1,3 +1,13 @@
+<!--
+@component
+- You can use markdown here.
+- You can also use code blocks here.
+- Usage:
+  ```html
+  <Main name="Arethra">
+    ```
+-->
+<!---->
 <script lang="ts">
 	/** Imports  */
 	import { UIcon } from '$lib/components/export.js';

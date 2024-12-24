@@ -8,16 +8,13 @@
 
 	/** Props */
 	let { checked = $bindable(false), ...props }: SwitchProps = $props();
-
 	const {
 		elements: { root, input },
 		states
 	} = createSwitch(props);
 
 	const sync = createSync(states);
-	$effect(() => {
-		sync.checked(checked, (c) => (checked = c));
-	});
+	$effect(() => sync.checked(checked, (c) => (checked = c)));
 
 	/** Styles */
 	const ui = useUI(_switch, props.class, props.override);

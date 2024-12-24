@@ -10,7 +10,7 @@ import {
 	type ChangeRangeValue,
 	type CreateBoundCalendarProps,
 	type RangeValue
-} from './calendar.js';
+} from './elements/root.js';
 import { getContext, hasContext, setContext } from 'svelte';
 
 const baseDefaults = {

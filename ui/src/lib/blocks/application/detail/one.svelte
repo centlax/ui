@@ -1,17 +1,6 @@
 <script lang="ts">
 	import Logo from '$lib/blocks/logo.svelte';
-	import {
-		UDashAside,
-		USheet,
-		UIcon,
-		UDashHeader,
-		UDashMain,
-		USwitch,
-		useDark,
-		UInput,
-		UAvatar,
-		UDashLayout
-	} from '$lib/index.js';
+	import { UDash, USheet, UIcon, USwitch, useDark, UInput, UAvatar } from '$lib/index.js';
 	import { data } from './one.js';
 	const dark = useDark();
 	let sheet = $state(false);
@@ -25,14 +14,14 @@
 </script>
 
 {#snippet aside()}
-	<UDashAside item-dismiss={dismiss} items={asides}>
+	<UDash.Aside item-dismiss={dismiss} items={asides}>
 		{#snippet north()}
 			<Logo />
 		{/snippet}
-	</UDashAside>
+	</UDash.Aside>
 {/snippet}
 
-<UDashLayout>
+<UDash.Layout>
 	<USheet
 		transition={{ duration: 250 }}
 		from="west"
@@ -58,7 +47,7 @@
 		{/snippet}
 	</USheet>
 
-	<UDashHeader onclick={toggle}>
+	<UDash.Header onclick={toggle}>
 		{#snippet west()}
 			<button onclick={toggle} type="button" class="-m-2.5 p-2.5 text-neutral-700 lg:hidden">
 				<span class="sr-only">Open sidebar</span>
@@ -83,8 +72,8 @@
 				src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
 			/>
 		{/snippet}
-	</UDashHeader>
-	<UDashMain>
+	</UDash.Header>
+	<UDash.Main>
 		<USwitch onclick={dark.toggle} />
-	</UDashMain>
-</UDashLayout>
+	</UDash.Main>
+</UDash.Layout>
