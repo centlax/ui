@@ -2,4 +2,3 @@
 	/** Imports */
 	import { type TableOfContentsItem, type TableOfContentsElements, melt } from '@melt-ui/svelte';
 </script>
-

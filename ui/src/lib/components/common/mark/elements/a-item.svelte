@@ -11,4 +11,3 @@
 	const ui = useUI(markAsideItem, props.class, props.override);
 	// -ml-px block border-l border-current pl-4 font-semibold text-sky-500 dark:text-sky-400
 </script>
-

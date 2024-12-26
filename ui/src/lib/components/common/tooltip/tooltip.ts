@@ -1,31 +1,15 @@
-/** Imports */
-import type { BaseProps } from '$lib/types/prop.js';
-import type { Styles } from '$lib/types/ui.js';
-import type { CamelToKebab, TransformKeysToKebab } from '$lib/types/utils.js';
-import type { CreateTooltipProps, TooltipElements } from '@melt-ui/svelte';
-import type { Snippet } from 'svelte';
-import type { SvelteHTMLElements } from 'svelte/elements';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Content from './elements/content.svelte';
+import Trigger from './elements/trigger.svelte';
 
-/** Styles */
-const styles = {
-	root: {
-		layout: 'relative z-10'
-	},
-	trigger: {},
-	arrow: {}
-} satisfies Styles;
-export const tooltip = styles;
+type TooltipType = typeof Root & {
+	Content: SubComponent<typeof Content>;
+	Trigger: SubComponent<typeof Trigger>;
+};
 
-/** Props */
+const Tooltip = Root as TooltipType;
+Tooltip.Content = Content as TooltipType['Content'];
+Tooltip.Trigger = Trigger as TooltipType['Trigger'];
 
-type Props = Omit<SvelteHTMLElements['div'], 'class'> &
-	TransformKeysToKebab<Omit<CreateTooltipProps, 'positioning'>>;
-export interface TooltipProps extends BaseProps<typeof tooltip>, Props {
-	children?: Snippet;
-	content?: Snippet;
-	trigger?: Snippet<[]>;
-	float?: CreateTooltipProps['positioning'];
-	value?: boolean;
-	as?: keyof HTMLElementTagNameMap;
-	'trigger-as'?: keyof HTMLElementTagNameMap;
-}
+export default Tooltip;

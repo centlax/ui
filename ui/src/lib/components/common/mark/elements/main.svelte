@@ -10,5 +10,4 @@
 	const ui = useUI(markMain, props.class, props.override);
 </script>
 
-
 {@render props.children?.()}

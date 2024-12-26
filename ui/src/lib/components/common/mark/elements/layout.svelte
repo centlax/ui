@@ -11,8 +11,7 @@
 	const ui = useUI(markLayout, props.class, props.override);
 </script>
 
-
-
+<!-- 
 <style>
 	:root {
 		--mark-width: var(--width, 20rem);
@@ -20,4 +19,4 @@
 		--mark-aside-width: calc(var(--mark-width) * 1);
 		--mark-table-width: calc(var(--mark-width) * 1);
 	}
-</style>
+</style> -->

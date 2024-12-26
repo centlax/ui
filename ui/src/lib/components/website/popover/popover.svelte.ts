@@ -1,18 +1,23 @@
-import type { CreateReturn } from '$lib/types/create.js';
-import { createPopover as _createPopover, type CreatePopoverProps } from '@melt-ui/svelte';
+import { toCamel } from '$lib/utils/props.js';
+import type { PopoverContent } from './elements/content.js';
 
-export function createPopover(): CreateReturn {
-	function root() {}
-	function content() {}
-	function trigger() {}
-	function close() {}
+export function bitPopover() {
+	function root(props: any) {
+		return props;
+	}
+	function content(props: PopoverContent) {
+		return toCamel(props);
+	}
+	function trigger(props: any) {
+		return props;
+	}
+
 	return {
 		contents: {},
 		elements: {
 			root,
 			content,
-			trigger,
-			close
+			trigger
 		},
 		options: {},
 		helpers: {},

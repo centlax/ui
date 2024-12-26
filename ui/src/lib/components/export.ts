@@ -60,7 +60,7 @@ export { default as USidebar } from '$lib/components/common/sidebar/sidebar.svel
 export { default as UStepper } from '$lib/components/common/stepper/stepper.svelte';
 export { default as UToast } from '$lib/components/common/toast/toast.svelte';
 export { default as UToggle } from '$lib/components/common/toggle/toggle.svelte';
-export { default as UTooltip } from '$lib/components/common/tooltip/tooltip.svelte';
+export { default as UTooltip } from '$lib/components/common/tooltip/tooltip.js';
 
 /** website */
 export { default as UChip } from '$lib/components/website/chip/chip.svelte';

@@ -8,6 +8,7 @@ export function uify<T extends Record<string, unknown>>(
 	override?: boolean
 ): string {
 	const ui = useUI(styles, oclass, override);
+	// @ts-ignore
 	return cn(st(ui.root), ui.class) as string;
 }
 export type ToStrClass<T> = Omit<T, 'class'> & { class: string };
