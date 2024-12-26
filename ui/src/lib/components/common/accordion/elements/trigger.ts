@@ -12,6 +12,7 @@ const styles = {
 export const accordionTrigger = styles;
 
 /** Props */
+
 export interface AccordionTriggerProps extends AccordionTriggerPropsWithoutHTML {
 	children?: Snippet;
 }

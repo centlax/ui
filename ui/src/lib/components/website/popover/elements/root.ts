@@ -22,5 +22,5 @@ const styles = {
 export const popoverRoot = styles;
 
 /** Props */
-type Props = ToKebab<PopoverRootPropsWithoutHTML>
+type Props = ToKebab<PopoverRootPropsWithoutHTML>;
 export interface PopoverRoot extends BaseProps<typeof popoverRoot>, Props {}

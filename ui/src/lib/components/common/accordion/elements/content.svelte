@@ -1,12 +1,14 @@
 <script lang="ts">
+	/** Imports */
 	import { Accordion as Primitive } from 'bits-ui';
-	import { createAccordion } from '../accordion.svelte.js';
+	import { bitAccordion } from '../accordion.svelte.js';
 	import type { AccordionContentProps } from './content.js';
-	let { children, ...props }: AccordionContentProps = $props();
 
+	/** Props */
+	let { children, ...props }: AccordionContentProps = $props();
 	const {
 		elements: { content }
-	} = createAccordion();
+	} = bitAccordion();
 </script>
 
 <Primitive.Content {...content(props)}>

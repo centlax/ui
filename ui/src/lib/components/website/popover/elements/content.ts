@@ -2,7 +2,11 @@
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { ToKebab } from '$lib/types/utils.js';
-import type { PopoverContentPropsWithoutHTML, WithoutChildrenOrChild } from 'bits-ui';
+import type {
+	PopoverArrowPropsWithoutHTML,
+	PopoverContentPropsWithoutHTML,
+	WithoutChildrenOrChild
+} from 'bits-ui';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
@@ -14,7 +18,10 @@ const styles = {
 export const siteAsideItem = styles;
 
 /** Props */
+type P<T> = ToKebab<WithoutChildrenOrChild<T>>;
 type Props = Omit<SvelteHTMLElements['span'], 'class' | 'style' | 'dir'> &
 	BaseProps<typeof siteAsideItem>;
-type BitProps = ToKebab<WithoutChildrenOrChild<PopoverContentPropsWithoutHTML>>;
-export interface PopoverContent extends Props, BitProps {}
+type BitProps = P<PopoverContentPropsWithoutHTML>;
+export interface PopoverContent extends Props, BitProps {
+	//arrow?: P<PopoverArrowPropsWithoutHTML>
+}

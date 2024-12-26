@@ -6,13 +6,13 @@ import type { BaseProps } from '$lib/types/prop.js';
 import { accordionItem, type AccordionItemProps } from './elements/item.js';
 import type { AccordionTriggerProps } from './elements/trigger.js';
 
-export function createAccordion() {
+export function bitAccordion() {
 	function root(props: AccordionRootProps): AccordionRootProps {
 		return { ...props };
 	}
 
 	function item(props: AccordionItemProps): ToStrClass<AccordionItemProps> {
-		return { ...props, class: uify(accordionItem, props.class, props.override) };
+		return { ...props, class: '' };
 	}
 
 	function trigger(props: AccordionTriggerProps): ToStrClass<AccordionTriggerProps> {

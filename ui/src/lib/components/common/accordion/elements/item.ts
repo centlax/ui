@@ -18,5 +18,5 @@ export const accordionItem = styles;
 export interface AccordionItemProps extends AccordionItemPropsWithoutHTML {
 	value?: string;
 	disabled?: boolean;
-	childreb?: Snippet;
+	children?: Snippet;
 }
