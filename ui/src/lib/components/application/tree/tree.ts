@@ -3,7 +3,7 @@ import Root from './elements/root.svelte';
 import Item from './elements/item.svelte';
 
 type TreeType = typeof Root & {
-	Item: SubComponent<typeof Item>;
+    Item: SubComponent<typeof Item>;
 };
 
 const Tree = Root as TreeType;

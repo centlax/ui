@@ -1,16 +1,53 @@
 <script lang="ts">
 	/** Imports */
-	import { Popover as Primitive } from 'bits-ui';
-	import type { PopoverRoot } from './root.js';
-	import { bitPopover } from '../popover.svelte.js';
+	import { createSync, melt } from '@melt-ui/svelte';
+	import { fade } from 'svelte/transition';
+	import { popover, type PopoverProps } from './root.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { st, cn } from '$lib/utils/wind.js';
+	import { useTransition } from '$lib/composables/transition.js';
+	import { createPopover } from '../popover.svelte.js';
+	import { nodate } from '$lib/utils/internal/elements/node.svelte.js';
 
 	/** Props */
-	let { children, ...props }: PopoverRoot = $props();
+	let { as = 'div', open = $bindable(false), ...props }: PopoverProps = $props();
+
 	const {
-		elements: { root }
-	} = bitPopover();
+		elements: { trigger, content, arrow, close },
+		states,
+		options: {}
+	} = createPopover(props);
+
+	const sync = createSync(states);
+	$effect(() => sync.open(open, (v) => (open = v)));
+
+	let node = $state<HTMLElement | null>();
+	$effect(() => {
+		node = document.getElementById('shimmy');
+		if (node) {
+			nodate(node, $trigger);
+		}
+	});
+
+	/** Styles */
+	const ui = useUI(popover, props.class, props.override);
+	const transition = useTransition();
+	let txn = $state(
+		transition.set(props['transition'], {
+			duration: 300
+		})
+	);
 </script>
 
-<Primitive.Root {...root(props)}>
-	{@render children?.()}
-</Primitive.Root>
+{#if open}
+	<svelte:element
+		this={as}
+		{...props}
+		use:melt={$content}
+		in:fade={txn.in}
+		out:fade={txn.out}
+		class={cn(st(ui.root), ui.class)}
+	>
+		{@render props.children?.()}
+	</svelte:element>
+{/if}

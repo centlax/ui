@@ -1,10 +1,10 @@
 /** Imports */
-import type { BaseProps } from '$lib/types/prop.js';
+import type { BaseProps, MainProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { HTMLAttributes, SvelteHTMLElements } from 'svelte/elements';
 
-/** Styles */
+/** Styles  */
 const styles = {
 	root: {
 		flex: 'flex justify-center items-center gap-x-1',
@@ -17,7 +17,8 @@ const styles = {
 export const badge = styles;
 
 /** Props */
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'>;
-export interface BadgeProps extends BaseProps<typeof badge>, Props {
+
+type Props = Omit<SvelteHTMLElements['span'], 'class'>;
+export interface BadgeProps extends MainProps<typeof badge>, Props {
 	children?: Snippet;
 }

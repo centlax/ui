@@ -1,12 +1,14 @@
 /* Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {}
+	root: {
+		spacing: 'px-3 py-4',
+		typography: 'whitespace-nowrap text-sm text-gray-300'
+	}
 } satisfies Styles;
 export const tableDCell = styles;
 

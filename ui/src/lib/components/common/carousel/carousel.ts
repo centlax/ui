@@ -1,20 +1,18 @@
-/** Imports */
-import type { BaseProps } from '$lib/types/prop.js';
-import type { Styles } from '$lib/types/ui.js';
-import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Back from './elements/back.svelte';
+import Item from './elements/item.svelte';
+import Next from './elements/next.svelte';
 
-/** Styles */
-const styles = {
-	root: {}
-} satisfies Styles;
-export const carousel = styles;
+type CarouselType = typeof Root & {
+    Back: SubComponent<typeof Back>;
+    Item: SubComponent<typeof Item>;
+    Next: SubComponent<typeof Next>;
+};
 
-/** Props */
-type Props = Omit<HTMLAttributes<HTMLDivElement>, 'class'>;
-export interface CarouselProps extends BaseProps<typeof carousel>, Props {
-	children?: Snippet;
-	north?: Snippet;
-	south?: Snippet;
-	thin?: boolean;
-}
+const Carousel = Root as CarouselType;
+Carousel.Back = Back as CarouselType['Back'];
+Carousel.Item = Item as CarouselType['Item'];
+Carousel.Next = Next as CarouselType['Next'];
+
+export default Carousel;

@@ -1,7 +1,7 @@
 import { createDialog } from '@melt-ui/svelte';
-import type { SheetProps } from './sheet.js';
+import type { SheetProps } from './elements/root.js';
 
-export function createSheet(props: SheetProps) {
+export function useSheet(props: SheetProps) {
 	return createDialog({
 		role: props['role'] ?? 'dialog',
 		preventScroll: props['prevent-scroll'] ?? true,
@@ -14,3 +14,7 @@ export function createSheet(props: SheetProps) {
 		defaultOpen: props['default-open'] ?? false
 	});
 }
+
+const {
+	elements: { trigger }
+} = createDialog();

@@ -1,6 +1,6 @@
-import type { CarouselProps } from './carousel.js';
+import type { CarouselProps } from './elements/root.js';
 
-export function createCarousel(props: CarouselProps) {
+export function useCarousel(root: boolean = false) {
 	return {
 		elements: {},
 		states: {},

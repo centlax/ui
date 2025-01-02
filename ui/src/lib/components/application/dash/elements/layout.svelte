@@ -11,7 +11,7 @@
 	const ui = useUI(dashLayout, props.class, props.override);
 </script>
 
-<div id="dash-layout" class={cn(st(ui.root), ui.class)}>
+<div data-name="dash-layout" class={cn(st(ui.root), ui.class)}>
 	{@render props.children?.()}
 </div>
 

@@ -1,20 +1,9 @@
-import type { CreateReturn } from '$lib/types/create.js';
-import { createTooltip as create } from '@melt-ui/svelte';
-import type { TooltipContentProps } from './elements/content.js';
-import type { ToCamel } from '$lib/types/utils.js';
+import { createTooltip as create, type CreateTooltipProps } from '@melt-ui/svelte';
 import type { TooltipContentProps as _T } from 'bits-ui';
 import { getContext, hasContext, setContext } from 'svelte';
 
 export function createTooltip() {
-	return create({
-		positioning: {
-			placement: 'top'
-		},
-		openDelay: 0,
-		closeDelay: 0,
-		closeOnPointerDown: false,
-		forceVisible: true
-	});
+	return create;
 }
 
 const key = Symbol('tooltip');
@@ -37,3 +26,5 @@ export function ctxTooltip() {
 		has
 	};
 }
+
+export function useTooltip(root: boolean = false) {}

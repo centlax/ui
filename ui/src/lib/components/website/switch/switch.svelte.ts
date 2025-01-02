@@ -1,5 +1,6 @@
 import { createSwitch as _createSwitch, type CreateSwitchProps } from '@melt-ui/svelte';
 import type { SwitchProps } from './switch.js';
+import type { CreateReturn } from '$lib/types/create.js';
 
 const defaults: CreateSwitchProps = {
 	defaultChecked: false,
@@ -9,13 +10,12 @@ const defaults: CreateSwitchProps = {
 	value: ''
 };
 
-export function createSwitch(props: SwitchProps) {
-	return _createSwitch({
-		defaultChecked: props['default-checked'] ?? defaults['defaultChecked'],
-		onCheckedChange: props['on-checked-change'] ?? defaults['onCheckedChange'],
-		disabled: props['disabled'] ?? defaults['disabled'],
-		required: props['required'] ?? defaults['required'],
-		name: props['name'] ?? defaults['name'],
-		value: props['value'] ?? defaults['value']
-	});
+export function bitSwitch(props: SwitchProps) {
+	return {
+		elements: {},
+		contents: {},
+		options: {},
+		states: {},
+		helpers: {}
+	};
 }

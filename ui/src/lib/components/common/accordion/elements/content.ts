@@ -1,10 +1,8 @@
 /** Imports */
-import type { BaseProps } from '$lib/types/prop.js';
 import type { TransformKeysToKebab as ToKebab } from '$lib/types/utils.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
-import type { AccordionContentPropsWithoutHTML } from 'bits-ui';
+import type { CreateAccordionProps } from '@melt-ui/svelte';
 
 /** Styles */
 const styles = {
@@ -13,6 +11,7 @@ const styles = {
 export const accordionContent = styles;
 
 /** Props */
-type OmitType<T> = Omit<T, 'class'>;
-type Props = ToKebab<OmitType<SvelteHTMLElements['div']>> & Record<string, any>;
-export interface AccordionContentProps extends AccordionContentPropsWithoutHTML {}
+type Props = SvelteHTMLElements['div'];
+export interface AccordionContentProps extends Props {
+	id: string;
+}

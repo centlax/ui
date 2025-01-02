@@ -1,14 +1,19 @@
 <script lang="ts">
-	import { Accordion as Primitive } from 'bits-ui';
-	import type { AccordionTriggerProps } from './trigger.js';
-	import { bitAccordion } from '../accordion.svelte.js';
-	let { children, ...props }: AccordionTriggerProps = $props();
+	/** Imports */
+	import { melt } from '@melt-ui/svelte';
+	import { useAccordion } from '../accordion.svelte.js';
+	import { type AccordionTriggerProps } from './trigger.js';
+	import { getContext } from 'svelte';
 
+	/** Props */
+	let { id, ...props }: AccordionTriggerProps = $props();
 	const {
 		elements: { trigger }
-	} = bitAccordion();
+	} = useAccordion();
+
+	/** Styles */
 </script>
 
-<Primitive.Trigger {...trigger(props)}>
-	{@render children?.()}
-</Primitive.Trigger>
+<svelte:element this={'button'} use:melt={$trigger(getContext('x'))} {...props}>
+	{@render props.children?.()}
+</svelte:element>

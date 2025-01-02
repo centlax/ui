@@ -5,12 +5,12 @@
 	import { st, cn } from '$lib/utils/wind.js';
 
 	/** Props */
-	let { ...props }: BadgeProps = $props();
+	let { as = 'span', ...props }: BadgeProps = $props();
 
 	/** Styles */
 	const ui = useUI(badge, props.class, props.override);
 </script>
 
-<span data-ui="badge" {...props} class={cn(st(ui.root), ui.class)}>
+<svelte:element this={as} data-name="badge" {...props} class={cn(st(ui.root), ui.class)}>
 	{@render props.children?.()}
-</span>
+</svelte:element>

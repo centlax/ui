@@ -1,1 +1,1 @@
-export function createMark() {}
+export function useMark(root: boolean = false) {}

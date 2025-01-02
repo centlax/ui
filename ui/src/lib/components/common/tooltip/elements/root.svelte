@@ -1,19 +1,20 @@
 <script lang="ts">
-	import { melt } from '@melt-ui/svelte';
+	import type { TooltipContentProps } from './root.js';
+	import { createTooltip, melt } from '@melt-ui/svelte';
 	import { fade } from 'svelte/transition';
-	import { createTooltip, ctxTooltip } from '../tooltip.svelte.js';
-	import type { TooltipRootProps } from './root.js';
 
-	let { children, ...props }: TooltipRootProps = $props();
+	let { children, ...props }: TooltipContentProps = $props();
 
-	const tooltip = createTooltip();
 	const {
-		elements: { trigger, content, arrow },
+		elements: { content, trigger },
 		states: { open }
-	} = tooltip;
-	const ctx = ctxTooltip();
-	ctx.set(tooltip);
+	} = createTooltip();
 </script>
 
-<button type="button" class="trigger" use:melt={$trigger} aria-label="Add"> + </button>
 {@render children?.()}
+
+{#if $open}
+	<div use:melt={$content} {...props} transition:fade={{ duration: 100 }}>
+		{@render props.content?.()}
+	</div>
+{/if}

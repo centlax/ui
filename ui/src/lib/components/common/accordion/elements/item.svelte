@@ -1,14 +1,21 @@
 <script lang="ts">
-	import { Accordion as Primitive } from 'bits-ui';
-	import { bitAccordion } from '../accordion.svelte.js';
-	import type { AccordionItemProps } from './item.js';
-	let { children, ...props }: AccordionItemProps = $props();
+	/** Imports */
+	import { melt } from '@melt-ui/svelte';
+	import { useAccordion } from '../accordion.svelte.js';
+	import { type AccordionItemProps } from './item.js';
+	import { generateId } from '@melt-ui/svelte/internal/helpers';
+	import { setContext } from 'svelte';
 
+	/** Props */
+	let { id, ...props }: AccordionItemProps = $props();
 	const {
 		elements: { item }
-	} = bitAccordion();
+	} = useAccordion();
+
+	/** Styles */
+	setContext('x', id);
 </script>
 
-<Primitive.Item {...item(props)}>
-	{@render children?.()}
-</Primitive.Item>
+<svelte:element this={'div'} use:melt={$item(id)} {...props}>
+	{@render props.children?.()}
+</svelte:element>

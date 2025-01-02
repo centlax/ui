@@ -5,7 +5,9 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {}
+	root: {
+		border: 'divide-y divide-neutral-800'
+	}
 } satisfies Styles;
 export const tableBody = styles;
 

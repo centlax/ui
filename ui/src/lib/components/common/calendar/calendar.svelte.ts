@@ -5,12 +5,7 @@ import {
 	type CreateRangeCalendarProps,
 	type RangeCalendar
 } from '@melt-ui/svelte';
-import {
-	type CalendarProps,
-	type ChangeRangeValue,
-	type CreateBoundCalendarProps,
-	type RangeValue
-} from './elements/root.js';
+
 import { getContext, hasContext, setContext } from 'svelte';
 
 const baseDefaults = {

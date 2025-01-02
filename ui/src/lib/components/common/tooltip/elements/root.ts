@@ -15,7 +15,8 @@ export const tooltip = styles;
 
 /** Props */
 
-type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface TooltipRootProps {
+type Props = SvelteHTMLElements['div'];
+export interface TooltipContentProps extends Props {
 	children?: Snippet;
+	content?: Snippet;
 }

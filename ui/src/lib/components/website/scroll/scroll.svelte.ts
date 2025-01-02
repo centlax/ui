@@ -1,5 +1,5 @@
 import { createScrollArea, type CreateScrollAreaProps } from '@melt-ui/svelte';
-import type { ScrollViewProps } from './view.js';
+import type { ScrollViewProps } from './elements/view.js';
 
 const defaults: CreateScrollAreaProps = {
 	type: 'hover',

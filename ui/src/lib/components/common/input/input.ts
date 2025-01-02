@@ -1,37 +1,12 @@
-/** Imports */
-import type { BaseProps } from '$lib/types/prop.js';
-import type { Styles } from '$lib/types/ui.js';
-import { statify } from '$lib/utils/wind.js';
-import type { Snippet } from 'svelte';
-import type { ActionReturn } from 'svelte/action';
-import type { HTMLInputAttributes } from 'svelte/elements';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Group from './elements/group.svelte';
 
-/** Styles */
-//    disabled:ring-gray-200
-const styles = {
-	root: {
-		layout: 'block ',
-		background: 'bg-white/5 disabled:bg-white/10 disabled:opacity-50',
-		typography: statify({
-			default: 'text-neutral-900 dark:text-white placeholder:text-neutral-500 sm:text-sm/6',
-			disabled: 'disabled:text-gray-500'
-		}),
-		border: statify({
-			default: 'rounded-md border-0 ring-1 ring-inset ring-neutral-300 dark:ring-neutral-700',
-			focus: 'focus:ring-2 focus:ring-inset focus:ring-color-500 dark:focus:ring-color-500'
-		}),
-		spacing: ' py-1.5 ',
-		sizing: 'w-full',
-		effect: 'shadow-sm',
-		interactive: 'disabled:cursor-not-allowed'
-	}
-} satisfies Styles;
-export const input = styles;
+type InputType = typeof Root & {
+    Group: SubComponent<typeof Group>;
+};
 
-/** Props */
-type Props = Omit<HTMLInputAttributes, 'class'>;
-export interface InputProps extends BaseProps<typeof input>, Props {
-	color?: string;
-	action?: ActionReturn;
-	child?: Snippet<[any]>;
-}
+const Input = Root as InputType;
+Input.Group = Group as InputType['Group'];
+
+export default Input;

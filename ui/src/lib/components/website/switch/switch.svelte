@@ -1,38 +1,29 @@
 <script lang="ts">
 	/** Imports */
-	import { createSync, melt } from '@melt-ui/svelte';
 	import { _switch, type SwitchProps } from './switch.js';
 	import { useUI } from '$lib/composables/ui.js';
 	import { cn, co, st } from '$lib/utils/wind.js';
-	import { createSwitch } from './switch.svelte.js';
+	import { bitSwitch } from './switch.svelte.js';
+	import { Switch as Primitive } from 'bits-ui';
 
 	/** Props */
 	let { checked = $bindable(false), ...props }: SwitchProps = $props();
 	const {
 		elements: { root, input },
 		states
-	} = createSwitch(props);
-
-	const sync = createSync(states);
-	$effect(() => sync.checked(checked, (c) => (checked = c)));
+	} = bitSwitch(props);
 
 	/** Styles */
 	const ui = useUI(_switch, props.class, props.override);
 </script>
 
-<button
-	role="switch"
-	aria-checked={checked}
-	{...props}
-	use:melt={$root}
-	style={co(props.color)}
-	class={cn(st(ui.root), ui.class)}
->
-	<span data-checked={checked} class={st(ui.thumb)}>
-		{@render props.children?.()}
-	</span>
-	<input use:melt={$input} />
-</button>
+<Primitive.Root id="button" style={co(props.color)} class={cn(st(ui.root), ui.class)}>
+	{#snippet child({ props: bits })}
+		<button {...bits}>
+			<Primitive.Thumb children={props.children} class={st(ui.thumb)} />
+		</button>
+	{/snippet}
+</Primitive.Root>
 
 <style>
 	button {

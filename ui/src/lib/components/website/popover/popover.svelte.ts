@@ -1,26 +1,31 @@
-import { toCamel } from '$lib/utils/props.js';
-import type { PopoverContent } from './elements/content.js';
+import type { PopoverProps } from './elements/root.js';
+import { createPopover as _createPopover, type CreatePopoverProps } from '@melt-ui/svelte';
 
-export function bitPopover() {
-	function root(props: any) {
-		return props;
-	}
-	function content(props: PopoverContent) {
-		return toCamel(props);
-	}
-	function trigger(props: any) {
-		return props;
-	}
+const defaults: CreatePopoverProps = {
+	positioning: {
+		placement: 'bottom'
+	},
+	arrowSize: 8,
+	defaultOpen: false,
+	disableFocusTrap: false,
+	escapeBehavior: 'close',
+	preventScroll: false,
+	onOpenChange: undefined,
+	closeOnOutsideClick: true,
+	portal: 'body',
+	forceVisible: false,
+	openFocus: undefined,
+	closeFocus: undefined,
+	onOutsideClick: undefined,
+	preventTextSelectionOverflow: true
+};
+
+export function createPopover(props: PopoverProps) {
+	const { elements, states, options } = _createPopover();
 
 	return {
-		contents: {},
-		elements: {
-			root,
-			content,
-			trigger
-		},
-		options: {},
-		helpers: {},
-		states: {}
+		elements,
+		options,
+		states
 	};
 }

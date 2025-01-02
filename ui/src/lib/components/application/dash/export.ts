@@ -1,7 +1,13 @@
-export { default as AItem } from './elements/a-item.svelte';
+export { default as AItems } from './elements/a-items.svelte';
+export { default as ANorth } from './elements/a-north.svelte';
+export { default as ASouth } from './elements/a-south.svelte';
 export { default as Aside } from './elements/aside.svelte';
+export { default as FDock } from './elements/f-dock.svelte';
+export { default as FTask } from './elements/f-task.svelte';
 export { default as Footer } from './elements/footer.svelte';
+export { default as HEast } from './elements/h-east.svelte';
 export { default as HItem } from './elements/h-item.svelte';
+export { default as HWest } from './elements/h-west.svelte';
 export { default as Header } from './elements/header.svelte';
 export { default as Layout } from './elements/layout.svelte';
 export { default as Main } from './elements/main.svelte';

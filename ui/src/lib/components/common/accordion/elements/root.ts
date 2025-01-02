@@ -1,11 +1,9 @@
 /** Imports */
-import type { TransformKeysToKebab as ToKebab } from '$lib/types/utils.js';
+import type { ToKebab } from '$lib/types/utils.js';
 import type { CreateAccordionProps } from '@melt-ui/svelte';
-import type { AccordionRootPropsWithoutHTML, AccordionRootSinglePropsWithoutHTML } from 'bits-ui';
-import type { Snippet } from 'svelte';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Props */
-type Props = ToKebab<CreateAccordionProps>;
-export interface AccordionRootProps extends AccordionRootSinglePropsWithoutHTML {
-	children?: Snippet;
-}
+type OmitType<T> = Omit<T, 'class'>;
+type Props = SvelteHTMLElements['div'] & ToKebab<CreateAccordionProps>;
+export interface AccordionRootProps extends Props {}

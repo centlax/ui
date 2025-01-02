@@ -11,16 +11,6 @@
 	const ui = useUI(dashHeader, props.class, props.override);
 </script>
 
-<header class={cn(st(ui.root), ui.class)}>
-	<div class={st(ui.west)}>
-		{@render west?.()}
-	</div>
-
-	<div class={st(ui.center)}>
-		{@render children?.()}
-	</div>
-
-	<div class={st(ui.east)}>
-		{@render east?.()}
-	</div>
+<header>
+	{@render children?.()}
 </header>

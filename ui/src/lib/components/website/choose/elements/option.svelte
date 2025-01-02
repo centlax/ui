@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { Select as Primitive } from 'bits-ui';
-	import type { Snippet } from 'svelte';
-	let {
-		children,
-		...props
-	}: {
-		children?: Snippet;
-	} = $props();
+	import { createSelect, melt } from '@melt-ui/svelte';
+	import type { ChooseOptionProps } from './option.js';
+
+	let { children, value, ...props }: ChooseOptionProps = $props();
+
+	const {
+		elements: { option }
+	} = createSelect<string>();
 </script>
 
-<Primitive.Item value="value" {...props}>
+<div use:melt={$option({ value, label: value })} {...props}>
 	{@render children?.()}
-</Primitive.Item>
+</div>

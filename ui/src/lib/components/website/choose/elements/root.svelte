@@ -1,14 +1,35 @@
 <script lang="ts">
-	import { Select as Primitive } from 'bits-ui';
-	import type { Snippet } from 'svelte';
-	let {
-		children,
-		...props
-	}: {
-		children?: Snippet;
-	} = $props();
+	import { createSelect, melt } from '@melt-ui/svelte';
+	import { fade } from 'svelte/transition';
+	import type { ChooseRootProps } from './root.js';
+
+	let { children, ...props }: ChooseRootProps = $props();
+
+	const options = {
+		sweet: ['Caramel', 'Chocolate', 'Strawberry', 'Cookies & Cream'],
+		savory: ['Basil', 'Bacon', 'Rosemary']
+	};
+
+	const {
+		elements: { trigger, menu, option, group, groupLabel, label },
+		states: { selectedLabel, open },
+		helpers: { isSelected }
+	} = createSelect<string>({
+		forceVisible: true,
+		positioning: {
+			placement: 'bottom',
+			fitViewport: true,
+			sameWidth: true
+		}
+	});
 </script>
 
-<Primitive.Root type="multiple" {...props}>
-	{@render children?.()}
-</Primitive.Root>
+<button use:melt={$trigger} aria-label="Food">
+	{$selectedLabel || 'select a flavor'}
+</button>
+
+{#if $open}
+	<div use:melt={$menu} transition:fade={{ duration: 150 }}>
+		{@render children?.()}
+	</div>
+{/if}

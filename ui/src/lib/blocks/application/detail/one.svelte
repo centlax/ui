@@ -14,7 +14,7 @@
 </script>
 
 {#snippet aside()}
-	<UDash.Aside item-dismiss={dismiss} items={asides}>
+	<UDash.Aside items={asides}>
 		{#snippet north()}
 			<Logo />
 		{/snippet}
@@ -25,7 +25,6 @@
 	<USheet
 		transition={{ duration: 250 }}
 		from="west"
-		bind:value={sheet}
 		class="h-full w-full sm:w-[--dash-width] lg:z-50 lg:flex lg:flex-col "
 	>
 		<!-- Static sidebar for desktop -->

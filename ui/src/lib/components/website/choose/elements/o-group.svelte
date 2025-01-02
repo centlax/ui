@@ -1,15 +1,15 @@
 <script lang="ts">
-	import { Select as Primitive } from 'bits-ui';
-	import type { Snippet } from 'svelte';
-	let {
-		children,
-		...props
-	}: {
-		children?: Snippet;
-	} = $props();
+	import { melt } from '@melt-ui/svelte';
+	import type { ChooseOGroupProps } from './o-group.js';
+	import { useChoose } from '../choose.svelte.js';
+
+	let { children, name = 'name', ...props }: ChooseOGroupProps = $props();
+	const {
+		elements: { group, groupLabel }
+	} = useChoose<string>();
 </script>
 
-<Primitive.Group {...props}>
-	<Primitive.GroupHeading />
+<div use:melt={$group(name)}>
+	<h3 use:melt={$groupLabel(name)}>{name}</h3>
 	{@render children?.()}
-</Primitive.Group>
+</div>

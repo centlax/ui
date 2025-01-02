@@ -6,3 +6,8 @@ export interface BaseProps<T> {
 	class?: string | DeepStyles<T>;
 	override?: boolean;
 }
+
+export interface MainProps<T> extends BaseProps<T> {
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
+}

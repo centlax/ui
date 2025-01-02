@@ -1,5 +1,7 @@
+import type { ToCamel } from '$lib/types/utils.js';
+
 // kebabToCamel
-export function toCamel<T extends Record<string, any>>(obj: T): Record<string, any> {
+export function toCamel<T extends Record<string, any>>(obj: T): ToCamel<T> {
 	return Object.fromEntries(
 		Object.entries(obj).map(([key, value]) => [
 			key.replace(/-([a-z])/g, (_, char) => char.toUpperCase()), // kebab-case to camelCase

@@ -15,7 +15,6 @@ const styles = {
 		interactive: 'cursor-pointer disabled:cursor-not-allowed',
 		typography: 'font-semibold'
 	},
-
 	opt: {
 		size: {
 			xs: {
@@ -127,13 +126,47 @@ const styles = {
 		}
 	}
 } satisfies Styles;
-
 export const button = styles;
+type OmitDeep<T, KeysToOmit extends string> = {
+	[K in keyof T as K extends KeysToOmit ? never : K]: T[K] extends object
+		? OmitDeep<T[K], KeysToOmit> // Recursively apply to nested objects
+		: T[K];
+};
+type OmitDeepStyles<T> = OmitDeep<T, 'is' | 'opt'>;
+
+/**
+ * todo!
+ * KeysToPick are is, opt then forget all other keys
+ * if key is 'is' then
+ */
+type PickDeep<T, KeysToPick extends string> = {
+	[K in keyof T]: K extends KeysToPick
+		? T[K] // if key is 
+		: T[K] extends object
+		? PickDeep<T[K], KeysToPick> // Recursively process nested objects
+		: never; // Exclude other keys
+};
+
+
+export function $button(args: {
+	size: keyof typeof styles.opt.size;
+	variant: keyof typeof styles.opt.variant;
+}): OmitDeepStyles<typeof styles> {
+	return {
+		root: {
+			...styles.root,
+			...styles.opt.size[args.size],
+			...styles.opt.variant[args.variant]
+		},
+		load: styles.load
+	};
+}
 
 type Props = Omit<HTMLButtonAttributes & HTMLAnchorAttributes, 'class'>;
-export interface ButtonProps extends BaseProps<typeof button>, Props {
+export interface ButtonProps extends BaseProps<typeof styles>, Props {
 	children?: Snippet;
 	color?: string;
 	loading?: boolean;
 	text?: string;
+	node?: HTMLElement;
 }

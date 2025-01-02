@@ -37,10 +37,10 @@ const styles = {
 export const checkbox = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['button'], 'class'> &
-	TransformKeysToKebab<Omit<CreateCheckboxProps, 'checked'>>;
+type Props = Omit<SvelteHTMLElements['button'], 'class'>;
+
 export interface CheckboxProps extends BaseProps<typeof checkbox>, Props {
 	children?: Snippet;
 	color?: string;
-	checked?: boolean | 'indeterminate';
+	checked?: boolean;
 }

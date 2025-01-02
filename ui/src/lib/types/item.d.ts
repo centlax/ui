@@ -1,10 +1,14 @@
 import type { HTMLAnchorAttributes } from 'svelte/elements';
 
-export interface Item<T extends Record<string, unknown> = unknown> extends HTMLAnchorAttributes, T {
+export interface Item<T extends Record<string, unknown> = unknown> extends T {
+	/**
+	 * Href for the link
+	 */
+	href?: HTMLAnchorAttributes['href'];
 	/**
 	 * Label for the link
 	 */
-	label?: string;
+	title?: string;
 	/**
 	 * Text for the link
 	 */
@@ -13,11 +17,8 @@ export interface Item<T extends Record<string, unknown> = unknown> extends HTMLA
 	 * Description for the link
 	 */
 	description?: string;
-
 	/**
 	 * Alternative property for nested links
 	 */
 	items?: Item<T>[];
-
-	[key?: string]: unknown;
 }

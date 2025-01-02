@@ -1,5 +1,4 @@
 import { createSelect, type CreateSelectProps } from '@melt-ui/svelte';
-import type { ChooseProps } from './choose.js';
 
 const defaults: CreateSelectProps = {
 	positioning: {
@@ -24,17 +23,7 @@ const defaults: CreateSelectProps = {
 	preventTextSelectionOverflow: true,
 	rootElement: undefined
 };
-export function createChoose<T>(props: ChooseProps) {
-	return createSelect<T>({
-		forceVisible: props['force-visible'] ?? defaults['forceVisible'],
-		positioning: props['float'] ?? defaults['positioning'],
-		arrowSize: props['arrow-size'] ?? defaults['arrowSize'],
-		scrollAlignment: props['scroll-alignment'] ?? defaults['scrollAlignment'],
-		loop: props['loop'] ?? defaults['loop'],
-		disabled: props['disabled'] ?? defaults['disabled'],
-		required: props['required'] ?? defaults['required'],
-		name: props['name'] ?? defaults['name'],
-		defaultOpen: props['default-open'] ?? defaults['defaultOpen'],
-		onOpenChange: props['on-open-change'] ?? defaults['onOpenChange']
-	});
+
+export function useChoose<T>() {
+	return createSelect<T>();
 }

@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { Accordion as Primitive } from 'bits-ui';
-	import { bitAccordion } from '../accordion.svelte.js';
-	import type { AccordionRootProps } from './root.js';
-	let { children, ...props }: AccordionRootProps = $props();
+	/** Imports */
+	import { melt } from '@melt-ui/svelte';
+	import { useAccordion } from '../accordion.svelte.js';
+	import { type AccordionRootProps } from './root.js';
 
+	/** Props */
+	let { ...props }: AccordionRootProps = $props();
 	const {
 		elements: { root }
-	} = bitAccordion();
+	} = useAccordion(true);
+
+	/** Styles */
 </script>
 
-<Primitive.Root {...root(props)}>
-	{#snippet child({ props: bits })}
-		<div {...bits}>
-			{@render children?.()}
-		</div>
-	{/snippet}
-</Primitive.Root>
+<svelte:element this={'div'} use:melt={$root} {...props}>
+	{@render props.children?.()}
+</svelte:element>

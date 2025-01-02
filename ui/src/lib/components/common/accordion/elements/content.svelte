@@ -1,16 +1,23 @@
 <script lang="ts">
 	/** Imports */
-	import { Accordion as Primitive } from 'bits-ui';
-	import { bitAccordion } from '../accordion.svelte.js';
-	import type { AccordionContentProps } from './content.js';
+	import { melt } from '@melt-ui/svelte';
+	import { useAccordion } from '../accordion.svelte.js';
+	import { type AccordionContentProps } from './content.js';
+	import { getContext } from 'svelte';
+	import { slide } from 'svelte/transition';
 
 	/** Props */
-	let { children, ...props }: AccordionContentProps = $props();
+	let { id, ...props }: AccordionContentProps = $props();
 	const {
-		elements: { content }
-	} = bitAccordion();
+		elements: { content },
+		helpers: { isSelected }
+	} = useAccordion();
+
+	/** Styles */
 </script>
 
-<Primitive.Content {...content(props)}>
-	{@render children?.()}
-</Primitive.Content>
+{#if $isSelected(getContext('x'))}
+	<svelte:element this={'div'} transition:slide use:melt={$content(getContext('x'))} {...props}>
+		{@render props.children?.()}
+	</svelte:element>
+{/if}

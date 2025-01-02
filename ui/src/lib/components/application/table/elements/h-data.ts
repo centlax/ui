@@ -5,7 +5,10 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-	root: {}
+	root: {
+		spacing: 'px-3 py-3.5',
+		typography: 'text-left text-sm font-semibold text-white'
+	}
 } satisfies Styles;
 export const tableHCell = styles;
 
