@@ -7,11 +7,11 @@ import Sub from './elements/sub.svelte';
 import Trigger from './elements/trigger.svelte';
 
 type DropdownType = typeof Root & {
-    Content: SubComponent<typeof Content>;
-    OGroup: SubComponent<typeof OGroup>;
-    Option: SubComponent<typeof Option>;
-    Sub: SubComponent<typeof Sub>;
-    Trigger: SubComponent<typeof Trigger>;
+	Content: SubComponent<typeof Content>;
+	OGroup: SubComponent<typeof OGroup>;
+	Option: SubComponent<typeof Option>;
+	Sub: SubComponent<typeof Sub>;
+	Trigger: SubComponent<typeof Trigger>;
 };
 
 const Dropdown = Root as DropdownType;

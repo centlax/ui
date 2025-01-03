@@ -1,20 +1,34 @@
-import { createDialog } from '@melt-ui/svelte';
-import type { SheetProps } from './elements/root.js';
+import { createDialog, type CreateDialogProps } from '@melt-ui/svelte';
+import type { SheetRootProps } from './elements/root.js';
+import { getContext, setContext } from 'svelte';
+import type { SheetCloseProps } from './elements/close.js';
 
-export function useSheet(props: SheetProps) {
-	return createDialog({
-		role: props['role'] ?? 'dialog',
-		preventScroll: props['prevent-scroll'] ?? true,
-		escapeBehavior: props['escape-behavior'] ?? 'close',
-		closeOnOutsideClick: props['close-on-outside-click'] ?? true,
-		portal: props['portal'] ?? 'body',
-		forceVisible: props['force-visible'] ?? false,
-		openFocus: props['open-focus'],
-		closeFocus: props['close-focus'],
-		defaultOpen: props['default-open'] ?? false
-	});
+const key = Symbol('sheet');
+export function useSheet(ctx: boolean = false) {
+	const params = $state<CreateDialogProps>({});
+
+	function set() {
+		const accordion = createDialog(params);
+		setContext(key, accordion);
+		return createDialog();
+	}
+
+	function get() {
+		return getContext<ReturnType<typeof createDialog>>(key);
+	}
+
+	function root(props: SheetRootProps) {
+		params.onOpenChange = props['on-open-change'];
+	}
+
+	const sheet = ctx ? set() : get();
+
+	return {
+		elements: {
+			...sheet.elements
+		},
+		states: {
+			...sheet.states
+		}
+	};
 }
-
-const {
-	elements: { trigger }
-} = createDialog();

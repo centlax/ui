@@ -1,6 +1,6 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
-import type { Styles } from '$lib/types/ui.js';
+import type { Styles, Utility } from '$lib/types/ui.js';
 //import { statify } from '$lib/utils/wind.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
@@ -127,40 +127,6 @@ const styles = {
 	}
 } satisfies Styles;
 export const button = styles;
-type OmitDeep<T, KeysToOmit extends string> = {
-	[K in keyof T as K extends KeysToOmit ? never : K]: T[K] extends object
-		? OmitDeep<T[K], KeysToOmit> // Recursively apply to nested objects
-		: T[K];
-};
-type OmitDeepStyles<T> = OmitDeep<T, 'is' | 'opt'>;
-
-/**
- * todo!
- * KeysToPick are is, opt then forget all other keys
- * if key is 'is' then
- */
-type PickDeep<T, KeysToPick extends string> = {
-	[K in keyof T]: K extends KeysToPick
-		? T[K] // if key is 
-		: T[K] extends object
-		? PickDeep<T[K], KeysToPick> // Recursively process nested objects
-		: never; // Exclude other keys
-};
-
-
-export function $button(args: {
-	size: keyof typeof styles.opt.size;
-	variant: keyof typeof styles.opt.variant;
-}): OmitDeepStyles<typeof styles> {
-	return {
-		root: {
-			...styles.root,
-			...styles.opt.size[args.size],
-			...styles.opt.variant[args.variant]
-		},
-		load: styles.load
-	};
-}
 
 type Props = Omit<HTMLButtonAttributes & HTMLAnchorAttributes, 'class'>;
 export interface ButtonProps extends BaseProps<typeof styles>, Props {
@@ -168,5 +134,4 @@ export interface ButtonProps extends BaseProps<typeof styles>, Props {
 	color?: string;
 	loading?: boolean;
 	text?: string;
-	node?: HTMLElement;
 }

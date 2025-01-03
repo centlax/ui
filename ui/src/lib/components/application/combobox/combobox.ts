@@ -6,10 +6,10 @@ import Option from './elements/option.svelte';
 import Trigger from './elements/trigger.svelte';
 
 type ComboboxType = typeof Root & {
-    Content: SubComponent<typeof Content>;
-    OGroup: SubComponent<typeof OGroup>;
-    Option: SubComponent<typeof Option>;
-    Trigger: SubComponent<typeof Trigger>;
+	Content: SubComponent<typeof Content>;
+	OGroup: SubComponent<typeof OGroup>;
+	Option: SubComponent<typeof Option>;
+	Trigger: SubComponent<typeof Trigger>;
 };
 
 const Combobox = Root as ComboboxType;

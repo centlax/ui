@@ -4,16 +4,12 @@ import type { TransitionParams } from '$lib/types/transition.js';
 import type { TransformKeysToKebab } from '$lib/types/utils.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { CreateDialogProps } from '@melt-ui/svelte';
-import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 import type { FlyParams } from 'svelte/transition';
-import { shared } from '$lib/styles/overlay/overlay.svelte.js';
 
 /** Styles */
 const styles = {
-	root: {},
-	overlay: shared.overlay,
-	content: {
+	root: {
 		flex: 'fixed z-50',
 		border: 'focus:outline-none',
 		opt: {
@@ -43,9 +39,7 @@ export const fromTransition = (dir: 'north' | 'south' | 'east' | 'west') => {
 type Props = Omit<SvelteHTMLElements['div'], 'class'> &
 	Omit<TransformKeysToKebab<CreateDialogProps>, 'open' | 'onOpenChange' | 'ids'>;
 
-export interface SheetProps extends BaseProps<typeof sheet$>, Props {
-	content?: Snippet;
-	trigger?: Snippet;
+export interface SheetContentProps extends BaseProps<typeof sheet$>, Props {
 	open?: boolean;
 	transition?: TransitionParams<FlyParams>;
 	from?: 'north' | 'south' | 'east' | 'west';

@@ -16,12 +16,7 @@
 	import { type ButtonProps, button } from './button.js';
 
 	/** Props  */
-	let {
-		node = $bindable(null!),
-		loading = false,
-		color = 'primary',
-		...props
-	}: ButtonProps = $props();
+	let { loading = false, color = 'primary', ...props }: ButtonProps = $props();
 
 	/** Styles  */
 	const ui = useUI(button, props.class, props.override);
@@ -33,7 +28,6 @@
 <svelte:element
 	this={props.href ? 'a' : 'button'}
 	{...props}
-	bind:this={node}
 	class={css.button}
 	style={co(color)}
 	disabled={props.disabled || loading}
