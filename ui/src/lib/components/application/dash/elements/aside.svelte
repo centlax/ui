@@ -21,7 +21,7 @@
 </script>
 
 {#snippet coreAside()}
-	<aside {...core} class="flex h-full max-w-[--ui-dash-aside-width] grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-6">
+	<aside {...core} class="flex h-full max-w-[--ui-dash-aside-width] grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-[--ui-dash-space] pb-[--ui-dash-space]">
 		{@render children?.()}
 	</aside>
 {/snippet}

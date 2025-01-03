@@ -19,12 +19,12 @@
 			class="group flex gap-x-3 rounded-md
 			{it.text?.startsWith('Dash')
 				? 'bg-gray-50 text-indigo-600'
-				: 'text-[--ui-text-toned] hover:bg-gray-50 hover:text-indigo-600'} 
-			p-2 text-sm/6 font-semibold"
+				: 'text-[--ui-text-toned] hover:bg-gray-50 dark:hover:bg-neutral-800 hover:text-indigo-600 dark:hover:text-white'} 
+			px-2.5 py-1.5 text-sm/6 font-semibold"
 		>
 			<UIcon
 				data-filled={false}
-				class="size-6 shrink-0 {it.text?.startsWith('Dash')
+				class="size-6 block shrink-0 {it.text?.startsWith('Dash')
 					? 'text-indigo-600'
 					: 'text-[--ui-text-toned] group-hover:text-indigo-600'} "
 				name={it.icon || ''}

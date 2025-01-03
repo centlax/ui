@@ -1,7 +1,7 @@
-<div class="-mx-6 mt-auto">
+<div class="-mx-[calc(var(--ui-dash-space)/2)] mt-auto">
 	<a
 		href="/"
-		class="flex items-center gap-x-4 px-6 py-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-50"
+		class="flex items-center gap-x-4 px-2.5 py-1.5 text-sm/6 rounded-md font-semibold text-gray-900 hover:bg-gray-50"
 	>
 		<img
 			class="size-8 rounded-full bg-gray-50"

@@ -19,5 +19,6 @@
 	:root {
 		--dash-width: 20rem;
 		--dash-height: 4rem;
+		--ui-dash-space: 1rem;
 	}
 </style>
