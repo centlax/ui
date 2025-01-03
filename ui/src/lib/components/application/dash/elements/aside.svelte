@@ -5,7 +5,7 @@
 	import type { DashAsideProps } from './aside.js';
 
 	/** Props */
-	let { children, open, ...props }: DashAsideProps = $props();
+	let { children, open = $bindable(false), ...props }: DashAsideProps = $props();
 	const {
 		elements: { aside }
 	} = useDash();
@@ -17,15 +17,16 @@
 			content
 		}
 	} = aside(props);
+
 </script>
 
 {#snippet coreAside()}
-	<aside {...core}>
+	<aside {...core} class="flex h-full max-w-[--ui-dash-aside-width] grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-6">
 		{@render children?.()}
 	</aside>
 {/snippet}
 
-<div {...fixed}>
+<div  {...fixed} class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-[--ui-dash-aside-width] xl:flex-col">
 	{@render coreAside()}
 </div>
 
@@ -34,9 +35,15 @@
 		{@render coreAside()}
 		<div {...overlay}>
 			<USheet.Close {...button}>
-				<span class="sr-only">Close Dash Aside</span>
 				<UIcon {...icon} />
 			</USheet.Close>
 		</div>
 	</USheet.Content>
 </USheet>
+
+<style>
+	
+	:root {
+		--ui-dash-aside-width: 20rem;
+	}
+</style>

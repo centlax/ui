@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { USheet } from '$lib/index.js';
+	import { UCollapse, URate } from '$lib/index.js';
+	let open = $state(false);
 </script>
 
-<USheet>
-	<USheet.Trigger>OPEN</USheet.Trigger>
-	<USheet.Content>lkwqejr</USheet.Content>
-</USheet>
+<div class="flex bg-gray-200 p-10">
+	<URate />
+</div>

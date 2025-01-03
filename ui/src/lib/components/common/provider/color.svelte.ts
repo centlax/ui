@@ -5,10 +5,10 @@ const {
 } = useApp();
 
 function generateShades(key: string, value: string) {
-	return `${shades.map((shade) => `--color-${key}-${shade}: var(--color-${value}-${shade});`).join('\n  ')}`;
+	return `${shades.map((shade) => `--ui-color-${key}-${shade}: var(--ui-color-${value}-${shade});`).join('\n  ')}`;
 }
 function generateColor(key: string, shade: number) {
-	return `--${key}: var(--color-${key}-${shade});`;
+	return `--${key}: var(--ui-color-${key}-${shade});`;
 }
 const tag = 'style';
 export const root = $state(() => {

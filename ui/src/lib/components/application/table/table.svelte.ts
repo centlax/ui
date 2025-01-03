@@ -1,6 +1,6 @@
 import { uify, type ToStrClass } from '$lib/utils/ui.js';
 import { tableBody, type TableBodyProps } from './elements/body.js';
-import { tableCaption, type TableCaptionProps } from './elements/caption.js';
+import { tableCaption, type TableCaptionProps } from './elements/title.js';
 import { tableCol, type TableColProps } from './elements/col.js';
 import { tableDCell, type TableDCellProps } from './elements/data.js';
 import { tableFoot, type TableFootProps } from './elements/foot.js';
@@ -68,3 +68,12 @@ export function createTable() {
 		helpers: {}
 	};
 }
+
+export function useTable(
+	opts: {
+		body?: TableBodyProps;
+		colGroup?: TableColProps;
+		title?: TableCaptionProps;
+	},
+	ctx: boolean = false
+) {}

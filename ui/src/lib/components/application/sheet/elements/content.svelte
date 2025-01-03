@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { melt  } from '@melt-ui/svelte';
+	import { melt } from '@melt-ui/svelte';
 	import { fly } from 'svelte/transition';
 	import { fromTransition, sheet$, type SheetContentProps } from './content.js';
 	import { useTransition } from '$lib/composables/transition.js';

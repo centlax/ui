@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { UIcon } from '$lib/components/export.js';
+	import { UIcon } from '$lib/index.js';
 	import type { Item as BaseItem } from '$lib/types/item.js';
 	import type { DashAsideItemsProps } from './a-items.js';
 
@@ -19,13 +19,14 @@
 			class="group flex gap-x-3 rounded-md
 			{it.text?.startsWith('Dash')
 				? 'bg-gray-50 text-indigo-600'
-				: 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'} 
+				: 'text-[--ui-text-toned] hover:bg-gray-50 hover:text-indigo-600'} 
 			p-2 text-sm/6 font-semibold"
 		>
 			<UIcon
+				data-filled={false}
 				class="size-6 shrink-0 {it.text?.startsWith('Dash')
 					? 'text-indigo-600'
-					: 'text-gray-400 group-hover:text-indigo-600'} "
+					: 'text-[--ui-text-toned] group-hover:text-indigo-600'} "
 				name={it.icon || ''}
 			/>
 

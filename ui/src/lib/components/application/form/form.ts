@@ -1,13 +1,12 @@
-import type { Snippet } from 'svelte';
-import type { HTMLFormAttributes } from 'svelte/elements';
-import type { SuperForm } from 'sveltekit-superforms';
+import type { SubComponent } from '$lib/types/svelte.js';
+import Root from './elements/root.svelte';
+import Debug from './elements/debug.svelte';
 
-const styles = {};
-export const form = styles;
+type FormType = typeof Root & {
+	Debug: SubComponent<typeof Debug>;
+};
 
-export type OForm = Record<string, unknown>;
+const Form = Root as FormType;
+Form.Debug = Debug as FormType['Debug'];
 
-export interface FormProps<T extends OForm, M = unknown> extends HTMLFormAttributes {
-	children?: Snippet;
-	form?: Omit<SuperForm<T, M>, 'form'>;
-}
+export default Form;

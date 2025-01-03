@@ -3,7 +3,6 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteAside, type SiteAsideProps } from './aside.js';
-	import AsideItem from './aside-item.svelte';
 
 	/** Props */
 	let { items, ...props }: SiteAsideProps = $props();
@@ -12,22 +11,4 @@
 	const ui = useUI(siteAside, props.class, props.override);
 </script>
 
-<aside class={cn(st(ui.root), ui.class)}>
-	<div hidden={!props.north} class={st(ui.north)}>
-		{@render props.north?.()}
-	</div>
-
-	<nav class={st(ui.center)}>
-		{#if props.children}
-			{@render props.children?.()}
-		{:else}
-			{#each items as it}
-				<AsideItem item={it} />
-			{/each}
-		{/if}
-	</nav>
-
-	<div hidden={!props.south} class={st(ui.south)}>
-		{@render props.south?.()}
-	</div>
-</aside>
+<aside class={cn(st(ui.root), ui.class)}></aside>

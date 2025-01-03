@@ -2,7 +2,7 @@ import type { SubComponent } from '$lib/types/svelte.js';
 import Root from './elements/root.svelte';
 import Body from './elements/body.svelte';
 import CGroup from './elements/c-group.svelte';
-import Caption from './elements/caption.svelte';
+import Caption from './elements/title.svelte';
 import Col from './elements/col.svelte';
 import Data from './elements/data.svelte';
 import Foot from './elements/foot.svelte';

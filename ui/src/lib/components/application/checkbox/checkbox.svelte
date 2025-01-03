@@ -1,17 +1,27 @@
 <script lang="ts">
-	/** Imports */
-	import { useUI } from '$lib/composables/ui.js';
-	import { cn, co, st } from '$lib/utils/wind.js';
-	import { UIcon } from '$lib/components/export.js';
-	import { Checkbox as Primitive, Label, type CheckboxRootProps } from 'bits-ui';
+	import { createCheckbox, melt } from '@melt-ui/svelte';
 
-	/** Props */
-	let { checked = $bindable(), color = 'primary', ...props }: CheckboxRootProps = $props();
-
-	/** Styles */
-	//const ui = useUI(checkbox, props.class, props.override);
-	//class={cn(st(ui.root), ui.class)}
-	// <UIcon data-state={$root['data-state']} name={st(ui.icon)} />
+	const {
+		elements: { root, input },
+		helpers: { isChecked, isIndeterminate }
+	} = createCheckbox({
+		defaultChecked: 'indeterminate'
+	});
 </script>
 
-<Primitive.Root {...props} style={co(color)}></Primitive.Root>
+<form>
+	<div class="flex items-center justify-center">
+		<button
+			use:melt={$root}
+			class="text-magnum-600 flex size-7 appearance-none items-center
+              justify-center rounded-lg bg-white shadow hover:opacity-75"
+			id="checkbox"
+		>
+			df
+			<input use:melt={$input} />
+		</button>
+		<label class="text-magnum-900 pl-4 font-medium" for="checkbox">
+			Accept terms and conditions.
+		</label>
+	</div>
+</form>

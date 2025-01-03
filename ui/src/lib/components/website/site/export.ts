@@ -1,4 +1,6 @@
-export { default as AsideItem } from './elements/aside-item.svelte';
+export { default as AItems } from './elements/a-items.svelte';
+export { default as ANorth } from './elements/a-north.svelte';
+export { default as ASouth } from './elements/a-south.svelte';
 export { default as Aside } from './elements/aside.svelte';
 export { default as FooterItem } from './elements/footer-item.svelte';
 export { default as Footer } from './elements/footer.svelte';

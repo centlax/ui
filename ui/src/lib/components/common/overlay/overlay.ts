@@ -16,5 +16,5 @@ export const overlay$ = styles;
 type Props = Omit<SvelteHTMLElements['div'], 'class'>;
 export type OverlayProps = BaseProps<typeof overlay$> &
 	Props & {
-		melt: any
+		melt: any;
 	};

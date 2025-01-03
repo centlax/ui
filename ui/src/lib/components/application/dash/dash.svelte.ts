@@ -4,10 +4,14 @@ import type { DashAsideProps } from './elements/aside.js';
 
 export function useDash() {
 	/* ################################# */
+	function layout() {}
+	/* ################################# */
 	function aside(props: DashAsideProps) {
 		return {
 			core: {},
-			fixed: {},
+			fixed: {
+				class: ''
+			},
 			sheet: {
 				content: {
 					from: 'west'
@@ -22,6 +26,11 @@ export function useDash() {
 	}
 
 	/* ################################# */
+	function header() {}
+
+	function main() {}
+
+	function footer() {}
 	return {
 		elements: {
 			aside

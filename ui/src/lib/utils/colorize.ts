@@ -12,7 +12,7 @@ const colorize: PluginCreator = ({ addBase, theme }) => {
 		return Object.keys(colorObj).reduce((vars, colorKey) => {
 			const value = colorObj[colorKey];
 			const cssVariable =
-				colorKey === 'DEFAULT' ? `--color${colorGroup}` : `--color${colorGroup}-${colorKey}`;
+				colorKey === 'DEFAULT' ? `--ui-color${colorGroup}` : `--ui-color${colorGroup}-${colorKey}`;
 
 			const newVars =
 				typeof value === 'string'
