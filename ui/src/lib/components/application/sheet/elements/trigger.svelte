@@ -1,16 +1,11 @@
 <script lang="ts">
-	/** Imports */
-	import { melt } from '@melt-ui/svelte';
-	import { useSheet } from '../sheet.svelte.js';
-	import type { SheetTriggerProps } from './trigger.js';
-
-	/** Props */
-	let { children, ...props }: SheetTriggerProps = $props();
-	const {
-		elements: { trigger }
-	} = useSheet();
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Dialog as Primitive, type DialogTriggerProps } from 'bits-ui';
+	type Props = DialogTriggerProps;
+	let { children, ...props }: ToKebab<Props> = $props();
 </script>
 
-<svelte:element this={'button'} {...props} use:melt={$trigger}>
+<Primitive.Trigger {...toCamel(props)}>
 	{@render children?.()}
-</svelte:element>
+</Primitive.Trigger>

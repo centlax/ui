@@ -5,9 +5,10 @@
 	import { markAsideItem, type MarkAsideItemProps } from './a-items.js';
 
 	/** Props */
-	let { as = 'li', item, mode = 'pine', ...props }: MarkAsideItemProps = $props();
+	let { children, mode = 'pine', ...props }: MarkAsideItemProps = $props();
 
 	/** Styles */
 	const ui = useUI(markAsideItem, props.class, props.override);
-	// -ml-px block border-l border-current pl-4 font-semibold text-sky-500 dark:text-sky-400
 </script>
+
+{@render children?.()}

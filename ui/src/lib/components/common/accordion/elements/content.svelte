@@ -1,23 +1,11 @@
 <script lang="ts">
-	/** Imports */
-	import { melt } from '@melt-ui/svelte';
-	import { useAccordion } from '../accordion.svelte.js';
-	import { type AccordionContentProps } from './content.js';
-	import { getContext } from 'svelte';
-	import { slide } from 'svelte/transition';
-
-	/** Props */
-	let { id, ...props }: AccordionContentProps = $props();
-	const {
-		elements: { content },
-		helpers: { isSelected }
-	} = useAccordion();
-
-	/** Styles */
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Accordion as Primitive, type AccordionContentProps } from 'bits-ui';
+	type Props = AccordionContentProps;
+	let { children, ...props }: ToKebab<Props> = $props();
 </script>
 
-{#if $isSelected(getContext('x'))}
-	<svelte:element this={'div'} transition:slide use:melt={$content(getContext('x'))} {...props}>
-		{@render props.children?.()}
-	</svelte:element>
-{/if}
+<Primitive.Content {...toCamel(props)}>
+	{@render children?.()}
+</Primitive.Content>

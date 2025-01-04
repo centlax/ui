@@ -10,6 +10,6 @@
 	const ui = useUI(dashMain, props.class, props.override);
 </script>
 
-<main class="xl:ml-[--ui-dash-aside-width] bg-[--ui-bg] p-[--ui-dash-space] h-full ">
+<main class="h-full bg-[--ui-bg] p-[--ui-dash-space] xl:ml-[--ui-dash-aside-width]">
 	{@render children?.()}
 </main>

@@ -3,30 +3,16 @@
 	import { useUI } from '$lib/composables/ui.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteHeader, type SiteHeaderProps } from './header.js';
-	import HeaderItem from './header-item.svelte';
 
 	/** Props */
-	let { items, ...props }: SiteHeaderProps = $props();
+	let { children, ...props }: SiteHeaderProps = $props();
 
 	/** Styles */
 	const ui = useUI(siteHeader, props.class, props.override);
 </script>
 
-<header class={cn(st(ui.root), ui.class)} aria-label="global">
-	<div data-slot={props.west} class={st(ui.west)}>
-		{@render props.west?.()}
-	</div>
-
-	<nav data-slot={props.children} class={st(ui.center)}>
-		{#if props.children}
-			{@render props.children?.()}
-		{:else if items}
-			{#each items as it}
-				<HeaderItem item={it} />
-			{/each}
-		{/if}
+<header class="border-b border-[--ui-border]" aria-label="global">
+	<nav class="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+		{@render children?.()}
 	</nav>
-	<div data-slot={props.east} class={st(ui.east)}>
-		{@render props.east?.()}
-	</div>
 </header>

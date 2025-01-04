@@ -27,5 +27,5 @@ export const siteFooterItem = styles;
 
 type Props = Omit<SvelteHTMLElements['aside'], 'class'>;
 export interface SiteFooterItemProps extends BaseProps<typeof siteFooterItem>, Props {
-	item: Item;
+	data: Item[];
 }

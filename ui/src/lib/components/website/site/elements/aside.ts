@@ -26,8 +26,6 @@ export const siteAside = styles;
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class'>;
 export interface SiteAsideProps extends BaseProps<typeof siteAside>, Props {
-	items: Item[];
-	north?: Snippet;
 	children?: Snippet;
-	south?: Snippet;
+	open?: boolean;
 }

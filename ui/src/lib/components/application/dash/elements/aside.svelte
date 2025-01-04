@@ -17,16 +17,21 @@
 			content
 		}
 	} = aside(props);
-
 </script>
 
 {#snippet coreAside()}
-	<aside {...core} class="flex h-full max-w-[--ui-dash-aside-width] grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-[--ui-dash-space] pb-[--ui-dash-space]">
+	<aside
+		{...core}
+		class="flex h-full max-w-[--ui-dash-aside-width] grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-[--ui-dash-space] pb-[--ui-dash-space]"
+	>
 		{@render children?.()}
 	</aside>
 {/snippet}
 
-<div  {...fixed} class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-[--ui-dash-aside-width] xl:flex-col">
+<div
+	{...fixed}
+	class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-[--ui-dash-aside-width] xl:flex-col"
+>
 	{@render coreAside()}
 </div>
 
@@ -42,7 +47,6 @@
 </USheet>
 
 <style>
-	
 	:root {
 		--ui-dash-aside-width: 20rem;
 	}

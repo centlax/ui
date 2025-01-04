@@ -1,19 +1,11 @@
 <script lang="ts">
-	/** Imports */
-	import { melt } from '@melt-ui/svelte';
-	import { useAccordion } from '../accordion.svelte.js';
-	import { type AccordionTriggerProps } from './trigger.js';
-	import { getContext } from 'svelte';
-
-	/** Props */
-	let { id, ...props }: AccordionTriggerProps = $props();
-	const {
-		elements: { trigger }
-	} = useAccordion();
-
-	/** Styles */
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Accordion as Primitive, type AccordionTriggerProps } from 'bits-ui';
+	type Props = AccordionTriggerProps;
+	let { children, ...props }: ToKebab<Props> = $props();
 </script>
 
-<svelte:element this={'button'} use:melt={$trigger(getContext('x'))} {...props}>
-	{@render props.children?.()}
-</svelte:element>
+<Primitive.Trigger {...toCamel(props)}>
+	{@render children?.()}
+</Primitive.Trigger>

@@ -3,7 +3,7 @@ import Root from './elements/root.svelte';
 import Group from './elements/group.svelte';
 
 type RadioType = typeof Root & {
-	Group: SubComponent<typeof Group>;
+    Group: SubComponent<typeof Group>;
 };
 
 const Radio = Root as RadioType;

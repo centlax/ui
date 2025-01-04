@@ -1,20 +1,19 @@
 <script lang="ts">
-	import type { TooltipContentProps } from './root.js';
-	import { createTooltip, melt } from '@melt-ui/svelte';
-	import { fade } from 'svelte/transition';
-
-	let { children, ...props }: TooltipContentProps = $props();
-
-	const {
-		elements: { content, trigger },
-		states: { open }
-	} = createTooltip();
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import {
+		Tooltip as Primitive,
+		type TooltipProviderPropsWithoutHTML,
+		type TooltipRootPropsWithoutHTML
+	} from 'bits-ui';
+	type Props = TooltipRootPropsWithoutHTML & {
+		provider?: TooltipProviderPropsWithoutHTML;
+	};
+	let { open = $bindable(false), children, provider, ...props }: ToKebab<Props> = $props();
 </script>
 
-{@render children?.()}
-
-{#if $open}
-	<div use:melt={$content} {...props} transition:fade={{ duration: 100 }}>
-		{@render props.content?.()}
-	</div>
-{/if}
+<Primitive.Provider {...toCamel({ ...provider })}>
+	<Primitive.Root bind:open {...toCamel(props)}>
+		{@render children?.()}
+	</Primitive.Root>
+</Primitive.Provider>

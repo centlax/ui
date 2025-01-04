@@ -25,7 +25,6 @@ export const markAsideItem = styles;
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class'> & BaseProps<typeof markAsideItem>;
 export interface MarkAsideItemProps extends Props {
-	item: Item;
 	mode?: 'pine' | 'dual' /** 'pine | 'dual' | 'sake' */;
 	dismiss?: MarkAsideItemProps['onclick'];
 	as?: keyof HTMLElementTagNameMap;

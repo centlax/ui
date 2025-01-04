@@ -1,18 +1,20 @@
 <script lang="ts">
 	/** Imports */
-	import { st, cn } from '$lib/utils/wind.js';
-	import { siteLayout, type SiteLayoutProps } from './layout.js';
+	import { siteLayout, type XSiteLayout } from './layout.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import Aside from './aside.svelte';
+	import { ctxSiteKey, useSite } from '../site.svelte.js';
+	import { setContext } from 'svelte';
+	
 
 	/** Props */
-	let { ...props }: SiteLayoutProps = $props();
+	let { ...props }: XSiteLayout = $props();
+	setContext(ctxSiteKey, props.logo)
 
 	/** Styles */
 	const ui = useUI(siteLayout, props.class, props.override);
 </script>
 
-<div id="site-layout" class={cn(st(ui.root), ui.class)} aria-label="site-layout">
+<div data-name="site-layout" class="bg-[--ui-bg] h-screen flex flex-col">
 	{@render props.children?.()}
 </div>
 

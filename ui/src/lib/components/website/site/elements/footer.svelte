@@ -1,40 +1,25 @@
 <script lang="ts">
 	import { useUI } from '$lib/composables/ui.js';
+	import { getContext, type Snippet } from 'svelte';
 	import { siteFooter, type SiteFootProps } from './footer.js';
-	import { cn, st } from '$lib/utils/wind.js';
-	import FooterItem from './footer-item.svelte';
+	import { ctxSiteKey } from '../site.svelte.js';
 
-	let { items, ...props }: SiteFootProps = $props();
+	let { children, ...props }: SiteFootProps = $props();
 
 	/** Styles */
 	const ui = useUI(siteFooter, props.class, props.override);
+	const logo: Snippet = getContext(ctxSiteKey)
 </script>
 
-<footer class={cn(st(ui.root), ui.class)}>
-	<div hidden={!props.north} class={st(ui.north)}>
-		{@render props.north?.()}
+<footer class="bg-[--ui-bg] border-t border-[--ui-border]">
+	<div class="mx-auto pb-8 pt-10 lg:px-8 ">
+	  <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+		
+		{@render children?.()}
+	  </div>
+	  <div class="mt-12 border-t border-[--ui-border] pt-4 ">
+		<p class="text-sm/6 text-gray-600">&copy; 2024 Centlax, Inc. All rights reserved.</p>
+	  </div>
 	</div>
-
-	<div class={st(ui.contain)}>
-		<div hidden={!props.west} class={st(ui.contain.west)}>
-			{@render props.west?.()}
-		</div>
-		<nav class={st(ui.contain.center)}>
-			{#if props.children}
-				{@render props.children?.()}
-			{:else if items}
-				{#each items as it}
-					<FooterItem item={it} />
-				{/each}
-			{/if}
-		</nav>
-
-		<div hidden={!props.east} class={st(ui.contain.east)}>
-			{@render props.east?.()}
-		</div>
-	</div>
-
-	<div hidden={!props.south} class={st(ui.south)}>
-		{@render props.south?.()}
-	</div>
-</footer>
+  </footer>
+  

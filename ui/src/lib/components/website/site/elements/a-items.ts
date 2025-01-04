@@ -63,8 +63,6 @@ export const siteAsideItem = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class'> & BaseProps<typeof siteAsideItem>;
-export interface SiteAsideItemProps extends Props {
-	item: Item;
-	mode?: 'pine' | 'dual' /** 'pine | 'dual' | 'sake' */;
-	dismiss?: SiteAsideItemProps['onclick'];
+export interface SiteAsideItemsProps extends Props {
+	data: Item<{ icon?: string; badge?: string }>[];
 }

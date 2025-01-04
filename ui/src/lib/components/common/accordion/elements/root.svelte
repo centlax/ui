@@ -1,18 +1,11 @@
 <script lang="ts">
-	/** Imports */
-	import { melt } from '@melt-ui/svelte';
-	import { useAccordion } from '../accordion.svelte.js';
-	import { type AccordionRootProps } from './root.js';
-
-	/** Props */
-	let { ...props }: AccordionRootProps = $props();
-	const {
-		elements: { root }
-	} = useAccordion(true);
-
-	/** Styles */
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Accordion as Primitive, type AccordionRootProps } from 'bits-ui';
+	type Props = AccordionRootProps;
+	let { children, ...props }: ToKebab<Props> = $props();
 </script>
 
-<svelte:element this={'div'} use:melt={$root} {...props}>
-	{@render props.children?.()}
-</svelte:element>
+<Primitive.Root {...toCamel(props)}>
+	{@render children?.()}
+</Primitive.Root>

@@ -4,8 +4,8 @@ import OGroup from './elements/o-group.svelte';
 import Option from './elements/option.svelte';
 
 type ChooseType = typeof Root & {
-	OGroup: SubComponent<typeof OGroup>;
-	Option: SubComponent<typeof Option>;
+    OGroup: SubComponent<typeof OGroup>;
+    Option: SubComponent<typeof Option>;
 };
 
 const Choose = Root as ChooseType;

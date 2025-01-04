@@ -19,10 +19,4 @@ export const markAside = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class'>;
-export interface MarkAsideProps extends BaseProps<typeof markAside>, Props {
-	items: Item[];
-	'top-items': Item[];
-	north?: Snippet;
-	children?: Snippet;
-	south?: Snippet;
-}
+export interface MarkAsideProps extends BaseProps<typeof markAside>, Props {}

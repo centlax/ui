@@ -1,11 +1,9 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { TransitionParams } from '$lib/types/transition.js';
-import type { TransformKeysToKebab } from '$lib/types/utils.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { CreateDialogProps } from '@melt-ui/svelte';
-import type { SvelteHTMLElements } from 'svelte/elements';
 import type { FlyParams } from 'svelte/transition';
+import { type DialogContentProps } from 'bits-ui';
 
 /** Styles */
 const styles = {
@@ -35,13 +33,8 @@ export const fromTransition = (dir: 'north' | 'south' | 'east' | 'west') => {
 		out: { [axis]: value, duration: 300, opacity: 1 }
 	};
 };
-
-type Props = Omit<SvelteHTMLElements['div'], 'class'> &
-	Omit<TransformKeysToKebab<CreateDialogProps>, 'open' | 'onOpenChange' | 'ids'>;
-
-export interface SheetContentProps extends BaseProps<typeof sheet$>, Props {
-	open?: boolean;
+type Props = Omit<DialogContentProps, 'class'>;
+export interface XSheetContentProps extends BaseProps<typeof sheet$>, Props {
 	transition?: TransitionParams<FlyParams>;
 	from?: 'north' | 'south' | 'east' | 'west';
-	as?: keyof HTMLElementTagNameMap;
 }

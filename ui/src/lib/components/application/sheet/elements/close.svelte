@@ -1,16 +1,11 @@
 <script lang="ts">
-	/** Imports */
-	import { melt } from '@melt-ui/svelte';
-	import { useSheet } from '../sheet.svelte.js';
-	import type { SheetCloseProps } from './close.js';
-
-	/** Props */
-	let { as = 'button', children, ...props }: SheetCloseProps = $props();
-	const {
-		elements: { close }
-	} = useSheet();
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Dialog as Primitive, type DialogCloseProps } from 'bits-ui';
+	type Props = DialogCloseProps;
+	let { children, ...props }: ToKebab<Props> = $props();
 </script>
 
-<svelte:element this={as} {...props} use:melt={$close}>
+<Primitive.Close {...toCamel(props)}>
 	{@render children?.()}
-</svelte:element>
+</Primitive.Close>

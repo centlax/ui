@@ -11,6 +11,6 @@
 	const ui = useUI(siteMain, props.class, props.override);
 </script>
 
-<main {...props} class={cn(st(ui.root), ui.class)}>
+<main {...props} class="isolate flex flex-grow">
 	{@render children()}
 </main>

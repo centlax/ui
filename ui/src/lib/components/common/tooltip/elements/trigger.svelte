@@ -1,16 +1,14 @@
 <script lang="ts">
-	import { melt } from '@melt-ui/svelte';
-	import { ctxTooltip } from '../tooltip.svelte.js';
-	import type { TooltipTriggerProps } from './trigger.js';
+	/** Imports */
+	import { Tooltip } from 'bits-ui';
+	import type { XTooltipTrigger } from './trigger.js';
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
 
-	let { children, ...props }: TooltipTriggerProps = $props();
-
-	const ctx = ctxTooltip();
-	const {
-		elements: { trigger }
-	} = ctx.get();
+	/** Props */
+	let { children, ...props }: ToKebab<XTooltipTrigger> = $props();
 </script>
 
-<button type="button" {...props} use:melt={$trigger} aria-label="Add">
+<Tooltip.Trigger {...toCamel(props)}>
 	{@render children?.()}
-</button>
+</Tooltip.Trigger>
