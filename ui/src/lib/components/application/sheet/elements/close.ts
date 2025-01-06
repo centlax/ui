@@ -1,6 +1,10 @@
-import type { SvelteHTMLElements } from 'svelte/elements';
+/** Imports */
+import type { OmitBit } from '$lib/types/prop.js';
+import type { DialogCloseProps } from 'bits-ui';
 
-type Props = SvelteHTMLElements['button'];
-export interface SheetCloseProps extends Props {
-	as?: keyof HTMLElementTagNameMap;
+/** Props */
+type Props = OmitBit<DialogCloseProps>;
+export interface XSheetClose extends Props {
+    as?: keyof HTMLElementTagNameMap;
+    attrs?: object;
 }

@@ -1,11 +1,10 @@
 /** Imports */
-import type { ToKebab } from '$lib/types/utils.js';
-import type { CreateCollapsibleProps } from '@melt-ui/svelte';
-import type { SvelteHTMLElements } from 'svelte/elements';
+import type { OmitBit } from '$lib/types/prop.js';
+import type { CollapsibleRootProps } from 'bits-ui';
 
 /** Props */
-type Props = SvelteHTMLElements['div'] & ToKebab<Omit<CreateCollapsibleProps, 'open'>>;
-export interface CollapsibleRootProps extends Props {
+type Props = OmitBit<CollapsibleRootProps>;
+export type XCollapseRoot = Props & {
 	as?: keyof HTMLElementTagNameMap;
-	open?: boolean;
-}
+	attrs?: object;
+};

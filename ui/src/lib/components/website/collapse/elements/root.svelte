@@ -1,18 +1,18 @@
 <script lang="ts">
-	import { createSync, melt } from '@melt-ui/svelte';
-	import type { CollapsibleRootProps } from './root.js';
-	import { useCollapsible } from '../collapse.svelte.js';
+	/** Imports */
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Collapsible as Primitive } from 'bits-ui';
+	import type { XCollapseRoot } from './root.js';
 
-	let { as = 'div', open = $bindable(false), children, ...props }: CollapsibleRootProps = $props();
-
-	const {
-		elements: { root },
-		states
-	} = useCollapsible({ root: props }, true);
-	const sync = createSync(states);
-	$effect(() => sync.open(open, (v) => (open = v)));
+	/** Props */
+	let { open = $bindable(false), as = 'div', attrs, children, ...props }: ToKebab<XCollapseRoot> = $props();
 </script>
 
-<svelte:element this={as} use:melt={$root} {...props}>
-	{@render children?.()}
-</svelte:element>
+<Primitive.Root bind:open {...toCamel(props)} {...attrs}>
+	{#snippet child({props: bits})}
+		<svelte:element this={as} {...bits}>
+			{@render children?.()}
+		</svelte:element>
+	{/snippet}
+</Primitive.Root>

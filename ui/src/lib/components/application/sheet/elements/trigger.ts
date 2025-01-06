@@ -1,3 +1,10 @@
-import type { SvelteHTMLElements } from 'svelte/elements';
+/** Imports */
+import type { OmitBit } from '$lib/types/prop.js';
+import type { DialogTriggerProps } from 'bits-ui';
 
-export type SheetTriggerProps = SvelteHTMLElements['button'];
+/** Props */
+type Props = OmitBit<DialogTriggerProps>;
+export interface XSheetTrigger extends Props {
+    as?: keyof HTMLElementTagNameMap;
+    attrs?: object;
+}

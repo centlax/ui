@@ -6,6 +6,6 @@ export const form = styles;
 
 type Props = ComponentProps<SuperDebug>;
 
-export interface FormDebugProps extends Props {
+export interface XFormDebug extends Props {
 	children?: Snippet;
 }

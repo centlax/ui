@@ -17,8 +17,8 @@
 	const ui = useUI(scrollView, props.class, props.override);
 </script>
 
-<div use:melt={$root} {...props} class={cn(st(ui.root), ui.class)}>
-	<div use:melt={$viewport} class={st(ui.viewport)}>
+<div use:melt={$root} {...props} class="relative overflow-hidden">
+	<div use:melt={$viewport} class="h-full w-full rounded-[inherit]">
 		<div use:melt={$content} class={st(ui.content)}>
 			{@render props.children()}
 		</div>

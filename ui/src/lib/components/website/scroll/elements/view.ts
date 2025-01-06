@@ -9,13 +9,9 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		layout:
-			'text-primary-900 relative h-72 w-52 overflow-hidden rounded-md border bg-white shadow-lg'
+		layout: 'overflow-hidden rounded-md border bg-white shadow-lg'
 	},
-	viewport: {
-		layout: 'rounded-[inherit]',
-		sizing: 'size-full'
-	},
+	viewport: {},
 	content: {},
 	y: {
 		bar: {
@@ -24,7 +20,7 @@ const styles = {
 		},
 		thumb: {
 			layout: 'relative flex-1 rounded-full',
-			background: 'bg-primary-600'
+			background: 'bg-primary-500'
 		}
 	},
 	x: {

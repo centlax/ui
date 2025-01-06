@@ -1,8 +1,10 @@
 /** Imports */
-import type { SvelteHTMLElements } from 'svelte/elements';
+import type { OmitBit } from '$lib/types/prop.js';
+import type { CollapsibleTriggerProps } from 'bits-ui';
 
 /** Props */
-type Props = SvelteHTMLElements['button'];
-export interface CollapsibleTriggerProps extends Props {
+type Props = OmitBit<CollapsibleTriggerProps>;
+export interface XCollapseTrigger extends Props {
 	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
 }

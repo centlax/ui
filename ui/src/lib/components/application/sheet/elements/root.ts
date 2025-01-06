@@ -1,11 +1,9 @@
 /** Imports */
-import type { ToKebab } from '$lib/types/utils.js';
-import type { CreateDialogProps } from '@melt-ui/svelte';
-import type { Snippet } from 'svelte';
+import type { OmitBit } from '$lib/types/prop.js';
+import type { DialogRootProps } from 'bits-ui';
 
 /** Props */
-type Props = ToKebab<Pick<CreateDialogProps, 'onOpenChange'>>;
-export interface SheetRootProps extends Props {
-	children?: Snippet;
-	open?: boolean;
-}
+type Props = OmitBit<DialogRootProps>;
+export type XSheetRoot = Props & {
+    attrs?: object;
+};

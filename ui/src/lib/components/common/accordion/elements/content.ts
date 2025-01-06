@@ -1,17 +1,13 @@
 /** Imports */
-import type { TransformKeysToKebab as ToKebab } from '$lib/types/utils.js';
-import type { Styles } from '$lib/types/ui.js';
-import type { SvelteHTMLElements } from 'svelte/elements';
-import type { CreateAccordionProps } from '@melt-ui/svelte';
-
-/** Styles */
-const styles = {
-	root: {}
-} satisfies Styles;
-export const accordionContent = styles;
+import type { OmitBit } from '$lib/types/prop.js';
+import type { Transition, TransitionParams, TransitionProps } from '$lib/types/transition.js';
+import type { AccordionContentProps } from 'bits-ui';
+import type { FadeParams, SlideParams } from 'svelte/transition';
 
 /** Props */
-type Props = SvelteHTMLElements['div'];
-export interface AccordionContentProps extends Props {
-	id: string;
+type Props = OmitBit<AccordionContentProps>;
+export interface XAccordionContent extends Props {
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
+	transition?: TransitionParams<SlideParams>;
 }

@@ -1,11 +1,18 @@
 <script lang="ts">
+	/** Imports */
 	import type { ToKebab } from '$lib/types/utils.js';
 	import { toCamel } from '$lib/utils/props.js';
-	import { Dialog as Primitive, type DialogCloseProps } from 'bits-ui';
-	type Props = DialogCloseProps;
-	let { children, ...props }: ToKebab<Props> = $props();
+	import { Dialog as Primitive } from 'bits-ui';
+	import type { XSheetClose } from './close.js';
+
+	/** Props */
+	let { as = 'button', attrs, children, ...props }: ToKebab<XSheetClose> = $props();
 </script>
 
 <Primitive.Close {...toCamel(props)}>
-	{@render children?.()}
+	{#snippet child({ props: bits })}
+		<svelte:element this={as} {...bits} {...attrs}>
+			{@render children?.()}
+		</svelte:element>
+	{/snippet}
 </Primitive.Close>

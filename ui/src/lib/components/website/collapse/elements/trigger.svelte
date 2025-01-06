@@ -1,16 +1,18 @@
 <script lang="ts">
 	/** Imports */
-	import { melt } from '@melt-ui/svelte';
-	import type { CollapsibleTriggerProps } from './trigger.js';
-	import { useCollapsible } from '../collapse.svelte.js';
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Collapsible as Primitive } from 'bits-ui';
+	import type { XCollapseTrigger } from './trigger.js';
 
 	/** Props */
-	let { as = 'button', children, ...props }: CollapsibleTriggerProps = $props();
-	const {
-		elements: { trigger }
-	} = useCollapsible();
+	let { as = 'button', attrs, children, ...props }: ToKebab<XCollapseTrigger> = $props();
 </script>
 
-<svelte:element this={as} use:melt={$trigger} {...props}>
-	{@render children?.()}
-</svelte:element>
+<Primitive.Trigger {...toCamel(props)}>
+	{#snippet child({ props: bits })}
+		<svelte:element this={as} {...bits} {...attrs}>
+			{@render children?.()}
+		</svelte:element>
+	{/snippet}
+</Primitive.Trigger>

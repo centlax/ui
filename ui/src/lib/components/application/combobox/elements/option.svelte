@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { children } = $props();
+	import { Combobox } from 'bits-ui';
 </script>
 
-{@render children?.()}
+<Combobox.Item value="two" />

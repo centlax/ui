@@ -3,42 +3,42 @@
 @import 'tailwindcss/utilities';
 
 :root {
-	--ui-text-dimmed: var(--ui-color-neutral-400);
-	--ui-text-muted: var(--ui-color-neutral-500);
+	--ui-text: rgb(var(--ui-color-neutral-900));
+	--ui-text-dimmed: rgb(var(--ui-color-neutral-400));
+	--ui-text-muted: rgb(var(--ui-color-neutral-500));
 	--ui-text-toned: rgb(var(--ui-color-neutral-700));
-	--ui-text-light: var(--ui-color-neutral-900);
-	--ui-text: var(--ui-color-neutral-500);
+	--ui-text-light: rgb(var(--ui-color-neutral-900));
 
 	--ui-bg: rgb(var(--ui-color-white));
-	--ui-bg-muted: var(--ui-color-neutral-50);
-	--ui-bg-elevated: var(--ui-color-neutral-100);
-	--ui-bg-accented: var(--ui-color-neutral-200);
-	--ui-bg-inverted: var(--ui-color-neutral-900);
+	--ui-bg-muted: rgb(var(--ui-color-neutral-50));
+	--ui-bg-elevated: rgb(var(--ui-color-neutral-100));
+	--ui-bg-accented: rgb(var(--ui-color-neutral-200));
+	--ui-bg-inverted: rgb(var(--ui-color-neutral-900));
 
 	--ui-border: rgb(var(--ui-color-neutral-200));
 	--ui-border-muted: rgb(var(--ui-color-neutral-300));
-	--ui-border-accented: var(--ui-color-neutral-300);
-	--ui-border-inverted: var(--ui-color-neutral-900);
+	--ui-border-accented: rgb(var(--ui-color-neutral-300));
+	--ui-border-inverted: rgb(var(--ui-color-neutral-900));
 
-	--ui-radius: var(--radius-sm);
-	--ui-container: var(--container-7xl);
+	--ui-radius: rgb(var(--radius-sm));
+	--ui-container: rgb(var(--container-7xl));
 }
 
 .dark {
-	--ui-text-dimmed: var(--ui-color-neutral-500);
-	--ui-text-muted: var(--ui-color-neutral-500);
+	--ui-text: rgb(var(--ui-color-white));
+	--ui-text-dimmed: rgb(var(--ui-color-neutral-500));
+	--ui-text-muted: rgb(var(--ui-color-neutral-500));
 	--ui-text-toned: rgb(var(--ui-color-neutral-300));
-	--ui-text-light: var(--ui-color-white);
-	--ui-text: rgb(var(--ui-color-neutral-500));
+	--ui-text-light: rgb(var(--ui-color-white));
 
 	--ui-bg: rgb(var(--ui-color-neutral-900));
-	--ui-bg-muted: var(--ui-color-neutral-800);
-	--ui-bg-elevated: var(--ui-color-neutral-800);
-	--ui-bg-accented: var(--ui-color-neutral-700);
-	--ui-bg-inverted: var(--ui-color-white);
+	--ui-bg-muted: rgb(var(--ui-color-neutral-800));
+	--ui-bg-elevated: rgb(var(--ui-color-neutral-800));
+	--ui-bg-accented: rgb(var(--ui-color-neutral-700));
+	--ui-bg-inverted: rgb(var(--ui-color-white));
 
 	--ui-border: rgb(var(--ui-color-neutral-800));
-	--ui-border-muted: var(--ui-color-neutral-700);
-	--ui-border-accented: var(--ui-color-neutral-700);
-	--ui-border-inverted: var(--ui-color-white);
+	--ui-border-muted: rgb(var(--ui-color-neutral-700));
+	--ui-border-accented: rgb(var(--ui-color-neutral-700));
+	--ui-border-inverted: rgb(var(--ui-color-white));
 }

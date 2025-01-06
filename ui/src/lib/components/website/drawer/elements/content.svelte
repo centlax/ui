@@ -4,7 +4,6 @@
 	import { drawerContent, type DrawerContentProps } from './content.js';
 	import { createDrawer } from '../drawer.svelte.js';
 	import { useUI } from '$lib/composables/ui.js';
-	import { draw } from 'svelte/transition';
 	import { cn, st } from '$lib/utils/wind.js';
 
 	/** Props */

@@ -1,0 +1,40 @@
+/** Imports */
+import type { BaseProps } from '$lib/types/prop.js';
+import type { TransitionParams } from '$lib/types/transition.js';
+import type { Styles } from '$lib/types/ui.js';
+import type { FlyParams } from 'svelte/transition';
+import { type DialogContentProps } from 'bits-ui';
+
+/** Styles */
+const styles = {
+	root: {
+		flex: 'fixed z-50',
+		border: 'focus:outline-none',
+		opt: {
+			from: {
+				north: { layout: 'inset-x-0 top-0' },
+				south: { layout: 'inset-x-0 bottom-0' },
+				west: { layout: 'inset-y-0 left-0' },
+				east: { layout: 'inset-y-0 right-0' }
+			}
+		}
+	}
+} satisfies Styles;
+export const sheet$ = styles;
+
+/** Props */
+export const fromTransition = (dir: 'north' | 'south' | 'east' | 'west') => {
+	const axis = dir === 'north' || dir === 'south' ? 'y' : 'x';
+	const sign = dir === 'north' || dir === 'west' ? '-' : '';
+	const value = `${sign}100%`;
+
+	return {
+		in: { [axis]: value, duration: 500, opacity: 1 },
+		out: { [axis]: value, duration: 300, opacity: 1 }
+	};
+};
+type Props = Omit<DialogContentProps, 'class'>;
+export interface XSheetContentProps extends BaseProps<typeof sheet$>, Props {
+	transition?: TransitionParams<FlyParams>;
+	from?: 'north' | 'south' | 'east' | 'west';
+}

@@ -1,22 +1,35 @@
 <script lang="ts">
-	import { useUI } from '$lib/composables/ui.js';
+	/** Imports */
 	import type { ToKebab } from '$lib/types/utils.js';
 	import { toCamel } from '$lib/utils/props.js';
-	import { cn, st } from '$lib/utils/wind.js';
 	import { Dialog as Primitive } from 'bits-ui';
-	import { sheet$, type XSheetContentProps } from './content.js';
-	let { children, from = 'east', ...props }: ToKebab<XSheetContentProps> = $props();
+	import { fromTransition, sheet$, type XSheetContent } from './content.js';
+	import { useTransition } from '$lib/composables/transition.js';
+	import { cn, st } from '$lib/utils/wind.js';
+	import { useUI } from '$lib/composables/ui.js';
+	import { fly } from 'svelte/transition';
+
+	/** Props */
+	let { attrs, as = 'div', side = 'right', children, ...props }: ToKebab<XSheetContent> = $props();
 
 	/** Styles */
 	const ui = useUI(sheet$, props.class, props.override);
 	const css = $state({
-		content: cn(st(ui.root, ui.root.opt.from[from]), ui.class)
+		content: cn(st(ui.root, ui.root.opt.from[side]), ui.class)
 	});
+	const transition = useTransition();
+	const txn = $state(transition.set(props.transition, fromTransition(side)));
 </script>
 
 <Primitive.Portal>
 	<Primitive.Overlay />
-	<Primitive.Content {...toCamel(props)} class={css.content}>
-		{@render children?.()}
+	<Primitive.Content forceMount {...toCamel(props)} class={css.content}>
+		{#snippet child({ props: bits, open })}
+			{#if open}
+				<svelte:element this={as} in:fly={txn.in} out:fly={txn.out} {...bits} {...attrs}>
+					{@render children?.()}
+				</svelte:element>
+			{/if}
+		{/snippet}
 	</Primitive.Content>
 </Primitive.Portal>

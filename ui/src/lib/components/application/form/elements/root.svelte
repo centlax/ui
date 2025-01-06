@@ -1,9 +1,12 @@
-<script lang="ts" generics="T extends Record<string, unknown>">
-	import type { FormProps } from '../form.js';
+<script lang="ts">
+	/** Imports */
+	import type { ToKebab } from '$lib/types/utils.js';
+	import type { XFormProps } from './root.js';
 
-	let { ...props }: FormProps<T> = $props();
+	/** Props */
+	let { children, ...props }: ToKebab<XFormProps> = $props();
 </script>
 
 <form {...props}>
-	{@render props.children?.()}
+	{@render children?.()}
 </form>

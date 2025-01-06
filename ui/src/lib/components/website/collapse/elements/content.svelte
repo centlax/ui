@@ -1,20 +1,30 @@
 <script lang="ts">
 	/** Imports */
-	import { melt } from '@melt-ui/svelte';
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import { Collapsible as Primitive } from 'bits-ui';
+	import type { XCollapseContent } from './content.js';
+	import { useTransition } from '$lib/composables/transition.js';
 	import { slide } from 'svelte/transition';
-	import type { CollapsibleContentProps } from './content.js';
-	import { useCollapsible } from '../collapse.svelte.js';
 
 	/** Props */
-	let { as = 'div', children, ...props }: CollapsibleContentProps = $props();
-	const {
-		elements: { content },
-		states: { open }
-	} = useCollapsible();
+	let { attrs, as = 'div', children, ...props }: ToKebab<XCollapseContent> = $props();
+
+	/** Styles */
+	const transition = useTransition();
+	const txn = $state(
+		transition.set(props.transition, {
+			duration: 200
+		})
+	);
 </script>
 
-{#if $open}
-	<svelte:element this={as} use:melt={$content} {...props} transition:slide>
-		{@render children?.()}
-	</svelte:element>
-{/if}
+<Primitive.Content {...toCamel(props)}>
+	{#snippet child({ props: bits, open })}
+		{#if open}
+			<svelte:element this={as} in:slide={txn.in} out:slide={txn.out} {...bits} {...attrs}>
+				{@render children?.()}
+			</svelte:element>
+		{/if}
+	{/snippet}
+</Primitive.Content>

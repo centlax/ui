@@ -1,14 +1,18 @@
 <script lang="ts">
 	/** Imports */
-	import { Tooltip } from 'bits-ui';
-	import type { XTooltipTrigger } from './trigger.js';
 	import type { ToKebab } from '$lib/types/utils.js';
 	import { toCamel } from '$lib/utils/props.js';
+	import { Tooltip as Primitive } from 'bits-ui';
+	import type { XTooltipTrigger } from './trigger.js';
 
 	/** Props */
-	let { children, ...props }: ToKebab<XTooltipTrigger> = $props();
+	let { as = 'button', attrs, children, ...props }: ToKebab<XTooltipTrigger> = $props();
 </script>
 
-<Tooltip.Trigger {...toCamel(props)}>
-	{@render children?.()}
-</Tooltip.Trigger>
+<Primitive.Trigger {...toCamel(props)}>
+	{#snippet child({ props: bits })}
+		<svelte:element this={as} {...bits} {...attrs}>
+			{@render children?.()}
+		</svelte:element>
+	{/snippet}
+</Primitive.Trigger>

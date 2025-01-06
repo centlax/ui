@@ -1,5 +1,13 @@
 <script lang="ts">
-	let { children } = $props();
+	import { Command } from 'bits-ui';
 </script>
 
-{@render children?.()}
+<Command.Root>
+	<Command.Input />
+	<Command.List>
+		<Command.Viewport>
+			<Command.Empty />
+			<Command.Loading />
+		</Command.Viewport>
+	</Command.List>
+</Command.Root>
