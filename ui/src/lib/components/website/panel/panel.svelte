@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { panel, type PanelProps } from './panel.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { createPanel } from './panel.svelte.js';
 	import { createSync, melt } from '@melt-ui/svelte';

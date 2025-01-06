@@ -1,7 +1,11 @@
-import { createSwitch as _createSwitch, createSlider, type CreateSwitchProps } from '@melt-ui/svelte';
+import {
+	createSwitch as _createSwitch,
+	createSlider,
+	type CreateSwitchProps
+} from '@melt-ui/svelte';
 import type { SwitchProps } from './switch.js';
 import type { CreateReturn } from '$lib/types/create.js';
-createSlider
+createSlider;
 const defaults: CreateSwitchProps = {
 	defaultChecked: false,
 	disabled: false,

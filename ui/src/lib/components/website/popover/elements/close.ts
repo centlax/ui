@@ -5,6 +5,6 @@ import type { PopoverCloseProps } from 'bits-ui';
 /** Props */
 type Props = OmitBit<PopoverCloseProps>;
 export interface XPopoverClose extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
 }

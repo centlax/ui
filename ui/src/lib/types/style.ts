@@ -15,13 +15,3 @@ type PickDeep<T, KeysToPick extends string> = {
 };
 
 export type PickDeepStyles<T> = PickDeep<T, 'is' | 'opt'>;
-
-type Strify<T> = {
-	[K in keyof T as K extends 'opt' | 'is'
-		? never
-		: T[K] extends object
-			? K
-			: never]: T[K] extends object
-		? { $: string } & Strify<T[K]> // Add `$` to object keys and recurse
-		: never; // Skip non-object values
-};

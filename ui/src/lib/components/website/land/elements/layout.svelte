@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { siteLayout, type XSiteLayout } from './layout.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { ctxSiteKey, useSite } from '../land.svelte.js';
 	import { setContext } from 'svelte';
 
@@ -16,4 +16,3 @@
 <div data-name="land-layout" class="flex h-screen flex-col bg-[--ui-bg]">
 	{@render props.children?.()}
 </div>
-

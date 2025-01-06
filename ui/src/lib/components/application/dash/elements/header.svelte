@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { type DashHeaderProps, dashHeader } from './header.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 
 	/** Props */
 	let { west, east, children, ...props }: DashHeaderProps = $props();

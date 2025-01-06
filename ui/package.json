@@ -29,7 +29,8 @@
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
 		},
-		"./tailwind": "./dist/plugins/tailwind.js"
+		"./tailwind": "./dist/plugins/tailwind.js",
+		"./theme/css": "./dist/theme/ui.css"
 	},
 	"peerDependencies": {
 		"svelte": "^5.0.0"

@@ -2,7 +2,7 @@
 	/** Imports */
 	import { melt } from '@melt-ui/svelte';
 	import { avatar, type AvatarProps } from './root.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useAvatar } from '../avatar.svelte.js';
 	import { fade } from 'svelte/transition';

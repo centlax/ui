@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { label, type LabelProps } from './label.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { createLabel } from './label.svelte.js';
 	import { melt } from '@melt-ui/svelte';

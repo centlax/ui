@@ -5,7 +5,6 @@
 
 	/** Props */
 	let { children, ...props }: DrawerHandleProps = $props();
-
 </script>
 
 <Primitive.Handle>

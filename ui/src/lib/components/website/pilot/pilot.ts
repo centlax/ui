@@ -5,9 +5,9 @@ import Item from './elements/item.svelte';
 import Trigger from './elements/trigger.svelte';
 
 type PilotType = typeof Root & {
-    Content: SubComponent<typeof Content>;
-    Item: SubComponent<typeof Item>;
-    Trigger: SubComponent<typeof Trigger>;
+	Content: SubComponent<typeof Content>;
+	Item: SubComponent<typeof Item>;
+	Trigger: SubComponent<typeof Trigger>;
 };
 
 const Pilot = Root as PilotType;

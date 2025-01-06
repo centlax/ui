@@ -5,5 +5,5 @@ import type { DialogRootProps } from 'bits-ui';
 /** Props */
 type Props = OmitBit<DialogRootProps>;
 export type XModalRoot = Props & {
-    attrs?: object;
+	attrs?: object;
 };

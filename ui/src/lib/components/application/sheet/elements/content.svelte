@@ -4,9 +4,9 @@
 	import { toCamel } from '$lib/utils/props.js';
 	import { Dialog as Primitive } from 'bits-ui';
 	import { fromTransition, sheet$, type XSheetContent } from './content.js';
-	import { useTransition } from '$lib/composables/transition.js';
+	import { useTransition } from '$lib/composables/transition.svelte.js';
 	import { cn, st } from '$lib/utils/wind.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { fly } from 'svelte/transition';
 
 	/** Props */

@@ -4,10 +4,10 @@
 	import { toCamel } from '$lib/utils/props.js';
 	import { Dialog as Primitive } from 'bits-ui';
 	import { modal$, type XModalContent } from './content.js';
-	import { useTransition } from '$lib/composables/transition.js';
+	import { useTransition } from '$lib/composables/transition.svelte.js';
 	import { flyAndScale } from '$lib/theme/transition/fly-scale.js';
 	import { cn, st } from '$lib/utils/wind.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 
 	/** Props */
 	let { attrs, as = 'div', children, ...props }: ToKebab<XModalContent> = $props();

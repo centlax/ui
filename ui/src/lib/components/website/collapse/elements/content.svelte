@@ -4,7 +4,7 @@
 	import { toCamel } from '$lib/utils/props.js';
 	import { Collapsible as Primitive } from 'bits-ui';
 	import type { XCollapseContent } from './content.js';
-	import { useTransition } from '$lib/composables/transition.js';
+	import { useTransition } from '$lib/composables/transition.svelte.js';
 	import { slide } from 'svelte/transition';
 
 	/** Props */

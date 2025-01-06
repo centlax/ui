@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { getContext, type Snippet } from 'svelte';
 	import { siteFooter, type SiteFootProps } from './footer.js';
 	import { ctxSiteKey } from '../land.svelte.js';

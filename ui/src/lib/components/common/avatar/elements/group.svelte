@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { avatarGroup, type AvatarGroupProps } from './group.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
 
 	/** Props */

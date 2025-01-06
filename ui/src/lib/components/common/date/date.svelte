@@ -1,7 +1,7 @@
 <script lang="ts" generics="Range extends boolean = false">
 	/** Imports */
 	import { inputDate, type InputDateProps } from './date.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { melt } from '@melt-ui/svelte';
 	import { createInputDate } from './date.svelte.js';
 	import { cn, st } from '$lib/utils/wind.js';

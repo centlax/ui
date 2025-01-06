@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { USheet } from '$lib/components/export.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { siteAside, type SiteAsideProps } from './aside.js';
 
 	/** Props */

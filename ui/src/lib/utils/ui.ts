@@ -1,4 +1,4 @@
-import { useUI } from '$lib/composables/ui.js';
+import { useUI } from '$lib/composables/ui.svelte.js';
 import type { DeepStyles } from '$lib/types/ui.js';
 import { cn, st } from './wind.js';
 

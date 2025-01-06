@@ -4,7 +4,7 @@
 	import { toCamel } from '$lib/utils/props.js';
 	import { Tooltip as Primitive } from 'bits-ui';
 	import type { XTooltipContent } from './content.js';
-	import { useTransition } from '$lib/composables/transition.js';
+	import { useTransition } from '$lib/composables/transition.svelte.js';
 	import { fade } from 'svelte/transition';
 
 	/** Props */

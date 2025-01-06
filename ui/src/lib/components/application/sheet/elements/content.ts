@@ -19,16 +19,16 @@ const styles = {
 			}
 		}
 	}
-} satisfies Styles
-export const sheet$ = styles
+} satisfies Styles;
+export const sheet$ = styles;
 
 /** Props */
 type Props = OmitBit<Omit<DialogContentProps, 'class'>>;
 export interface XSheetContent extends Props, BaseProps<typeof sheet$> {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
-    side?: 'top' | 'bottom' | 'right' | 'left';
-    transition?: TransitionParams<FlyParams>;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
+	side?: 'top' | 'bottom' | 'right' | 'left';
+	transition?: TransitionParams<FlyParams>;
 }
 
 /** Utils */

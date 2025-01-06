@@ -5,6 +5,6 @@ import type { PopoverTriggerProps } from 'bits-ui';
 /** Props */
 type Props = OmitBit<PopoverTriggerProps>;
 export interface XPopoverTrigger extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
 }

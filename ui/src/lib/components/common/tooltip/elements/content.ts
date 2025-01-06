@@ -7,7 +7,7 @@ import type { FadeParams } from 'svelte/transition';
 /** Props */
 type Props = OmitBit<TooltipContentProps>;
 export interface XTooltipContent extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
-    transition?: TransitionParams<FadeParams>;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
+	transition?: TransitionParams<FadeParams>;
 }

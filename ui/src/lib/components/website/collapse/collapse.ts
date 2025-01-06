@@ -4,8 +4,8 @@ import Content from './elements/content.svelte';
 import Trigger from './elements/trigger.svelte';
 
 type CollapseType = typeof Root & {
-    Content: SubComponent<typeof Content>;
-    Trigger: SubComponent<typeof Trigger>;
+	Content: SubComponent<typeof Content>;
+	Trigger: SubComponent<typeof Trigger>;
 };
 
 const Collapse = Root as CollapseType;

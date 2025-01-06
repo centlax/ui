@@ -6,12 +6,12 @@ import type { PopoverContentProps } from 'bits-ui';
 import type { FadeParams } from 'svelte/transition';
 
 /** Styles */
-const styles = {} satisfies Styles
+const styles = {} satisfies Styles;
 
 /** Props */
 type Props = OmitBit<PopoverContentProps>;
 export interface XPopoverContent extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
-    transition?: TransitionParams<FadeParams>;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
+	transition?: TransitionParams<FadeParams>;
 }

@@ -2,7 +2,7 @@
 	/** Imports */
 	import { st, cn } from '$lib/utils/wind.js';
 	import { siteMain, type SiteMainProps } from './main.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 
 	/** Props */
 	let { children, ...props }: SiteMainProps = $props();

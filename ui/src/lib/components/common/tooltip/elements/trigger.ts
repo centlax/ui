@@ -5,6 +5,6 @@ import type { TooltipTriggerProps } from 'bits-ui';
 /** Props */
 type Props = OmitBit<TooltipTriggerProps>;
 export interface XTooltipTrigger extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
 }

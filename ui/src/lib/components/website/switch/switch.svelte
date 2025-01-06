@@ -1,7 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { _switch, type SwitchProps } from './switch.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { cn, co, st } from '$lib/utils/wind.js';
 	import { bitSwitch } from './switch.svelte.js';
 

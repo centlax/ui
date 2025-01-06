@@ -11,7 +11,7 @@
 <script lang="ts">
 	/** Imports  */
 	import { UIcon } from '$lib/components/export.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn, co } from '$lib/utils/wind.js';
 	import { type ButtonProps, button } from './button.js';
 
@@ -21,7 +21,7 @@
 	/** Styles  */
 	const ui = useUI(button, props.class, props.override);
 	let css = $state({
-		button: cn(st(ui.root, ui.opt.size['md'], ui.opt.variant['solid']['color']), ui.class)
+		button: cn(st(ui.root, ui.opt.size['md'], ui.opt.variant['solid']), ui.class)
 	});
 </script>
 

@@ -2,7 +2,7 @@
 	/** Imports */
 	import { kbd, type KbdProps } from './kbd.js';
 	import { cn, st } from '$lib/utils/wind.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 
 	/** Props */
 	let { ...props }: KbdProps<Multiple> = $props();

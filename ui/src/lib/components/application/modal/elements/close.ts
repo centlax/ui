@@ -5,6 +5,6 @@ import type { DialogCloseProps } from 'bits-ui';
 /** Props */
 type Props = OmitBit<DialogCloseProps>;
 export interface XModalClose extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
 }

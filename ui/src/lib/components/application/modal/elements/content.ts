@@ -7,17 +7,17 @@ import type { DialogContentProps } from 'bits-ui';
 
 /** Styles */
 const styles = {
-    root: {
+	root: {
 		flex: 'fixed z-50 left-[50%] top-[50%]  -translate-x-1/2 -translate-y-1/2 focus:outline-none'
 	}
-} satisfies Styles
+} satisfies Styles;
 
-export const modal$ = styles
+export const modal$ = styles;
 
 /** Props */
 type Props = OmitBit<Omit<DialogContentProps, 'class'>>;
 export interface XModalContent extends Props, BaseProps<typeof modal$> {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
-    transition?: TransitionParams<FlyAndScaleParams>;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
+	transition?: TransitionParams<FlyAndScaleParams>;
 }

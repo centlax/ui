@@ -5,6 +5,6 @@ import type { DialogTriggerProps } from 'bits-ui';
 /** Props */
 type Props = OmitBit<DialogTriggerProps>;
 export interface XSheetTrigger extends Props {
-    as?: keyof HTMLElementTagNameMap;
-    attrs?: object;
+	as?: keyof HTMLElementTagNameMap;
+	attrs?: object;
 }

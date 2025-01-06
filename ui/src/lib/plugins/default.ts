@@ -40,7 +40,6 @@ export const defaultConfig = {
 		mask: colors.foreground, // Mask allows all foreground colors
 		base: colors.background // Base allows all background colors
 	},
-	prefix: 'U',
 	icons: {
 		dark: 'i-heroicons-moon-20-solid',
 		light: 'i-heroicons-sun-20-solid',

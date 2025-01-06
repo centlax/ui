@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { UButton, UIcon } from '$lib/components/export.js';
-	import { useDark } from '$lib/composables/dark.js';
+	import { useDark } from '$lib/composables/dark.svelte.js';
 	const dark = useDark();
 </script>
 

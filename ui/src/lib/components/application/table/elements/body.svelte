@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { createTable } from '../table.svelte.js';
 	import { tableBody, type TableBodyProps } from './body.js';
 

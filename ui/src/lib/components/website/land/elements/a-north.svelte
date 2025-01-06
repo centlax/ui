@@ -5,7 +5,7 @@
 	const logo: Snippet = getContext(ctxSiteKey);
 </script>
 
-<div class="flex items-center justify-between h-[--ui-land-header-height]">
+<div class="flex h-[--ui-land-header-height] items-center justify-between">
 	<a href="/" class="-m-1.5 p-1.5">
 		{@render logo()}
 	</a>

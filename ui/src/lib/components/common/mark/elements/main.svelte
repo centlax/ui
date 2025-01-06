@@ -1,6 +1,6 @@
 <script lang="ts">
 	/** Imports */
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { markMain, type MarkMainProps } from './main.js';
 
 	/** Props */

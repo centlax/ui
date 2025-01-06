@@ -3,7 +3,7 @@
 	import { Drawer as Primitive } from 'vaul-svelte';
 	import { drawerContent, type DrawerContentProps } from './content.js';
 	import { createDrawer } from '../drawer.svelte.js';
-	import { useUI } from '$lib/composables/ui.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { cn, st } from '$lib/utils/wind.js';
 
 	/** Props */
