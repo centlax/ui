@@ -30,5 +30,5 @@ export const dashHeader$ = styles;
 type Props = Omit<SvelteHTMLElements['header'], 'class'>;
 export interface XDashHeader extends BaseProps<typeof dashHeader$>, Props {
 	children?: Snippet;
-	onOpenAside?: HTMLButtonAttributes['onclick']
+	onOpenAside?: HTMLButtonAttributes['onclick'];
 }

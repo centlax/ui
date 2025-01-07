@@ -7,16 +7,15 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
-    root: {
-        flex: 'flex flex-1 flex-col gap-y-7'
-    },
-   
+	root: {
+		flex: 'flex flex-1 flex-col gap-y-7'
+	}
 } satisfies Styles;
 export const dashANorth$ = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['div'], 'class'> & BaseProps<typeof dashANorth$>;
 export interface XDashANorth extends Props {
-    attrs?: object;
-    emblem?: Snippet
+	attrs?: object;
+	emblem?: Snippet;
 }

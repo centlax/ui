@@ -20,8 +20,18 @@
 				<ul class={st(ui.box.list)}>
 					{#each items as it, i}
 						<li aria-label="list-item">
-							<svelte:element data-selected={i === 0} this={it.href ? 'a' : 'button'} href={it.href} class={st(ui.box.list.item)}>
-								<UIcon data-selected={i === 0} data-filled={false} class={st(ui.box.list.item.icon)} name={it.icon || ''} />
+							<svelte:element
+								this={it.href ? 'a' : 'button'}
+								data-selected={i === 0}
+								href={it.href}
+								class={st(ui.box.list.item)}
+							>
+								<UIcon
+									data-selected={i === 0}
+									data-filled={false}
+									class={st(ui.box.list.item.icon)}
+									name={it.icon || ''}
+								/>
 								<span>{it.text}</span>
 								{#if it.badge}
 									<span class={st(ui.box.list.item.badge)} aria-hidden="true">{it.badge}</span>

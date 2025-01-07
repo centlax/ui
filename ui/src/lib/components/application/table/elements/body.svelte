@@ -6,7 +6,7 @@
 
 	/** Props */
 	let { children, attrs, ...props }: XTableBody = $props();
-	
+
 	/** Styles  */
 	const ui = useUI(tableBody$, props.class, props.override);
 </script>

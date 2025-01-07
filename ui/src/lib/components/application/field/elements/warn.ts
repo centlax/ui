@@ -9,8 +9,7 @@ const styles = {
 		layout: 'flex items-center gap-x-1',
 		typography: 'text-sm text-danger-500',
 		svg: '[&>[data-name=icon]]:size-4'
-	},
-	
+	}
 } satisfies Styles;
 export const fieldWarn$ = styles;
 

@@ -14,5 +14,5 @@ export const tableBody$ = styles;
 /* Props */
 type Props = Omit<SvelteHTMLElements['tbody'], 'class'>;
 export interface XTableBody extends BaseProps<typeof tableBody$>, Props {
-	attrs?: object
+	attrs?: object;
 }

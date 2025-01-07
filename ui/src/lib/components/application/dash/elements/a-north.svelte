@@ -12,6 +12,6 @@
 	const ui = useUI(dashANorth$, props.class, props.override);
 </script>
 
-<div class="flex h-[--ui-dash-header-height] shrink-0 items-center bg-inherit ">
+<div class="flex h-[--ui-dash-header-height] shrink-0 items-center bg-inherit">
 	{@render emblem?.()}
 </div>

@@ -2,8 +2,9 @@
 	import Logo from '$lib/blocks/logo.svelte';
 	import { UDash } from '$lib/index.js';
 	let { children } = $props();
-	let open = $state(false)
+	let open = $state(false);
 </script>
+
 {#snippet centlax()}
 	<Logo />
 {/snippet}
@@ -34,7 +35,7 @@
 		/>
 		<UDash.ASouth />
 	</UDash.Aside>
-	<UDash.Header on-open-aside={()=> open =! open}/>
+	<UDash.Header on-open-aside={() => (open = !open)} />
 	<UDash.Main>
 		{@render children()}
 	</UDash.Main>

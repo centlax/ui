@@ -5,12 +5,11 @@
 	import { st, cn } from '$lib/utils/wind.js';
 
 	/** Props  */
-	let { children, attrs,...props }: XFieldGroup = $props();
+	let { children, attrs, ...props }: XFieldGroup = $props();
 
 	/** Styles  */
 	const ui = useUI(fieldGroup$, props.class, props.override);
 </script>
-
 
 <fieldset {...props} {...attrs} class={cn(st(ui.root), ui.class)}>
 	{@render children?.()}

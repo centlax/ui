@@ -68,4 +68,3 @@ export function createTable() {
 		helpers: {}
 	};
 }
-

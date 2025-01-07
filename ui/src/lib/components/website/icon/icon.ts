@@ -1,7 +1,7 @@
 /* Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
@@ -9,10 +9,11 @@ const styles = {
 		layout: 'block'
 	}
 } satisfies Styles;
-export const icon = styles;
+export const icon$ = styles;
 
 /* Props */
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'>;
-export interface IconProps extends BaseProps<typeof icon>, Props {
+type Props = Omit<SvelteHTMLElements['span'], 'class'>;
+export interface XIcon extends BaseProps<typeof icon$>, Props {
 	name: string;
+	attrs?: object
 }

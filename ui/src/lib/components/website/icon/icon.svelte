@@ -1,14 +1,14 @@
 <script lang="ts">
 	/** Imports */
-	import { icon, type IconProps } from './icon.js';
+	import { icon$, type XIcon } from './icon.js';
 	import { cn, st } from '$lib/utils/wind.js';
 	import { useUI } from '$lib/composables/ui.svelte.js';
 
 	/** Props */
-	let { name, ...props }: IconProps = $props();
+	let { name, ...props }: XIcon = $props();
 
 	/** Styles */
-	const ui = useUI(icon, props.class, props.override);
+	const ui = useUI(icon$, props.class, props.override);
 </script>
 
 <span data-name="icon" {...props} class={cn(name, st(ui.root), ui.class)}></span>

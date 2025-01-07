@@ -4,7 +4,7 @@
 	import { markHeader, type MarkHeaderProps } from './header.js';
 
 	/** Props */
-	let {  children, ...props }: MarkHeaderProps = $props();
+	let { children, ...props }: MarkHeaderProps = $props();
 
 	/** Styles  */
 	const ui = useUI(markHeader, props.class, props.override);

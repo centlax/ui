@@ -4,11 +4,7 @@
 </script>
 
 <UMark.Layout>
-	<UMark.Header>
-		<UMark.HWest />
-		<UMark.HItems />
-		<UMark.HEast />
-	</UMark.Header>
+	<UMark.Header/>
 	<UMark.Aside>
 		<UMark.ANorth />
 		<UMark.AItems />

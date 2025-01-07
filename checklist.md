@@ -32,7 +32,6 @@
 - **Pinlet**
 - **Date**
 
-
 # Website Components
 
 - **Segment**

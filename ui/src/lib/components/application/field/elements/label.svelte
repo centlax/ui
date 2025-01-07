@@ -11,6 +11,6 @@
 	const ui = useUI(fieldLabel$, props.class, props.override);
 </script>
 
-	<label {...props} {...attrs} class={cn(st(ui.root), ui.class)}>
-		{@render children?.()}
-    </label>
+<label {...props} {...attrs} class={cn(st(ui.root), ui.class)}>
+	{@render children?.()}
+</label>

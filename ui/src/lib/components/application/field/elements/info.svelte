@@ -12,6 +12,6 @@
 	const ui = useUI(fieldInfo$, props.class, props.override);
 </script>
 
-	<p transition:fade {...props} {...attrs} class={cn(st(ui.root), ui.class)}>
-		{@render children?.()}
-	</p>
+<p transition:fade {...props} {...attrs} class={cn(st(ui.root), ui.class)}>
+	{@render children?.()}
+</p>
