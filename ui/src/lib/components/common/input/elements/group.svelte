@@ -2,17 +2,15 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
-	import { inputGroup, type InputGroupProps } from './group.js';
+	import { inputGroup$, type XInputGroup } from './group.js';
 
 	/** Props */
-	let { ...props }: InputGroupProps = $props();
+	let { children, attrs, ...props }: XInputGroup = $props();
 
 	/** Styles */
-	const ui = useUI(inputGroup, props.class, props.override);
-
-	/** Melt Context */
+	const ui = useUI(inputGroup$, props.class, props.override);
 </script>
 
-<div {...props} class={cn(st(ui.root), ui.class)}>
-	{@render props.children?.()}
+<div {...props} {...attrs} class={cn(st(ui.root), ui.class)}>
+	{@render children?.()}
 </div>

@@ -11,15 +11,15 @@ import Row from './elements/row.svelte';
 import Title from './elements/title.svelte';
 
 type TableType = typeof Root & {
-	Body: SubComponent<typeof Body>;
-	CGroup: SubComponent<typeof CGroup>;
-	Col: SubComponent<typeof Col>;
-	Foot: SubComponent<typeof Foot>;
-	HItem: SubComponent<typeof HItem>;
-	Head: SubComponent<typeof Head>;
-	Item: SubComponent<typeof Item>;
-	Row: SubComponent<typeof Row>;
-	Title: SubComponent<typeof Title>;
+    Body: SubComponent<typeof Body>;
+    CGroup: SubComponent<typeof CGroup>;
+    Col: SubComponent<typeof Col>;
+    Foot: SubComponent<typeof Foot>;
+    HItem: SubComponent<typeof HItem>;
+    Head: SubComponent<typeof Head>;
+    Item: SubComponent<typeof Item>;
+    Row: SubComponent<typeof Row>;
+    Title: SubComponent<typeof Title>;
 };
 
 const Table = Root as TableType;

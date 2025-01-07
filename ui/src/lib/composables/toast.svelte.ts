@@ -1,4 +1,4 @@
-import { helper } from '$lib/components/common/toast/toast.svelte';
+import { helper } from '$lib/internal/elements/toast/toast.svelte';
 export function useToast() {
 	return {
 		create: helper.addToast,

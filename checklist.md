@@ -17,6 +17,7 @@
 - **Checkobx**
 - **Command**
 - **Combobox**
+- **Select**
 
 # Common Components
 
@@ -29,6 +30,8 @@
 - **Toggle**
 - **Radio**
 - **Pinlet**
+- **Date**
+
 
 # Website Components
 
@@ -42,3 +45,9 @@
 - **Description**
 - **Loadbar**
 - **Scroll**
+- **Choose**
+- **Tabs**
+- **Pilot**
+- **Panel**
+- **Switch**
+- **Textarea**

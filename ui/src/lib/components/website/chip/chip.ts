@@ -1,9 +1,7 @@
 /** Imports */
-
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { Snippet } from 'svelte';
-import type { HTMLAttributes } from 'svelte/elements';
+import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
@@ -31,11 +29,10 @@ const styles = {
 		}
 	}
 } satisfies Styles;
-export const chip = styles;
+export const chip$ = styles;
 
 /** Props */
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'class'>;
-export interface ChipProps extends BaseProps<typeof chip>, Props {
-	children?: Snippet;
-	float?: keyof typeof chip.opt.float;
+type Props = Omit<SvelteHTMLElements['span'], 'class'>;
+export interface XChip extends BaseProps<typeof chip$>, Props {
+	float?: keyof typeof chip$.opt.float;
 }

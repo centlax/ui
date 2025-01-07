@@ -1,5 +1,5 @@
 import { uify, type ToStrClass } from '$lib/utils/ui.js';
-import { tableBody, type TableBodyProps } from './elements/body.js';
+import { tableBody$, type XTableBody } from './elements/body.js';
 import { tableCaption, type TableCaptionProps } from './elements/title.js';
 import { tableCol, type TableColProps } from './elements/col.js';
 import { tableDCell, type TableDCellProps } from './elements/item.js';
@@ -23,8 +23,8 @@ export function createTable() {
 		return { ...props, class: uify(tableHead, props.class, props.override) };
 	}
 
-	function body(props: TableBodyProps): ToStrClass<TableBodyProps> {
-		return { ...props, class: uify(tableBody, props.class, props.override) };
+	function body(props: XTableBody): ToStrClass<XTableBody> {
+		return { ...props, class: uify(tableBody$, props.class, props.override) };
 	}
 
 	function foot(props: TableFootProps): ToStrClass<TableFootProps> {
@@ -69,11 +69,3 @@ export function createTable() {
 	};
 }
 
-export function useTable(
-	opts: {
-		body?: TableBodyProps;
-		colGroup?: TableColProps;
-		title?: TableCaptionProps;
-	},
-	ctx: boolean = false
-) {}

@@ -12,12 +12,12 @@ const styles = {
 		spacing: 'p-1'
 	}
 } satisfies Styles;
-export const kbd = styles;
+export const kbd$ = styles;
 
 /** Props */
 type Value<Multiple extends boolean = false> = Multiple extends false ? string : string[];
 type Props = Omit<SvelteHTMLElements['kbd'], 'class'>;
-export interface KbdProps<Multiple extends boolean> extends BaseProps<typeof kbd>, Props {
+export interface XKbd<Multiple extends boolean> extends BaseProps<typeof kbd$>, Props {
 	multiple?: Multiple;
 	value: Value<Multiple>;
 }

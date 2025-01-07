@@ -2,12 +2,14 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { markHeader, type MarkHeaderProps } from './header.js';
-	import { UIcon, useDark } from '$lib/index.js';
 
 	/** Props */
-	let { items, children, ...props }: MarkHeaderProps = $props();
-	const dark = useDark();
+	let {  children, ...props }: MarkHeaderProps = $props();
 
-	/** Styles */
+	/** Styles  */
 	const ui = useUI(markHeader, props.class, props.override);
 </script>
+
+<header>
+	{@render children?.()}
+</header>

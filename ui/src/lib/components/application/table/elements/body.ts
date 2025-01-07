@@ -9,8 +9,10 @@ const styles = {
 		border: 'divide-y divide-neutral-800'
 	}
 } satisfies Styles;
-export const tableBody = styles;
+export const tableBody$ = styles;
 
 /* Props */
 type Props = Omit<SvelteHTMLElements['tbody'], 'class'>;
-export interface TableBodyProps extends BaseProps<typeof tableBody>, Props {}
+export interface XTableBody extends BaseProps<typeof tableBody$>, Props {
+	attrs?: object
+}

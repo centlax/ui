@@ -1,14 +1,14 @@
 <script lang="ts">
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.svelte.js';
-	import { chip, type ChipProps } from './chip.js';
+	import { chip$, type XChip } from './chip.js';
 	import { st, cn, co } from '$lib/utils/wind.js';
 
 	/** Props */
-	let { color, ...props }: ChipProps = $props();
+	let { color, ...props }: XChip = $props();
 
 	/** Styles */
-	const ui = useUI(chip, props.class, props.override);
+	const ui = useUI(chip$, props.class, props.override);
 	let css = $state({
 		chip: cn(
 			st(

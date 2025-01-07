@@ -4,10 +4,10 @@
 
 :root {
 	--ui-text: rgb(var(--ui-color-neutral-900));
-	--ui-text-dimmed: rgb(var(--ui-color-neutral-400));
-	--ui-text-muted: rgb(var(--ui-color-neutral-500));
 	--ui-text-toned: rgb(var(--ui-color-neutral-700));
+	--ui-text-muted: rgb(var(--ui-color-neutral-500));
 	--ui-text-light: rgb(var(--ui-color-neutral-900));
+	--ui-text-dimmed: rgb(var(--ui-color-neutral-400));
 
 	--ui-bg: rgb(var(--ui-color-white));
 	--ui-bg-muted: rgb(var(--ui-color-neutral-50));

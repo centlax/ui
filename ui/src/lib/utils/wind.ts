@@ -62,5 +62,5 @@ export function statify(state: State): string {
  */
 export function co(color: unknown = 'primary'): string {
 	const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-	return shades.map((shade) => `--color-${shade}: var(--color-${color}-${shade});`).join(' ');
+	return shades.map((shade) => `--ui-color-${shade}: var(--ui-color-${color}-${shade});`).join(' ');
 }

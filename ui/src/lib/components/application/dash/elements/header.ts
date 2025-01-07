@@ -2,7 +2,7 @@
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
-import type { SvelteHTMLElements } from 'svelte/elements';
+import type { HTMLButtonAttributes, SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
@@ -24,12 +24,11 @@ const styles = {
 		flex: 'flex items-center gap-x-4 lg:gap-x-6'
 	}
 } satisfies Styles;
-export const dashHeader = styles;
+export const dashHeader$ = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['header'], 'class'>;
-export interface DashHeaderProps extends BaseProps<typeof dashHeader>, Props {
+export interface XDashHeader extends BaseProps<typeof dashHeader$>, Props {
 	children?: Snippet;
-	west?: Snippet;
-	east?: Snippet;
+	onOpenAside?: HTMLButtonAttributes['onclick']
 }

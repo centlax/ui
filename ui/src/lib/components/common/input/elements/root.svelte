@@ -2,23 +2,13 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn, co } from '$lib/utils/wind.js';
-	import { input, type InputProps } from './root.js';
+	import { input$, type XInput } from './root.js';
 
 	/** Props */
-	let { attrs, color = 'primary', value = $bindable(), ...props }: InputProps = $props();
+	let { attrs, color = 'primary', value = $bindable(), ...props }: XInput = $props();
 
 	/** Styles */
-	const ui = useUI(input, props.class, props.override);
-	let css = $state({
-		input: cn(st(ui.root), ui.class)
-	});
-	let node = $state(null!);
-
-	$effect(() => {
-		if (props.action) {
-			props.action(node);
-		}
-	});
+	const ui = useUI(input$, props.class, props.override);
 </script>
 
-<input bind:value {...props} {...attrs} style={co(color)} class={css.input} />
+<input bind:value {...props} {...attrs} style={co(color)} class={cn(st(ui.root), ui.class)} />

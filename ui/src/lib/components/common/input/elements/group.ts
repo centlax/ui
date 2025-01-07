@@ -1,7 +1,6 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import type { Snippet } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 import clsx from 'clsx';
 
@@ -15,10 +14,10 @@ const styles = {
 		)
 	}
 } satisfies Styles;
-export const inputGroup = styles;
+export const inputGroup$ = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface InputGroupProps extends BaseProps<typeof inputGroup>, Props {
-	children?: Snippet;
+export interface XInputGroup extends BaseProps<typeof inputGroup$>, Props {
+	attrs?: object;
 }

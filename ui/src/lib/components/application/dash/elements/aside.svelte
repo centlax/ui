@@ -1,6 +1,7 @@
 <script lang="ts">
 	/** Imports */
 	import { UIcon, USheet } from '$lib/index.js';
+	import { fade } from 'svelte/transition';
 	import { useDash } from '../dash.svelte.js';
 	import type { DashAsideProps } from './aside.js';
 
@@ -22,7 +23,7 @@
 {#snippet coreAside()}
 	<aside
 		{...core}
-		class="flex h-full max-w-[--ui-dash-aside-width] grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-[--ui-dash-space] pb-[--ui-dash-space]"
+		class="flex h-full max-w-full grow flex-col gap-y-5 overflow-y-auto border-r border-[--ui-border] bg-[--ui-bg] px-[--ui-dash-space] pb-[--ui-dash-space]"
 	>
 		{@render children?.()}
 	</aside>
@@ -36,11 +37,12 @@
 </div>
 
 <USheet bind:open>
-	<USheet.Content {...content}>
+	<USheet.Content side="left" class="w-[--ui-dash-aside-width]">
 		{@render coreAside()}
-		<div {...overlay}>
-			<USheet.Close {...button}>
-				<UIcon {...icon} />
+
+		<div class="absolute left-full top-0 flex h-full w-10 justify-center bg-black/50">
+			<USheet.Close class="h-[--ui-dash-header-height]">
+				<UIcon class="size-6 text-white" name="i-fluent-dismiss-24-regular" />
 			</USheet.Close>
 		</div>
 	</USheet.Content>

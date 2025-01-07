@@ -2,13 +2,13 @@
 	/** Imports */
 	import { USheet } from '$lib/components/export.js';
 	import { useUI } from '$lib/composables/ui.svelte.js';
-	import { siteAside, type SiteAsideProps } from './aside.js';
+	import { landAside$, type XLandAside } from './aside.js';
 
 	/** Props */
-	let { open = $bindable(false), children, ...props }: SiteAsideProps = $props();
+	let { open = $bindable(false), children, ...props }: XLandAside = $props();
 
 	/** Styles */
-	const ui = useUI(siteAside, props.class, props.override);
+	const ui = useUI(landAside$, props.class, props.override);
 </script>
 
 <USheet bind:open>

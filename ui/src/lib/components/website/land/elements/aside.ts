@@ -21,11 +21,10 @@ const styles = {
 	},
 	south: {}
 } satisfies Styles;
-export const siteAside = styles;
+export const landAside$ = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['aside'], 'class'>;
-export interface SiteAsideProps extends BaseProps<typeof siteAside>, Props {
-	children?: Snippet;
+export interface XLandAside extends BaseProps<typeof landAside$>, Props {
 	open?: boolean;
 }

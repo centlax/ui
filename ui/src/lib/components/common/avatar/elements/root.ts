@@ -26,8 +26,8 @@ const styles = {
 export const avatar = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['span'], 'class'> & ToKebab<CreateAvatarProps>;
-export interface AvatarProps extends MainProps<typeof avatar>, Props {
+type Props = Omit<SvelteHTMLElements['span'], 'class'> & CreateAvatarProps;
+export interface XAvatar extends MainProps<typeof avatar>, Props {
 	icon?: string;
 	alt?: string;
 }

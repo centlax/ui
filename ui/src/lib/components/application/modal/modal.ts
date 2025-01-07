@@ -5,9 +5,9 @@ import Content from './elements/content.svelte';
 import Trigger from './elements/trigger.svelte';
 
 type ModalType = typeof Root & {
-	Close: SubComponent<typeof Close>;
-	Content: SubComponent<typeof Content>;
-	Trigger: SubComponent<typeof Trigger>;
+    Close: SubComponent<typeof Close>;
+    Content: SubComponent<typeof Content>;
+    Trigger: SubComponent<typeof Trigger>;
 };
 
 const Modal = Root as ModalType;

@@ -11,4 +11,4 @@
 	const ui = useUI(icon, props.class, props.override);
 </script>
 
-<span data-ui="icon" {...props} class={cn(name, st(ui.root), ui.class)}></span>
+<span data-name="icon" {...props} class={cn(name, st(ui.root), ui.class)}></span>

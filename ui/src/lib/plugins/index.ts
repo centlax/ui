@@ -1,24 +1,25 @@
 import { defaultConfig, type DefaultConfig, type UserConfig } from '$lib/plugins/default.js';
-import { getContext, hasContext, setContext } from 'svelte';
+import { getContext, setContext } from 'svelte';
 
-const key = Symbol('config');
-export function useApp(opts?: UserConfig, ctx: boolean = false) {
-	function set(): DefaultConfig {
-		if (ctx && opts) {
-			const app = { ...defaultConfig, ...opts } as DefaultConfig;
-			setContext(key, app);
-			return app;
-		} else {
-			return defaultConfig;
-		}
-	}
-	function get(): DefaultConfig {
-		if (hasContext(key)) {
-			return getContext<DefaultConfig>(key);
-		} else {
-			return defaultConfig;
-		}
-	}
+export const key = Symbol('config');
 
-	return ctx ? set() : get();
+/**
+ * Initializes or retrieves the app configuration within a Svelte component.
+ * Must be used inside a Svelte component.
+ * @param opts - Optional user configuration to override default settings.
+ * @returns The application configuration.
+ */
+export function setApp(opts?: UserConfig): DefaultConfig {
+	const appConfig = { ...defaultConfig, ...opts } as DefaultConfig;
+	setContext(key, appConfig);
+	return appConfig;
+}
+
+/**
+ * Retrieves the app configuration from the Svelte context.
+ * Must be used inside a Svelte component.
+ * @returns The application configuration.
+ */
+export function useApp(): DefaultConfig {
+	return getContext<DefaultConfig>(key) ?? defaultConfig;
 }

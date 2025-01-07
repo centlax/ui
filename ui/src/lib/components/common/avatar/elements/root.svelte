@@ -1,14 +1,15 @@
 <script lang="ts">
 	/** Imports */
 	import { melt } from '@melt-ui/svelte';
-	import { avatar, type AvatarProps } from './root.js';
+	import { avatar, type XAvatar } from './root.js';
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
 	import { useAvatar } from '../avatar.svelte.js';
 	import { fade } from 'svelte/transition';
+	import type { ToKebab } from '$lib/types/utils.js';
 
 	/** Props */
-	let { as = 'span', attrs, children, ...props }: AvatarProps = $props();
+	let { as = 'span', attrs, children, ...props }: ToKebab<XAvatar> = $props();
 
 	const {
 		elements: { image, fallback },

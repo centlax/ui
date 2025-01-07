@@ -1,8 +1,6 @@
-import { useApp } from '$lib/plugins/index.js';
+import type { DefaultConfig } from '$lib/plugins/default.js';
+
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-const {
-	colors: { primary, neutral, success, warning, danger }
-} = useApp();
 
 function generateShades(key: string, value: string) {
 	return `${shades.map((shade) => `--ui-color-${key}-${shade}: var(--ui-color-${value}-${shade});`).join('\n  ')}`;
@@ -11,19 +9,12 @@ function generateColor(key: string, shade: number) {
 	return `--${key}: var(--ui-color-${key}-${shade});`;
 }
 const tag = 'style';
-export const root = $state(() => {
-	const colors = {
-		primary,
-		neutral,
-		success,
-		warning,
-		danger
-	};
-
+export const root = $state((colors: DefaultConfig['colors']) => {
 	return `
 	<${tag} id="ui-colors" type="text/css">
 			:root {
 				${Object.entries(colors)
+					// @ts-ignore
 					.map(([key, value]: [string, string]) => generateShades(key, value))
 					.join('\n  ')}
 

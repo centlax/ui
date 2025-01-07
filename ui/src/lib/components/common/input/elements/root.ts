@@ -2,12 +2,10 @@
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
 import { statify } from '$lib/utils/wind.js';
-import type { Snippet } from 'svelte';
-import type { Action } from 'svelte/action';
+
 import type { HTMLInputAttributes } from 'svelte/elements';
 
 /** Styles */
-//    disabled:ring-gray-200
 const styles = {
 	root: {
 		layout: 'block ',
@@ -26,14 +24,11 @@ const styles = {
 		interactive: 'disabled:cursor-not-allowed'
 	}
 } satisfies Styles;
-export const input = styles;
+export const input$ = styles;
 
 /** Props */
 type Props = Omit<HTMLInputAttributes, 'class'>;
-export interface InputProps extends BaseProps<typeof input>, Props {
+export interface XInput extends BaseProps<typeof input$>, Props {
 	color?: string;
-	action?: any;
-	child?: Snippet<[any]>;
-	attrs?: any;
-	node?: HTMLElement;
+	attrs?: object;
 }

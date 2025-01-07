@@ -1,11 +1,15 @@
 <script lang="ts">
+	import Logo from '$lib/blocks/logo.svelte';
 	import { UDash } from '$lib/index.js';
 	let { children } = $props();
+	let open = $state(false)
 </script>
-
+{#snippet centlax()}
+	<Logo />
+{/snippet}
 <UDash.Layout>
-	<UDash.Aside>
-		<UDash.ANorth />
+	<UDash.Aside bind:open>
+		<UDash.ANorth emblem={centlax} />
 		<UDash.AItems
 			data={[
 				{
@@ -30,9 +34,7 @@
 		/>
 		<UDash.ASouth />
 	</UDash.Aside>
-	<UDash.Header>
-		<UDash.HWest />
-	</UDash.Header>
+	<UDash.Header on-open-aside={()=> open =! open}/>
 	<UDash.Main>
 		{@render children()}
 	</UDash.Main>

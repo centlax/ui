@@ -3,7 +3,7 @@ import Root from './elements/root.svelte';
 import Group from './elements/group.svelte';
 
 type AvatarType = typeof Root & {
-	Group: SubComponent<typeof Group>;
+    Group: SubComponent<typeof Group>;
 };
 
 const Avatar = Root as AvatarType;

@@ -5,5 +5,5 @@ import type { Snippet } from 'svelte';
 /** Props */
 export interface ProviderProps {
 	children: Snippet;
-	opts?: UserConfig
+	opts?: UserConfig;
 }

@@ -1,6 +1,6 @@
 /** Imports */
 import type { BaseProps } from '$lib/types/prop.js';
-import type { Styles, Utility } from '$lib/types/ui.js';
+import type { Styles } from '$lib/types/ui.js';
 import type { Snippet } from 'svelte';
 import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
@@ -95,8 +95,9 @@ const styles = {
 export const button = styles;
 
 type Props = Omit<HTMLButtonAttributes & HTMLAnchorAttributes, 'class'>;
-export interface ButtonProps extends BaseProps<typeof styles>, Props {
+export interface XButton extends BaseProps<typeof styles>, Props {
 	children?: Snippet;
+	attrs?: object;
 	color?: string;
 	loading?: boolean;
 	text?: string;

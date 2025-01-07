@@ -1,22 +1,12 @@
-<!--
-@component
-- You can use markdown here.
-- You can also use code blocks here.
-- Usage:
-  ```svelte
-  <UButton text="Click me!"/>
-    ```
--->
-<!---->
 <script lang="ts">
 	/** Imports  */
 	import { UIcon } from '$lib/components/export.js';
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn, co } from '$lib/utils/wind.js';
-	import { type ButtonProps, button } from './button.js';
+	import { type XButton, button } from './button.js';
 
 	/** Props  */
-	let { loading = false, color = 'primary', ...props }: ButtonProps = $props();
+	let { loading = false, color = 'primary', attrs, ...props }: XButton = $props();
 
 	/** Styles  */
 	const ui = useUI(button, props.class, props.override);
@@ -27,7 +17,9 @@
 
 <svelte:element
 	this={props.href ? 'a' : 'button'}
+	data-name="button"
 	{...props}
+	{...attrs}
 	class={css.button}
 	style={co(color)}
 	disabled={props.disabled || loading}

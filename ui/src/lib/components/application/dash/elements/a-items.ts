@@ -1,67 +1,49 @@
 /** Imports */
+import type { Item } from '$lib/types/item.js';
 import type { BaseProps } from '$lib/types/prop.js';
 import type { Styles } from '$lib/types/ui.js';
-import { statify } from '$lib/utils/wind.js';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
 /** Styles */
 const styles = {
 	root: {
-		spacing: '-mx-2 space-y-1'
+		flex: 'flex flex-1 flex-col gap-y-7'
 	},
-	opt: {
-		pine: {
-			spacing: 'mt-1 px-2'
+	box: {
+		flex: 'flex flex-1 flex-col gap-y-7 data-[last=true]:last:justify-end',
+		title: {
+			typography: 'font-semibold',
+			spacing: 'mb-3'
 		},
-		dual: {
-			layout: 'z-50',
-			flex: 'flex flex-col',
-			background: 'bg-white dark:bg-neutral-900/80',
-			border: 'border-r border-black/10 dark:border-white/10',
-			filter: 'backdrop-blur-lg',
-			sizing: 'h-screen w-[--dash-width]',
-			spacing: 'ml-5 p-4'
-		}
-	},
-	trigger: {
-		flex: 'flex items-center w-full gap-x-3 ',
-		typography: 'font-semibold text-left text-sm/6 ',
-		border: 'rounded-md',
-		spacing: 'py-1.5 pr-2 pl-2 data-[subitem=true]:pl-9',
-		is: {
-			active: {
-				typography: 'text-neutral-900  dark:text-white',
-				background: 'bg-neutral-50 dark:bg-neutral-800',
-				border: 'ring-1 ring-black/[0.025] dark:ring-white/[0.085]',
-				effect: 'shadow-sm'
-			},
-			inactive: {
-				typography: statify({
-					default: 'text-neutral-600 dark:text-neutral-400',
-					hover: 'hover:text-neutral-900 dark:hover:text-white'
-				}),
-				background: 'hover:bg-neutral-50 dark:hover:bg-neutral-800',
-				effect: 'hover:shadow-sm'
+		list: {
+			spacing: '-mx-2 space-y-1',
+			item: {
+				layout: 'group flex w-full gap-x-3 rounded-md',
+				background: 'data-[selected=true]:bg-[--ui-bg-muted] hover:bg-[--ui-bg-muted]',
+				typography: 'data-[selected=true]:text-[--ui-text] text-neutral-600 font-medium text-sm/6',
+				spacing: 'px-2.5 py-1.5',
+				icon: {
+					flex: 'shrink-0',
+					typography: 'text-black',
+					background: 'data-[selected=true]:bg-[--ui-text]',
+					sizing: 'size-6'
+				},
+				badge: {
+					typography: 'whitespace-nowrap text-center  text-xs/5 font-medium text-gray-600',
+					background: 'bg-[--ui-bg]',
+					border: 'rounded-full ring-1 ring-inset ring-[--ui-border]',
+					spacing: 'ml-auto px-2.5 py-0.5',
+					sizing: 'w-9 min-w-max'
+				}
 			}
-		},
-		icon: {
-			flex: 'shrink-0',
-			sizing: 'size-6',
-			typography: 'text-inherit'
-		},
-		'chevron-icon': {
-			flex: 'shrink-0',
-			sizing: 'size-5',
-			spacing: 'ml-auto',
-			transform: 'data-[expanded=true]:rotate-90 transition-transform duration-[150ms] ease-in-out',
-			typography: 'text-inherit'
 		}
 	}
 } satisfies Styles;
-export const dashAsideItem = styles;
+export const dashAItems$ = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['nav'], 'class'> & BaseProps<typeof dashAsideItem>;
-export interface DashAsideItemsProps<T> extends Props {
-	data: T[];
+type Props = Omit<SvelteHTMLElements['nav'], 'class'> & BaseProps<typeof dashAItems$>;
+export interface XDashAItems extends Props {
+	data: Item<{ badge?: string; icon?: string }>[];
+	attrs?: object;
 }

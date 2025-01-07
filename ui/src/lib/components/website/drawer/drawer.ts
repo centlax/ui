@@ -6,10 +6,10 @@ import Handle from './elements/handle.svelte';
 import Trigger from './elements/trigger.svelte';
 
 type DrawerType = typeof Root & {
-	Close: SubComponent<typeof Close>;
-	Content: SubComponent<typeof Content>;
-	Handle: SubComponent<typeof Handle>;
-	Trigger: SubComponent<typeof Trigger>;
+    Close: SubComponent<typeof Close>;
+    Content: SubComponent<typeof Content>;
+    Handle: SubComponent<typeof Handle>;
+    Trigger: SubComponent<typeof Trigger>;
 };
 
 const Drawer = Root as DrawerType;

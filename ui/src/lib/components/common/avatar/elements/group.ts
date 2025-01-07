@@ -13,4 +13,4 @@ export const avatarGroup = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['div'], 'class'>;
-export interface AvatarGroupProps extends MainProps<typeof avatarGroup>, Props {}
+export interface XAvatarGroup extends MainProps<typeof avatarGroup>, Props {}
