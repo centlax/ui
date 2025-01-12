@@ -4,7 +4,6 @@ import { tableCaption, type TableCaptionProps } from './elements/title.js';
 import { tableCol, type TableColProps } from './elements/col.js';
 import { tableDCell, type TableDCellProps } from './elements/item.js';
 import { tableFoot, type TableFootProps } from './elements/foot.js';
-import { tableGCol, type TableGColProps } from './elements/c-group.js';
 import { tableHCell, type TableHCellProps } from './elements/h-item.js';
 import { tableHead, type TableHeadProps } from './elements/head.js';
 import { tableRoot, type TableRootProps } from './elements/root.js';
@@ -35,10 +34,6 @@ export function createTable() {
 		return { ...props, class: uify(tableCol, props.class, props.override) };
 	}
 
-	function gCol(props: TableGColProps): ToStrClass<TableGColProps> {
-		return { ...props, class: uify(tableGCol, props.class, props.override) };
-	}
-
 	function row(props: TableRowProps): ToStrClass<TableRowProps> {
 		return { ...props, class: uify(tableRow, props.class, props.override) };
 	}
@@ -60,8 +55,7 @@ export function createTable() {
 			row,
 			hCell,
 			dCell,
-			col,
-			gCol
+			col
 		},
 		states: {},
 		options: {},

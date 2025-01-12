@@ -1,16 +1,23 @@
 <script lang="ts">
 	/** Imports */
 	import { PaneResizer as Primitive } from 'paneforge';
-	import type { ResizeHandleProps } from './handle.js';
-	import { createResize } from '../resize.svelte.js';
+	import { resizeHandle$, type XResizeHandle } from './handle.js';
+	import { toCamel } from '$lib/utils/props.js';
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { useUI } from '$lib/composables/ui.svelte.js';
+	import { cn, st } from '$lib/utils/wind.js';
 
 	/** Props */
-	let { children, ...props }: ResizeHandleProps = $props();
-	const {
-		elements: { handle }
-	} = createResize();
+	let { children, ...props }: ToKebab<XResizeHandle> = $props();
+
+	/** Styles  */
+	const ui = useUI(resizeHandle$, props.class, props.override);
 </script>
 
-<Primitive {...handle(props)}>
-	{@render children?.()}
-</Primitive>
+<Primitive {...toCamel(props)} class={cn(st(ui.root), ui.class)} />
+
+<style>
+	:root {
+		--ui-resize-handle-size: 0.25rem;
+	}
+</style>

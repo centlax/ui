@@ -12,6 +12,7 @@ export const resizeLayout = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['div'], 'class'> & BaseProps<typeof resizeLayout>;
-export interface ResizeLayoutProps extends Props, PaneGroupPropsWithoutHTML {
+export interface XResizeLayout extends Props, Omit<PaneGroupPropsWithoutHTML, 'direction'> {
 	id?: string;
+	direction?: PaneGroupPropsWithoutHTML['direction'];
 }

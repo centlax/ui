@@ -1,5 +1,11 @@
 # @centlax/ui
 
+## 1.0.4
+
+### Patch Changes
+
+- The previus version was filled with bugs [ wrong imports, wrong naming ]: Hopefuly fixed
+
 ## 1.0.3
 
 ### Patch Changes

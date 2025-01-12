@@ -1,16 +1,14 @@
 <script lang="ts">
 	/** Imports */
 	import { PaneGroup as Primitive } from 'paneforge';
-	import { createResize } from '../resize.svelte.js';
-	import type { ResizeLayoutProps } from './layout.js';
+	import type { XResizeLayout } from './layout.js';
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
 
 	/** Props */
-	let { children, ...props }: ResizeLayoutProps = $props();
-	const {
-		elements: { handle }
-	} = createResize();
+	let { children, direction = 'horizontal', ...props }: ToKebab<XResizeLayout> = $props();
 </script>
 
-<Primitive {...handle(props)}>
+<Primitive {...toCamel(props)} {direction}>
 	{@render children?.()}
 </Primitive>

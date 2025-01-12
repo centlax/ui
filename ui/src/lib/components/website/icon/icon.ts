@@ -15,5 +15,5 @@ export const icon$ = styles;
 type Props = Omit<SvelteHTMLElements['span'], 'class'>;
 export interface XIcon extends BaseProps<typeof icon$>, Props {
 	name: string;
-	attrs?: object
+	attrs?: object;
 }

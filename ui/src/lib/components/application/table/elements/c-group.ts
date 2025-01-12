@@ -11,4 +11,6 @@ export const tableGCol = styles;
 
 /* Props */
 type Props = Omit<SvelteHTMLElements['colgroup'], 'class'>;
-export interface TableGColProps extends BaseProps<typeof tableGCol>, Props {}
+export interface XTableGCol extends BaseProps<typeof tableGCol>, Props {
+	attrs?: object;
+}

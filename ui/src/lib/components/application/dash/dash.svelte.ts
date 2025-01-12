@@ -1,3 +1,1 @@
-
-export function useDash() {
-}
+export function useDash() {}

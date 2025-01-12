@@ -1,16 +1,14 @@
 <script lang="ts">
 	/** Imports */
 	import { Pane as Primitive } from 'paneforge';
-	import { createResize } from '../resize.svelte.js';
-	import type { ResizePanelProps } from './panel.js';
+	import type { XResizePanel } from './panel.js';
+	import type { ToKebab } from '$lib/types/utils.js';
+	import { toCamel } from '$lib/utils/props.js';
 
 	/** Props */
-	let { children, ...props }: ResizePanelProps = $props();
-	const {
-		elements: { panel }
-	} = createResize();
+	let { children, ...props }: ToKebab<XResizePanel> = $props();
 </script>
 
-<Primitive {...panel(props)}>
+<Primitive {...toCamel(props)}>
 	{@render children?.()}
 </Primitive>

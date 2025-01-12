@@ -1,15 +1,11 @@
 <script lang="ts">
 	/** Imports */
-	import { createTable } from '../table.svelte.js';
-	import { type TableGColProps } from './c-group.js';
+	import { type XTableGCol } from './c-group.js';
 
 	/** Props */
-	let { children, ...props }: TableGColProps = $props();
-	const {
-		elements: { gCol }
-	} = createTable();
+	let { children, attrs, ...props }: XTableGCol = $props();
 </script>
 
-<colgroup {...gCol(props)}>
+<colgroup {...props} {...attrs}>
 	{@render children?.()}
 </colgroup>

@@ -8,10 +8,10 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 const styles = {
 	root: {}
 } satisfies Styles;
-export const resizePanel = styles;
+export const resizePanel$ = styles;
 
 /** Props */
-type Props = Omit<SvelteHTMLElements['div'], 'class'> & BaseProps<typeof resizePanel>;
-export interface ResizePanelProps extends Props, PanePropsWithoutHTML {
+type Props = Omit<SvelteHTMLElements['div'], 'class'> & BaseProps<typeof resizePanel$>;
+export interface XResizePanel extends Props, PanePropsWithoutHTML {
 	id?: string;
 }
