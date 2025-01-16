@@ -13,29 +13,17 @@ const styles = {
 		border: 'border-t border-black/10 dark:border-white/10',
 		spacing: 'py-2 sm:py-4 md:py-6 lg:py-8'
 	},
-	north: {
+	box: {
 		flex: 'flex',
 		sizing: 'w-full'
 	},
-	contain: {
-		flex: 'flex justify-between gap-5',
-		west: {},
-		center: {
-			flex: 'flex flex-grow flex-wrap justify-start gap-10 sm:gap-20',
-			sizing: 'w-fit'
-		},
-		east: {}
-	},
-	south: {
-		grid: 'grid grid-cols-1',
-		border: 'divide-y divide-black/10 dark:divide-white/10'
-	}
+
 } satisfies Styles;
-export const siteFooter = styles;
+export const landFooter$ = styles;
 
 /** Props */
 type Props = Omit<SvelteHTMLElements['footer'], 'class'>;
-export interface SiteFootProps extends BaseProps<typeof siteFooter>, Props {
+export interface XLandFooter extends BaseProps<typeof landFooter$>, Props {
 	items?: Item[];
 	north?: Snippet;
 	west?: Snippet;

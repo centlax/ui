@@ -8,28 +8,20 @@ import type { SvelteHTMLElements } from 'svelte/elements';
 /** Styles */
 const styles = {
 	root: {
-		layout: 'flex items-center justify-between',
-		typography: 'text-neutral-900 dark:text-white',
-		sizing: 'w-full h-[--site-height]'
+		sizing: 'w-full',
+		border: 'border-b border-[--ui-border]',
+		
 	},
-	west: {
-		flex: 'flex flex-grow items-center justify-between lg:flex-1 '
-	},
-	center: {
-		layout: 'hidden',
-		flex: 'lg:flex lg:gap-x-12'
-	},
-
-	east: {
-		layout: 'hidden ',
-		flex: 'lg:flex lg:flex-1 lg:justify-end'
+	box: {
+		layout: 'container',
+		flex: 'flex items-center justify-between',
+		sizing: 'h-[--ui-land-header-height] '
 	}
 } satisfies Styles;
-export const siteHeader = styles;
+export const landHeader$ = styles;
 
 /** Props */
-
 type Props = Omit<SvelteHTMLElements['header'], 'class'>;
-export interface SiteHeaderProps extends BaseProps<typeof siteHeader>, Props {
-	logo?: Snippet;
+export interface XLandHeader extends BaseProps<typeof landHeader$>, Props {
+	emblem?: Snippet;
 }

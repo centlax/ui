@@ -21,7 +21,7 @@ const styles = {
 			'data-[direction=vertical]:after:left-0 data-[direction=vertical]:after:h-1',
 			' data-[direction=vertical]:after:-translate-y-1/2 ',
 			'data-[direction=vertical]:after:translate-x-0'
-		),
+		)
 	}
 } satisfies Styles;
 export const resizeHandle$ = styles;

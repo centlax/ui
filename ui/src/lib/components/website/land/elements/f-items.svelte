@@ -10,6 +10,7 @@
 	const ui = useUI(siteFooterItem, props.class, props.override);
 </script>
 
+
 <nav class="mt-16 grid grid-cols-4 gap-8 lg:col-span-2 xl:mt-0">
 	{#each data as list}
 		<div>

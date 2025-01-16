@@ -2,24 +2,23 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { st, cn } from '$lib/utils/wind.js';
-	import { siteHeader, type SiteHeaderProps } from './header.js';
+	import { landHeader$, type XLandHeader } from './header.js';
 
 	/** Props */
-	let { children, ...props }: SiteHeaderProps = $props();
+	let { children, ...props }: XLandHeader = $props();
 
 	/** Styles */
-	const ui = useUI(siteHeader, props.class, props.override);
+	const ui = useUI(landHeader$, props.class, props.override);
 </script>
 
-<header
-	class="flex h-[--ui-land-header-height] items-center justify-between border-b border-[--ui-border] px-4 sm:px-6 lg:px-8"
-	aria-label="global"
->
-	{@render children?.()}
+<header class={cn(st(ui.root), ui.class)} aria-label="global">
+	<div class={st(ui.box)}>
+		{@render children?.()}
+	</div>
 </header>
 
 <style>
 	:root {
-		--ui-land-header-height: 4rem;
+		--ui-land-header-height: 3.5rem;
 	}
 </style>

@@ -2,7 +2,6 @@
 	/** Imports */
 	import { useUI } from '$lib/composables/ui.svelte.js';
 	import { markAside, type MarkAsideProps } from './aside.js';
-	import { USheet } from '$lib/index.js';
 
 	/** Props */
 	let { children, ...props }: MarkAsideProps = $props();
@@ -11,8 +10,18 @@
 	const ui = useUI(markAside, props.class, props.override);
 </script>
 
-<USheet.Content
-	class="w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+<aside
+	class="fixed inset-0 left-[max(0px,calc(50%-45rem))] right-auto top-[3.8125rem] z-20 hidden w-[--ui-mark-aside-width] overflow-y-auto pb-10 pl-8 pr-6 lg:block"
 >
-	{@render children?.()}
-</USheet.Content>
+	<nav id="nav" class="relative pb-20 lg:text-sm lg:leading-6">
+		<ul>
+			{@render children?.()}
+		</ul>
+	</nav>
+</aside>
+
+<style>
+	:root {
+		--ui-mark-aside-width: 20rem
+	}
+</style>
